@@ -71,6 +71,12 @@ const socialMediaLinks = [
     fontAwesomeIcon: "fa-instagram", // Reference https://fontawesome.com/icons/instagram?style=brands
     backgroundColor: "#E4405F", // Reference https://simpleicons.org/?q=instagram
   },
+  {
+    name: "Behance",
+    link: "https://www.behance.net/adewaleogo",
+    fontAwesomeIcon: "fa-behance", // Reference https://fontawesome.com/icons/instagram?style=brands
+    backgroundColor: "#053eff ", // Reference https://simpleicons.org/?q=instagram
+  },
 ];
 
 const skills = {
@@ -79,12 +85,12 @@ const skills = {
       title: "Front-End Web Development",
       fileName: "FullStackImg",
       skills: [
-        "⚡ Conceptualizing creative ideas",
-        "⚡ Preparing design plans and presenting the website structure",
-        "⚡ Executing current design trends and techniques in web applications",
-        "⚡ Designing responsive landing pages",
-        "⚡ Creating website designs using HTML, CSS, Javascript, Wordpress etc",
-        "⚡ Building a responsive website Front-End using React",
+        "⚡ Conceptualize creative ideas",
+        "⚡ Prepare design plans and present website structure",
+        "⚡ Execute current design trends and techniques in web applications",
+        "⚡ Design responsive landing pages",
+        "⚡ Create website designs using HTML, CSS, Javascript, Wordpress etc",
+        "⚡ Build responsive website Front-End using React",
       ],
       softwareSkills: [
         {
@@ -136,11 +142,11 @@ const skills = {
       title: "Graphics Design and Branding",
       fileName: "Graphics",
       skills: [
-        "⚡ Planning concepts by studying relevant information and materials",
-        "⚡ Developing design based on clients requirements",
-        "⚡ Creating a wide range of graphics and layouts for products illustration, company logos, and websites",
-        "⚡ Changing and controlling colours, shadows, text, light, etc to create life-like designs",
-        "⚡ Simplifying abstract concepts and complex ideas into visually stunning and playful designs",
+        "⚡ Plan concepts by studying relevant information and materials",
+        "⚡ Develop design based on clients requirements",
+        "⚡ Create wide range of graphics and layouts for products illustration, company logos, and websites",
+        "⚡ Change and controllcolours, shadows, text, light, etc to create life-like designs",
+        "⚡ Simplify abstract concepts and complex ideas into visually stunning and playful designs",
       ],
       softwareSkills: [
         {
@@ -179,16 +185,16 @@ const skills = {
       title: "UI/UX Design",
       fileName: "DesignImg",
       skills: [
-        "⚡ Developing and conceptualizing a comprehensive UI/UX design strategy",
-        "⚡ Designing UI elements and tools such as navigation menus, search boxes, tabs, and widgets",
-        "⚡ Combining creativity with an awareness of design elements",
-        "⚡ Illustrating design ideas using storyboards, process flows and sitemaps",
-        "⚡ Translating concepts into user flows, wireframes, mockups and prototypes that lead to intuitive user experiences",
+        "⚡ Develop and conceptualizing a comprehensive UI/UX design strategy",
+        "⚡ Design UI elements and tools such as navigation menus, search boxes, tabs, and widgets",
+        "⚡ Combine creativity with an awareness of design elements",
+        "⚡ Illustrate design ideas using storyboards, process flows and sitemaps",
+        "⚡ Translate concepts into user flows, wireframes, mockups and prototypes that lead to intuitive user experiences",
       ],
       softwareSkills: [
         {
           skillName: "Adobe XD",
-          fontAwesomeClassname: "simple-icons:adobexd",
+          fontAwesomeClassname: "logos:adobe-xd",
           style: {
             // backgroundColor: "#450034",
             // borderRadius: "10px",
@@ -222,10 +228,10 @@ const skills = {
       title: "Motion Graphics and Animation",
       fileName: "CloudInfraImg",
       skills: [
-        "⚡ Designing and creating enticing motion graphics for video deliverables (corporate videos, e-learning, websites, marketing demos, etc)",
-        "⚡ Developing video and animation that portrays motion",
-        "⚡ Editing raw video footage and adding effects or elements to enhance motion graphics",
-        "⚡ Researching and analyzing best design techniques and solutions to create motion graphics",
+        "⚡ Design and create enticing motion graphics for video deliverables (corporate videos, e-learning, websites, marketing demos, etc)",
+        "⚡ Develop video and animation that portrays motion",
+        "⚡ Edit raw video footage and add effects or elements to enhance motion graphics",
+        "⚡ Research and analyze best design techniques and solutions to create motion graphics",
       ],
       softwareSkills: [
         {
@@ -270,12 +276,12 @@ const skills = {
       title: "Data Entry and Analysis",
       fileName: "DataScienceImg",
       skills: [
-        "⚡ Preparing and sorting documents for data entry",
-        "⚡ Resolving discrepancies in information and obtaining further information for incomplete documents",
-        "⚡ Entering data into database software and checking to ensure the accuracy of the data that has been inputted",
-        "⚡ Collecting and interpreting data",
-        "⚡ Defining new data collection and analysis processes",
-        "⚡ Identifying patterns and trends in data sets",
+        "⚡ Prepare and sort documents for data entry",
+        "⚡ Resolve discrepancies in information and obtaining further information for incomplete documents",
+        "⚡ Enter data into database software and checking to ensure the accuracy of the data that has been inputted",
+        "⚡ Collect and interpret data",
+        "⚡ Define new data collection and analysis processes",
+        "⚡ Identify patterns and trends in data sets",
       ],
       softwareSkills: [
         {
@@ -299,14 +305,14 @@ const skills = {
             backgroundColor: "transparent",
           },
         },
-        {
-          skillName: "IBM SPSS",
-          fontAwesomeClassname: "logos-ibm",
-          style: {
-            backgroundColor: "transparent",
-            color: "#20C4CB",
-          },
-        },
+        // {
+        //   skillName: "ACL Analytics",
+        //   fontAwesomeClassname: "acl.svg",
+        //   style: {
+        //     backgroundColor: "transparent",
+        //     color: "#20C4CB",
+        //   },
+        // },
       ],
     },
   ],
@@ -362,14 +368,15 @@ const degrees = {
   degrees: [
     {
       title: "Obafemi Awolowo University, Osun Nigeria" ,
-      subtitle: "B.Sc. Economics",
+      subtitle: "Bachelor of Science - B.Sc, Economics",
       logo_path: "oau.png",
-      alt_name: "IIITDM Kurnool",
-      duration: "2016 - Present",
+      alt_name: "OAU Logo",
+      duration: "",
       descriptions: [
-        "⚡ ",
-        "⚡ ",
-        "⚡ ",
+        "Activities and societies:",
+        "⚡ Member, LQED Committee, Nigerian Economics Students' Association (NESAOAU)",
+        "⚡ Technical Head, Nigerian Economics Students' Association (NESAOAU)",
+        "⚡ Electoral Chairman, Nigerian Economics Students' Association (NESAOAU)",
       ],
       website_link: "http://oauife.edu.ng",
     },
@@ -421,6 +428,32 @@ const experience = {
       title: "Work",
       experiences: [
         {
+          title: "Junior Front End Web Developer",
+          company: "Boxin Logistics",
+          company_url: "https://boxin.ng",
+          logo_path: "boxinLogo.png",
+          duration: "May 2021 - PRESENT",
+          location: "Lagos, Nigeria",
+          // description:
+          //   "⚡ Designed a web application for the company.",
+          description2:
+            "",
+          color: "#0879bf",
+        },
+        {
+          title: "Graphics and Motion Designer",
+          company: "Boxin Logistics",
+          company_url: "http://boxin.ng/",
+          logo_path: "boxinLogo.png",
+          duration: "December 2020 - PRESENT",
+          location: "Lagos, Nigeria",
+          // description:
+          //   "⚡ Designed a web application for the company.",
+          description2:
+            "",
+          color: "#0879bf",
+        },
+        {
           title: "Web Designer",
           company: "GI Career Services",
           company_url: "http://gicareerservices.com/",
@@ -451,6 +484,19 @@ const experience = {
     {
       title: "Internships",
       experiences: [
+        {
+          title: "Web Design Tutor",
+          company: "Audit and Systems Solutions",
+          company_url: "https://www.solutionsaudit.com/",
+          logo_path: "audit.png",
+          duration: "September 2016 - April 2017",
+          location: "Ikeja, Lagos, Nigeria",
+          description:
+            "⚡Mentored trainees expertly on Beginner and Intermediate levels of HTML, CSS, PHP, JavaScript, etc.",
+          description2:
+            "⚡Evaluated trainees on Beginner and Intermediate levels of HTML, CSS, PHP, JavaScript, etc.",
+          color: "orange",
+        },
         // {
         //   title: "Data Science Research Intern",
         //   company: "Delhivery Pvt. Ltd.",
@@ -518,19 +564,6 @@ const experience = {
             "⚡Assessed trainees on Microsoft Word Beginner and Intermediate levels in the 16th Edition.",
           color: "#0082be",
         },
-        {
-          title: "Web Design Tutor",
-          company: "Audit and Systems Solutions",
-          company_url: "https://www.solutionsaudit.com/",
-          logo_path: "audit.png",
-          duration: "September 2016 - April 2017",
-          location: "Ikeja, Lagos, Nigeria",
-          description:
-            "⚡Mentored trainees expertly on Beginner and Intermediate levels of HTML, CSS, PHP, JavaScript, etc.",
-          description2:
-            "⚡Evaluated trainees on Beginner and Intermediate levels of HTML, CSS, PHP, JavaScript, etc.",
-          color: "orange",
-        },
       ],
     },
   ],
@@ -541,13 +574,22 @@ const experience = {
 const skilled = {
   sections: [
     {
-      title: "Soft Skills",
+      title: "Interpersonal Skills",
       experiences: [
         {
-          title: "Web Designer",
+          title: "Leadership",
         },
         {
-          title: "Freelancer",
+          title: "Teamwork",
+        },
+        {
+          title: "Training",
+        },
+        {
+          title: "Critical Thinking",
+        },
+        {
+          title: "Team Building",
         },
       ],
     },
