@@ -4,6 +4,7 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 30px -15px;
   padding: 2rem;
   cursor: pointer;
+  height: 200px;
 }
 .repo-card-div:hover {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px -10px;
@@ -76,17 +77,21 @@
   margin-top: 0.8rem;
 }
 
-.repo-details {
+/* .repo-details {
   display: flex;
   flex-direction: row;
-}
+} */
 
 .repo-creation-date {
   margin: 0;
   font-family: "Google Sans Regular";
-  font-weight: 400;
+  font-weight: 200;
+  font-size: 15px;
   margin-left: 0px;
   margin-right: auto;
+  margin-bottom: 19px;
+  position: absolute;
+  bottom: 0;
 }
 
 .repo-languages {

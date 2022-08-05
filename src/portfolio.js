@@ -329,14 +329,14 @@ const competitiveSites = {
       },
       profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
     },
-    {
-      siteName: "Facebook",
-      iconifyClassname: "simple-icons:facebook",
-      style: {
-        color: "#5B4638",
-      },
-      profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
-    },
+    // {
+    //   siteName: "Facebook",
+    //   iconifyClassname: "simple-icons:facebook",
+    //   style: {
+    //     color: "#5B4638",
+    //   },
+    //   profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
+    // },
     {
       siteName: "Adobe",
       iconifyClassname: "simple-icons:adobe",
@@ -345,14 +345,14 @@ const competitiveSites = {
       },
       profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
     },
-    {
-      siteName: "Google",
-      iconifyClassname: "simple-icons:google",
-      style: {
-        color: "#323754",
-      },
-      profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
-    },
+    // {
+    //   siteName: "Google",
+    //   iconifyClassname: "simple-icons:google",
+    //   style: {
+    //     color: "#323754",
+    //   },
+    //   profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
+    // },
     {
       siteName: "Microsoft",
       iconifyClassname: "simple-icons:microsoft",

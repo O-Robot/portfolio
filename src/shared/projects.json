@@ -14,6 +14,17 @@
       ]
     },
     {
+      "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+      "name": "AA Magazine",
+      "createdAt": "2020-03-06",
+      "url": "https://aamagazine.net",
+      "description": "The website for AA Magazine where Users can read news and also subscribe to read premium magazines. Visit the website here ",
+      "isFork": false,
+      "languages": [
+        { "name": "Wordpress", "iconifyClass": "fa-wordpress" }
+      ]
+    },
+    {
       "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
       "name": "My Portfolio Site",
       "createdAt": "2020-06-03T11:53:55Z",
