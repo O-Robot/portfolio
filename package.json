@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "portfolio",
-  "homepage": "https://o-robot.github.io/portfolio/#/",
+  "homepage": ".",
   "version": "0.1.0",
   "scripts": {
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
