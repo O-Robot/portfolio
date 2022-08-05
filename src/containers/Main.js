@@ -15,28 +15,28 @@ export default class Main extends Component {
     if (settings.isSplash) {
       return (
         <div>
-          <HashRouter basename="/">
+          <HashRouter basename={process.env.PUBLIC_URL}>
             <Switch>
               <Route
-                path="/"
+                path={`${process.env.PUBLIC_URL}/`}
                 exact
                 render={(props) => (
                   <Splash {...props} theme={this.props.theme} />
                 )}
               />
               <Route
-                path="/home"
+                path={`${process.env.PUBLIC_URL}/home`}
                 render={(props) => <Home {...props} theme={this.props.theme} />}
               />
               <Route
-                path="/experience"
+                path={`${process.env.PUBLIC_URL}/experience`}
                 exact
                 render={(props) => (
                   <Experience {...props} theme={this.props.theme} />
                 )}
               />
               <Route
-                path="/education"
+                path={`${process.env.PUBLIC_URL}/education`}
                 render={(props) => (
                   <Education {...props} theme={this.props.theme} />
                 )}
@@ -48,19 +48,19 @@ export default class Main extends Component {
                 )}
               /> */}
               <Route
-                path="/contact"
+                path={`${process.env.PUBLIC_URL}/contact`}
                 render={(props) => (
                   <Contact {...props} theme={this.props.theme} />
                 )}
               />
               <Route
-                path="/splash"
+                path={`${process.env.PUBLIC_URL}/splash`}
                 render={(props) => (
                   <Splash {...props} theme={this.props.theme} />
                 )}
               />
               <Route
-                path="/projects"
+                path={`${process.env.PUBLIC_URL}/projects`}
                 render={(props) => (
                   <Projects {...props} theme={this.props.theme} />
                 )}
@@ -72,26 +72,26 @@ export default class Main extends Component {
     } else {
       return (
         <div>
-          <HashRouter basename="/">
+          <HashRouter basename={"/"}>
             <Switch>
               <Route
-                path="/"
+                path={`${process.env.PUBLIC_URL}/`}
                 exact
                 render={(props) => <Home {...props} theme={this.props.theme} />}
               />
               <Route
-                path="/home"
+                path={`${process.env.PUBLIC_URL}/home`}
                 render={(props) => <Home {...props} theme={this.props.theme} />}
               />
               <Route
-                path="/experience"
+                path={`${process.env.PUBLIC_URL}/experience`}
                 exact
                 render={(props) => (
                   <Experience {...props} theme={this.props.theme} />
                 )}
               />
               <Route
-                path="/education"
+                path={`${process.env.PUBLIC_URL}/education`}
                 render={(props) => (
                   <Education {...props} theme={this.props.theme} />
                 )}
@@ -103,7 +103,7 @@ export default class Main extends Component {
                 )}
               /> */}
               <Route
-                path="/contact"
+                path={`${process.env.PUBLIC_URL}/contact`}
                 render={(props) => (
                   <Contact {...props} theme={this.props.theme} />
                 )}
@@ -118,7 +118,7 @@ export default class Main extends Component {
 							)}
 						/> */}
               <Route
-                path="/projects"
+                path={`${process.env.PUBLIC_URL}/projects`}
                 render={(props) => (
                   <Projects {...props} theme={this.props.theme} />
                 )}
