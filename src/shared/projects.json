@@ -39,7 +39,7 @@
       "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
       "name": "My Portfolio Site",
       "createdAt": "2020-06-03T11:53:55Z",
-      "url": "https://tinyurl/ORobPortfolio",
+      "url": "https://adewaleogooluwani.com",
       "description": "My Portfolio website. Visit the website here",
       "isFork": false,
       "languages": [
@@ -87,7 +87,7 @@
           "iconifyClass": "vscode-icons:file-type-photoshop2"
         },
         { "name": "Illustrator", "iconifyClass": "vscode-icons:file-type-ai2" },
-        { "name": "Python", "iconifyClass": "simple-icons:canva" }
+        { "name": "Canva", "iconifyClass": "simple-icons:canva" }
       ]
     },
     {
