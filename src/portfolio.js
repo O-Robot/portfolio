@@ -395,14 +395,23 @@ const certifications = {
       color_code: "orange",
     },
     {
-      title: "CEH",
-      subtitle: "- In view",
-      logo_path: "google_logo.png",
+      title: "SQL Injections",
+      subtitle: "- Training",
+      logo_path: "udemy.svg",
       certificate_link:
         "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
       alt_name: "deeplearning.ai",
-      color_code: "purple",
+      color_code: "#d3d3d3",
     },
+    // {
+    //   title: "CEH",
+    //   subtitle: "- In view",
+    //   logo_path: "google_logo.png",
+    //   certificate_link:
+    //     "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
+    //   alt_name: "deeplearning.ai",
+    //   color_code: "purple",
+    // },
     {
       title: "React",
       subtitle: "- React Training",

@@ -15,14 +15,25 @@
     },
     {
       "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+      "name": "Boxin Store",
+      "createdAt": "2022-07-06",
+      "url": "http://20.119.67.205:8000/",
+      "description": "Online Store for Boxin users. The site is Unique to each particular store owner ",
+      "isFork": false,
+      "languages": [
+        { "name": "HTML", "iconifyClass": "logos-html-5" },
+        { "name": "Sass", "iconifyClass": "logos-sass" },
+        { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
       "name": "AA Magazine",
       "createdAt": "2020-03-06",
       "url": "https://aamagazine.net",
       "description": "The website for AA Magazine where Users can read news and also subscribe to read premium magazines. Visit the website here ",
       "isFork": false,
-      "languages": [
-        { "name": "Wordpress", "iconifyClass": "fa-wordpress" }
-      ]
+      "languages": [{ "name": "Wordpress", "iconifyClass": "fa-wordpress" }]
     },
     {
       "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
@@ -52,7 +63,7 @@
     },
     {
       "id": "MDEwOlJlcG9zaXRvcnkxNTU5NTE3NTk=",
-      "name": "Product Design",
+      "name": "Product Design Portfolio",
       "createdAt": "2018-11-03T05:00:56Z",
       "url": "https://www.behance.net/adewaleogo",
       "description": "",
@@ -64,26 +75,32 @@
     },
     {
       "id": "MDEwOlJlcG9zaXRvcnkyMDIxNDc4ODA=",
-      "name": "Graphics Design",
+      "name": "Graphics Design Portfolio",
       "createdAt": "2019-08-13T13:13:00Z",
       "url": "https://tinyurl/",
       "description": "",
       "isFork": false,
       "languages": [
         { "name": "Corel Draw", "iconifyClass": "file-icons:coreldraw-alt" },
-        { "name": "Photoshop", "iconifyClass": "vscode-icons:file-type-photoshop2" },
+        {
+          "name": "Photoshop",
+          "iconifyClass": "vscode-icons:file-type-photoshop2"
+        },
         { "name": "Illustrator", "iconifyClass": "vscode-icons:file-type-ai2" },
         { "name": "Python", "iconifyClass": "simple-icons:canva" }
       ]
     },
     {
       "id": "MDEwOlJlcG9zaXRvcnkxODIxMjk3NTQ=",
-      "name": "Motion Design",
+      "name": "Motion Design Portfolio",
       "createdAt": "2019-04-18T17:25:51Z",
       "url": "https://tinyurl/",
       "description": "",
       "isFork": false,
-      "languages": [{ "name": "C#", "iconifyClass": "logos-c-sharp" }]
+      "languages": [
+        { "name": "After Effects", "iconifyClass": "logos:adobe-after-effects" },
+        { "name": "After Premiere Pro", "iconifyClass": "logos:adobe-premiere" }
+      ]
     }
   ]
 }
