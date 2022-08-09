@@ -7,9 +7,9 @@ const settings = {
 
 //Home Page
 const greeting = {
-  foot: "Robot",
-  title: "Adewale Ogooluwani",
-  logo_name: "Adewale Ogooluwani",
+  foot: "Ogooluwani Adewale",
+  title: "Ogooluwani Adewale",
+  logo_name: "Ogooluwani Adewale",
   nickname: "robot",
   subTitle:
   "A passionate, ambitious, highly organized and result-oriented individual who always thrive to work on end to end products which develop sustainable and scalable social and technical systems to create impact.",
@@ -73,7 +73,7 @@ const socialMediaLinks = [
   },
   {
     name: "Behance",
-    link: "https://www.behance.net/adewaleogo",
+    link: "https://www.behance.net/ogooluwaniadewale",
     fontAwesomeIcon: "fa-behance", // Reference https://fontawesome.com/icons/instagram?style=brands
     backgroundColor: "#053eff ", // Reference https://simpleicons.org/?q=instagram
   },
@@ -213,13 +213,6 @@ const skills = {
           fontAwesomeClassname: "vscode-icons:file-type-ai",
           style: {
             color: "#FF7C00",
-          },
-        },
-        {
-          skillName: "Inkscape",
-          fontAwesomeClassname: "simple-icons:inkscape",
-          style: {
-            color: "#000000",
           },
         },
       ],
