@@ -139,6 +139,42 @@ const skills = {
       ],
     },
     {
+      title: "UI/UX Design",
+      fileName: "DesignImg",
+      skills: [
+        "⚡ Develop and conceptualize comprehensive UI/UX design strategy",
+        "⚡ Design UI elements and tools such as navigation menus, search boxes, tabs, and widgets",
+        "⚡ Combine creativity with an awareness of design elements",
+        "⚡ Illustrate design ideas using storyboards, process flows and sitemaps",
+        "⚡ Translate concepts into user flows, wireframes, mockups and prototypes that lead to intuitive user experiences",
+      ],
+      softwareSkills: [
+        {
+          skillName: "Adobe XD",
+          fontAwesomeClassname: "logos:adobe-xd",
+          style: {
+            // backgroundColor: "#450034",
+            // borderRadius: "10px",
+            color: "#FF2BC2",
+          },
+        },
+        {
+          skillName: "Figma",
+          fontAwesomeClassname: "logos-figma",
+          style: {
+            color: "#F24E1E",
+          },
+        },
+        {
+          skillName: "Adobe Illustrator",
+          fontAwesomeClassname: "vscode-icons:file-type-ai",
+          style: {
+            color: "#FF7C00",
+          },
+        },
+      ],
+    },
+    {
       title: "Graphics Design and Branding",
       fileName: "Graphics",
       skills: [
@@ -177,42 +213,6 @@ const skills = {
           style: {
             backgroundColor: "transparent",
             color: "#20C4CB",
-          },
-        },
-      ],
-    },
-    {
-      title: "UI/UX Design",
-      fileName: "DesignImg",
-      skills: [
-        "⚡ Develop and conceptualizing a comprehensive UI/UX design strategy",
-        "⚡ Design UI elements and tools such as navigation menus, search boxes, tabs, and widgets",
-        "⚡ Combine creativity with an awareness of design elements",
-        "⚡ Illustrate design ideas using storyboards, process flows and sitemaps",
-        "⚡ Translate concepts into user flows, wireframes, mockups and prototypes that lead to intuitive user experiences",
-      ],
-      softwareSkills: [
-        {
-          skillName: "Adobe XD",
-          fontAwesomeClassname: "logos:adobe-xd",
-          style: {
-            // backgroundColor: "#450034",
-            // borderRadius: "10px",
-            color: "#FF2BC2",
-          },
-        },
-        {
-          skillName: "Figma",
-          fontAwesomeClassname: "logos-figma",
-          style: {
-            color: "#F24E1E",
-          },
-        },
-        {
-          skillName: "Adobe Illustrator",
-          fontAwesomeClassname: "vscode-icons:file-type-ai",
-          style: {
-            color: "#FF7C00",
           },
         },
       ],

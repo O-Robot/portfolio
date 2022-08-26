@@ -62,6 +62,19 @@
       ]
     },
     {
+      "id": "MDEwOlJlcG9zaXRvcnkyNzM1MTI1NTE=",
+      "name": "Online Calculator",
+      "createdAt": "2020-06-19T14:24:55Z",
+      "url": "https://o-robot.github.io/online-calculator/",
+      "description": "A Basic Calculator WebApp using React JS. Click to view",
+      "isFork": false,
+      "languages": [
+        { "name": "HTML", "iconifyClass": "logos-html-5" },
+        { "name": "CSS", "iconifyClass": "logos-css-3" },
+        { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+      ]
+    },
+    {
       "id": "MDEwOlJlcG9zaXRvcnkxNTU5NTE3NTk=",
       "name": "Product Design Portfolio",
       "createdAt": "2018-11-03T05:00:56Z",
