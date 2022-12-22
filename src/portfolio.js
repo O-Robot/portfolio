@@ -12,10 +12,9 @@ const greeting = {
   logo_name: "Ogooluwani Adewale",
   nickname: "robot",
   subTitle:
-  "A passionate, ambitious, highly organized and result-oriented individual who always thrive to work on end to end products which develop sustainable and scalable social and technical systems to create impact.",
-    
-  resumeLink:
-    "https://drive.google.com/file/d/1QhY5pNVooWx1TZEnrs_jvR7oQVqdJd9U/view?usp=sharing",
+    "A passionate, ambitious, highly organized and result-oriented individual who always thrive to work on end to end products which develop sustainable and scalable social and technical systems to create impact.",
+
+  resumeLink: "https://bit.ly/ogooluwani-adewale",
   portfolio_repository: "https://github.com/O-Robot",
 };
 
@@ -76,6 +75,12 @@ const socialMediaLinks = [
     link: "https://www.behance.net/ogooluwaniadewale",
     fontAwesomeIcon: "fa-behance", // Reference https://fontawesome.com/icons/instagram?style=brands
     backgroundColor: "#053eff ", // Reference https://simpleicons.org/?q=instagram
+  },
+  {
+    name: "Dribble",
+    link: "https://dribbble.com/O-Robot",
+    fontAwesomeIcon: "fa-dribbble", // Reference https://fontawesome.com/icons/instagram?style=brands
+    backgroundColor: "#ea4c89 ", // Reference https://simpleicons.org/?q=instagram
   },
 ];
 
@@ -320,7 +325,8 @@ const competitiveSites = {
       style: {
         color: "#2EC866",
       },
-      profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
+      profileLink:
+        "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
     },
     // {
     //   siteName: "Facebook",
@@ -336,7 +342,8 @@ const competitiveSites = {
       style: {
         color: "#1F8ACB",
       },
-      profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
+      profileLink:
+        "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
     },
     // {
     //   siteName: "Google",
@@ -352,7 +359,8 @@ const competitiveSites = {
       style: {
         color: "#20BEFF",
       },
-      profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
+      profileLink:
+        "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
     },
   ],
 };
@@ -360,7 +368,7 @@ const competitiveSites = {
 const degrees = {
   degrees: [
     {
-      title: "Obafemi Awolowo University, Osun Nigeria" ,
+      title: "Obafemi Awolowo University, Osun Nigeria",
       subtitle: "Bachelor of Science - B.Sc, Economics",
       logo_path: "oau.png",
       alt_name: "OAU Logo",
@@ -422,8 +430,7 @@ const certifications = {
 const experience = {
   title: "Experience",
   subtitle: "Work, Internship and Volunteership",
-  description:
-    "",
+  description: "",
   header_image_path: "experience.svg",
   sections: [
     {
@@ -438,8 +445,7 @@ const experience = {
           location: "Lagos, Nigeria",
           // description:
           //   "⚡ Designed a web application for the company.",
-          description2:
-            "",
+          description2: "",
           color: "#0879bf",
         },
         {
@@ -451,8 +457,7 @@ const experience = {
           location: "Lagos, Nigeria",
           // description:
           //   "⚡ Designed a web application for the company.",
-          description2:
-            "",
+          description2: "",
           color: "#0879bf",
         },
         {
@@ -462,10 +467,8 @@ const experience = {
           logo_path: "gics-logo.png",
           duration: "June 2020 - PRESENT",
           location: "Lagos, Nigeria",
-          description:
-            "⚡ Designed a web application for the company.",
-          description2:
-            "",
+          description: "⚡ Designed a web application for the company.",
+          description2: "",
           color: "#0879bf",
         },
         {
@@ -542,20 +545,21 @@ const experience = {
         },
         {
           title: "Microsoft Excel Tutor",
-          company: "Leadership Qualities and Entrepreneurial Development - 17th Edition",
+          company:
+            "Leadership Qualities and Entrepreneurial Development - 17th Edition",
           company_url: "",
           logo_path: "excel.png",
           duration: "April 2019 - May 2019",
           location: "NESA OAU, Osun, Nigeria",
           description:
             "⚡Tutored Microsoft Excel for Beginner and Intermediate levels in the 17th Edition.",
-          description2:
-            "",
+          description2: "",
           color: "green",
         },
         {
           title: "Microsoft Word Tutor",
-          company: "Leadership Qualities and Entrepreneurial Development - 16th Edition",
+          company:
+            "Leadership Qualities and Entrepreneurial Development - 16th Edition",
           company_url: "",
           logo_path: "word.png",
           duration: "April 2018 - May 2018",
@@ -601,7 +605,8 @@ const skilled = {
 // Projects Page
 const projectsHeader = {
   title: "My Works",
-  description: "My Works are made using a vast variety of latest technology tools. My best experience is conceptualization of comprehensive design strategies and deploying them to web applications",
+  description:
+    "My Works are made using a vast variety of latest technology tools. My best experience is conceptualising a comprehensive design strategy and deploying it to web applications",
   avatar_image_path: "projects_image.svg",
 };
 
@@ -617,13 +622,12 @@ const contactPageData = {
     title: "Send A Message",
     subtitle:
       "For individual fundamental empowerment, I like to write powerful lessons that create impact on each of the reader individually to change the core of their character.",
-    link: "https://wa.me/2348024218309",
+    link: "mailto:adewaleogooluwani@gmail.com",
     avatar_image_path: "blogs_image.svg",
   },
   addressSection: {
     title: "Address",
-    subtitle:
-      "110B Awolowo Way, Ikeja, Lagos, Nigeria",
+    subtitle: "110B Awolowo Way, Ikeja, Lagos, Nigeria",
     avatar_image_path: "address_image.svg",
     location_map_link: "https://goo.gl/maps/YytpS5Pancj6gKst6",
   },
@@ -632,7 +636,6 @@ const contactPageData = {
     subtitle: "+234 802 421 8309",
   },
 };
-
 
 export {
   settings,

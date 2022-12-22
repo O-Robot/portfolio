@@ -17,9 +17,7 @@ class SkillsAccordion extends Component {
                 key={section["title"]}
               >
                 {section["experiences"].map((skilled) => {
-                  return (
-                    <SkillsCard skilled={skilled} theme={theme} />
-                  );
+                  return <SkillsCard skilled={skilled} theme={theme} />;
                 })}
               </Panel>
             );

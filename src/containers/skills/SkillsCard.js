@@ -12,7 +12,7 @@ class SkillsCard extends Component {
         // style={{ border: `1px solid ${skilled["color"]}` }}
       >
         <div className="experience-card-body-div">
-          <div className="experience-card-header-div">
+          <div className="experience-card-header-div" style={{display:'block'}}>
             <div className="experience-card-heading-left">
               <h3
                 className="experience-card-title"
