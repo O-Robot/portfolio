@@ -369,7 +369,7 @@ const degrees = {
   degrees: [
     {
       title: "Obafemi Awolowo University, Osun Nigeria",
-      subtitle: "Bachelor of Science - B.Sc, Economics",
+      subtitle: "Bachelor of Science - B.Sc, Economics | Second Class Honours",
       logo_path: "oau.png",
       alt_name: "OAU Logo",
       duration: "",
@@ -443,9 +443,14 @@ const experience = {
           logo_path: "boxinLogo.png",
           duration: "May 2021 - PRESENT",
           location: "Lagos, Nigeria",
-          // description:
-          //   "⚡ Designed a web application for the company.",
-          description2: "",
+          description:
+            "⚡ Collaborated with designers to create pixel-perfect designs that are highly usable and aesthetically pleasing.",
+          description2:
+            "⚡ Implemented new features from discovery through planning, design, development, testing, and release.",
+          description3:
+            "⚡ Collaborated with back-end developers to ensure a seamless user experience across all devices.",
+          description4:
+            "⚡ Collaborated with development teams to build scalable infrastructures.",
           color: "#0879bf",
         },
         {
@@ -453,11 +458,16 @@ const experience = {
           company: "Boxin Logistics",
           company_url: "http://boxin.ng/",
           logo_path: "boxinLogo.png",
-          duration: "December 2020 - PRESENT",
+          duration: "December 2020 - May 2022",
           location: "Lagos, Nigeria",
-          // description:
-          //   "⚡ Designed a web application for the company.",
-          description2: "",
+          description:
+            "⚡ Created motion designs that communicated ideas effectively.",
+          description2:
+            "⚡ Prioritized and managed multiple projects within design specifications.",
+          description3:
+            "⚡ Took the lead on video projects from concept to delivery.",
+          description4:
+            "⚡ Edited and optimized graphics and video content for social media.",
           color: "#0879bf",
         },
         {
@@ -465,10 +475,12 @@ const experience = {
           company: "GI Career Services",
           company_url: "http://gicareerservices.com/",
           logo_path: "gics-logo.png",
-          duration: "June 2020 - PRESENT",
+          duration: "June 2020 - May 2022",
           location: "Lagos, Nigeria",
-          description: "⚡ Designed a web application for the company.",
-          description2: "",
+          description:
+            "⚡ Developed a responsive and engaging company website.",
+          description2:
+            "⚡ Optimized company's website for maximum speed and scalability.",
           color: "#0879bf",
         },
         {
@@ -479,7 +491,7 @@ const experience = {
           duration: "September 2016 - PRESENT",
           location: "Ikeja, Lagos, Nigeria",
           description:
-            "⚡ I have worked on different projects from creating websites to graphics and motion design.",
+            "⚡ Working on different projects ranging from creating websites to graphics and motion designs.",
           description2:
             "⚡ Completed multiple fixed and hourly projects with positive feedback.",
           color: "orange",
@@ -650,3 +662,4 @@ export {
   projectsHeader,
   contactPageData,
 };
+

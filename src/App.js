@@ -12,6 +12,13 @@ function App() {
         <GlobalStyles />
         <div>
           <Main theme={chosenTheme} />
+          <a
+            href="https://api.whatsapp.com/send?phone=2348024218309"
+            class="float"
+            target="_blank"
+          >
+            <i class="fab fa-whatsapp my-float"></i>
+          </a>
         </div>
       </>
     </ThemeProvider>
