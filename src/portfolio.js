@@ -10,7 +10,7 @@ const greeting = {
   foot: "Ogooluwani Adewale",
   title: "Ogooluwani Adewale",
   logo_name: "Ogooluwani Adewale",
-  nickname: "robot",
+  // nickname: "robot",
   subTitle:
     "A passionate, ambitious, highly organized and result-oriented individual who always thrive to work on end to end products which develop sustainable and scalable social and technical systems to create impact.",
 
@@ -441,7 +441,7 @@ const experience = {
           company: "Boxin Logistics",
           company_url: "https://boxin.ng",
           logo_path: "boxinLogo.png",
-          duration: "May 2021 - PRESENT",
+          duration: "May 2022 - PRESENT",
           location: "Lagos, Nigeria",
           description:
             "⚡ Collaborated with designers to create pixel-perfect designs that are highly usable and aesthetically pleasing.",
