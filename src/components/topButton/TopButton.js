@@ -62,7 +62,7 @@ export default function TopButton({ theme }) {
       >
         <i className="fas fa-arrow-up" id="arrow" aria-hidden="true" />
         <a
-          href="https://api.whatsapp.com/send?phone=2348024218309"
+          href="https://api.whatsapp.com/send?phone=2348134041124"
           class="float"
           target="_blank"
         >

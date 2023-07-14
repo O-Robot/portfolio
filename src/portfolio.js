@@ -486,7 +486,7 @@ const experience = {
         {
           title: "Freelancer",
           company: "Mickey Graphix",
-          company_url: "https://wa.me.2348024218309",
+          company_url: "https://wa.me/2348134041124",
           logo_path: "logo.png",
           duration: "September 2016 - PRESENT",
           location: "Ikeja, Lagos, Nigeria",
@@ -645,7 +645,7 @@ const contactPageData = {
   },
   phoneSection: {
     title: "Phone Number",
-    subtitle: "+234 802 421 8309",
+    subtitle: "+234 813 404 1124",
   },
 };
 
@@ -662,4 +662,3 @@ export {
   projectsHeader,
   contactPageData,
 };
-

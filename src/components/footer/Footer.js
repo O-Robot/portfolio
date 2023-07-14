@@ -13,7 +13,7 @@ export default function Footer(props) {
         <p className="footer-text" style={{ color: props.theme.secondaryText }}>
           &copy; {year}{" "}
           <a
-            href="https://wa.me/2348024218309"
+            href="https://wa.me/2348134041124"
             style={{ color: props.theme.secondaryText, textDecoration: "none" }}
           >
             {" "}
