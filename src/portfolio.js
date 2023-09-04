@@ -14,7 +14,9 @@ const greeting = {
   subTitle:
     "A passionate, ambitious, highly organized and result-oriented individual who always thrive to work on end to end products which develop sustainable and scalable social and technical systems to create impact.",
 
-  resumeLink: "https://bit.ly/ogooluwani-adewale",
+  resumeLink:
+    // "https://docs.google.com/document/d/1-QkJ9tTplt8XnW4-IiuHtASSird6FPLk4GWElz2PH8c/edit?usp=sharing",
+    "http://tinyurl.com/ogooluwani-adewale",
   portfolio_repository: "https://github.com/O-Robot",
 };
 
@@ -26,7 +28,7 @@ const socialMediaLinks = [
   // gitlab: "https://github.com/O-Robot",
   // facebook: "https://web.facebook.com/ogzy.robot/",
   // twitter: "https://twitter.com/ogzy_robot",
-  // instagram: "https://www.instagram.com/ogzy_robot/"
+  // instagram: "https://www.instagram.com/ogzy.robot/"
 
   {
     name: "Github",
@@ -66,7 +68,7 @@ const socialMediaLinks = [
   },
   {
     name: "Instagram",
-    link: "https://www.instagram.com/ogzy_robot/",
+    link: "https://www.instagram.com/ogzy.robot/",
     fontAwesomeIcon: "fa-instagram", // Reference https://fontawesome.com/icons/instagram?style=brands
     backgroundColor: "#E4405F", // Reference https://simpleicons.org/?q=instagram
   },
