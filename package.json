@@ -1,15 +1,15 @@
 {
   "private": true,
   "name": "portfolio",
-  "homepage": "https://www.ogooluwaniadewale.com/#/",
   "version": "0.1.0",
+  "homepage": "https://www.ogooluwaniadewale.com/#/",
   "scripts": {
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "test": "react-scripts test"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",

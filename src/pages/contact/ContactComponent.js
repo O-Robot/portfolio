@@ -28,6 +28,11 @@ class Contact extends Component {
                 <img
                   src={require(`../../assests/images/${ContactData["profile_image_path"]}`)}
                   alt=""
+                  className="avt"
+                  style={{
+                    border: `2px solid ${theme.jacketColor}`,
+                    background: `${theme.jacketColor}`,
+                  }}
                 />
               </div>
               <div className="contact-heading-text-div">

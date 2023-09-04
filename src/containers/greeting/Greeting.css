@@ -23,7 +23,7 @@
 
 .greeting-main > * {
   flex: 1;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .button-greeting-div {
   display: flex;
@@ -48,6 +48,10 @@
   line-height: 40px;
   margin-right: 40px;
   font-family: "Google Sans Medium";
+}
+.greeting-image-div {
+  display: flex;
+  justify-content: space-around;
 }
 
 .greeting-image-div > * {
@@ -91,5 +95,25 @@
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+}
+
+.avt {
+  /* animation: float 6s ease-in-out infinite; */
+  /* width: 90%; */
+  margin: 0 auto;
+  border-radius: 500px;
+  object-fit: cover;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(20px);
+  }
+  100% {
+    transform: translatey(0px);
   }
 }

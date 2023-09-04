@@ -58,10 +58,9 @@ class ExperienceCard extends Component {
             className="experience-card-description"
             style={{ color: theme.text }}
           >
-            {experience["description"]}<br />
-            {experience["description2"]}<br/>
-            {experience["description3"]}<br/>
-            {experience["description4"]}
+            {experience.description.map((desc) => (
+              <li>{desc}</li>
+            ))}
           </p>
         </div>
       </div>

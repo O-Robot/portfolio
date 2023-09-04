@@ -303,14 +303,6 @@ const skills = {
             backgroundColor: "transparent",
           },
         },
-        // {
-        //   skillName: "ACL Analytics",
-        //   fontAwesomeClassname: "acl.svg",
-        //   style: {
-        //     backgroundColor: "transparent",
-        //     color: "#20C4CB",
-        //   },
-        // },
       ],
     },
   ],
@@ -320,6 +312,15 @@ const skills = {
 const competitiveSites = {
   competitiveSites: [
     {
+      siteName: "Cisco",
+      iconifyClassname: "simple-icons:cisco",
+      style: {
+        color: "#049fd9",
+      },
+      profileLink:
+        "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
+    },
+    {
       siteName: "Udemy",
       iconifyClassname: "simple-icons:udemy",
       style: {
@@ -328,36 +329,11 @@ const competitiveSites = {
       profileLink:
         "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
     },
-    // {
-    //   siteName: "Facebook",
-    //   iconifyClassname: "simple-icons:facebook",
-    //   style: {
-    //     color: "#5B4638",
-    //   },
-    //   profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
-    // },
     {
-      siteName: "Adobe",
-      iconifyClassname: "simple-icons:adobe",
+      siteName: "Credly",
+      iconifyClassname: "simple-icons:credly",
       style: {
-        color: "#1F8ACB",
-      },
-      profileLink:
-        "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
-    },
-    // {
-    //   siteName: "Google",
-    //   iconifyClassname: "simple-icons:google",
-    //   style: {
-    //     color: "#323754",
-    //   },
-    //   profileLink: "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
-    // },
-    {
-      siteName: "Microsoft",
-      iconifyClassname: "simple-icons:microsoft",
-      style: {
-        color: "#20BEFF",
+        color: "orange",
       },
       profileLink:
         "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
@@ -387,35 +363,53 @@ const degrees = {
 const certifications = {
   certifications: [
     {
-      title: "Microsoft Office",
-      subtitle: "- Word Tutor",
-      logo_path: "microsoft_logo.png",
+      title: "Introduction to Cybersecurity",
+      subtitle: "- Cisco",
+      logo_path: "cisco.png",
       certificate_link:
-        "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
-      alt_name: "NESA OAU",
-      color_code: "orange",
+        "https://www.credly.com/badges/013699bf-2733-472e-af3c-38cbc2679635/",
+      alt_name: "Cisco",
+      color_code: "#049fd9",
     },
     {
-      title: "SQL Injections",
-      subtitle: "- Training",
-      logo_path: "udemy.svg",
+      title: "Cybersecurity Essentials",
+      subtitle: "- Cisco",
+      logo_path: "cisco.png",
       certificate_link:
-        "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
-      alt_name: "deeplearning.ai",
-      color_code: "#d3d3d3",
+        "https://www.credly.com/badges/503db574-be1a-41e3-af91-dea411be260e/",
+      alt_name: "Cisco",
+      color_code: "#049fd9",
     },
-    // {
-    //   title: "CEH",
-    //   subtitle: "- In view",
-    //   logo_path: "google_logo.png",
-    //   certificate_link:
-    //     "https://drive.google.com/file/d/1W9QkU0x26XUTHQb22hF2iiGITLu7sZ76/view",
-    //   alt_name: "deeplearning.ai",
-    //   color_code: "purple",
-    // },
+    {
+      title: "Cyber Threat Management",
+      subtitle: "- Cisco",
+      logo_path: "cisco.png",
+      certificate_link:
+        "https://www.credly.com/badges/4451080e-de55-4724-9c42-8e78178dafc5/",
+      alt_name: "Cisco",
+      color_code: "#049fd9",
+    },
+    {
+      title: "Endpoint Security",
+      subtitle: "- Cisco",
+      logo_path: "cisco.png",
+      certificate_link:
+        "https://www.credly.com/badges/7c3f2779-52c3-46dd-8465-283b583f42b0/",
+      alt_name: "Cisco",
+      color_code: "#049fd9",
+    },
+    {
+      title: "Network Defense",
+      subtitle: "- Cisco",
+      logo_path: "cisco.png",
+      certificate_link:
+        "https://www.credly.com/badges/695fc17a-7337-44b1-bcdc-c9ad97f7abcb/",
+      alt_name: "Cisco",
+      color_code: "#049fd9",
+    },
     {
       title: "React",
-      subtitle: "- React Training",
+      subtitle: "- Udemy",
       logo_path: "react.svg",
       certificate_link:
         "https://www.udemy.com/certificate/UC-f7e25e67-8151-4c8b-93eb-6fd924714cc1/",
@@ -437,20 +431,35 @@ const experience = {
       title: "Work",
       experiences: [
         {
-          title: "Junior Front End Web Developer",
+          title: "IT Suport (NYSC)",
+          company: "MacTay",
+          company_url: "https://mactay.com",
+          logo_path: "mactay.png",
+          duration: "Feb 2023 - PRESENT",
+          location: "Lagos, Nigeria",
+          description: [
+            "⚡  Provided comprehensive IT support to a diverse team of employees, diagnosing and resolving hardware and software issues promptly.",
+            "⚡  Installed, configured, and maintained computer systems, ensuring optimal performance and compatibility with Windows and Linux operating systems.",
+            "⚡  Expertly managed user accounts and security permissions, including adding systems to the domain and maintaining Active Directory.",
+            "⚡  Conducted IT training sessions for staff on best practices, software applications, and security protocols.",
+            "⚡  Administered the company’s network infrastructure, monitoring and troubleshooting network connectivity and performance issues.",
+            "⚡  Provided remote support to address critical IT issues during off-hours and weekends, ensuring minimal disruption to business operations.",
+          ],
+          color: "#ee3537",
+        },
+        {
+          title: "Web Developer",
           company: "Boxin Logistics",
           company_url: "https://boxin.ng",
           logo_path: "boxinLogo.png",
-          duration: "May 2022 - PRESENT",
+          duration: "May 2022 - January 2023",
           location: "Lagos, Nigeria",
-          description:
-            "⚡ Collaborated with designers to create pixel-perfect designs that are highly usable and aesthetically pleasing.",
-          description2:
+          description: [
+            "⚡ Developed and Maintained the company’s website, ensuring accurate and up-to-date information.",
             "⚡ Implemented new features from discovery through planning, design, development, testing, and release.",
-          description3:
-            "⚡ Collaborated with back-end developers to ensure a seamless user experience across all devices.",
-          description4:
-            "⚡ Collaborated with development teams to build scalable infrastructures.",
+            "⚡ Implemented e-commerce functionalities, improving the user experience for customers.",
+            "⚡ Enhanced website security measures to protect sensitive data.",
+          ],
           color: "#0879bf",
         },
         {
@@ -460,40 +469,45 @@ const experience = {
           logo_path: "boxinLogo.png",
           duration: "December 2020 - May 2022",
           location: "Lagos, Nigeria",
-          description:
-            "⚡ Created motion designs that communicated ideas effectively.",
-          description2:
-            "⚡ Prioritized and managed multiple projects within design specifications.",
-          description3:
-            "⚡ Took the lead on video projects from concept to delivery.",
-          description4:
-            "⚡ Edited and optimized graphics and video content for social media.",
+          description: [
+            "⚡ Created visually stunning graphics, animation and motion graphics.",
+            "⚡ Utilized Adobe Creative Suite (Photoshop, Illustrator, After Effects) and CorelDraw to craft compelling visual content.",
+            "⚡ Worked collaboratively with the creative team to concept and execute design solutions.",
+            "⚡ Contributed to successful marketing campaigns with engaging visual materials.",
+            "⚡ Prioritized and Managed multiple projects within design specifications.",
+          ],
           color: "#0879bf",
         },
         {
-          title: "Web Designer",
+          title: "Web Developer",
           company: "GI Career Services",
           company_url: "http://gicareerservices.com/",
           logo_path: "gics-logo.png",
           duration: "June 2020 - May 2022",
           location: "Lagos, Nigeria",
-          description:
-            "⚡ Developed a responsive and engaging company website.",
-          description2:
-            "⚡ Optimized company's website for maximum speed and scalability.",
+          description: [
+            "⚡ Developed and Maintained client website using HTML, CSS and JavaScript.",
+            "⚡ Collaborated with designers and content creators to ensure seamless website functionality.",
+            "⚡ Conducted website optimization to improve loading times and enhance SEO performance",
+            "⚡ Assisted in client meetings to gather project requirements and provide technical insights.",
+          ],
           color: "#0879bf",
         },
         {
-          title: "Freelancer",
-          company: "Mickey Graphix",
+          title: "Freelance Web Developer and Graphics Designer",
+          company: "Ogooluwani Adewale",
           company_url: "https://wa.me/2348134041124",
-          logo_path: "logo.png",
+          logo_path: "rob2.png",
           duration: "September 2016 - PRESENT",
           location: "Ikeja, Lagos, Nigeria",
-          description:
-            "⚡ Working on different projects ranging from creating websites to graphics and motion designs.",
-          description2:
-            "⚡ Completed multiple fixed and hourly projects with positive feedback.",
+          description: [
+            "⚡ Successfully managed a portfolio of freelance clients for web development and graphic design projects.",
+            "⚡ Collaborated with Clients to gather requirements, design responsive websites, and develop custom solutions.",
+            "⚡ Designed logos, branding materials, and marketing collateral to enhance clients’ online presence.",
+            "⚡ Demonstrated proficiency in HTML, CSS, Javascript, and Adobe Creative Suite.",
+            "⚡ Created modern and responsive websites for clients.",
+            "⚡ Implemented secure payment functionality that allowed customers to conveniently pay for clients' services.",
+          ],
           color: "orange",
         },
       ],
@@ -502,41 +516,19 @@ const experience = {
       title: "Internships",
       experiences: [
         {
-          title: "Web Design Tutor",
+          title: "Web Development Tutor",
           company: "Audit and Systems Solutions",
           company_url: "https://www.solutionsaudit.com/",
           logo_path: "audit.png",
           duration: "September 2016 - April 2017",
-          location: "Ikeja, Lagos, Nigeria",
-          description:
-            "⚡Mentored trainees expertly on Beginner and Intermediate levels of HTML, CSS, PHP, JavaScript, etc.",
-          description2:
-            "⚡Evaluated trainees on Beginner and Intermediate levels of HTML, CSS, PHP, JavaScript, etc.",
+          location: "Lagos, Nigeria",
+          description: [
+            "⚡ Instructed and mentored students in web development concepts, HTML, CSS, JavaScript, and modern frameworks.",
+            "⚡ Created and Delivered engaging instructional materials and assignment.",
+            "⚡ Provided constructive feedback to help students improve their coding skills and web projects.",
+          ],
           color: "orange",
         },
-        // {
-        //   title: "Data Science Research Intern",
-        //   company: "Delhivery Pvt. Ltd.",
-        //   company_url: "https://www.delhivery.com/",
-        //   logo_path: "delhivery_logo.png",
-        //   duration: "May 2019 - Sept 2019",
-        //   location: "Gurgaon, Haryana",
-        //   description:
-        //     "I have worked on project of predicting freight rates based on previous data. There were two objectives: (1) To build a forecasting engine to predict daily freight rates. (2) To embed feature in the model which can explain the seasonal major changes in freight rate based on regions and locations. I have closely worked with deep learning models in combination with statistical methods to create solution for this. At the end of internship, I had created model deployed on AWS EC2 with the use of Kafka stream jobs, ElasticSearch and PostgreSQL.",
-        //   color: "#ee3c26",
-        // },
-        // {
-        //   title: "Data Science Intern",
-        //   company: "Intel Indexer LLC",
-        //   company_url:
-        //     "https://opencorporates.com/companies/us_dc/EXTUID_4170286",
-        //   logo_path: "intel_logo.jpg",
-        //   duration: "Nov 2018 - Dec 2018",
-        //   location: "Work From Home",
-        //   description:
-        //     "This is financial Solution Company. I have made Supervised Learning model for the company which can perform time series analysis on Stock price data for 32 companies. I have built LSTM Neural Networks Model and trained the data of 32 companies for last 2 years. This model is also used for forecasting.",
-        //   color: "#0071C5",
-        // },
       ],
     },
     {
@@ -626,7 +618,7 @@ const projectsHeader = {
 const contactPageData = {
   contactSection: {
     title: "Contact Me",
-    profile_image_path: "car-rob.png",
+    profile_image_path: "rob.png",
     description:
       "I am available on almost every social media. You can message me, I will reply within 24 hours. I can help you with Motion Designs, Graphics and Branding, Front End Development, UI/UX and Data Analysis",
   },
