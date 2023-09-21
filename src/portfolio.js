@@ -543,10 +543,11 @@ const experience = {
           logo_path: "nesa.png",
           duration: "April 2019 - December 2019",
           location: "NESA OAU, Osun, Nigeria",
-          description:
+          description: [
             "⚡Worked with other team heads and successfully raised over 1.5million for the execution of the success of the 7th edition of the Annual Economics Students' Conference(AESC) which had over 3000 people in attendance and over 20 schools represented",
-          description2:
             "⚡Coordinated all Technical Activities for the Association throughout the academic session.",
+          ],
+
           color: "#4285F4",
         },
         {
@@ -557,9 +558,9 @@ const experience = {
           logo_path: "excel.png",
           duration: "April 2019 - May 2019",
           location: "NESA OAU, Osun, Nigeria",
-          description:
+          description: [
             "⚡Tutored Microsoft Excel for Beginner and Intermediate levels in the 17th Edition.",
-          description2: "",
+          ],
           color: "green",
         },
         {
@@ -570,10 +571,10 @@ const experience = {
           logo_path: "word.png",
           duration: "April 2018 - May 2018",
           location: "NESA OAU, Osun, Nigeria",
-          description:
+          description: [
             "⚡Tutored Microsoft Word for Beginner and Intermediate levels in the 16th Edition.",
-          description2:
             "⚡Assessed trainees on Microsoft Word Beginner and Intermediate levels in the 16th Edition.",
+          ],
           color: "#0082be",
         },
       ],
