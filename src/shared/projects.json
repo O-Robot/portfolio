@@ -2,6 +2,48 @@
   "data": [
     {
       "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+      "name": "OGAMB Website",
+      "createdAt": "May 2023",
+      "url": "https://ogamb.com.ng/",
+      "description": "The website for Ogun State Alternate Medicine Board. Visit the website here ",
+      "isFork": false,
+      "languages": [
+        { "name": "Wordpress", "iconifyClass": "fa-wordpress" },
+        { "name": "CSS", "iconifyClass": "logos-css-3" },
+        { "name": "PHP", "iconifyClass": "logos-php" },
+        { "name": "JavaScript", "iconifyClass": "logos-javascript" }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+      "name": "PlugIT Dashboard",
+      "createdAt": "May 2023",
+      "url": "https://plugit-dashboard.vercel.app/login",
+      "description": "The dashboard for PlugIt Automation. Visit the website here ",
+      "isFork": false,
+      "languages": [
+        { "name": "HTML", "iconifyClass": "logos-html-5" },
+        { "name": "CSS", "iconifyClass": "logos-css-3" },
+        { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+        { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+      "name": "PlugIT Website",
+      "createdAt": "March 2023",
+      "url": "https://landing-page-rho-sandy.vercel.app/",
+      "description": "The website for PlugIt Automation. Visit the website here ",
+      "isFork": false,
+      "languages": [
+        { "name": "HTML", "iconifyClass": "logos-html-5" },
+        { "name": "CSS", "iconifyClass": "logos-css-3" },
+        { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+        { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
       "name": "Audit & Systems Solutions",
       "createdAt": "November 2022",
       "url": "https://itauditsolution.ng",
