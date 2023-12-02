@@ -3,7 +3,7 @@
     {
       "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
       "name": "OGAMB Website",
-      "createdAt": "May 2023",
+      "createdAt": "November 2023",
       "url": "https://ogamb.com.ng/",
       "description": "The website for Ogun State Alternate Medicine Board. Visit the website here ",
       "isFork": false,
@@ -16,7 +16,7 @@
     },
     {
       "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-      "name": "PlugIT Dashboard",
+      "name": "PlugIt Dashboard",
       "createdAt": "May 2023",
       "url": "https://plugit-dashboard.vercel.app/login",
       "description": "The dashboard for PlugIt Automation. Visit the website here ",
@@ -30,7 +30,7 @@
     },
     {
       "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-      "name": "PlugIT Website",
+      "name": "PlugIt Website",
       "createdAt": "March 2023",
       "url": "https://landing-page-rho-sandy.vercel.app/",
       "description": "The website for PlugIt Automation. Visit the website here ",
@@ -143,18 +143,7 @@
         { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
       ]
     },
-    {
-      "id": "MDEwOlJlcG9zaXRvcnkxNTU5NTE3NTk=",
-      "name": "Product Design Portfolio",
-      "createdAt": "",
-      "url": "https://www.behance.net/ogooluwaniadewale",
-      "description": "",
-      "isFork": false,
-      "languages": [
-        { "name": "Figma", "iconifyClass": "logos-figma" },
-        { "name": "Adobe XD", "iconifyClass": "logos:adobe-xd" }
-      ]
-    },
+
     {
       "id": "MDEwOlJlcG9zaXRvcnkyMDIxNDc4ODA=",
       "name": "Graphics Design Portfolio",
