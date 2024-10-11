@@ -16,9 +16,23 @@
     },
     {
       "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+      "name": "SunSolar Dashboard",
+      "createdAt": "September 2023",
+      "url": "https://sun-solar.vercel.app/",
+      "description": "The dashboard for Investment. Visit the website here ",
+      "isFork": false,
+      "languages": [
+        { "name": "HTML", "iconifyClass": "logos-html-5" },
+        { "name": "CSS", "iconifyClass": "logos-css-3" },
+        { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+        { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
       "name": "PlugIt Dashboard",
       "createdAt": "May 2023",
-      "url": "https://plugit-dashboard.vercel.app/login",
+      "url": "https://plugit-dashboard.vercel.app/",
       "description": "The dashboard for PlugIt Automation. Visit the website here ",
       "isFork": false,
       "languages": [
