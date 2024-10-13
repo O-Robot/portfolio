@@ -2,9 +2,9 @@
   "private": true,
   "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://www.ogooluwaniadewale.com/#/",
+  "homepage": "https://www.ogooluwaniadewale.com/",
   "scripts": {
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",

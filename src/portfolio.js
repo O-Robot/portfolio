@@ -12,7 +12,7 @@ const greeting = {
   logo_name: "Ogooluwani Adewale",
   // nickname: "robot",
   subTitle:
-    "A passionate, ambitious, highly organized and result-oriented individual who always thrive to work on end to end products which develop sustainable and scalable social and technical systems to create impact.",
+    "IT professional with 5+ years in Software Development. Proficient in modern technologies, including HTML, CSS, JavaScript, Dart and Python with a strong focus on crafting exceptional user experiences. Adept at leveraging front-end frameworks like React.JS, Angular, Vue, Flutter, among others, to create visually stunning and highly functional web and mobile applications.",
 
   resumeLink:
     // "https://docs.google.com/document/d/1-QkJ9tTplt8XnW4-IiuHtASSird6FPLk4GWElz2PH8c/edit?usp=sharing",
@@ -89,15 +89,17 @@ const socialMediaLinks = [
 const skills = {
   data: [
     {
-      title: "Front-End Web Development",
+      title: "Software Development",
       fileName: "FullStackImg",
       skills: [
-        "⚡ Conceptualize creative ideas",
-        "⚡ Prepare design plans and present website structure",
-        "⚡ Execute current design trends and techniques in web applications",
-        "⚡ Design responsive landing pages",
-        "⚡ Create website designs using HTML, CSS, Javascript, Wordpress etc",
-        "⚡ Build responsive website Front-End using React",
+        "⚡ Conceptualize and implement creative web ideas using HTML5, CSS3, and JavaScript",
+        "⚡ Prepare design plans and present website architecture using ReactJS, Angular, or Vue",
+        "⚡ Apply modern design trends and techniques in web applications, utilizing Tailwind, Sass, and other advanced tools",
+        "⚡ Design responsive and dynamic landing pages with a focus on accessibility and user experience",
+        "⚡ Develop website interfaces using HTML5, CSS3, JavaScript, and CMS platforms like Wordpress and Framer",
+        "⚡ Build fully responsive Front-End applications with ReactJS, Angular, and Vue, integrating seamless UI/UX",
+        "⚡ Experiment with cross-platform solutions like Flutter for mobile-friendly web applications",
+        "⚡ Incorporate Python for backend integration and data-driven web features",
       ],
       softwareSkills: [
         {
@@ -122,6 +124,14 @@ const skills = {
           },
         },
         {
+          skillName: "Tailwind CSS",
+          fontAwesomeClassname: "simple-icons:tailwindcss",
+          style: {
+            // backgroundColor: "#000000",
+            color: "#38BDF8",
+          },
+        },
+        {
           skillName: "JavaScript",
           fontAwesomeClassname: "simple-icons:javascript",
           style: {
@@ -137,10 +147,46 @@ const skills = {
           },
         },
         {
+          skillName: "Angular",
+          fontAwesomeClassname: "simple-icons:angular",
+          style: {
+            color: "#d70030",
+          },
+        },
+        {
+          skillName: "Vue",
+          fontAwesomeClassname: "simple-icons:vuedotjs",
+          style: {
+            color: "#4FC08D",
+          },
+        },
+        {
+          skillName: "Flutter",
+          fontAwesomeClassname: "simple-icons:flutter",
+          style: {
+            color: "#61c8f8",
+          },
+        },
+
+        {
+          skillName: "Framer",
+          fontAwesomeClassname: "simple-icons:framer",
+          style: {
+            color: "#0055FF",
+          },
+        },
+        {
           skillName: "Wordpress",
           fontAwesomeClassname: "fa-wordpress",
           style: {
             color: "#21759B",
+          },
+        },
+        {
+          skillName: "Python",
+          fontAwesomeClassname: "simple-icons:python",
+          style: {
+            color: "#ffd748",
           },
         },
       ],
@@ -634,9 +680,9 @@ const contactPageData = {
   },
   addressSection: {
     title: "Address",
-    subtitle: "110B Awolowo Way, Ikeja, Lagos, Nigeria",
+    subtitle: " Lekki, Lagos, Nigeria",
     avatar_image_path: "address_image.svg",
-    location_map_link: "https://goo.gl/maps/YytpS5Pancj6gKst6",
+    location_map_link: "https://maps.app.goo.gl/dUE534UjsUMr8Fu27",
   },
   phoneSection: {
     title: "Phone Number",

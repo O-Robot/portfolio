@@ -7,6 +7,7 @@ import Experience from "../pages/experience/Experience";
 import Contact from "../pages/contact/ContactComponent";
 import Projects from "../pages/projects/Projects";
 import { settings } from "../portfolio.js";
+import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min.js";
 
 export default class Main extends Component {
   render() {
@@ -15,7 +16,7 @@ export default class Main extends Component {
     if (settings.isSplash) {
       return (
         <div>
-          <HashRouter basename="/">
+          <BrowserRouter basename="/">
             <Switch>
               <Route
                 path="/"
@@ -66,13 +67,13 @@ export default class Main extends Component {
                 )}
               />
             </Switch>
-          </HashRouter>
+          </BrowserRouter>
         </div>
       );
     } else {
       return (
         <div>
-          <HashRouter basename="/">
+          <BrowserRouter basename="/">
             <Switch>
               <Route
                 path="/"
@@ -124,7 +125,7 @@ export default class Main extends Component {
                 )}
               />
             </Switch>
-          </HashRouter>
+          </BrowserRouter>
         </div>
       );
     }
