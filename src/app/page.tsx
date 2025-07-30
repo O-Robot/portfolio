@@ -1,8 +1,10 @@
+"use client";
 import { Suspense } from "react";
 import Scene from "@/components/Scene";
 import Loader from "@/components/Loader";
 import Header from "@/components/ui/Header";
 import SideNav from "@/components/ui/SideNav";
+import { Canvas } from "@react-three/fiber";
 
 export default function Home() {
   return (
@@ -12,7 +14,20 @@ export default function Home() {
 
       <div className="absolute inset-0">
         <Suspense fallback={<Loader />}>
-          <Scene />
+          <Canvas
+            shadows
+            camera={{
+              position: [
+                1.009028643133046, 0.5463638814987481, 0.4983449671971262,
+              ],
+              fov: 75,
+            }}
+            gl={{
+              antialias: true,
+            }}
+          >
+            <Scene />
+          </Canvas>
         </Suspense>
       </div>
     </div>

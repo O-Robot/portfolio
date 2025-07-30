@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 export default function Lights() {
-  const { theme, bookCover } = useStore();
+  const { theme, lightSwitch, view } = useStore();
   const ambientLight = useRef<THREE.AmbientLight>(null);
   const roomLight = useRef<THREE.PointLight>(null);
   const fanLight5 = useRef<THREE.PointLight>(null);
@@ -13,22 +13,39 @@ export default function Lights() {
   useEffect(() => {
     if (!roomLight.current || !ambientLight.current || !fanLight5.current)
       return;
-    console.log(theme);
+
     const duration = 0.5;
-    const lightColor = theme === "dark" ? 0x4545af : 0xffffff;
-    const ambientColor = theme === "dark" ? 0x2c3b4f : 0xffffff;
+    const lightColorHex = theme === "dark" ? 0x4545af : 0xffffff;
+    const ambientColorHex = theme === "dark" ? 0x2c3b4f : 0xffffff;
     const fanDistance = theme === "dark" ? 0.07 : 0.05;
     const textIntensity = theme === "dark" ? 0.6 : 0;
+    const roomIntensity = theme === "dark" ? 1.5 : view === "about" ? 1 : 2.5;
+
+    // Convert hex to RGB for GSAP
+    const lightColor = new THREE.Color(lightColorHex);
+    const ambientColor = new THREE.Color(ambientColorHex);
 
     gsap.to(roomLight.current, {
-      intensity: theme === "dark" ? 1.5 : 2.5,
-      color: lightColor,
+      intensity: roomIntensity,
+      duration,
+    });
+
+    gsap.to(roomLight.current.color, {
+      r: lightColor.r,
+      g: lightColor.g,
+      b: lightColor.b,
       duration,
     });
 
     gsap.to(ambientLight.current, {
       intensity: theme === "dark" ? 0.3 : 0.6,
-      color: ambientColor,
+      duration,
+    });
+
+    gsap.to(ambientLight.current.color, {
+      r: ambientColor.r,
+      g: ambientColor.g,
+      b: ambientColor.b,
       duration,
     });
 
@@ -38,22 +55,32 @@ export default function Lights() {
     });
 
     textLights.current.forEach((light: any) => {
-      gsap.to(light, {
-        intensity: textIntensity,
-        duration,
-      });
+      if (light) {
+        gsap.to(light, {
+          intensity: textIntensity,
+          duration,
+        });
+      }
     });
 
-    if (bookCover) {
-      gsap.to(bookCover.rotation, {
+    // Animate light switch
+    if (lightSwitch) {
+      gsap.to(lightSwitch.rotation, {
         z: theme === "dark" ? Math.PI / 7 : 0,
         duration,
       });
     }
-  }, [theme, bookCover]);
+
+    // Update body theme classes
+    if (typeof document !== "undefined") {
+      document.body.classList.remove("light-theme", "dark-theme");
+      document.body.classList.add(`${theme}-theme`);
+    }
+  }, [theme, lightSwitch, view]);
+
   return (
     <>
-      <ambientLight  intensity={0.6} />
+      <ambientLight ref={ambientLight} intensity={0.6} />
       <pointLight
         ref={roomLight}
         position={[0.3, 2, 0.5]}
@@ -100,7 +127,28 @@ export default function Lights() {
       {/* Text lights */}
       <pointLight
         ref={(ref) => (textLights.current[0] = ref!)}
-        position={[-0.2, 0.6, 0.24]}
+        position={[-0.2, 0.6, 0.44]}
+        color={0xff0000}
+        intensity={0}
+        distance={1.1}
+      />
+      <pointLight
+        ref={(ref) => (textLights.current[1] = ref!)}
+        position={[-0.2, 0.6, 0.82]}
+        color={0xff0000}
+        intensity={0}
+        distance={1.1}
+      />
+      <pointLight
+        ref={(ref) => (textLights.current[2] = ref!)}
+        position={[-0.2, 0.6, 0.11]}
+        color={0xff0000}
+        intensity={0}
+        distance={1.1}
+      />
+      <pointLight
+        ref={(ref) => (textLights.current[3] = ref!)}
+        position={[-0.2, 0.6, -0.14]}
         color={0xff0000}
         intensity={0}
         distance={1.1}

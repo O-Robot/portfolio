@@ -1,7 +1,7 @@
 import { useStore } from "@/store";
 import { useGLTF, useTexture, useVideoTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 export default function Model() {
@@ -104,10 +104,12 @@ export default function Model() {
         }
       }
 
+      // switchboard
       if (child.name === "SwitchBoard") {
         setLightSwitch(child.children[0]);
       }
 
+      // stand
       if (child.name === "Stand") {
         const screen = child.children[0];
         if (screen instanceof THREE.Mesh) {
@@ -123,6 +125,7 @@ export default function Model() {
           emissiveIntensity: 1,
         });
       };
+
       switch (child.name) {
         case "Keyboard":
         case "Mouse":
@@ -146,6 +149,7 @@ export default function Model() {
           break;
       }
     });
+
     setSceneReady(true);
   }, [
     scene,
