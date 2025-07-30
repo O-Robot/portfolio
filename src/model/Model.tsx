@@ -10,6 +10,7 @@ export default function Model() {
   const mixer = useRef<THREE.AnimationMixer>(null);
   const videoTexture = useVideoTexture("/textures/arcane.mp4");
   const bookTexture = useTexture("/textures/book-inner.jpg");
+  const screenTexture = useTexture("/textures/book-inner.jpg");
   bookTexture.flipY = false;
 
   // Initialize animations and materials
@@ -34,29 +35,73 @@ export default function Model() {
 
       child.castShadow = child.name !== "Wall";
       child.receiveShadow = true;
+      // console.log(child.name);
+      // book
+      if (child.children) {
+        child.children.forEach((innerChild) => {
+          // disable shadow by book cover & switch btn
+          if (innerChild instanceof THREE.Mesh) {
+            if (innerChild.name !== "Book001" && innerChild.name !== "Switch") {
+              innerChild.castShadow = true;
+            }
 
-      if (child.name === "CPU") {
-        child.children.forEach((part) => {
-          if (part instanceof THREE.Mesh) {
-            part.material = new THREE.MeshPhysicalMaterial({
-              roughness: 0,
-              color: 0x999999,
-              ior: 3,
-              transmission: part.name.includes("001") ? 1 : 2,
-              opacity: 0.8,
-              depthWrite: false,
-              depthTest: false,
-            });
+            if (innerChild.name === "Book001") {
+              const bookCoverTexture = new THREE.TextureLoader().load(
+                "/textures/book-cover.jpg"
+              );
+              bookCoverTexture.flipY = false;
+              innerChild.material = new THREE.MeshStandardMaterial({
+                side: THREE.DoubleSide,
+                color: 0xffffff,
+                map: bookCoverTexture,
+              });
+            }
+            innerChild.receiveShadow = true;
           }
         });
       }
-
+      // book inner
       if (child.name === "Book") {
+        setBookCover(child.children[0]);
+
+        // adding texture to book
+        const bookTexture = new THREE.TextureLoader().load(
+          "textures/book-inner.jpg"
+        );
+        bookTexture.flipY = false;
         child.material = new THREE.MeshStandardMaterial({
           color: 0xffffff,
           map: bookTexture,
         });
-        setBookCover(child.children[0]);
+      }
+
+      // cpu
+      if (child.name === "CPU") {
+        const applyMaterial = (mesh: THREE.Object3D, transmission: number) => {
+          if (!(mesh instanceof THREE.Mesh)) return;
+
+          mesh.material = new THREE.MeshPhysicalMaterial({
+            roughness: 0,
+            color: new THREE.Color(0x222222),
+            ior: 3,
+            transmission,
+            opacity: 0.8,
+            transparent: true,
+            depthWrite: false,
+            depthTest: false,
+            clearcoat: 1,
+
+            envMapIntensity: 1,
+          });
+        };
+
+        // Apply refined materials to CPU components
+        for (let i = 0; i < child.children.length; i++) {
+          const mesh = child.children[i];
+          // Alternate between solid frame and translucent panels
+          const isGlass = mesh.name.toLowerCase().includes("glass");
+          applyMaterial(mesh, isGlass ? 2 : 1);
+        }
       }
 
       if (child.name === "SwitchBoard") {
@@ -71,6 +116,35 @@ export default function Model() {
           });
         }
       }
+
+      const applyRGBGlow = (mesh: THREE.Mesh) => {
+        mesh.material = new THREE.MeshStandardMaterial({
+          color: 0xffffff,
+          emissiveIntensity: 1,
+        });
+      };
+      switch (child.name) {
+        case "Keyboard":
+        case "Mouse":
+        case "Speaker-R":
+        case "Speaker-L":
+          applyRGBGlow(child); // apply RGB glow
+          break;
+
+        case "Mobile_Screen":
+          child.material = new THREE.MeshStandardMaterial({
+            map: screenTexture,
+            emissive: new THREE.Color(0xffffff),
+            emissiveMap: screenTexture,
+            emissiveIntensity: 1,
+            side: THREE.DoubleSide,
+          });
+          break;
+
+        default:
+          // No-op
+          break;
+      }
     });
     setSceneReady(true);
   }, [
@@ -81,6 +155,7 @@ export default function Model() {
     setBookCover,
     setLightSwitch,
     setSceneReady,
+    screenTexture,
   ]);
 
   // Animation loop
