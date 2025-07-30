@@ -25,9 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        suppressHydrationWarning
       >
         {children}
+        <footer className="fixed bottom-2 left-0 w-full text-center text-xs">
+          2025 portfolio - designed & developed by ogooluwani
+        </footer>
       </body>
     </html>
   );
