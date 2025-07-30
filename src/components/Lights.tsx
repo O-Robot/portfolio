@@ -123,6 +123,27 @@ export default function Lights() {
         intensity={30}
         distance={0.05}
       />
+      {/* Plant pot lights */}
+      <pointLight
+        position={[0.65, 0.4, 0.3]}
+        color={0x88ff44}
+        intensity={theme === "dark" ? 8 : 2}
+        distance={0.5}
+      />
+      <pointLight
+        position={[0.65, 0.2, 0.3]}
+        color={0x44ff88}
+        intensity={theme === "dark" ? 6 : 1}
+        distance={0.4}
+      />
+
+      {/* Keyboard/Mouse ambient glow */}
+      <pointLight
+        position={[0.1, 0.013, 0.2]}
+        color={0x00ff88}
+        intensity={theme === "dark" ? 2 : 0}
+        distance={0.3}
+      />
 
       {/* Text lights */}
       <pointLight

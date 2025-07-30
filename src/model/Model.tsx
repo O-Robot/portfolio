@@ -11,8 +11,8 @@ export default function Model() {
   const videoTexture = useVideoTexture("/textures/arcane.mp4");
   const bookTexture = useTexture("/textures/book-inner.jpg");
   const screenTexture = useTexture("/textures/book-inner.jpg");
+  const plantRefs = useRef<{ [key: string]: THREE.Mesh }>({});
   bookTexture.flipY = false;
-
   // Initialize animations and materials
   useEffect(() => {
     if (!scene || !animations) return;
@@ -125,8 +125,32 @@ export default function Model() {
           emissiveIntensity: 1,
         });
       };
+      const applyPlantGlow = (mesh: THREE.Mesh, name: string) => {
+        const baseColor =
+          mesh.material instanceof THREE.MeshStandardMaterial
+            ? mesh.material.color
+            : new THREE.Color(0x4a5d23);
+
+        const material = new THREE.MeshStandardMaterial({
+          color: baseColor,
+          emissive: new THREE.Color(0x209a0b),
+          emissiveIntensity: 0.08, // Start dim
+          roughness: 0.6,
+        });
+        mesh.material = material;
+        plantRefs.current[name] = mesh;
+      };
 
       switch (child.name) {
+        case "Plant":
+          applyPlantGlow(child, "plant");
+          break;
+        case "Plant_Pot":
+          applyPlantGlow(child, "pot");
+          break;
+        // case "Pot_Soil":
+        //   applyPlantGlow(child, "soil");
+        //   break;
         case "Keyboard":
         case "Mouse":
         case "Speaker-R":

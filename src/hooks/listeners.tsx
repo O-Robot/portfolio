@@ -8,7 +8,6 @@ export function useClickListeners() {
   const { theme, setTheme, setView, lightSwitch, bookCover } = useStore();
 
   useEffect(() => {
-    console.log("Hello");
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
