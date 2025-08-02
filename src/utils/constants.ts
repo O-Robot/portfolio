@@ -49,14 +49,37 @@ export const projectsCameraRot = {
   z: 0,
 };
 
+// export const defaultCameraPos = {
+//   x: 1.109028643133046,
+//   y: 0.5463638814987481,
+//   z: 0.4983449671971262,
+// };
+
+// export const defaultCameraRot = {
+//   x: -0.8313297556598935,
+//   y: 0.9383399492446749,
+//   z: 0.7240714481613063,
+// };
 export const defaultCameraPos = {
-  x: 1.009028643133046,
-  y: 0.5463638814987481,
-  z: 0.4983449671971262,
+  x: 1.2484806787751097,
+  y: 0.46343620455819456,
+  z: 0.05769702519139227,
 };
 
 export const defaultCameraRot = {
-  x: -0.8313297556598935,
-  y: 0.9383399492446749,
-  z: 0.7240714481613063,
+  x: -1.4469353324247252,
+  y: 1.2128448895177755,
+  z: 1.4386475257629794,
+};
+
+export const introCameraStartPos = {
+  x: 3,
+  y: 2,
+  z: 2,
+};
+
+export const introCameraZoomOutPos = {
+  x: 4,
+  y: 3,
+  z: 3,
 };

@@ -1,7 +1,7 @@
 import { useStore } from "@/store";
 import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   aboutCameraPos,
   aboutCameraRot,
@@ -13,9 +13,53 @@ import {
 
 export function useCameraControls() {
   const { camera } = useThree();
-  const { view, bookCover, setControlsEnabled } = useStore();
+  const { view, bookCover, setControlsEnabled, sceneReady } = useStore();
+  const hasPlayedIntro = useRef(false);
+
+  // Intro animation when scene first loads
+  useEffect(() => {
+    if (sceneReady && !hasPlayedIntro.current) {
+      setControlsEnabled(false);
+      hasPlayedIntro.current = true;
+
+      // Start from far away
+      camera.position.set(2, 1, 1);
+      camera.lookAt(0, 0, 0);
+
+      // Zoom out first
+      gsap.to(camera.position, {
+        x: 3,
+        y: 2,
+        z: 2,
+        duration: 1,
+        ease: "power2.out",
+      });
+
+      // Then zoom into the default position
+      gsap.to(camera.position, {
+        ...defaultCameraPos,
+        duration: 2.5,
+        delay: 1.2,
+        ease: "power2.inOut",
+      });
+
+      gsap.to(camera.rotation, {
+        ...defaultCameraRot,
+        duration: 2.5,
+        delay: 1.2,
+        ease: "power2.inOut",
+      });
+
+      // Enable controls after intro
+      gsap.delayedCall(4, () => {
+        setControlsEnabled(true);
+      });
+    }
+  }, [sceneReady, camera, setControlsEnabled]);
 
   useEffect(() => {
+    if (!sceneReady || !hasPlayedIntro.current) return;
+
     const duration = 1.5;
 
     switch (view) {
@@ -34,10 +78,11 @@ export function useCameraControls() {
 
         // Flip book cover after camera movement
         if (bookCover) {
-          gsap.to(bookCover.rotation, {
-            x: Math.PI,
-            duration,
-            delay: duration,
+          gsap.delayedCall(duration, () => {
+            gsap.to(bookCover.rotation, {
+              x: Math.PI,
+              duration: 1,
+            });
           });
         }
         break;
@@ -81,5 +126,5 @@ export function useCameraControls() {
         });
         break;
     }
-  }, [view, camera, bookCover, setControlsEnabled]);
+  }, [view, camera, bookCover, setControlsEnabled, sceneReady]);
 }

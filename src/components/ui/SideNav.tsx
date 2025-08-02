@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import ContactDropdown from "./ContactDropdown";
+import { useStore } from "@/store";
 
 export default function SideNav() {
   const [showContact, setShowContact] = useState(false);
+  const { theme, resetCamera, view } = useStore();
 
   return (
     <nav className="fixed bottom-10 right-8 flex flex-col items-center space-y-4 z-20">
@@ -69,6 +71,16 @@ export default function SideNav() {
 
         {showContact && (
           <ContactDropdown onClose={() => setShowContact(false)} />
+        )}
+        {view === "about" && (
+          <div className="absolute bottom-6 right-6 pointer-events-auto">
+            <button
+              onClick={() => resetCamera()}
+              className="text-white text-sm hover:text-gray-300 transition-colors bg-black bg-opacity-30 backdrop-blur-sm border border-white border-opacity-20 rounded-lg px-4 py-2"
+            >
+              Click to return to desk
+            </button>
+          </div>
         )}
       </div>
     </nav>

@@ -4,12 +4,12 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 
+gsap.registerPlugin();
 export default function Text3D() {
   const { theme } = useStore();
   const titleRef = useRef<THREE.Mesh>(null);
   const subtitleRef = useRef<THREE.Mesh>(null);
 
-  // Update text colors based on theme
   useEffect(() => {
     if (!titleRef.current || !subtitleRef.current) return;
 

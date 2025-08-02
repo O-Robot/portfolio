@@ -6,12 +6,13 @@ import * as THREE from "three";
 
 export default function Model() {
   const { scene, animations } = useGLTF("/models/room.glb");
-  const { setBookCover, setLightSwitch, setSceneReady } = useStore();
+  const { theme, setBookCover, setLightSwitch, setSceneReady } = useStore();
   const mixer = useRef<THREE.AnimationMixer>(null);
   const videoTexture = useVideoTexture("/textures/arcane.mp4");
   const bookTexture = useTexture("/textures/book-inner.jpg");
   const screenTexture = useTexture("/textures/book-inner.jpg");
   const plantRefs = useRef<{ [key: string]: THREE.Mesh }>({});
+  const speakerRefs = useRef<{ [key: string]: THREE.Mesh }>({});
   bookTexture.flipY = false;
   // Initialize animations and materials
   useEffect(() => {
@@ -62,13 +63,7 @@ export default function Model() {
       }
       // book inner
       if (child.name === "Book") {
-        setBookCover(child.children[0]);
-
-        // adding texture to book
-        const bookTexture = new THREE.TextureLoader().load(
-          "textures/book-inner.jpg"
-        );
-        bookTexture.flipY = false;
+        setBookCover(child.children[0] as THREE.Mesh);
         child.material = new THREE.MeshStandardMaterial({
           color: 0xffffff,
           map: bookTexture,
@@ -186,9 +181,64 @@ export default function Model() {
     screenTexture,
   ]);
 
+  useEffect(() => {
+    const duration = 0.8;
+
+    // Speaker glow intensities
+    const speakerIntensity = theme === "dark" ? 0.4 : 0.05;
+    Object.values(speakerRefs.current).forEach((mesh) => {
+      if (mesh?.material) {
+        gsap.to(mesh.material, {
+          emissiveIntensity: speakerIntensity,
+          duration,
+        });
+      }
+    });
+
+    // Plant glow intensities
+    // const plantIntensity = theme === "dark" ? 0.2 : 0.05;
+    // Object.values(plantRefs.current).forEach((mesh) => {
+    //   if (mesh?.material) {
+    //     gsap.to(mesh.material, {
+    //       emissiveIntensity: plantIntensity,
+    //       duration,
+    //     });
+    //   }
+    // });
+
+    // RGB device glow intensities
+    // const rgbIntensity = theme === "dark" ? 0.3 : 0.1;
+    // Object.values(rgbRefs.current).forEach((mesh) => {
+    //   if (mesh?.material) {
+    //     gsap.to(mesh.material, {
+    //       emissiveIntensity: rgbIntensity,
+    //       duration,
+    //     });
+    //   }
+    // });
+  }, [theme]);
+
   // Animation loop
   useFrame((state, delta) => {
     mixer.current?.update(delta);
+    // Add subtle pulsing effect to speakers in dark mode
+    if (theme === "dark") {
+      const time = state.clock.elapsedTime;
+      const speakerR = speakerRefs.current.speakerR;
+      const speakerL = speakerRefs.current.speakerL;
+
+      if (speakerR?.material) {
+        const pulse = 0.4 + Math.sin(time * 2) * 0.1;
+        (speakerR.material as THREE.MeshStandardMaterial).emissiveIntensity =
+          pulse;
+      }
+
+      if (speakerL?.material) {
+        const pulse = 0.4 + Math.sin(time * 2.5) * 0.1;
+        (speakerL.material as THREE.MeshStandardMaterial).emissiveIntensity =
+          pulse;
+      }
+    }
   });
 
   return <primitive object={scene} />;

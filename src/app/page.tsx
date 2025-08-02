@@ -18,7 +18,7 @@ export default function Home() {
             shadows
             camera={{
               position: [
-                1.009028643133046, 0.5463638814987481, 0.4983449671971262,
+                3, 2, 2,
               ],
               fov: 75,
             }}

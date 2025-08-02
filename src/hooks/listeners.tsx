@@ -10,7 +10,21 @@ export function useClickListeners() {
   useEffect(() => {
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
+    // Log current position and rotation
+    console.log("Position:", camera.position);
+    console.log("Rotation:", camera.rotation);
 
+    // Or as objects:
+    console.log("Position:", {
+      x: camera.position.x,
+      y: camera.position.y,
+      z: camera.position.z,
+    });
+    console.log("Rotation:", {
+      x: camera.rotation.x,
+      y: camera.rotation.y,
+      z: camera.rotation.z,
+    });
     const handleClick = (event: MouseEvent) => {
       // Prevent clicks on UI elements
       const target = event.target as HTMLElement;
@@ -47,7 +61,6 @@ export function useClickListeners() {
         // Handle book click
         if (objectName === "Book" || objectName === "Book001") {
           setView("about");
-          break;
         }
 
         // Handle project plane clicks
