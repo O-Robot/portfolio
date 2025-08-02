@@ -1,3 +1,6 @@
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export const projects = [
   {
     image: "/textures/Screenshot 2025-06-22 103331.png",
@@ -24,6 +27,24 @@ export const projects = [
     url: "https://user.speedycardlister.ai/",
   },
 ];
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export const Console = (() => {
+  // Check if the current environment is development
+  const isDevMode = process.env.NODE_ENV === "development";
+
+  return new Proxy(console, {
+    get(target: any, prop: any) {
+      if (!isDevMode && typeof target[prop] === "function") {
+        return () => {};
+      }
+      return target[prop];
+    },
+  });
+})();
 
 export const aboutCameraPos = {
   x: 0.12,

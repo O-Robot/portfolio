@@ -2,14 +2,14 @@
 import { Suspense } from "react";
 import Scene from "@/components/three/Scene";
 import Loader from "@/components/three/Loader";
-import Header from "@/components/ui/Header";
+import Header from "@/components/ui/header";
 import SideNav from "@/components/ui/SideNav";
 import { Canvas } from "@react-three/fiber";
 
 export default function Home() {
   return (
     <div className="fixed inset-0">
-      <Header />
+
       <SideNav />
 
       <div className="absolute inset-0">

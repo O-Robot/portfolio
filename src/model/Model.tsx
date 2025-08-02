@@ -36,7 +36,6 @@ export default function Model() {
 
       child.castShadow = child.name !== "Wall";
       child.receiveShadow = true;
-      // console.log(child.name);
       // book
       if (child.children) {
         child.children.forEach((innerChild) => {

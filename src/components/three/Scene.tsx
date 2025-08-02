@@ -17,7 +17,6 @@ export default function Scene() {
     //   "https://jollofradiomedia.blob.core.windows.net/static/audio/Konga-Happiness-Song-2015.mp3"
     // );
     // audio.play().catch((error) => {
-    //   console.error("Error playing audio:", error);
     // });
   };
   useCameraControls();
