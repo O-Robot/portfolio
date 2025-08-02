@@ -1,7 +1,7 @@
 "use client";
 import { Suspense } from "react";
-import Scene from "@/components/Scene";
-import Loader from "@/components/Loader";
+import Scene from "@/components/three/Scene";
+import Loader from "@/components/three/Loader";
 import Header from "@/components/ui/Header";
 import SideNav from "@/components/ui/SideNav";
 import { Canvas } from "@react-three/fiber";
@@ -17,9 +17,7 @@ export default function Home() {
           <Canvas
             shadows
             camera={{
-              position: [
-                3, 2, 2,
-              ],
+              position: [3, 2, 2],
               fov: 75,
             }}
             gl={{

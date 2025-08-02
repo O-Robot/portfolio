@@ -1,11 +1,12 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full flex items-center p-2 z-20">
       <Link href="/" className="mr-auto">
-        <img
+        <Image
           src="/images/logo.png"
           width={70}
           height={70}
