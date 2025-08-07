@@ -128,6 +128,11 @@ export default function HomePage() {
           </div>
         </motion.div>
       </section>
+      {/* section about */}
+      {/* experience tabs  */}
+      {/* top skills */}
+      {/* testimonial */}
+      {/* AI Assistant */}
     </section>
   );
 }

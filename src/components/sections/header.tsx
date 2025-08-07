@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useStore } from "@/store";
-import { Button } from "./button";
+import { Button } from "../ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
 
 export default function Header() {
@@ -21,12 +21,16 @@ export default function Header() {
 
   const navItems = [
     { name: "Home", href: "home" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Blog", href: "#blog" },
-    { name: "Contact", href: "#contact" },
+    //about - about me, image(AI), education,certifications, top skills
+    { name: "About", href: "about" },
+    //experience tabs work internships, volunteership, testimonials
+    { name: "Experience", href: "experience" },
+    // projects - projects cards - geng (skills cta- livedemo) contibution card and graph - john
+    { name: "Projects", href: "projects" },
+    //contact - send a message, Get in touch, AI Assistant, Calendly, Connect online
+    { name: "Contact", href: "contact-me" },
   ];
+
   return (
     <motion.nav
       initial={{ y: -100 }}
