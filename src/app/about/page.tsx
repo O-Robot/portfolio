@@ -3,9 +3,62 @@ import { Button } from "@/components/ui/button";
 import { useStore } from "@/store";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Icon } from "@iconify/react";
 
 export default function AboutPage() {
   const { theme } = useStore();
+
+  // socialMediaLinks.ts
+  const socialMediaLinks = [
+    {
+      name: "Github",
+      link: "https://github.com/O-Robot",
+      icon: "simple-icons:github", // Iconify Simple Icons format
+      color: "#181717", // From https://simpleicons.org
+    },
+    {
+      name: "LinkedIn",
+      link: "https://linkedin.com/in/adewale-ogooluwani",
+      icon: "simple-icons:linkedin",
+      color: "#0077B5",
+    },
+    {
+      name: "Gmail",
+      link: "mailto:hey@ogooluwaniadewale.com",
+      icon: "simple-icons:gmail",
+      color: "#D14836",
+    },
+    {
+      name: "Twitter",
+      link: "https://twitter.com/ogzy_robot",
+      icon: "simple-icons:twitter",
+      color: "#1DA1F2",
+    },
+    {
+      name: "Facebook",
+      link: "https://www.facebook.com/ogzy.robot/",
+      icon: "simple-icons:facebook",
+      color: "#1877F2",
+    },
+    {
+      name: "Instagram",
+      link: "https://www.instagram.com/ogzy.robot/",
+      icon: "simple-icons:instagram",
+      color: "#E4405F",
+    },
+    {
+      name: "Behance",
+      link: "https://www.behance.net/ogooluwaniadewale",
+      icon: "simple-icons:behance",
+      color: "#053eff",
+    },
+    {
+      name: "Dribbble",
+      link: "https://dribbble.com/O-Robot",
+      icon: "simple-icons:dribbble",
+      color: "#ea4c89",
+    },
+  ];
 
   return (
     <section className={`${theme === "dark" ? "bg-black" : "bg-black/20"}`}>
@@ -33,10 +86,10 @@ export default function AboutPage() {
             className=" mb-16 flex gap-10 justify-between px-10"
           >
             <div className="text-xl text-justify  text-white/80 w-1/2">
-              👋 Hey there! I am John Doe, 🎓 a proud graduate of 
-              Engineering College, where I am pursuing a Bachelors degree in
-              Electronics and Communication Engineering and building a solid
-              foundation in technology.
+              👋 Hey there! I am John Doe, 🎓 a proud graduate of Engineering
+              College, where I am pursuing a Bachelors degree in Electronics and
+              Communication Engineering and building a solid foundation in
+              technology.
               <br />
               <br />
               💻 I am also an avid developer, enthusiastic volunteer, and public
@@ -79,10 +132,23 @@ export default function AboutPage() {
                 className="rounded-2xl"
               />
 
-              <div className="border-t border-b border-red py-4 flex gap-3">
-                <div>hello</div>
-                <div>hello</div>
-                <div>hello</div>
+              <div className="border-t border-b  py-4 flex gap-3">
+                {socialMediaLinks.map((media, i) => (
+                  <a
+                    key={i}
+                    href={media.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={media.name}
+                    className="text-white rounded-full cursor-pointer text-xl w-10 h-10 flex justify-center items-center"
+                    style={{ background: media.color }}
+                  >
+                    <Icon
+                      icon={media.icon}
+                      className="  transition-transform hover:scale-110"
+                    />
+                  </a>
+                ))}
               </div>
               <div className="rounded-xl flex justify-center flex-col px-4 py-6 max-w-100 bg-[#070d1e]items-center text-center gap-4">
                 <p className="text-[#a9a9a9] text-lg">

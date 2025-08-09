@@ -2,37 +2,22 @@
 import ParticleBackground from "@/components/three/particle-background";
 import { isWebGLSupported } from "@/utils/webgl-utils";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  AlertCircle,
-  BriefcaseBusiness,
-  Calendar,
-  Download,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Pencil,
-  Phone,
-  Rocket,
-  Send,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { AlertCircle, Download, Pencil, Rocket, Send } from "lucide-react";
 import HolographicAvatar from "@/components/three/holographic-avatar";
 import { Button } from "@/components/ui/button";
 import { useStore } from "@/store";
 import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
 import { useToast } from "@/hooks/use-toast";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import Timeline from "@/components/sections/timeline";
 
 export default function HomePage() {
   const router = useRouter();
   const { toast } = useToast();
   const [webglSupported, setWebglSupported] = useState(true);
   const { theme } = useStore();
-  const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
   useEffect(() => {
     toast({
@@ -390,169 +375,7 @@ export default function HomePage() {
               A timeline of growth, learning, and achievements
             </p>
           </motion.div>
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 to-purple-400 rounded-full" />
-
-            <div className="space-y-12">
-              {timelineData.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2, duration: 0.6 }}
-                  className="relative flex items-center"
-                >
-                  {/* Image on Timeline */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ delay: index * 0.2 + 0.3, duration: 0.5 }}
-                    className="absolute left-1/2 transform -translate-x-1/2 z-10"
-                  >
-                    <div className="w-20 h-20 rounded-full border-4 border-white/20 overflow-hidden shadow-2xl ring-4 ring-cyan-400/30 backdrop-blur-sm bg-white flex justify-center items-center">
-                      <Image
-                        src={item?.image}
-                        alt="me"
-                        height={50}
-                        width={50}
-                        className="object-contain "
-                      />
-                    </div>
-                  </motion.div>
-
-                  {/* Content Card */}
-                  <div
-                    className={`w-1/2 ${
-                      index % 2 === 0 ? "pr-16" : "pl-16 ml-auto"
-                    }`}
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      onClick={() =>
-                        setSelectedItem(
-                          selectedItem === item.id ? null : item.id
-                        )
-                      }
-                      className="cursor-pointer"
-                    >
-                      <Card className="glass-morphism border border-white/20 hover:border-cyan-400/50 transition-all duration-300 backdrop-blur-sm bg-white/5">
-                        <CardContent className="p-6">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Calendar className="h-4 w-4 text-cyan-400" />
-                            <span className="text-cyan-400 font-semibold">
-                              {item.year}
-                            </span>
-                          </div>
-
-                          <h3 className="text-xl font-bold text-white mb-2">
-                            {item.title}
-                          </h3>
-
-                          <div className="flex items-center gap-2 mb-3">
-                            <BriefcaseBusiness className="h-4 w-4 text-purple-400" />
-                            <span className="text-white/80">
-                              {item.company}
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-2 mb-4">
-                            <MapPin className="h-4 w-4 text-green-400" />
-                            <span className="text-white/60">
-                              {item.location}
-                            </span>
-                          </div>
-
-                          <p className="text-white/70 mb-4">
-                            {item.description}
-                          </p>
-
-                          <div className="flex flex-wrap gap-2">
-                            {item.technologies.map((tech) => (
-                              <Badge
-                                key={tech}
-                                className="bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors"
-                              >
-                                {tech}
-                              </Badge>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Expanded Details Modal */}
-            <AnimatePresence>
-              {selectedItem && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-                  onClick={() => setSelectedItem(null)}
-                >
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.8, opacity: 0 }}
-                    onClick={(e) => e.stopPropagation()}
-                    className="glass-morphism rounded-lg p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
-                  >
-                    {(() => {
-                      const item = timelineData.find(
-                        (i) => i.id === selectedItem
-                      );
-                      if (!item) return null;
-
-                      return (
-                        <div>
-                          <h3 className="text-2xl font-bold text-white mb-4">
-                            {item.title}
-                          </h3>
-                          <p className="text-white/80 mb-6">
-                            {item.description}
-                          </p>
-
-                          <h4 className="text-lg font-semibold text-cyan-400 mb-3">
-                            Key Achievements:
-                          </h4>
-                          <ul className="space-y-2 mb-6">
-                            {item.achievements.map(
-                              (achievement: any, i: any) => (
-                                <li
-                                  key={i}
-                                  className="text-white/70 flex items-center"
-                                >
-                                  <span className="w-2 h-2 bg-purple-400 rounded-full mr-3" />
-                                  {achievement}
-                                </li>
-                              )
-                            )}
-                          </ul>
-
-                          <div className="flex flex-wrap gap-2">
-                            {item.technologies.map((tech: any) => (
-                              <Badge
-                                key={tech}
-                                variant="secondary"
-                                className="bg-white/10 text-white"
-                              >
-                                {tech}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      );
-                    })()}
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          <Timeline timelineData={timelineData} />
           <div className="flex justify-center gap-3 py-10">
             <Button
               size="lg"
