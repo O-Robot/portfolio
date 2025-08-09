@@ -10,6 +10,8 @@ import {
   Download,
   Mail,
   MapPin,
+  MessageCircle,
+  Pencil,
   Phone,
   Rocket,
   Send,
@@ -630,70 +632,8 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="flex flex-col justify-center gap-12 max-w-xl mx-auto">
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              <Card className="glass-morphism border-white/20">
-                <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
-                    💬 Send a Message
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <Input
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        className="glass-morphism border-white/20 text-white placeholder:text-white/50"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <Input
-                        type="email"
-                        placeholder="Your Email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        className="glass-morphism border-white/20 text-white placeholder:text-white/50"
-                        required
-                      />
-                    </div>
-
-                    <div className="relative">
-                      <Textarea
-                        placeholder="Your Message"
-                        value={formData.message}
-                        onChange={(e) =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                        className="glass-morphism border-white/20 text-white placeholder:text-white/50 min-h-32"
-                        required
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full glass-morphism border-cyan-400 text-cyan-400 hover:bg-cyan-400/20 hover:animate-glow"
-                      size="lg"
-                    >
-                      <Send className="mr-2 h-5 w-5" />
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </motion.div>
 
             {/* Contact Info & AI Assistant */}
             <motion.div
@@ -710,22 +650,23 @@ export default function HomePage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-cyan-400" />
-                    <span className="text-white/80">
-                      hey@ogooluwaniadewale.com
-                    </span>
-                  </div>
+                  <Button
+                    type="submit"
+                    className="w-full glass-morphism border-cyan-400 text-cyan-400 hover:bg-cyan-400/20 hover:animate-glow"
+                    size="lg"
+                  >
+                    <Send className="mr-2 h-5 w-5" />
+                    Contact Me
+                  </Button>
 
-                  <div className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-green-400" />
-                    <span className="text-white/80">+1 </span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <MapPin className="h-5 w-5 text-purple-400" />
-                    <span className="text-white/80">San Francisco, CA</span>
-                  </div>
+                  <Button
+                    type="submit"
+                    className="w-full glass-morphism border-cyan-400 text-cyan-400 hover:bg-cyan-400/20 hover:animate-glow"
+                    size="lg"
+                  >
+                    <Pencil className="mr-2 h-5 w-5" />
+                    Write a Review
+                  </Button>
                 </CardContent>
               </Card>
 

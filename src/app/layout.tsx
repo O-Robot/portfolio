@@ -26,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
         <script
           src="https://code.iconify.design/2/2.2.1/iconify.min.js"
           defer
