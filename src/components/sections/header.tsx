@@ -44,7 +44,7 @@ export default function Header() {
           <motion.div
             whileHover={{ scale: 1.05 }}
             className={`text-xl font-bold ${
-              theme === "dark" ? "liquid-gradient" : ""
+              theme === "dark" ? "text-white" : ""
             }`}
           >
             <Link href={"/"}>

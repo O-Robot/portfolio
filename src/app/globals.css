@@ -151,3 +151,64 @@ body {
   background: #1a1a1a;
   box-shadow: 20px 20px 60px #0d0d0d, -20px -20px 60px #272727;
 }
+
+.dev-icons {
+  padding-left: 0;
+  list-style: none;
+  font-size: 3rem;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.skill-container {
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+
+.skill-content {
+  width: 12rem;
+  height: 10rem;
+  border-radius: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 2px solid grey;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  width: 5rem;
+  height: 17rem;
+  left: 4.5rem;
+  top: -40%;
+  background: var(--border-color);
+  animation: spin-border 6s linear infinite;
+  border-radius: 10px;
+}
+
+.animated-border::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background: white;
+  border-radius: 20px;
+}
+
+@keyframes spin-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

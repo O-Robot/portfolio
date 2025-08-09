@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   AlertCircle,
-  Briefcase,
   BriefcaseBusiness,
   Calendar,
   Download,
@@ -82,6 +81,94 @@ export default function HomePage() {
       ],
       image: "/images/logo.png",
       link: "",
+    },
+  ];
+  const softwareSkills = [
+    {
+      skillName: "HTML5",
+      fontAwesomeClassname: "simple-icons:html5",
+      style: {
+        color: "#E34F26",
+      },
+    },
+    {
+      skillName: "CSS3",
+      fontAwesomeClassname: "fa-css3",
+      style: {
+        color: "#1572B6",
+      },
+    },
+    {
+      skillName: "Sass",
+      fontAwesomeClassname: "simple-icons:sass",
+      style: {
+        color: "#CC6699",
+      },
+    },
+    {
+      skillName: "Tailwind CSS",
+      fontAwesomeClassname: "simple-icons:tailwindcss",
+      style: {
+        color: "#38BDF8",
+      },
+    },
+    {
+      skillName: "JavaScript",
+      fontAwesomeClassname: "simple-icons:javascript",
+      style: {
+        backgroundColor: "#000000",
+        color: "#F7DF1E",
+      },
+    },
+    {
+      skillName: "ReactJS",
+      fontAwesomeClassname: "simple-icons:react",
+      style: {
+        color: "#61DAFB",
+      },
+    },
+    {
+      skillName: "Angular",
+      fontAwesomeClassname: "simple-icons:angular",
+      style: {
+        color: "#d70030",
+      },
+    },
+    {
+      skillName: "Vue",
+      fontAwesomeClassname: "simple-icons:vuedotjs",
+      style: {
+        color: "#4FC08D",
+      },
+    },
+    {
+      skillName: "Flutter",
+      fontAwesomeClassname: "simple-icons:flutter",
+      style: {
+        color: "#61c8f8",
+      },
+    },
+
+    {
+      skillName: "Framer",
+      fontAwesomeClassname: "simple-icons:framer",
+      style: {
+        color: "#0055FF",
+      },
+    },
+    {
+      skillName: "Wordpress",
+      fontAwesomeClassname: "fa-wordpress",
+      style: {
+        color: "#21759B",
+      },
+    },
+    {
+      skillName: "Python",
+      fontAwesomeClassname: "simple-icons:python",
+      style: {
+        color: "#ffd748",
+      },
     },
   ];
 
@@ -217,10 +304,10 @@ export default function HomePage() {
             className="  flex justify-center"
           >
             <div className="text-xl text-center  text-white/80 w-1/2">
-              👋 Hey there! I am John Doe, 🎓 a proud graduate of 
-              Engineering College, where I am pursuing a Bachelors degree in
-              Electronics and Communication Engineering and building a solid
-              foundation in technology.
+              👋 Hey there! I am John Doe, 🎓 a proud graduate of Engineering
+              College, where I am pursuing a Bachelors degree in Electronics and
+              Communication Engineering and building a solid foundation in
+              technology.
               <br />
               <br />
               💻 I am also an avid developer, enthusiastic volunteer, and public
@@ -255,7 +342,7 @@ export default function HomePage() {
         </div>
       </section>
       {/* experience tabs  */}
-      <section id="about" className="py-20 relative">
+      <section id="experience" className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -447,6 +534,51 @@ export default function HomePage() {
       </section>
 
       {/* top skills */}
+      <section id="experience" className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+              Top Skills
+            </h2>
+            {/* <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              A timeline of growth, learning, and achievements
+            </p> */}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="skill-container text-center mb-16"
+          >
+            {softwareSkills.map((logo, i) => (
+              <li className="skill-content" key={i}>
+                {/* Icon */}
+                <span
+                  className="iconify w-14 h-14 z-10"
+                  data-icon={logo.fontAwesomeClassname}
+                  style={logo.style} // Still applies the icon color
+                  data-inline="false"
+                ></span>
+                <h4 className="z-10">{logo.skillName}</h4>
+                {/* Animated rotating border */}
+                <span
+                  className="animated-border"
+                  style={
+                    {
+                      "--border-color": logo.style.color,
+                    } as React.CSSProperties
+                  }
+                ></span>
+              </li>
+            ))}
+          </motion.div>{" "}
+        </div>
+      </section>
       {/* testimonial */}
       {/* AI Assistant and contact */}
     </section>
