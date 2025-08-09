@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/sections/header";
+import Footer from "@/components/sections/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
+      <head suppressHydrationWarning>
         <script
           src="https://code.iconify.design/2/2.2.1/iconify.min.js"
           defer
@@ -37,9 +39,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
-        <footer className="fixed bottom-2 left-0 w-full text-center text-xs">
-          2025 portfolio - designed & developed by ogooluwani
-        </footer>
+        <Footer />
       </body>
     </html>
   );

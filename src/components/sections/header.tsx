@@ -47,9 +47,9 @@ export default function Header() {
               theme === "dark" ? "text-white" : ""
             }`}
           >
-            <Link href={"/"}>
+            <Link href={"/"} className={`${scrolled ? "" : ""}`}>
               <span> &lt;</span>
-              <span className="logo-name ">Ogooluwani Adewale</span>
+              <span className="logo-name">Ogooluwani Adewale</span>
               <span>/&gt;</span>
             </Link>
           </motion.div>
