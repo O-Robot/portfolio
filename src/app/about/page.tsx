@@ -4,6 +4,7 @@ import { useStore } from "@/store";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
+import Timeline from "@/components/sections/timeline";
 
 export default function AboutPage() {
   const { theme } = useStore();
@@ -59,9 +60,118 @@ export default function AboutPage() {
       color: "#ea4c89",
     },
   ];
+  const softwareSkills = [
+    {
+      skillName: "HTML5",
+      fontAwesomeClassname: "simple-icons:html5",
+      style: {
+        color: "#E34F26",
+      },
+    },
+    {
+      skillName: "CSS3",
+      fontAwesomeClassname: "fa-css3",
+      style: {
+        color: "#1572B6",
+      },
+    },
+    {
+      skillName: "Sass",
+      fontAwesomeClassname: "simple-icons:sass",
+      style: {
+        color: "#CC6699",
+      },
+    },
+    {
+      skillName: "Tailwind CSS",
+      fontAwesomeClassname: "simple-icons:tailwindcss",
+      style: {
+        color: "#38BDF8",
+      },
+    },
+    {
+      skillName: "JavaScript",
+      fontAwesomeClassname: "simple-icons:javascript",
+      style: {
+        backgroundColor: "#000000",
+        color: "#F7DF1E",
+      },
+    },
+    {
+      skillName: "ReactJS",
+      fontAwesomeClassname: "simple-icons:react",
+      style: {
+        color: "#61DAFB",
+      },
+    },
+    {
+      skillName: "Angular",
+      fontAwesomeClassname: "simple-icons:angular",
+      style: {
+        color: "#d70030",
+      },
+    },
+    {
+      skillName: "Vue",
+      fontAwesomeClassname: "simple-icons:vuedotjs",
+      style: {
+        color: "#4FC08D",
+      },
+    },
+    {
+      skillName: "Flutter",
+      fontAwesomeClassname: "simple-icons:flutter",
+      style: {
+        color: "#61c8f8",
+      },
+    },
+
+    {
+      skillName: "Framer",
+      fontAwesomeClassname: "simple-icons:framer",
+      style: {
+        color: "#0055FF",
+      },
+    },
+    {
+      skillName: "Wordpress",
+      fontAwesomeClassname: "fa-wordpress",
+      style: {
+        color: "#21759B",
+      },
+    },
+    {
+      skillName: "Python",
+      fontAwesomeClassname: "simple-icons:python",
+      style: {
+        color: "#ffd748",
+      },
+    },
+  ];
+
+  const timelineData = [
+    {
+      id: 1,
+      year: "2022",
+      title: "B.Sc Economics",
+      company: "Obafemi Awolowo University",
+      location: "Ile-Ife, Osun State, Nigeria",
+      description:
+        "Completed a rigorous four-year program in Economics with a focus on quantitative analysis, policy evaluation, and research. Actively engaged in leadership and student governance, blending academic excellence with organizational impact.",
+      technologies: [],
+      achievements: [
+        "Strengthened student leadership culture by contributing to the Leadership Qualities & Entrepreneurial Development (LQED) Committee, helping organize programs that improved entrepreneurial awareness among peers.",
+        "Led the technical team of the Nigerian Economics Students’ Association (NESA OAU), introducing digital tools that improved event coordination and boosted student engagement.",
+        "Oversaw a fair and transparent electoral process as Electoral Chairman of NESA OAU, successfully managing student elections with high participation and credibility.",
+      ],
+      image: "/images/companies/oau.png",
+      link: "http://oauife.edu.ng/",
+    },
+  ];
 
   return (
     <section className={`${theme === "dark" ? "bg-black" : "bg-black/20"}`}>
+      {/* about */}
       <section id="about" className="py-32 relative">
         <div className="container mx-auto px-6">
           <motion.div
@@ -158,6 +268,72 @@ export default function AboutPage() {
                 <Button variant={"outline"}>Contact</Button>
               </div>
             </div>
+          </motion.div>{" "}
+        </div>
+      </section>
+      {/* education */}
+      <section id="experience" className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+              My Educational Journey
+            </h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              A timeline of learning, milestones, and academic growth
+            </p>
+          </motion.div>
+          <Timeline timelineData={timelineData} />
+        </div>
+      </section>
+      {/* top skills */}
+      {/* top skills */}
+      <section id="skills" className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+              Top Skills
+            </h2>
+            {/* <p className="text-xl text-white/80 max-w-3xl mx-auto">
+                    A timeline of growth, learning, and achievements
+                  </p> */}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="skill-container text-center m
+                  b-16"
+          >
+            {softwareSkills.map((logo, i) => (
+              <li className="skill-content" key={i}>
+                {/* Icon */}
+                <span
+                  className="iconify w-14 h-14 z-10"
+                  data-icon={logo.fontAwesomeClassname}
+                  style={logo.style}
+                  data-inline="false"
+                ></span>
+                <h4 className="z-10 font-medium">{logo.skillName}</h4>
+                <span
+                  className="animated-border"
+                  style={
+                    {
+                      "--border-color": logo.style.color,
+                    } as React.CSSProperties
+                  }
+                ></span>
+              </li>
+            ))}
           </motion.div>{" "}
         </div>
       </section>

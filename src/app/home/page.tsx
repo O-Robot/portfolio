@@ -390,7 +390,7 @@ export default function HomePage() {
       </section>
 
       {/* top skills */}
-      <section id="experience" className="py-20 relative">
+      <section id="skills" className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
