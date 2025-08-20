@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { InlineWidget } from "react-calendly";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -243,6 +244,20 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
             </motion.div>
+          </div>
+          {/* Schedule a Meeting */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mt-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold liquid-gradient font-sora">
+              Schedule a Meeting
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 gap-12 max-w-6xl mx-auto py-10 w-2/3 ">
+            <InlineWidget url="https://calendly.com/ogooluwaniadewale/" />
           </div>
         </div>
       </section>
