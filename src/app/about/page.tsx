@@ -1,13 +1,21 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useStore } from "@/store";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import Timeline from "@/components/sections/timeline";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AboutPage() {
-  const { theme } = useStore();
+  const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   // socialMediaLinks.ts
   const socialMediaLinks = [
@@ -170,7 +178,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <section className={`${theme === "dark" ? "bg-black" : "bg-black/20"}`}>
+    <section className="bg-background">
       {/* about */}
       <section id="about" className="py-32 relative">
         <div className="container mx-auto px-6">
@@ -180,22 +188,17 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               About Me
             </h2>
-            {/* <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              I&apos;m a creative technologist who bridges the gap between
-              design and development, crafting digital experiences that push the
-              boundaries of what&apos;s possible on the web.
-            </p> */}
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className=" mb-16 flex gap-10 justify-between px-10"
+            className=" mb-16 flex flex-col lg:flex-row gap-10 justify-between px-2 lg:px-10"
           >
-            <div className="text-xl text-justify  text-white/80 w-1/2">
+            <div className="text-xl text-justify  text-primary-text/80 w-full lg:w-1/2">
               👋 Hey there! I am John Doe, 🎓 a proud graduate of Engineering
               College, where I am pursuing a Bachelors degree in Electronics and
               Communication Engineering and building a solid foundation in
@@ -233,16 +236,16 @@ export default function AboutPage() {
               truly! Lets connect and see how we can make a difference together
               🤝.
             </div>
-            <div className="text-xl text-white/80 w-1/2 px-8 flex flex-col gap-8">
+            <div className="text-xl text-white/80 w-full lg:w-1/2 px-2 lg:px-8 flex flex-col gap-8">
               <Image
                 src={"/images/raw.png"}
                 alt="me"
-                height={100}
-                width={400}
+                height={200}
+                width={500}
                 className="rounded-2xl"
               />
 
-              <div className="border-t border-b  py-4 flex gap-3">
+              <div className="border-t border-b border-primary-text/80 py-4 flex gap-3">
                 {socialMediaLinks.map((media, i) => (
                   <a
                     key={i}
@@ -261,11 +264,20 @@ export default function AboutPage() {
                 ))}
               </div>
               <div className="rounded-xl flex justify-center flex-col px-4 py-6 max-w-100 bg-[#070d1e]items-center text-center gap-4">
-                <p className="text-[#a9a9a9] text-lg">
+                <p className="text-primary-text text-lg">
                   Let’s connect and build something awesome together.
                 </p>
-                <p className="text-sm">Send me a message!</p>
-                <Button variant={"outline"}>Contact</Button>
+                <p className="text-sm text-primary-text/40">
+                  Send me a message!
+                </p>
+                <Button
+                  variant={"outline"}
+                  onClick={() => {
+                    router.push("/contact-me");
+                  }}
+                >
+                  Contact
+                </Button>
               </div>
             </div>
           </motion.div>{" "}
@@ -280,10 +292,10 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               My Educational Journey
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
               A timeline of learning, milestones, and academic growth
             </p>
           </motion.div>
@@ -300,7 +312,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               Top Skills
             </h2>
             {/* <p className="text-xl text-white/80 max-w-3xl mx-auto">

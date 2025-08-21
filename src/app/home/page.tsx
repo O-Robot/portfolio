@@ -3,29 +3,20 @@ import ParticleBackground from "@/components/three/particle-background";
 import { isWebGLSupported } from "@/utils/webgl-utils";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertCircle, Download, Pencil, Rocket, Send } from "lucide-react";
+import { AlertCircle, Download, Pencil, Send } from "lucide-react";
 import HolographicAvatar from "@/components/three/holographic-avatar";
 import { Button } from "@/components/ui/button";
-import { useStore } from "@/store";
 import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
 import Timeline from "@/components/sections/timeline";
 
 export default function HomePage() {
   const router = useRouter();
-  const { toast } = useToast();
   const [webglSupported, setWebglSupported] = useState(true);
-  const { theme } = useStore();
 
   useEffect(() => {
-    toast({
-      title: "Message sent! 🚀",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
     setWebglSupported(isWebGLSupported());
-    // setTheme("dark");
   }, []);
 
   const timelineData = [
@@ -170,26 +161,6 @@ export default function HomePage() {
     },
   ];
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message sent! 🚀",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
-
-    setFormData({ name: "", email: "", message: "" });
-  };
-
   return (
     <section className="bg-background">
       {/* section hero  */}
@@ -209,8 +180,8 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             className="absolute top-20 left-4 right-4 z-20"
           >
-            <div className="glass-morphism border-yellow-400/50 rounded-lg p-3 max-w-md mx-auto">
-              <div className="flex items-center gap-2 text-yellow-400">
+            <div className="glass-morphism border-accent/50 rounded-lg p-3 max-w-md mx-auto">
+              <div className="flex items-center gap-2 text-accent">
                 <AlertCircle className="h-4 w-4" />
                 <span className="text-sm">
                   3D features unavailable - displaying in 2D mode
@@ -243,9 +214,9 @@ export default function HomePage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="text-6xl md:text-8xl font-bold mb-6 text-primary liquid-gradient font-sora"
+              className="text-6xl md:text-8xl font-bold mb-6 text-primary-text iquid-gradient"
             >
-              OGOOLUWANI ADEWALE
+              Ogooluwani Adewale
             </motion.h1>
 
             {/* Subheading */}
@@ -265,17 +236,17 @@ export default function HomePage() {
               transition={{ delay: 1.2, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <Button
+              {/* <Button
                 size="lg"
                 className="glass-morphism hover:animate-glow text-white border-cyan-400 hover:border-cyan-300 px-8 py-4 text-lg bg-transparent"
                 variant="outline"
               >
                 <Rocket className="mr-2 h-5 w-5" />
                 Explore My Universe
-              </Button>
+              </Button> */}
               <Button
                 size="lg"
-                className="glass-morphism hover:animate-glow text-white border-purple-400 hover:border-purple-300 px-8 py-4 text-lg bg-transparent"
+                className="glass-morphism hover:animate-glow text-primary-text  px-8 py-4 text-lg bg-transparent"
                 variant="outline"
               >
                 <Download className="mr-2 h-5 w-5" />
@@ -293,11 +264,11 @@ export default function HomePage() {
           transition={{ delay: 2, duration: 1 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-              className="w-1 h-3 bg-cyan-400 rounded-full mt-2"
+              className="w-1 h-3 bg-primary rounded-full mt-2"
             />
           </div>
         </motion.div>
@@ -311,7 +282,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               About Me
             </h2>
           </motion.div>
@@ -321,7 +292,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="  flex justify-center"
           >
-            <div className="text-xl text-center  text-white/80 w-1/2">
+            <div className="text-xl text-center  text-primary-text/80 w-full lg:w-1/2">
               👋 Hey there! I am John Doe, 🎓 a proud graduate of Engineering
               College, where I am pursuing a Bachelors degree in Electronics and
               Communication Engineering and building a solid foundation in
@@ -340,20 +311,19 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   onClick={() => router.push("/about")}
-                  className="glass-morphism hover:animate-glow text-white border-purple-400 hover:border-purple-300 px-8 py-4 text-lg bg-transparent"
+                  className="glass-morphism hover:animate-glow px-8 py-4 text-lg bg-transparent"
                   variant="outline"
                 >
                   Read More
                 </Button>
-                <Button
+                {/* <Button
                   size="lg"
                   className="glass-morphism hover:animate-glow text-white border-purple-400 hover:border-purple-300 px-8 py-4 text-lg bg-transparent"
                   variant="outline"
                 >
                   <Download className="mr-2 h-5 w-5" />
-                  {/* 📄 */}
                   Download Resume
-                </Button>
+                </Button> */}
               </div>
             </div>
           </motion.div>{" "}
@@ -368,10 +338,10 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               My Professional Journey
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
               A timeline of growth, learning, and achievements
             </p>
           </motion.div>
@@ -380,7 +350,7 @@ export default function HomePage() {
             <Button
               size="lg"
               onClick={() => router.push("/experience")}
-              className="glass-morphism hover:animate-glow text-white border-purple-400 hover:border-purple-300 px-8 py-4 text-lg bg-transparent"
+              className="glass-morphism hover:animate-glow px-8 py-4 text-lg bg-transparent"
               variant="outline"
             >
               View All
@@ -398,7 +368,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               Top Skills
             </h2>
             {/* <p className="text-xl text-white/80 max-w-3xl mx-auto">
@@ -446,10 +416,10 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               Let&apos;s Connect
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-secondary-text max-w-3xl mx-auto">
               Ready to bring your ideas to life? Let&apos;s discuss how we can
               create something amazing together.
             </p>

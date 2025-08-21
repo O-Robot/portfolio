@@ -137,7 +137,7 @@ export default function ExperiencePage() {
     },
   ];
   return (
-    <section className={`${theme === "dark" ? "bg-black" : "bg-black/20"}`}>
+    <section className="bg-background">
       <section id="projects" className="py-32 relative  ">
         <div className="container mx-auto px-6">
           <motion.div
@@ -146,10 +146,10 @@ export default function ExperiencePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               My Professional Journey
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-primary-text/80 max-w-3xl mx-auto mb-8">
               A timeline of growth, learning, and achievements
             </p>
 

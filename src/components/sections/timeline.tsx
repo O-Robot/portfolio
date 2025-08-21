@@ -12,7 +12,7 @@ export default function Timeline({ timelineData }: any) {
   return (
     <div className="relative">
       {/* Timeline Line */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 to-purple-400 rounded-full" />
+      <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary/60 to-primary rounded-full" />
 
       <div className="space-y-12">
         {timelineData.map((item: any, index: any) => (
@@ -30,7 +30,7 @@ export default function Timeline({ timelineData }: any) {
               transition={{ delay: index * 0.2 + 0.3, duration: 0.5 }}
               className="absolute left-1/2 transform -translate-x-1/2 z-10"
             >
-              <div className="w-20 h-20 rounded-full border-4 border-white/20 overflow-hidden shadow-2xl ring-4 ring-cyan-400/30 backdrop-blur-sm bg-white flex justify-center items-center">
+              <div className="w-20 h-20 rounded-full border-4 border-primary/20 overflow-hidden shadow-2xl ring-4 ring-primary/30 backdrop-blur-sm bg-white flex justify-center items-center">
                 <Image
                   src={item?.image}
                   alt="me"
@@ -52,36 +52,40 @@ export default function Timeline({ timelineData }: any) {
                 }
                 className="cursor-pointer"
               >
-                <Card className="glass-morphism border border-white/20 hover:border-cyan-400/50 transition-all duration-300 backdrop-blur-sm bg-white/5">
+                <Card className="glass-morphism border border-white/20 transition-all duration-300 backdrop-blur-sm bg-white/5">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-2">
-                      <Calendar className="h-4 w-4 text-cyan-400" />
-                      <span className="text-cyan-400 font-semibold">
+                      <Calendar className="h-4 w-4 text-link-active" />
+                      <span className="text-link-active font-semibold">
                         {item.year}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-2">
+                    <h3 className="text-xl font-bold text-skill-text mb-2">
                       {item.title}
                     </h3>
 
                     <div className="flex items-center gap-2 mb-3">
-                      <BriefcaseBusiness className="h-4 w-4 text-purple-400" />
-                      <span className="text-white/80">{item.company}</span>
+                      <BriefcaseBusiness className="h-4 w-4 text-skill-text" />
+                      <span className="text-skill-text/80">{item.company}</span>
                     </div>
 
                     <div className="flex items-center gap-2 mb-4">
-                      <MapPin className="h-4 w-4 text-green-400" />
-                      <span className="text-white/60">{item.location}</span>
+                      <MapPin className="h-4 w-4 text-skill-text" />
+                      <span className="text-skill-text/60">
+                        {item.location}
+                      </span>
                     </div>
 
-                    <p className="text-white/70 mb-4">{item.description}</p>
+                    <p className="text-skill-text/70 mb-4">
+                      {item.description}
+                    </p>
 
                     <div className="flex flex-wrap gap-2">
                       {item.technologies.map((tech: any) => (
                         <Badge
                           key={tech}
-                          className="bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors"
+                          className="bg-white/10 text-skill-text border border-white/20 hover:bg-white/20 transition-colors"
                         >
                           {tech}
                         </Badge>

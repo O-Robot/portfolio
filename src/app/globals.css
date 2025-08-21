@@ -13,47 +13,49 @@ html {
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* ---------- LIGHT MODE (grey bg) ---------- */
-  --background: #fff8e6; /* soft grey */
-  --skill-text: #111827; /* near-black for chips/badges */
-  --primary: #0ea5a4; /* brand accent (teal-600 vibe) */
-  --primary-text: #1f2937; /* slate-800 for body text */
-  --secondary-text: #6b7280; /* slate-500 for muted text */
-  --link-active: #0ea5a4; /* intentional, matches brand */
-  --link-inactive: #6b7280; /* muted but readable */
-  --accent: #f59e0b; /* warm amber for CTAs/badges */
+  --background: #f8eff4;
+  --skill-text: #231942;
+  --primary: #5e548e;
+  --primary-text: #231942;
+  --secondary-text: #655e7a;
+  --link-active: #231942;
+  --link-inactive: #535252;
+  --accent: #e0b1cb;
+  --linear: linear-gradient(
+    120deg,
+    #f8eff4 0%,
+    #e0b1cb 40%,
+    #be95c4 70%,
+    #5e548e 100% 
+  );
+}
 
-  /* Subtle neutral background gradient (no neon) */
-  --linear: linear-gradient(120deg, #ffffff 0%, #f6f7f9 50%, #e9ecf1 100%);
-
-  /* Optional: CTA/shine gradient for buttons, chips */
-  --accent-linear: linear-gradient(90deg, #0ea5a4 0%, #22d3ee 100%);
-
-  @variant dark {
-    /* ---------- DARK MODE (black bg) ---------- */
-    --background: #000000; /* pure black */
-    --skill-text: #e5e7eb; /* light grey for chips/badges */
-    --primary: #22d3ee; /* bright cyan-teal for actions */
-    --primary-text: #e5e7eb; /* soft white for body text */
-    --secondary-text: #94a3b8; /* slate-400/500-equivalent */
-    --link-active: #22d3ee; /* aligns with primary */
-    --link-inactive: #8b949e; /* dimmed but still readable */
-    --accent: #f59e0b; /* same amber works great on black */
-
-    /* Elegant dark background gradient (still “black”) */
-    --linear: linear-gradient(120deg, #0b0b0b 0%, #111111 50%, #000000 100%);
-
-    /* Optional: CTA/shine gradient for dark UI */
-    --accent-linear: linear-gradient(90deg, #06b6d4 0%, #67e8f9 100%);
-  }
+@variant dark {
+  --background: #00072d; 
+  --skill-text: #e6e6e6; 
+  --primary: #be95c4; 
+  --primary-text: #f8eff4; 
+  --secondary-text: #a8a0b8; 
+  --link-active: #fff; 
+  --link-inactive: #f8eff4; 
+  --accent: #ff00ff; 
+  --linear: linear-gradient(
+    120deg,
+    #00072d 0%,
+     #231942 40%,
+    #5e548e 70%,
+     #be95c4 100% 
+  );
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-skill-text: var(--skill-text);
   --color-primary: var(--primary);
   --color-primary-text: var(--primary-text);
   --color-secondary-text: var(--secondary-text);
   --color-link-active: var(--link-active);
+  --color-link-inactive: var(--link-inactive);
   --color-accent: var(--accent);
   --color-linear: var(--linear);
 }
@@ -122,12 +124,12 @@ html {
   font-family: "Agustina Regular";
   font-weight: bold;
   padding: 0 10px;
-  /* color: #55198b; */
+  color: var(--skill-text);
 }
 
 .glass-morphism {
-  background: rgba(9, 5, 5, 0.25);
-  backdrop-filter: blur(10px);
+  background: rgba(75, 60, 60, 0.038);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 

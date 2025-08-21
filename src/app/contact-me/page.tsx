@@ -34,7 +34,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-black ">
+    <div className="bg-background">
       {" "}
       <section id="contact" className="py-20 relative">
         <div className="container mx-auto px-6">
@@ -44,10 +44,10 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               Let&apos;s Connect
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
               Ready to bring your ideas to life? Let&apos;s discuss how we can
               create something amazing together.
             </p>
@@ -252,11 +252,11 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
             className="text-center mt-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold iquid-gradient text-primary-text">
               Schedule a Meeting
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 gap-12 max-w-6xl mx-auto py-10 w-2/3 ">
+          <div className="grid grid-cols-1 gap-12 max-w-6xl mx-auto py-10 w-full lg:w-1/2 ">
             <InlineWidget url="https://calendly.com/ogooluwaniadewale/" />
           </div>
         </div>

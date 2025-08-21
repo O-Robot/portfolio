@@ -1,30 +1,12 @@
 "use client";
 import LiveGitHub from "@/components/live-github-widget";
-import { useStore } from "@/store";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "next/image";
 import { Link2 } from "lucide-react";
 
-type Stats = {
-  totalStars: number;
-  totalCommits: number;
-  recentActivity: { repo: string; message: string; date: string }[];
-};
-
 export default function ProjectsPage() {
-  const [stats, setStats] = useState<Stats | null>(null);
-  const { theme } = useStore();
-
-  useEffect(() => {
-    fetch("/api/github-stats")
-      .then((res) => res.json())
-      .then((data) => setStats(data));
-  }, []);
-  console.log(stats);
-
   const data = [
     {
       id: "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
@@ -55,6 +37,7 @@ export default function ProjectsPage() {
         { name: "JavaScript", iconifyClass: "logos-javascript" },
         { name: "React", iconifyClass: "vscode-icons:file-type-reactts" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
@@ -70,6 +53,7 @@ export default function ProjectsPage() {
         { name: "JavaScript", iconifyClass: "logos-javascript" },
         { name: "React", iconifyClass: "vscode-icons:file-type-reactts" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
@@ -84,6 +68,7 @@ export default function ProjectsPage() {
         { name: "JavaScript", iconifyClass: "logos-javascript" },
         { name: "React", iconifyClass: "vscode-icons:file-type-reactts" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
@@ -99,6 +84,7 @@ export default function ProjectsPage() {
         { name: "JavaScript", iconifyClass: "logos-javascript" },
         { name: "React", iconifyClass: "vscode-icons:file-type-reactts" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
@@ -112,6 +98,7 @@ export default function ProjectsPage() {
         { name: "CSS", iconifyClass: "logos-css-3" },
         { name: "JavaScript", iconifyClass: "logos-javascript" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
@@ -126,6 +113,7 @@ export default function ProjectsPage() {
         { name: "Sass", iconifyClass: "logos-sass" },
         { name: "React", iconifyClass: "vscode-icons:file-type-reactts" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
@@ -136,6 +124,7 @@ export default function ProjectsPage() {
         "The website for AA Magazine where Users can read news and also subscribe to read premium magazines. Visit the website here ",
       isFork: false,
       languages: [{ name: "Wordpress", iconifyClass: "fa-wordpress" }],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
@@ -150,6 +139,7 @@ export default function ProjectsPage() {
         { name: "CSS", iconifyClass: "logos-css-3" },
         { name: "PHP", iconifyClass: "logos-php" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
@@ -163,6 +153,7 @@ export default function ProjectsPage() {
         { name: "CSS", iconifyClass: "logos-css-3" },
         { name: "React", iconifyClass: "vscode-icons:file-type-reactts" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNzM1MTI1NTE=",
@@ -177,6 +168,7 @@ export default function ProjectsPage() {
         { name: "CSS", iconifyClass: "logos-css-3" },
         { name: "JavaScript", iconifyClass: "logos-javascript" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkyNzM1MTI1NTE=",
@@ -190,6 +182,7 @@ export default function ProjectsPage() {
         { name: "CSS", iconifyClass: "logos-css-3" },
         { name: "React", iconifyClass: "vscode-icons:file-type-reactts" },
       ],
+      image: "/images/projects/ogamb.png",
     },
 
     {
@@ -208,6 +201,7 @@ export default function ProjectsPage() {
         { name: "Illustrator", iconifyClass: "vscode-icons:file-type-ai2" },
         { name: "Canva", iconifyClass: "simple-icons:canva" },
       ],
+      image: "/images/projects/ogamb.png",
     },
     {
       id: "MDEwOlJlcG9zaXRvcnkxODIxMjk3NTQ=",
@@ -223,11 +217,12 @@ export default function ProjectsPage() {
         },
         { name: "After Premiere Pro", iconifyClass: "logos:adobe-premiere" },
       ],
+      image: "/images/projects/ogamb.png",
     },
   ];
 
   return (
-    <section className={`${theme === "dark" ? "bg-black" : "bg-black/20"}`}>
+    <section className="bg-background">
       <section id="projects" className="py-32 relative  ">
         <div className="container  mx-auto px-6">
           {" "}
@@ -237,10 +232,10 @@ export default function ProjectsPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               My Projects Journey
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-primary-text/80 max-w-3xl mx-auto mb-8">
               A showcase of ideas brought to life — exploring creativity,
               problem-solving, and innovation through code
             </p>
@@ -260,7 +255,7 @@ export default function ProjectsPage() {
                   tiltMaxAngleY={5}
                   scale={1}
                   transitionSpeed={450}
-                  className="bg-purple-500 p-5 rounded-2xl w-[360px]"
+                  className="bg-background/30 shadow shadow-skill-text/40 p-5 rounded-xl w-[360px]"
                 >
                   {/* Project preview / link */}
                   <div className="relative w-full h-[230px]">
@@ -283,14 +278,14 @@ export default function ProjectsPage() {
 
                   {/* Title + description */}
                   <div className="mt-5">
-                    <h3 className="text-white font-bold text-[20px]">
+                    <h3 className="text-primary-text font-bold text-[20px]">
                       {project.name}
                     </h3>
-                    <p className="mt-2 text-secondary text-[14px]">
+                    <p className="mt-2 text-primary-text/70 text-[14px]">
                       {project.description || "No description available."}
                     </p>
                     {project.createdAt && (
-                      <p className="mt-1 text-xs text-gray-300">
+                      <p className="mt-1 text-xs text-primary/80">
                         {project.createdAt}
                       </p>
                     )}
@@ -301,7 +296,7 @@ export default function ProjectsPage() {
                     {project.languages.map((lang, i) => (
                       <span
                         key={i}
-                        className="flex items-center gap-1 px-2 py-1 rounded-md bg-white/10 text-xs text-white"
+                        className="flex items-center gap-1 px-2 py-1 rounded-md bg-white text-xs text-[#231942]"
                       >
                         <Icon icon={lang.iconifyClass} className="w-4 h-4" />
                         {lang.name}

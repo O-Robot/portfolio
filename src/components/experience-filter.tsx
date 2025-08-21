@@ -31,8 +31,8 @@ export default function ExperienceFilter({
             onClick={() => onFilterChange(filter.id)}
             className={`glass-morphism border-white/20 cursor-pointer ${
               selectedFilter === filter.id
-                ? "bg-cyan-400/20 border-cyan-400 text-cyan-400"
-                : "hover:border-cyan-400/50 text-white"
+                ? " text-link-active"
+                : "text-link-inactive"
             }`}
           >
             <span className="mr-2">{filter.icon}</span>
