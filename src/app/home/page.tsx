@@ -191,7 +191,7 @@ export default function HomePage() {
   };
 
   return (
-    <section className={`${theme === "dark" ? "bg-black" : "bg-black/20"}`}>
+    <section className="bg-background">
       {/* section hero  */}
       <section
         id="home"
@@ -243,9 +243,9 @@ export default function HomePage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="text-6xl md:text-8xl font-bold mb-6 liquid-gradient font-sora"
+              className="text-6xl md:text-8xl font-bold mb-6 text-primary liquid-gradient font-sora"
             >
-              Ogooluwani Adewale
+              OGOOLUWANI ADEWALE
             </motion.h1>
 
             {/* Subheading */}
@@ -253,7 +253,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="text-xl md:text-2xl text-white/80 mb-8 font-light"
+              className="text-xl md:text-2xl text-primary-text mb-8 font-light"
             >
               Inventing tomorrows web, one line of code at a time.
             </motion.p>

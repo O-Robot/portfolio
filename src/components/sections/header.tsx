@@ -2,14 +2,35 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useStore } from "@/store";
 import { Button } from "../ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, setTheme } = useStore();
+
+  const [isDark, setIsDark] = useState(false);
+
+  // Load saved theme
+  useEffect(() => {
+    const saved = localStorage.getItem("theme") === "dark";
+    setIsDark(saved);
+    updateTheme(saved);
+  }, []);
+
+  const updateTheme = (dark: boolean) => {
+    const html = document.documentElement;
+    if (dark) html.setAttribute("class", "dark");
+    else html.setAttribute("class", "light");
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  };
+
+  const toggleTheme = () => {
+    setIsDark((prev) => {
+      updateTheme(!prev);
+      return !prev;
+    });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,9 +64,9 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className={`text-xl font-bold ${
-              theme === "dark" ? "text-white" : ""
-            }`}
+            className={`text-xl font-bold 
+             text-white
+            `}
           >
             <Link href={"/"} className={`${scrolled ? "" : ""}`}>
               <span> &lt;</span>
@@ -69,10 +90,10 @@ export default function Header() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={toggleTheme}
               className="text-white hover:text-cyan-400"
             >
-              {theme === "dark" ? (
+              {isDark ? (
                 <Sun className="h-5 w-5" />
               ) : (
                 <Moon className="h-5 w-5" />
