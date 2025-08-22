@@ -1,0 +1,55 @@
+{
+  "mail": "hey@ogooluwaniadewale.com",
+  "phone": "+2348134041124",
+  "location": "Lagos, Nigeria",
+  "socialMediaLinks": [
+    {
+      "name": "Github",
+      "link": "https://github.com/O-Robot",
+      "icon": "simple-icons:github",
+      "color": "#181717"
+    },
+    {
+      "name": "LinkedIn",
+      "link": "https://linkedin.com/in/adewale-ogooluwani",
+      "icon": "simple-icons:linkedin",
+      "color": "#0077B5"
+    },
+    {
+      "name": "Gmail",
+      "link": "mailto:hey@ogooluwaniadewale.com",
+      "icon": "simple-icons:gmail",
+      "color": "#D14836"
+    },
+    {
+      "name": "Twitter",
+      "link": "https://twitter.com/ogzy_robot",
+      "icon": "simple-icons:twitter",
+      "color": "#1DA1F2"
+    },
+    {
+      "name": "Facebook",
+      "link": "https://www.facebook.com/ogzy.robot/",
+      "icon": "simple-icons:facebook",
+      "color": "#1877F2"
+    },
+    {
+      "name": "Instagram",
+      "link": "https://www.instagram.com/ogzy.robot/",
+      "icon": "simple-icons:instagram",
+      "color": "#E4405F"
+    },
+    {
+      "name": "Behance",
+      "link": "https://www.behance.net/ogooluwaniadewale",
+      "icon": "simple-icons:behance",
+      "color": "#053eff"
+    },
+    {
+      "name": "Dribbble",
+      "link": "https://dribbble.com/O-Robot",
+      "icon": "simple-icons:dribbble",
+      "color": "#ea4c89"
+    }
+  ]
+}

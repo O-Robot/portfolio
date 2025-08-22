@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import navItems from "@/data/nav.json";
 
 export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
-  // Load saved theme
   useEffect(() => {
     const saved = localStorage.getItem("theme") === "dark";
     setIsDark(saved);
@@ -41,18 +41,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navItems = [
-    { name: "Home", href: "home" },
-    //about - about me, image(AI), education,certifications, top skills
-    { name: "About", href: "about" },
-    //experience tabs work internships, volunteership, testimonials
-    { name: "Experience", href: "experience" },
-    // projects - projects cards - geng (skills cta- livedemo) contibution card and graph - john
-    { name: "Projects", href: "projects" },
-    //contact - send a message, Get in touch, AI Assistant, Calendly, Connect online
-    { name: "Contact", href: "contact-me" },
-  ];
 
   return (
     <motion.nav

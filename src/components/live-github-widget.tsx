@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Github, LoaderCircle } from "lucide-react";
+import { Github } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";
 import { Separator } from "./ui/separator";
 
@@ -39,7 +38,7 @@ export default function LiveGitHub() {
   return (
     <Card className="glass-morphism border-white/20 hover:border-green-400/50 transition-all duration-300">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-white">
+        <CardTitle className="flex items-center gap-2 text-primary-text">
           <Github className="h-5 w-5 text-green-400" />
           Contribution Graph
         </CardTitle>
@@ -90,8 +89,8 @@ export default function LiveGitHub() {
                 onClick={() => setYear(y)}
                 className={`px-3 py-1 rounded-lg text-sm cursor-pointer ${
                   year === y
-                    ? "bg-green-500 text-black font-bold"
-                    : "bg-white/10 text-white/70 hover:bg-white/20"
+                    ? "bg-primary text-white font-bold"
+                    : "bg-white/10 text-primary-text/70 hover:bg-white/20"
                 }`}
               >
                 {y}

@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Timeline from "@/components/sections/timeline";
+import timelineData from "@/data/experience.json";
+import skills from "@/data/skills.json";
 
 export default function HomePage() {
   const router = useRouter();
@@ -22,148 +24,6 @@ export default function HomePage() {
   }, []);
 
   if (!mounted) return null;
-
-  const timelineData = [
-    {
-      id: 1,
-      year: "2024",
-      title: "Senior Full-Stack Developer",
-      company: "TechCorp Inc.",
-      location: "San Francisco, CA",
-      description:
-        "Leading development of next-generation web applications using cutting-edge technologies.",
-      technologies: ["React", "Node.js", "TypeScript", "AWS"],
-      achievements: [
-        "Increased performance by 40%",
-        "Led team of 8 developers",
-        "Architected microservices",
-      ],
-      image: "/images/companies/swifta.png",
-      link: "",
-    },
-    {
-      id: 2,
-      year: "2022",
-      title: "Creative Technologist",
-      company: "Digital Agency",
-      location: "New York, NY",
-      description:
-        "Bridged design and development to create immersive digital experiences.",
-      technologies: ["Three.js", "WebGL", "React", "Python"],
-      achievements: [
-        "Won 3 design awards",
-        "Created viral AR campaign",
-        "Mentored junior developers",
-      ],
-      image: "/images/companies/iratein.png",
-      link: "",
-    },
-    {
-      id: 3,
-      year: "2020",
-      title: "Frontend Developer",
-      company: "StartupXYZ",
-      location: "Austin, TX",
-      description:
-        "Built responsive web applications and mobile-first experiences.",
-      technologies: ["Vue.js", "JavaScript", "CSS3", "Firebase"],
-      achievements: [
-        "Launched 5 products",
-        "Improved UX metrics by 60%",
-        "Built design system",
-      ],
-      image: "/images/logo.png",
-      link: "",
-    },
-  ];
-  const softwareSkills = [
-    {
-      skillName: "HTML5",
-      fontAwesomeClassname: "simple-icons:html5",
-      style: {
-        color: "#E34F26",
-      },
-    },
-    {
-      skillName: "CSS3",
-      fontAwesomeClassname: "fa-css3",
-      style: {
-        color: "#1572B6",
-      },
-    },
-    {
-      skillName: "Sass",
-      fontAwesomeClassname: "simple-icons:sass",
-      style: {
-        color: "#CC6699",
-      },
-    },
-    {
-      skillName: "Tailwind CSS",
-      fontAwesomeClassname: "simple-icons:tailwindcss",
-      style: {
-        color: "#38BDF8",
-      },
-    },
-    {
-      skillName: "JavaScript",
-      fontAwesomeClassname: "simple-icons:javascript",
-      style: {
-        backgroundColor: "#000000",
-        color: "#F7DF1E",
-      },
-    },
-    {
-      skillName: "ReactJS",
-      fontAwesomeClassname: "simple-icons:react",
-      style: {
-        color: "#61DAFB",
-      },
-    },
-    {
-      skillName: "Angular",
-      fontAwesomeClassname: "simple-icons:angular",
-      style: {
-        color: "#d70030",
-      },
-    },
-    {
-      skillName: "Vue",
-      fontAwesomeClassname: "simple-icons:vuedotjs",
-      style: {
-        color: "#4FC08D",
-      },
-    },
-    {
-      skillName: "Flutter",
-      fontAwesomeClassname: "simple-icons:flutter",
-      style: {
-        color: "#61c8f8",
-      },
-    },
-
-    {
-      skillName: "Framer",
-      fontAwesomeClassname: "simple-icons:framer",
-      style: {
-        color: "#0055FF",
-      },
-    },
-    {
-      skillName: "Wordpress",
-      fontAwesomeClassname: "fa-wordpress",
-      style: {
-        color: "#21759B",
-      },
-    },
-    {
-      skillName: "Python",
-      fontAwesomeClassname: "simple-icons:python",
-      style: {
-        color: "#ffd748",
-      },
-    },
-  ];
 
   return (
     <section className="bg-background">
@@ -349,7 +209,7 @@ export default function HomePage() {
               A timeline of growth, learning, and achievements
             </p>
           </motion.div>
-          <Timeline timelineData={timelineData} />
+          <Timeline timelineData={timelineData.slice(0, 3)} />
           <div className="flex justify-center gap-3 py-10">
             <Button
               size="lg"
@@ -386,7 +246,7 @@ export default function HomePage() {
             className="skill-container text-center m
             b-16"
           >
-            {softwareSkills.map((logo, i) => (
+            {skills.map((logo, i) => (
               <li className="skill-content" key={i}>
                 {/* Icon */}
                 <span

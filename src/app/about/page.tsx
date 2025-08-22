@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import Timeline from "@/components/sections/timeline";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import skills from "@/data/skills.json";
 
 export default function AboutPage() {
   const router = useRouter();
@@ -66,94 +67,6 @@ export default function AboutPage() {
       link: "https://dribbble.com/O-Robot",
       icon: "simple-icons:dribbble",
       color: "#ea4c89",
-    },
-  ];
-  const softwareSkills = [
-    {
-      skillName: "HTML5",
-      fontAwesomeClassname: "simple-icons:html5",
-      style: {
-        color: "#E34F26",
-      },
-    },
-    {
-      skillName: "CSS3",
-      fontAwesomeClassname: "fa-css3",
-      style: {
-        color: "#1572B6",
-      },
-    },
-    {
-      skillName: "Sass",
-      fontAwesomeClassname: "simple-icons:sass",
-      style: {
-        color: "#CC6699",
-      },
-    },
-    {
-      skillName: "Tailwind CSS",
-      fontAwesomeClassname: "simple-icons:tailwindcss",
-      style: {
-        color: "#38BDF8",
-      },
-    },
-    {
-      skillName: "JavaScript",
-      fontAwesomeClassname: "simple-icons:javascript",
-      style: {
-        backgroundColor: "#000000",
-        color: "#F7DF1E",
-      },
-    },
-    {
-      skillName: "ReactJS",
-      fontAwesomeClassname: "simple-icons:react",
-      style: {
-        color: "#61DAFB",
-      },
-    },
-    {
-      skillName: "Angular",
-      fontAwesomeClassname: "simple-icons:angular",
-      style: {
-        color: "#d70030",
-      },
-    },
-    {
-      skillName: "Vue",
-      fontAwesomeClassname: "simple-icons:vuedotjs",
-      style: {
-        color: "#4FC08D",
-      },
-    },
-    {
-      skillName: "Flutter",
-      fontAwesomeClassname: "simple-icons:flutter",
-      style: {
-        color: "#61c8f8",
-      },
-    },
-
-    {
-      skillName: "Framer",
-      fontAwesomeClassname: "simple-icons:framer",
-      style: {
-        color: "#0055FF",
-      },
-    },
-    {
-      skillName: "Wordpress",
-      fontAwesomeClassname: "fa-wordpress",
-      style: {
-        color: "#21759B",
-      },
-    },
-    {
-      skillName: "Python",
-      fontAwesomeClassname: "simple-icons:python",
-      style: {
-        color: "#ffd748",
-      },
     },
   ];
 
@@ -326,7 +239,7 @@ export default function AboutPage() {
             className="skill-container text-center m
                   b-16"
           >
-            {softwareSkills.map((logo, i) => (
+            {skills.map((logo, i) => (
               <li className="skill-content" key={i}>
                 {/* Icon */}
                 <span
