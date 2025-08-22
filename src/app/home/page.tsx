@@ -442,15 +442,18 @@ export default function HomePage() {
               {/* Contact Information */}
               <Card className="glass-morphism border-white/20">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-primary-text flex items-center gap-2">
                     📞 Get in Touch
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Button
                     type="submit"
-                    className="w-full glass-morphism border-cyan-400 text-cyan-400 hover:bg-cyan-400/20 hover:animate-glow"
+                    className="w-full glass-morphism hover:animate-glow"
                     size="lg"
+                    onClick={() => {
+                      router.push("/contact-me");
+                    }}
                   >
                     <Send className="mr-2 h-5 w-5" />
                     Contact Me
@@ -458,7 +461,7 @@ export default function HomePage() {
 
                   <Button
                     type="submit"
-                    className="w-full glass-morphism border-cyan-400 text-cyan-400 hover:bg-cyan-400/20 hover:animate-glow"
+                    className="w-full glass-morphism  hover:animate-glow"
                     size="lg"
                   >
                     <Pencil className="mr-2 h-5 w-5" />
@@ -470,18 +473,18 @@ export default function HomePage() {
               {/* AI Assistant */}
               <Card className="glass-morphism border-white/20">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-primary-text">
                     🤖 AI Assistant
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-400 to-purple-400 flex items-center justify-center text-sm">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary/40 to-primary flex items-center justify-center text-sm">
                         AI
                       </div>
                       <div className="flex-1">
-                        <p className="text-white/80 text-sm">
+                        <p className="text-primary-text/80 text-sm">
                           Hi! I&apos;m Robot. I can help answer questions about
                           Ogooluwa&apos;s experience, schedule meetings, or
                           provide project details. What would you like to know?
@@ -492,19 +495,19 @@ export default function HomePage() {
                     <div className="flex flex-wrap gap-2">
                       <Badge
                         variant="secondary"
-                        className="bg-white/10 text-white cursor-pointer hover:bg-white/20"
+                        className="bg-link-active/10 text-primary-text/80  cursor-pointer hover:bg-white/20"
                       >
                         Tell me about John&apos;s experience
                       </Badge>
                       <Badge
                         variant="secondary"
-                        className="bg-white/10 text-white cursor-pointer hover:bg-white/20"
+                        className="bg-link-active/10 text-primary-text/80  cursor-pointer hover:bg-white/20"
                       >
                         What technologies does he use?
                       </Badge>
                       <Badge
                         variant="secondary"
-                        className="bg-white/10 text-white cursor-pointer hover:bg-white/20"
+                        className="bg-link-active/10 text-primary-text/80  cursor-pointer hover:bg-white/20"
                       >
                         Schedule a meeting
                       </Badge>
@@ -516,7 +519,7 @@ export default function HomePage() {
               {/* Social Links */}
               <Card className="glass-morphism border-white/20">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
+                  <CardTitle className="text-primary-text flex items-center gap-2">
                     🌐 Connect Online
                   </CardTitle>
                 </CardHeader>
@@ -549,7 +552,7 @@ export default function HomePage() {
                         href="#"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border border-white/10 text-white/80 transition-colors ${social.color}`}
+                        className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border text-primary-text/80  cursor-pointer hover:bg-white/20 transition-colors ${social.color}`}
                       >
                         <span className="text-lg">{social.icon}</span>
                         <span>{social.name}</span>

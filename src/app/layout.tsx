@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
 
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
+import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 const space = Space_Grotesk({
   variable: "--font-space-grotesk",
   weight: ["300", "400", "500", "700"],
@@ -44,6 +36,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Toaster />
         <Footer />
       </body>
     </html>
