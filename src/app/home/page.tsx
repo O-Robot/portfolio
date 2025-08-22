@@ -12,6 +12,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Timeline from "@/components/sections/timeline";
 import timelineData from "@/data/experience.json";
 import skills from "@/data/skills.json";
+import robot from "@/data/about.json";
+import contact from "@/data/contact.json";
 
 export default function HomePage() {
   const router = useRouter();
@@ -70,7 +72,7 @@ export default function HomePage() {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="mb-8"
             >
-              <HolographicAvatar />
+              <HolographicAvatar avatar="" />
             </motion.div>
 
             {/* Name with Liquid Gradient */}
@@ -80,7 +82,7 @@ export default function HomePage() {
               transition={{ delay: 0.8, duration: 1 }}
               className="text-6xl md:text-8xl font-bold mb-6 text-primary-text iquid-gradient"
             >
-              Ogooluwani Adewale
+              {robot.name}
             </motion.h1>
 
             {/* Subheading */}
@@ -90,7 +92,7 @@ export default function HomePage() {
               transition={{ delay: 1, duration: 0.8 }}
               className="text-xl md:text-2xl text-primary-text mb-8 font-light"
             >
-              Inventing tomorrows web, one line of code at a time.
+              {robot.tagline}
             </motion.p>
 
             {/* CTA Buttons */}
@@ -157,20 +159,7 @@ export default function HomePage() {
             className="  flex justify-center"
           >
             <div className="text-xl text-center  text-primary-text/80 w-full lg:w-1/2">
-              👋 Hey there! I am John Doe, 🎓 a proud graduate of Engineering
-              College, where I am pursuing a Bachelors degree in Electronics and
-              Communication Engineering and building a solid foundation in
-              technology.
-              <br />
-              <br />
-              💻 I am also an avid developer, enthusiastic volunteer, and public
-              speaker, and I love exploring new opportunities and avenues.{" "}
-              <br />
-              <br />
-              🎮 As a self-taught developer, I have spent countless hours
-              sharpening my skills and learning new techniques to bring my ideas
-              to life.
-              <br />
+              {robot.about}
               <div className="flex justify-center gap-3 py-6">
                 <Button
                   size="lg"

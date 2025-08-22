@@ -1,50 +1,206 @@
 [
   {
-    "id": 1,
-    "year": "2024",
-    "title": "Senior Full-Stack Developer",
-    "company": "TechCorp Inc.",
-    "location": "San Francisco, CA",
-    "description": "Leading development of next-generation web applications using cutting-edge technologies.",
-    "technologies": ["React", "Node.js", "TypeScript", "AWS"],
-    "achievements": [
-      "Increased performance by 40%",
-      "Led team of 8 developers",
-      "Architected microservices"
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "OGAMB Website",
+    "createdAt": "November 2023",
+    "url": "https://ogamb.com.ng/",
+    "description": "The website for Ogun State Alternate Medicine Board. Visit the website here ",
+    "isFork": false,
+    "languages": [
+      { "name": "Wordpress", "iconifyClass": "fa-wordpress" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "PHP", "iconifyClass": "logos-php" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" }
     ],
-    "image": "/images/companies/swifta.png",
-    "link": ""
+    "image": "/images/projects/ogamb.png"
   },
   {
-    "id": 2,
-    "year": "2022",
-    "title": "Creative Technologist",
-    "company": "Digital Agency",
-    "location": "New York, NY",
-    "description": "Bridged design and development to create immersive digital experiences.",
-    "technologies": ["Three.js", "WebGL", "React", "Python"],
-    "achievements": [
-      "Won 3 design awards",
-      "Created viral AR campaign",
-      "Mentored junior developers"
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "SunSolar Dashboard",
+    "createdAt": "September 2023",
+    "url": "https://sun-solar.vercel.app/",
+    "description": "The dashboard for Investment. Visit the website here ",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
     ],
-    "image": "/images/companies/iratein.png",
-    "link": ""
+    "image": "/images/projects/ogamb.png"
   },
   {
-    "id": 3,
-    "year": "2020",
-    "title": "Frontend Developer",
-    "company": "StartupXYZ",
-    "location": "Austin, TX",
-    "description": "Built responsive web applications and mobile-first experiences.",
-    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
-    "achievements": [
-      "Launched 5 products",
-      "Improved UX metrics by 60%",
-      "Built design system"
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "PlugIt Dashboard",
+    "createdAt": "May 2023",
+    "url": "https://plugit-dashboard.vercel.app/",
+    "description": "The dashboard for PlugIt Automation. Visit the website here ",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
     ],
-    "image": "/images/logo.png",
-    "link": ""
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "PlugIt Website",
+    "createdAt": "March 2023",
+    "url": "https://landing-page-rho-sandy.vercel.app/",
+    "description": "The website for PlugIt Automation. Visit the website here ",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "Audit & Systems Solutions",
+    "createdAt": "November 2022",
+    "url": "https://itauditsolution.ng",
+    "description": "The website for Audit & Systems Solutions. Visit the website here ",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "Boxin Logistics",
+    "createdAt": "May 2021",
+    "url": "https://boxin.ng/",
+    "description": "The website for Boxin Logistics. Visit the website here ",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "Boxin Store",
+    "createdAt": "May 2022",
+    "url": "http://20.119.67.205:8000/",
+    "description": "Online Store for Boxin users. The site is Unique to each particular store owner ",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "Sass", "iconifyClass": "logos-sass" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "AA Magazine",
+    "createdAt": "June 2022",
+    "url": "https://aamagazine.net",
+    "description": "The website for AA Magazine where Users can read news and also subscribe to read premium magazines. Visit the website here ",
+    "isFork": false,
+    "languages": [{ "name": "Wordpress", "iconifyClass": "fa-wordpress" }],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+    "name": "The LightGivers Foundation",
+    "createdAt": "October 2022",
+    "url": "https://thelightgivers.org",
+    "description": "The website for The LightGiversHumanitarian Foundation with multi-currency donations capabilities. Visit the website here ",
+    "isFork": false,
+    "languages": [
+      { "name": "Wordpress", "iconifyClass": "fa-wordpress" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "PHP", "iconifyClass": "logos-php" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
+    "name": "My Portfolio Site",
+    "createdAt": "January 2021",
+    "url": "https://ogooluwaniadewale.com",
+    "description": "My Portfolio website. Visit the website here",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNzM1MTI1NTE=",
+    "name": "DP Creator",
+    "createdAt": "June 2020",
+    "url": "https://dpcreator.netlify.app/",
+    "description": "A Display Picture creator for Online Seminars and Conferences. Click to view",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyNzM1MTI1NTE=",
+    "name": "Online Calculator",
+    "createdAt": "April 2022",
+    "url": "https://o-robot.github.io/online-calculator/",
+    "description": "A Basic Calculator WebApp using React JS. Click to view",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkyMDIxNDc4ODA=",
+    "name": "Graphics Design Portfolio",
+    "createdAt": "",
+    "url": "https://drive.google.com/drive/folders/1qSKTqEuMO3WixSqvq5FJLugPlX2ORdbH?usp=sharing",
+    "description": "",
+    "isFork": false,
+    "languages": [
+      { "name": "Corel Draw", "iconifyClass": "file-icons:coreldraw-alt" },
+      {
+        "name": "Photoshop",
+        "iconifyClass": "vscode-icons:file-type-photoshop2"
+      },
+      { "name": "Illustrator", "iconifyClass": "vscode-icons:file-type-ai2" },
+      { "name": "Canva", "iconifyClass": "simple-icons:canva" }
+    ],
+    "image": "/images/projects/ogamb.png"
+  },
+  {
+    "id": "MDEwOlJlcG9zaXRvcnkxODIxMjk3NTQ=",
+    "name": "Motion Design Portfolio",
+    "createdAt": "",
+    "url": "https://drive.google.com/drive/folders/17SY1VTVE6VePs6VInHEdlNh4GrDS7WD9?usp=sharing",
+    "description": "",
+    "isFork": false,
+    "languages": [
+      {
+        "name": "After Effects",
+        "iconifyClass": "logos:adobe-after-effects"
+      },
+      { "name": "After Premiere Pro", "iconifyClass": "logos:adobe-premiere" }
+    ],
+    "image": "/images/projects/ogamb.png"
   }
 ]

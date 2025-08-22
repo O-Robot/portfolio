@@ -13,7 +13,8 @@
       "Architected microservices"
     ],
     "image": "/images/companies/swifta.png",
-    "link": ""
+    "link": "https://swifta.com",
+    "type": "work"
   },
   {
     "id": 2,
@@ -29,7 +30,8 @@
       "Mentored junior developers"
     ],
     "image": "/images/companies/iratein.png",
-    "link": ""
+    "link": "",
+    "type": "work"
   },
   {
     "id": 3,
@@ -45,7 +47,42 @@
       "Built design system"
     ],
     "image": "/images/logo.png",
-    "link": ""
+    "link": "",
+    "type": "work"
+  },
+  {
+    "id": 3,
+    "year": "2020",
+    "title": "Frontend Developer",
+    "company": "StartupXYZ",
+    "location": "Austin, TX",
+    "description": "Built responsive web applications and mobile-first experiences.",
+    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
+    "achievements": [
+      "Launched 5 products",
+      "Improved UX metrics by 60%",
+      "Built design system"
+    ],
+    "image": "/images/logo.png",
+    "link": "",
+    "type": "intern"
+  },
+  {
+    "id": 5,
+    "year": "2020",
+    "title": "Frontend Developer",
+    "company": "StartupXYZ",
+    "location": "Austin, TX",
+    "description": "Built responsive web applications and mobile-first experiences.",
+    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
+    "achievements": [
+      "Launched 5 products",
+      "Improved UX metrics by 60%",
+      "Built design system"
+    ],
+    "image": "/images/logo.png",
+    "link": "",
+    "type": "volunteership"
   },
   {
     "id": 4,
@@ -61,6 +98,24 @@
       "Built design system"
     ],
     "image": "/images/logo.png",
-    "link": ""
+    "link": "",
+    "type": "volunteership"
+  },
+  {
+    "id": 9,
+    "year": "2020",
+    "title": "Frontend Developer",
+    "company": "StartupXYZ",
+    "location": "Austin, TX",
+    "description": "Built responsive web applications and mobile-first experiences.",
+    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
+    "achievements": [
+      "Launched 5 products",
+      "Improved UX metrics by 60%",
+      "Built design system"
+    ],
+    "image": "/images/logo.png",
+    "link": "",
+    "type": "volunteership"
   }
 ]

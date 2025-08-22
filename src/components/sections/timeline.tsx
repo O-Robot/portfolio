@@ -5,8 +5,10 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Timeline({ timelineData }: any) {
+  const router = useRouter();
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
   return (
@@ -31,13 +33,15 @@ export default function Timeline({ timelineData }: any) {
               className="absolute left-1/2 transform -translate-x-1/2 z-10"
             >
               <div className="w-20 h-20 rounded-full border-4 border-primary/20 overflow-hidden shadow-2xl ring-4 ring-primary/30 backdrop-blur-sm bg-white flex justify-center items-center">
-                <Image
-                  src={item?.image}
-                  alt="me"
-                  height={50}
-                  width={50}
-                  className="object-contain "
-                />
+                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src={item?.image}
+                    alt="me"
+                    height={50}
+                    width={50}
+                    className="object-contain cursor-pointer"
+                  />
+                </a>
               </div>
             </motion.div>
 

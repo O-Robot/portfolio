@@ -9,6 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { InlineWidget } from "react-calendly";
+import contact from "@/data/contact.json";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -20,19 +22,41 @@ export default function ContactPage() {
   });
   const [loading, setLoading] = useState(false);
 
+  const connect = ["Github", "LinkedIn"];
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    toast({
-      title: "Message sent! 🚀",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
-    console.log(formData);
-    setFormData({ name: "", email: "", message: "" });
+      if (res.ok) {
+        toast({
+          title: "Message sent! 🚀",
+          description: "Thanks for reaching out. I'll get back to you soon!",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast({
+          title: "Oops! ❌",
+          description: "Something went wrong. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Error ⚡",
+        description: "Network issue, please try again.",
+        variant: "destructive",
+      });
+    }
+
     setLoading(false);
   };
 
@@ -145,20 +169,30 @@ export default function ContactPage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail className="h-5 w-5 text-cyan-400" />
-                    <span className="text-primary-text/80">
-                      hey@ogooluwaniadewale.com
-                    </span>
+                    <a
+                      href={`mailto:${contact.mail}`}
+                      className="text-primary-text/80  hover:text-link-active transition-colors"
+                    >
+                      {contact.mail}
+                    </a>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <MessageCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-primary-text/80">+1 </span>
+                    <a
+                      href={`https://wa.me/${contact.phone.replace(/\D/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-text/80  hover:text-link-active transition-colors"
+                    >
+                      {contact.phone}
+                    </a>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <MapPin className="h-5 w-5 text-purple-400" />
                     <span className="text-primary-text/80">
-                      San Francisco, CA
+                      {contact.location}
                     </span>
                   </div>
                 </CardContent>
@@ -219,39 +253,23 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
-                    {[
-                      {
-                        name: "GitHub",
-                        icon: "🐙",
-                        color: "hover:text-gray-400",
-                      },
-                      {
-                        name: "LinkedIn",
-                        icon: "💼",
-                        color: "hover:text-blue-400",
-                      },
-                      {
-                        name: "Twitter",
-                        icon: "🐦",
-                        color: "hover:text-cyan-400",
-                      },
-                      {
-                        name: "Discord",
-                        icon: "🎮",
-                        color: "hover:text-purple-400",
-                      },
-                    ].map((social) => (
-                      <motion.a
-                        key={social.name}
-                        href="#"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border text-primary-text/80  cursor-pointer hover:bg-white/20 transition-colors ${social.color}`}
-                      >
-                        <span className="text-lg">{social.icon}</span>
-                        <span>{social.name}</span>
-                      </motion.a>
-                    ))}
+                    {contact.socialMediaLinks
+                      .filter((link) => connect.includes(link.name))
+                      .map((social) => (
+                        <motion.a
+                          key={social.name}
+                          href="#"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border text-primary-text/80  cursor-pointer hover:bg-white/20 transition-colors ${social.color}`}
+                        >
+                          <Icon
+                            icon={social.icon}
+                            className="transition-transform hover:scale-110"
+                          />
+                          <span>{social.name}</span>
+                        </motion.a>
+                      ))}
                   </div>
                 </CardContent>
               </Card>

@@ -104,3 +104,16 @@ export const introCameraZoomOutPos = {
   y: 3,
   z: 3,
 };
+
+export const TruncateText = (text?: string, count?: number): string => {
+  const truncate = (str: string): string => {
+    if (count && str?.length > count) {
+      return str.slice(0, count) + "...";
+    } else if (!count && str.length > 15) {
+      return str.slice(0, 15) + "...";
+    }
+    return str;
+  };
+
+  return truncate(text || "");
+};
