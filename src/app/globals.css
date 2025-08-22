@@ -26,25 +26,25 @@ html {
     #f8eff4 0%,
     #e0b1cb 40%,
     #be95c4 70%,
-    #5e548e 100% 
+    #5e548e 100%
   );
 }
 
 @variant dark {
-  --background: #00072d; 
-  --skill-text: #e6e6e6; 
-  --primary: #be95c4; 
-  --primary-text: #f8eff4; 
-  --secondary-text: #a8a0b8; 
-  --link-active: #fff; 
-  --link-inactive: #f8eff4; 
-  --accent: #ff00ff; 
+  --background: #00072d;
+  --skill-text: #e6e6e6;
+  --primary: #be95c4;
+  --primary-text: #f8eff4;
+  --secondary-text: #a8a0b8;
+  --link-active: #fff;
+  --link-inactive: #f8eff4;
+  --accent: #ff00ff;
   --linear: linear-gradient(
     120deg,
     #00072d 0%,
-     #231942 40%,
+    #231942 40%,
     #5e548e 70%,
-     #be95c4 100% 
+    #be95c4 100%
   );
 }
 
@@ -149,7 +149,7 @@ html {
 
 .skill-container {
   display: grid;
-  gap: 2rem;
+  gap: 1.3rem;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
 }

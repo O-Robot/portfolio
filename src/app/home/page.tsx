@@ -14,10 +14,14 @@ import Timeline from "@/components/sections/timeline";
 export default function HomePage() {
   const router = useRouter();
   const [webglSupported, setWebglSupported] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setWebglSupported(isWebGLSupported());
+    setMounted(true);
   }, []);
+
+  if (!mounted) return null;
 
   const timelineData = [
     {

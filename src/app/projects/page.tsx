@@ -245,17 +245,23 @@ export default function ProjectsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, amount: 0.25 }}
-            className={`relative z-0 gap-7 flex justify-center`}
+            className={`relative z-0 gap-7 flex justify-center  mx-auto`}
           >
-            <div className="flex flex-wrap gap-7 justify-start max-w-[calc(360px*3+2*28px)]">
-              {data.map((project, _) => (
+            <div
+              className="grid gap-7 w-full"
+              style={{
+                gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+                gridAutoRows: "max-content",
+              }}
+            >
+              {data.map((project, i) => (
                 <Tilt
-                  key={_}
+                  key={i}
                   tiltMaxAngleX={5}
                   tiltMaxAngleY={5}
                   scale={1}
                   transitionSpeed={450}
-                  className="bg-background/30 shadow shadow-skill-text/40 p-5 rounded-xl w-[360px]"
+                  className="bg-background/30 shadow shadow-skill-text/40 p-5 rounded-xl"
                 >
                   {/* Project preview / link */}
                   <div className="relative w-full h-[230px]">

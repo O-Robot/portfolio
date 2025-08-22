@@ -58,7 +58,7 @@ export default function Header() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full right-0 z-50 transition-all duration-300 ${
         scrolled ? "glass-morphism" : "bg-transparent"
       }`}
     >
@@ -69,10 +69,7 @@ export default function Header() {
             className={`text-xl font-bold 
             `}
           >
-            <Link
-              href={"/"}
-              className={`${scrolled ? "" : ""} flex items-baseline`}
-            >
+            <Link href={"/"} className={`flex items-baseline`}>
               <span className="text-skill-text"> &lt;</span>
               <span className="logo-name">Ogooluwani Adewale</span>
               <span className="text-skill-text">/&gt;</span>
@@ -120,7 +117,7 @@ export default function Header() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white"
+              className="text-skill-text"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
@@ -138,16 +135,25 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden mt-4 glass-morphism rounded-lg p-4"
           >
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block py-2 text-white/80 hover:text-cyan-400 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = pathname
+                ?.toLowerCase()
+                .includes(item.href.toLowerCase());
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`block py-2 hover:text-link-active hover:font-medium  transition-colors ${
+                    isActive
+                      ? "text-link-active font-medium"
+                      : "text-link-inactive "
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </a>
+              );
+            })}
           </motion.div>
         )}
       </div>
