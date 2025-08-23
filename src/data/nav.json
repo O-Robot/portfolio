@@ -1,7 +1,8 @@
 [
-  { "name": "Home", "href": "/home" },
+  { "name": "Home", "href": "home" },
   { "name": "About", "href": "about" },
   { "name": "Experience", "href": "experience" },
   { "name": "Projects", "href": "projects" },
+  { "name": "Résumé", "href": "resume" },
   { "name": "Contact", "href": "contact-me" }
 ]

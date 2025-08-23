@@ -14,11 +14,13 @@ import timelineData from "@/data/experience.json";
 import skills from "@/data/skills.json";
 import robot from "@/data/about.json";
 import contact from "@/data/contact.json";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function HomePage() {
   const router = useRouter();
   const [webglSupported, setWebglSupported] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const connect = ["Github", "LinkedIn"];
 
   useEffect(() => {
     setWebglSupported(isWebGLSupported());
@@ -158,7 +160,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="  flex justify-center"
           >
-            <div className="text-xl text-center  text-primary-text/80 w-full lg:w-1/2">
+            <div className="text-xl text-center  text-primary-text/80 w-full ">
               {robot.about}
               <div className="flex justify-center gap-3 py-6">
                 <Button
@@ -374,39 +376,23 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
-                    {[
-                      {
-                        name: "GitHub",
-                        icon: "🐙",
-                        color: "hover:text-gray-400",
-                      },
-                      {
-                        name: "LinkedIn",
-                        icon: "💼",
-                        color: "hover:text-blue-400",
-                      },
-                      {
-                        name: "Twitter",
-                        icon: "🐦",
-                        color: "hover:text-cyan-400",
-                      },
-                      {
-                        name: "Discord",
-                        icon: "🎮",
-                        color: "hover:text-purple-400",
-                      },
-                    ].map((social) => (
-                      <motion.a
-                        key={social.name}
-                        href="#"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border text-primary-text/80  cursor-pointer hover:bg-white/20 transition-colors ${social.color}`}
-                      >
-                        <span className="text-lg">{social.icon}</span>
-                        <span>{social.name}</span>
-                      </motion.a>
-                    ))}
+                    {contact.socialMediaLinks
+                      .filter((link) => connect.includes(link.name))
+                      .map((social) => (
+                        <motion.a
+                          key={social.name}
+                          href="#"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border text-primary-text/80  cursor-pointer hover:bg-white/20 transition-colors ${social.color}`}
+                        >
+                          <Icon
+                            icon={social.icon}
+                            className="transition-transform hover:scale-110"
+                          />
+                          <span>{social.name}</span>
+                        </motion.a>
+                      ))}
                   </div>
                 </CardContent>
               </Card>
