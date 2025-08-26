@@ -5,28 +5,50 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json();
+    const { firstName, lastName, email, subject, message, subscribe } =
+      await req.json();
 
     await resend.emails.send({
       from: "Portfolio Contact <no-reply@ogooluwaniadewale.com>",
       to: ["hey@ogooluwaniadewale.com"],
-      subject: `New message from ${name}`,
+      subject: `${subject}`,
       replyTo: email,
       text: `
         You have a new message from your portfolio form:
 
-        Name: ${name}
+        Firstname: ${firstName}
+        Lastname: ${lastName}
         Email: ${email}
         Message: ${message}
+        Subscribe to Newsletter: ${subscribe ? "Yes" : "No"}
       `,
     });
 
-    await resend.emails.send({
-      from: "Ogooluwani Adewale <noreply@ogooluwaniadewale.com>",
-      to: [email],
-      subject: "Thanks for reaching out 🚀",
-      text: `Hi ${name},\n\nThanks for reaching out! I’ve received your message and will get back to you as soon as possible.\n\nBest Regards,\nOgooluwani`,
-    });
+    if (!subscribe) {
+      await resend.emails.send({
+        from: "Ogooluwani Adewale <noreply@ogooluwaniadewale.com>",
+        to: [email],
+        subject: "Thanks for reaching out 🚀",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto; padding:20px; border-radius:12px; background:#f8eff4; text-align:center;">
+            <img src="https://ogooluwaniadewale.com/icons/favicon.ico" alt="Ogooluwani Logo" width="80" style="margin-bottom:20px;" />
+            <h2 style="color:#231942;">Hi ${firstName} ${lastName},</h2>
+            <p style="color:#655e7a; font-size:16px; line-height:1.5;">
+             Thank you for reaching out 🎉
+            </p>
+            <p style="color:#655e7a; font-size:16px; line-height:1.5;">
+              I’ve received your message and will get back to you as soon as possible.
+            </p>
+            <p style="margin-top:20px; font-size:14px; color:#231942; font-weight:bold;">
+              Best Regards,\nOgooluwani
+            </p>
+            <a href="https://ogooluwaniadewale.com" style="display:inline-block; margin-top:20px; padding:10px 20px; background:#e0b1cb; color:#231942; border-radius:6px; text-decoration:none;">
+              Visit My Portfolio
+            </a>
+          </div>
+        `,
+      });
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

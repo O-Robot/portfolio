@@ -16,9 +16,12 @@ export default function ContactPage() {
   const { toast } = useToast();
 
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
+    subject: "",
     email: "",
     message: "",
+    subscribe: false,
   });
   const [loading, setLoading] = useState(false);
 
@@ -35,19 +38,38 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       });
 
-      if (res.ok) {
-        toast({
-          title: "Message sent! 🚀",
-          description: "Thanks for reaching out. I'll get back to you soon!",
-        });
-        setFormData({ name: "", email: "", message: "" });
-      } else {
+      if (!res.ok) {
         toast({
           title: "Oops! ❌",
           description: "Something went wrong. Please try again later.",
           variant: "destructive",
         });
       }
+
+      if (formData.subscribe) {
+        await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: formData.email,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+          }),
+        });
+      }
+
+      toast({
+        title: "Message sent! 🚀",
+        description: "Thanks for reaching out. I'll get back to you soon!",
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+        subject: "",
+        subscribe: false,
+      });
     } catch (err) {
       console.error(err);
       toast({
@@ -95,15 +117,27 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6 ">
-                    <div>
+                    <div className="flex gap-4">
                       <Input
-                        placeholder="Your Name"
-                        value={formData.name}
+                        placeholder="First Name"
+                        value={formData.firstName}
                         onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
+                          setFormData({
+                            ...formData,
+                            firstName: e.target.value,
+                          })
                         }
-                        className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                         required
+                        className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
+                      />
+                      <Input
+                        placeholder="Last Name"
+                        value={formData.lastName}
+                        onChange={(e) =>
+                          setFormData({ ...formData, lastName: e.target.value })
+                        }
+                        required
+                        className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                     </div>
 
@@ -119,6 +153,17 @@ export default function ContactPage() {
                         required
                       />
                     </div>
+                    <div>
+                      <Input
+                        placeholder="Subject"
+                        value={formData.subject}
+                        onChange={(e) =>
+                          setFormData({ ...formData, subject: e.target.value })
+                        }
+                        required
+                        className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
+                      />
+                    </div>
 
                     <div className="relative">
                       <Textarea
@@ -130,6 +175,26 @@ export default function ContactPage() {
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50 min-h-32"
                         required
                       />
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={formData.subscribe}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            subscribe: e.target.checked,
+                          })
+                        }
+                        id="subscribe"
+                        className="cursor-pointer accent-accent"
+                      />
+                      <label
+                        htmlFor="subscribe"
+                        className="text-primary-text/80 cursor-pointer"
+                      >
+                        Subscribe
+                      </label>
                     </div>
 
                     <Button
