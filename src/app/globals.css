@@ -21,13 +21,8 @@ html {
   --link-active: #231942;
   --link-inactive: #535252;
   --accent: #e0b1cb;
-  --linear: linear-gradient(
-    120deg,
-    #f8eff4 0%,
-    #e0b1cb 40%,
-    #be95c4 70%,
-    #5e548e 100%
-  );
+  --linear: linear-gradient(110deg, #7800ff, #f07 35%, #f9b11f 45%, #7800ff 90%)
+    0 0 /300% 100%;
 }
 
 @variant dark {
@@ -39,13 +34,8 @@ html {
   --link-active: #fff;
   --link-inactive: #f8eff4;
   --accent: #ff00ff;
-  --linear: linear-gradient(
-    120deg,
-    #00072d 0%,
-    #231942 40%,
-    #5e548e 70%,
-    #be95c4 100%
-  );
+  --linear: linear-gradient(110deg, #7800ff, #f07 35%, #f9b11f 45%, #7800ff 90%)
+    0 0 /300% 100%;
 }
 
 @theme inline {

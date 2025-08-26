@@ -82,7 +82,7 @@ export default function HomePage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="text-6xl md:text-8xl font-bold mb-6 text-primary-text iquid-gradient"
+              className="text-6xl md:text-8xl font-bold mb-6 text-primary-text liquid-gradient"
             >
               {robot.name}
             </motion.h1>
@@ -116,10 +116,11 @@ export default function HomePage() {
                 size="lg"
                 className="glass-morphism hover:animate-glow text-primary-text  px-8 py-4 text-lg bg-transparent"
                 variant="outline"
+                onClick={() => router.push("/resume")}
               >
-                <Download className="mr-2 h-5 w-5" />
+                {/* <Download className="mr-2 h-5 w-5" /> */}
                 {/* 📄 */}
-                Download Resume
+                View Résumé
               </Button>
             </motion.div>
           </motion.div>

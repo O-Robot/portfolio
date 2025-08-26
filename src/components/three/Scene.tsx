@@ -12,13 +12,7 @@ import { useCameraControls } from "@/hooks/controls";
 
 export default function Scene() {
   const { controlsEnabled } = useStore();
-  const handlePlay = () => {
-    // const audio = new Audio(
-    //   "https://jollofradiomedia.blob.core.windows.net/static/audio/Konga-Happiness-Song-2015.mp3"
-    // );
-    // audio.play().catch((error) => {
-    // });
-  };
+
   useCameraControls();
   useClickListeners();
 

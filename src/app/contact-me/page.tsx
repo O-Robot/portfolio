@@ -76,7 +76,7 @@ export default function ContactPage() {
             </h2>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
               Ready to bring your ideas to life? Let&apos;s discuss how we can
-              create something amazing together.
+              build something amazing together.
             </p>
           </motion.div>
 
