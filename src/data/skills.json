@@ -107,6 +107,13 @@
     }
   },
   {
+    "skillName": "Node.js",
+    "fontAwesomeClassname": "simple-icons:nodedotjs",
+    "style": {
+      "color": "#5FA04E"
+    }
+  },
+  {
     "skillName": "Python",
     "fontAwesomeClassname": "simple-icons:python",
     "style": {
@@ -122,9 +129,9 @@
   },
   {
     "skillName": "Firebase",
-    "fontAwesomeClassname": "simple-icons:python",
+    "fontAwesomeClassname": "simple-icons:firebase",
     "style": {
-      "color": "#ffd748"
+      "color": "#DD2C00"
     }
   },
   {

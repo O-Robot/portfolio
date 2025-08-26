@@ -15,6 +15,7 @@ import skills from "@/data/skills.json";
 import robot from "@/data/about.json";
 import contact from "@/data/contact.json";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { TruncateText } from "@/utils/constants";
 
 export default function HomePage() {
   const router = useRouter();
@@ -161,8 +162,8 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="  flex justify-center"
           >
-            <div className="text-xl text-center  text-primary-text/80 w-full ">
-              {robot.about}
+            <div className="text-xl text-center  text-primary-text/80 w-full whitespace-pre-line">
+              {TruncateText(robot.about, 550)}
               <div className="flex justify-center gap-3 py-6">
                 <Button
                   size="lg"

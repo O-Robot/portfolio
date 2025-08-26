@@ -1,16 +1,16 @@
 [
   {
     "id": 1,
-    "year": "2024",
-    "title": "Senior Full-Stack Developer",
-    "company": "TechCorp Inc.",
-    "location": "San Francisco, CA",
-    "description": "Leading development of next-generation web applications using cutting-edge technologies.",
-    "technologies": ["React", "Node.js", "TypeScript", "AWS"],
+    "year": "Feb 2024 - Present",
+    "title": "Senior Frontend Developer",
+    "company": "Swifta Systems",
+    "location": "Nigeria",
+    "description": "Building HR solutions with Angular and client-facing portals with Next.js, turning complex business requirements into smooth, scalable digital experiences",
+    "technologies": ["Angular", "Next.js", "React", "TypeScript", "JavaScript"],
     "achievements": [
-      "Increased performance by 40%",
-      "Led team of 8 developers",
-      "Architected microservices"
+      "Collaborated on enterprise-level Angular solutions with a team of engineers.",
+      "Spearheaded a greenfield project built with Next.js, owning the full development lifecycle from architecture through deployment.",
+      "Improved platform performance by 40% while establishing a scalable codebase for future projects."
     ],
     "image": "/images/companies/swifta.png",
     "link": "https://swifta.com",
@@ -18,103 +18,205 @@
   },
   {
     "id": 2,
-    "year": "2022",
-    "title": "Creative Technologist",
-    "company": "Digital Agency",
-    "location": "New York, NY",
-    "description": "Bridged design and development to create immersive digital experiences.",
-    "technologies": ["Three.js", "WebGL", "React", "Python"],
+    "year": "May 2024 - Aug 2025",
+    "title": "Software Developer",
+    "company": "Jollof Radio",
+    "location": "Nigeria",
+    "description": "Shaping the future of African digital media by crafting fast, engaging mobile and web platforms.",
+    "technologies": ["Flutter", "Vue.js", "API Integration"],
     "achievements": [
-      "Won 3 design awards",
-      "Created viral AR campaign",
-      "Mentored junior developers"
+      "Revamped mobile and web platforms, increasing satisfaction by 50% and boosting session time by 35%.",
+      "Optimised mobile and web performance, reducing load times by 40%.",
+      "Integrated streaming APIs, authentication, and secure payments for seamless experiences."
+    ],
+    "image": "/images/companies/jollof.png",
+    "link": "https://jollofradio.com",
+    "type": "work"
+  },
+  {
+    "id": 3,
+    "year": "Feb 2024 - Jul 2025",
+    "title": "Full Stack Developer",
+    "company": "iRatein Multimedia Limited",
+    "location": "Nigeria",
+    "description": "Delivered sleek, high-performing digital platforms by pairing refined frontend craft with dependable backend systems.",
+    "technologies": ["Next.js", "React", "Node.js", "Python"],
+    "achievements": [
+      "Built and optimised web interfaces with Next.js and React, cutting load times by 45%.",
+      "Integrated backend modules with Node.js and Python, enabling business-critical features.",
+      "Worked with designers to modernise interfaces and reduce drop-offs by 30%."
     ],
     "image": "/images/companies/iratein.png",
     "link": "",
     "type": "work"
   },
   {
-    "id": 3,
-    "year": "2020",
-    "title": "Frontend Developer",
-    "company": "StartupXYZ",
-    "location": "Austin, TX",
-    "description": "Built responsive web applications and mobile-first experiences.",
-    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
+    "id": 4,
+    "year": "Jul 2024 - Jan 2025",
+    "title": "Graphics & Web Consultant",
+    "company": "54Collective",
+    "location": "Nigeria",
+    "description": "Supported startups with creative design and functional websites that turned early ideas into polished brands.",
+    "technologies": ["Web Development", "Graphic Design", "Branding"],
     "achievements": [
-      "Launched 5 products",
-      "Improved UX metrics by 60%",
-      "Built design system"
+      "Designed and launched websites to improve online visibility for startups.",
+      "Delivered branding assets that amplified client identities.",
+      "Collaborated with teams on creative campaigns for portfolio companies."
     ],
-    "image": "/images/logo.png",
+    "image": "/images/companies/54collective.png",
     "link": "",
     "type": "work"
   },
   {
-    "id": 3,
-    "year": "2020",
-    "title": "Frontend Developer",
-    "company": "StartupXYZ",
-    "location": "Austin, TX",
-    "description": "Built responsive web applications and mobile-first experiences.",
-    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
+    "id": 5,
+    "year": "Feb 2023 - Jan 2024",
+    "title": "IT Support Specialist",
+    "company": "MacTay",
+    "location": "Lagos, Nigeria",
+    "description": "Kept teams running smoothly by solving technical issues, securing systems, and training staff to work smarter.",
+    "technologies": ["IT Support", "Windows", "Linux", "Active Directory"],
     "achievements": [
-      "Launched 5 products",
-      "Improved UX metrics by 60%",
-      "Built design system"
+      "Resolved hardware and software issues across Windows and Linux systems.",
+      "Managed user accounts, domains, and security permissions.",
+      "Delivered IT training to staff and monitored network infrastructure."
     ],
-    "image": "/images/logo.png",
+    "image": "/images/companies/mactay.png",
+    "link": "https://mactay.com/",
+    "type": "work"
+  },
+  {
+    "id": 6,
+    "year": "Mar 2023 - Jul 2023",
+    "title": "Frontend Developer",
+    "company": "Plugit Automation",
+    "location": "Nigeria",
+    "description": "Focused on delivering clean, responsive interfaces that made automation tools easier to use.",
+    "technologies": ["React.js", "JavaScript"],
+    "achievements": [
+      "Built responsive interfaces ensuring smooth navigation.",
+      "Integrated APIs with backend services for new features.",
+      "Reduced page load times with optimised rendering workflows."
+    ],
+    "image": "/images/companies/plugit.png",
+    "link": "https://plugit-landing.vercel.app/",
+    "type": "contract"
+  },
+  {
+    "id": 7,
+    "year": "May 2022 - Jan 2023",
+    "title": "Web Developer",
+    "company": "Boxin Logistics",
+    "location": "Lagos, Nigeria",
+    "description": "Redesigned and managed the company website to improve customer trust and enable seamless e-commerce experiences.",
+    "technologies": ["HTML", "CSS", "JavaScript", "E-commerce"],
+    "achievements": [
+      "Developed and maintained the company website with up-to-date content.",
+      "Integrated e-commerce functionalities, enhancing user experience.",
+      "Improved website security measures to protect customer data."
+    ],
+    "image": "/images/companies/boxin.png",
+    "link": "https://boxin-landing.netlify.app/",
+    "type": "work"
+  },
+  {
+    "id": 8,
+    "year": "Dec 2020 - May 2022",
+    "title": "Graphics & Motion Designer",
+    "company": "Boxin Logistics",
+    "location": "Lagos, Nigeria",
+    "description": "Produced graphics, animations, and motion assets that shaped the brand’s identity and powered successful campaigns.",
+    "technologies": [
+      "Adobe Photoshop",
+      "Illustrator",
+      "After Effects",
+      "CorelDraw"
+    ],
+    "achievements": [
+      "Designed graphics and motion assets for marketing campaigns.",
+      "Boosted brand presence through creative design solutions.",
+      "Collaborated with teams to produce innovative visuals."
+    ],
+    "image": "/images/companies/boxin.png",
+    "link": "https://boxin-landing.netlify.app/",
+    "type": "work"
+  },
+  {
+    "id": 9,
+    "year": "Jun 2020 - May 2022",
+    "title": "Web Developer",
+    "company": "GI Career Services",
+    "location": "Lagos, Nigeria",
+    "description": "Developed sleek client websites that were responsive, search-friendly, and visually aligned with brand goals.",
+    "technologies": ["HTML", "CSS", "JavaScript", "SEO"],
+    "achievements": [
+      "Developed and maintained client websites for multiple sectors.",
+      "Improved load times and SEO rankings through optimisation.",
+      "Collaborated with designers and clients to deliver solutions."
+    ],
+    "image": "/images/companies/gicareer.png",
+    "link": "",
+    "type": "work"
+  },
+  {
+    "id": 10,
+    "year": "Sep 2016 - Present",
+    "title": "Freelance Web & Graphics Designer",
+    "company": "Self-employed",
+    "location": "Lagos, Nigeria",
+    "description": "Collaborating with diverse clients to deliver tailored websites and brand identities that stand out online.",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "WordPress",
+      "Shopify",
+      "Graphic Design"
+    ],
+    "achievements": [
+      "Managed multiple freelance projects across web and graphics.",
+      "Delivered responsive websites and brand assets.",
+      "Implemented secure payment functionality for client services."
+    ],
+    "image": "/images/companies/freelance.png",
+    "link": "",
+    "type": "freelance"
+  },
+  {
+    "id": 11,
+    "year": "Sep 2016 - Apr 2017",
+    "title": "Web Development Tutor",
+    "company": "Audit and Systems Solutions",
+    "location": "Lagos, Nigeria",
+    "description": "Taught aspiring developers the essentials of building and styling websites while guiding them through real-world projects.",
+    "technologies": ["HTML", "CSS", "JavaScript", "PHP"],
+    "achievements": [
+      "Instructed and mentored students on web development.",
+      "Created engaging instructional materials and assignments.",
+      "Provided constructive feedback to improve student projects."
+    ],
+    "image": "/images/companies/audit.png",
     "link": "",
     "type": "intern"
   },
   {
-    "id": 5,
-    "year": "2020",
-    "title": "Frontend Developer",
-    "company": "StartupXYZ",
-    "location": "Austin, TX",
-    "description": "Built responsive web applications and mobile-first experiences.",
-    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
-    "achievements": [
-      "Launched 5 products",
-      "Improved UX metrics by 60%",
-      "Built design system"
+    "id": 12,
+    "year": "Apr 2018 - Dec 2019",
+    "title": "Volunteership",
+    "company": "Nigerian Economics Students' Association (NESA) & Leadership Programmes",
+    "location": "Osun, Nigeria",
+    "description": "Contributed technical expertise and mentorship in student organisations, from leading conferences to delivering hands-on training.",
+    "technologies": [
+      "Leadership",
+      "Microsoft Word",
+      "Microsoft Excel",
+      "Event Tech"
     ],
-    "image": "/images/logo.png",
-    "link": "",
-    "type": "volunteership"
-  },
-  {
-    "id": 4,
-    "year": "2020",
-    "title": "Frontend Developer",
-    "company": "StartupXYZ",
-    "location": "Austin, TX",
-    "description": "Built responsive web applications and mobile-first experiences.",
-    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
     "achievements": [
-      "Launched 5 products",
-      "Improved UX metrics by 60%",
-      "Built design system"
+      "Served as Technical Director for NESA, raising over ₦1.5m and coordinating tech activities for a 3000+ attendee conference.",
+      "Tutored Microsoft Excel at beginner and intermediate levels for over 100 students.",
+      "Tutored Microsoft Word and assessed trainees during leadership development programmes."
     ],
-    "image": "/images/logo.png",
-    "link": "",
-    "type": "volunteership"
-  },
-  {
-    "id": 9,
-    "year": "2020",
-    "title": "Frontend Developer",
-    "company": "StartupXYZ",
-    "location": "Austin, TX",
-    "description": "Built responsive web applications and mobile-first experiences.",
-    "technologies": ["Vue.js", "JavaScript", "CSS3", "Firebase"],
-    "achievements": [
-      "Launched 5 products",
-      "Improved UX metrics by 60%",
-      "Built design system"
-    ],
-    "image": "/images/logo.png",
+    "image": "/images/companies/nesa.png",
     "link": "",
     "type": "volunteership"
   }

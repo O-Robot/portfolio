@@ -31,7 +31,7 @@ export default function RootLayout({
         ></script>
       </head>
       <body
-        className={`${space.className} antialiased bg-background text-foreground`}
+        className={`${space.className} antialiased  bg-background text-foreground h-screen flex flex-col justify-between`}
         suppressHydrationWarning
       >
         <Header />

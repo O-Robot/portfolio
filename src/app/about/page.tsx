@@ -41,7 +41,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className=" mb-16 flex flex-col lg:flex-row gap-10 justify-between px-2 lg:px-10"
           >
-            <div className="text-xl text-justify  text-primary-text/80 w-full lg:w-1/2">
+            <div className="text-xl text-justify  text-primary-text/80 w-full lg:w-1/2 whitespace-pre-line">
               {robot.about}
             </div>
             <div className="text-xl text-white/80 w-full lg:w-1/2 px-2 lg:px-8 flex flex-col gap-8">

@@ -23,7 +23,7 @@ export default function ProjectsPage() {
               My Projects Journey
             </h2>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto mb-8">
-              A showcase of ideas brought to life — exploring creativity,
+              A showcase of ideas brought to life. Exploring creativity,
               problem-solving, and innovation through code
             </p>
           </motion.div>
