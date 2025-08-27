@@ -5,6 +5,13 @@ import "./globals.css";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Toaster } from "@/components/ui/toaster";
+import ChatWidget from "@/components/ChatWidget";
+
+declare global {
+  interface Window {
+    chatwootSDK: any;
+  }
+}
 
 const space = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -29,6 +36,25 @@ export default function RootLayout({
           src="https://code.iconify.design/2/2.2.1/iconify.min.js"
           defer
         ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      (function(d,t) {
+        const BASE_URL="http://localhost:3000";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'S4UJKmPeDPMsCG9vXQsBHFFR',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    `,
+          }}
+        />
       </head>
       <body
         className={`${space.className} antialiased  bg-background text-foreground h-screen flex flex-col justify-between`}
@@ -38,6 +64,7 @@ export default function RootLayout({
         {children}
         <Toaster />
         <Footer />
+        {/* <ChatWidget /> */}
       </body>
     </html>
   );
