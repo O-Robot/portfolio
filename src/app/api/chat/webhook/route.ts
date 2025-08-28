@@ -13,6 +13,7 @@ export async function POST(req: Request) {
     const { event, data } = body;
 
     if (!data?.content || !data?.conversation?.id) {
+      console.log("Invalid payload:", body);
       return NextResponse.json(
         { status: "error", message: "Invalid payload" },
         { status: 400 }
@@ -20,7 +21,11 @@ export async function POST(req: Request) {
     }
 
     const conversationId = data.conversation.id;
+    const accountId = data.account?.id || process.env.CHATWOOT_ACCOUNT_ID;
     const incomingMessage = data.content.toLowerCase();
+    console.log("Incoming message:", incomingMessage);
+    console.log("Incoming Data Act ID:", data.account?.id);
+    console.log("Incoming Data Convo ID:", data.conversation?.id);
     let botReply: string | null = null;
 
     if (incomingMessage.includes("hello")) {
@@ -35,7 +40,7 @@ export async function POST(req: Request) {
     if (botReply) {
       try {
         const response = await fetch(
-          `${CHATWOOT_URL}/api/v1/conversations/${conversationId}/messages`,
+          `${CHATWOOT_URL}/api/v1/accounts/${accountId}/conversations/${conversationId}/messages`,
           {
             method: "POST",
             headers: new Headers({
