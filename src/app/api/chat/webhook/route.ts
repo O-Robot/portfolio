@@ -3,7 +3,8 @@ import { NextResponse } from "next/server";
 // Replace with your Chatwoot API key
 const CHATWOOT_API_KEY = process.env.CHATWOOT_API_KEY;
 // Replace with your Chatwoot instance URL
-const CHATWOOT_URL = process.env.CHATWOOT_URL || "http://localhost:3000";
+const CHATWOOT_URL =
+  process.env.CHATWOOT_URL || "https://2ca5ac3ce5cd.ngrok-free.app/";
 
 export async function POST(req: Request) {
   console.log("Webhook loaded");

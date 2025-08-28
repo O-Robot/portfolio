@@ -40,7 +40,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
       (function(d,t) {
-        const BASE_URL="http://localhost:3000";
+        const BASE_URL="https://2ca5ac3ce5cd.ngrok-free.app/";
         var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=BASE_URL+"/packs/js/sdk.js";
         g.async = true;

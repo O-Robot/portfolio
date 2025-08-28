@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function ChatWidget() {
   useEffect(() => {
     (function (d, t) {
-      const BASE_URL = "http://localhost:3000";
+      const BASE_URL = "https://2ca5ac3ce5cd.ngrok-free.app/";
 
       const g = d.createElement(t) as HTMLScriptElement;
       const s = d.getElementsByTagName(t)[0];
