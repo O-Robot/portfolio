@@ -36,7 +36,6 @@ export async function POST(req: Request) {
       botReply = "I’m still learning 🤖. A human will reply soon!";
     }
 
-    // Send message back to Chatwoot
     if (botReply) {
       try {
         const response = await fetch(
@@ -49,10 +48,13 @@ export async function POST(req: Request) {
             }),
             body: JSON.stringify({
               content: botReply,
-              message_type: 1, // 1 = outgoing message from inbox/bot
+              message_type: "outgoing",
+              private: false,
             }),
           }
         );
+        const resText = await response.text();
+        console.log("Chatwoot API response body:", resText);
         console.log("Chatwoot API response status:", response.status);
         console.log("Chatwoot API response:", response);
       } catch (err) {
