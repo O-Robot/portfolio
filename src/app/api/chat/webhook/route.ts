@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     }
 
     const conversationId = data.conversation.id;
-    const accountId = data.account?.id || process.env.CHATWOOT_ACCOUNT_ID;
+    const accountId = data.account?.id || 1;
     const incomingMessage = data.content.toLowerCase();
     console.log("Incoming message:", incomingMessage);
     console.log("Incoming Data Act ID:", data.account?.id);
@@ -54,6 +54,7 @@ export async function POST(req: Request) {
           }
         );
         console.log("Chatwoot API response status:", response.status);
+        console.log("Chatwoot API response:", response);
       } catch (err) {
         console.error("Failed to send message to Chatwoot:", err);
       }
