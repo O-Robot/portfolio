@@ -48,12 +48,12 @@ export default function AboutPage() {
               <Image
                 src={robot.image}
                 alt="me"
-                height={200}
-                width={500}
-                className="rounded-2xl"
+                height={400}
+                width={600}
+                className="rounded-2xl object-cover"
               />
 
-              <div className="border-t border-b border-primary-text/80 py-4 flex gap-3">
+              <div className="border-t border-b border-primary-text/80 py-4 flex flex-wrap justify-center just gap-3">
                 {contact.socialMediaLinks.map((media, i) => (
                   <a
                     key={i}
@@ -71,7 +71,7 @@ export default function AboutPage() {
                   </a>
                 ))}
               </div>
-              <div className="rounded-xl flex justify-center flex-col px-4 py-6 max-w-100 bg-[#070d1e]items-center text-center gap-4">
+              <div className="rounded-xl flex justify-center flex-col px-4 py-6  bg-[#070d1e]items-center text-center gap-4">
                 <p className="text-primary-text text-lg">
                   Let’s connect and build something awesome together.
                 </p>

@@ -264,7 +264,7 @@ export default function ContactPage() {
               </Card>
 
               {/* AI Assistant */}
-              <Card className="glass-morphism border-white/20">
+              {/* <Card className="glass-morphism border-white/20">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-primary-text">
                     🤖 AI Assistant
@@ -307,7 +307,7 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
+              </Card> */}
 
               {/* Social Links */}
               <Card className="glass-morphism border-white/20">

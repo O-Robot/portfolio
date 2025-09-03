@@ -1,13 +1,156 @@
 [
   {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "OGAMB Website",
-    "createdAt": "November 2023",
-    "url": "https://ogamb.com.ng/",
-    "description": "The website for Ogun State Alternate Medicine Board. Visit the website here ",
+    "id": "proj001",
+    "name": "Portfolio V2",
+    "createdAt": "2025",
+    "url": "https://ogooluwaniadewale.com",
+    "description": "My latest portfolio site showcasing selected works, case studies, and projects across web development, design, and product experiences.",
     "isFork": false,
     "languages": [
-      { "name": "Wordpress", "iconifyClass": "fa-wordpress" },
+      {
+        "name": "Next.js",
+        "iconifyClass": "vscode-icons:file-type-light-next"
+      },
+
+      { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
+    ],
+    "image": "/images/projects/portfolio-v2.png"
+  },
+  {
+    "id": "proj002",
+    "name": "My Deals Bro",
+    "createdAt": "2025",
+    "url": "https://mydealsbro.com/",
+    "description": "Affiliate marketing website for UK audiences, with WordPress-based content management and integrated deal-tracking features.",
+    "isFork": false,
+    "languages": [
+      { "name": "WordPress", "iconifyClass": "fa-wordpress" },
+      { "name": "PHP", "iconifyClass": "logos-php" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" }
+    ],
+    "image": "/images/projects/mydeals.png"
+  },
+  {
+    "id": "proj003",
+    "name": "Cordea Project",
+    "createdAt": "2024",
+    "url": "https://cordeaproject.com/",
+    "description": "A real estate platform featuring property listings, project showcases, and modern design to attract investors and clients.",
+    "isFork": false,
+    "languages": [
+      { "name": "WordPress", "iconifyClass": "fa-wordpress" },
+      { "name": "PHP", "iconifyClass": "logos-php" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" }
+    ],
+    "image": "/images/projects/cordea.png"
+  },
+  {
+    "id": "proj004",
+    "name": "Goldfish Landing Page",
+    "createdAt": "2024",
+    "url": "https://goldfish.framer.website/",
+    "description": "Landing page for Goldfish (a 54Collective startup), crafted in Framer with clean animations and a bold brand story.",
+    "isFork": false,
+    "languages": [{ "name": "Framer", "iconifyClass": "simple-icons:framer" }],
+    "image": "/images/projects/goldfish.png"
+  },
+  {
+    "id": "proj005",
+    "name": "Clinigo",
+    "createdAt": "2024",
+    "url": "https://clinigo.netlify.app/",
+    "description": "A multilingual landing page (Arabic & English) for Clinigo, a 54Collective startup in digital health. Built with a waitlist action to engage early adopters managing chronic conditions.",
+    "isFork": false,
+    "languages": [
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+      { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
+    ],
+    "image": "/images/projects/clinigo.png"
+  },
+  {
+    "id": "proj006",
+    "name": "Donikristen Shoes",
+    "createdAt": "2024",
+    "url": "https://donikristenshoes.com/",
+    "description": "An e-commerce platform for a shoe retailer. Customized WordPress setup with integrated shopping features and modern styling.",
+    "isFork": false,
+    "languages": [
+      { "name": "WordPress", "iconifyClass": "fa-wordpress" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "PHP", "iconifyClass": "logos-php" }
+    ],
+    "image": "/images/projects/donikristen.png"
+  },
+  {
+    "id": "proj007",
+    "name": "iLearn Africa Edu",
+    "createdAt": "2024",
+    "url": "https://ilearnafricaedu.com/",
+    "description": "Transformative learning platform with WordPress-based modules, enabling users to engage with educational resources and communities.",
+    "isFork": false,
+    "languages": [
+      { "name": "WordPress", "iconifyClass": "fa-wordpress" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" }
+    ],
+    "image": "/images/projects/ilearn.png"
+  },
+  {
+    "id": "proj008",
+    "name": "John Water Tech",
+    "createdAt": "2024",
+    "url": "https://johnwatertech.com/",
+    "description": "Technology solutions provider website, offering industrial-grade services with a professional and informative online presence.",
+    "isFork": false,
+    "languages": [
+      { "name": "WordPress", "iconifyClass": "fa-wordpress" },
+      { "name": "PHP", "iconifyClass": "logos-php" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" }
+    ],
+    "image": "/images/projects/johnwater.png"
+  },
+  {
+    "id": "proj009",
+    "name": "Ecommerce Storefront",
+    "createdAt": "2024",
+    "url": "https://ecommerce-ang.vercel.app/home",
+    "description": "A sleek e-commerce storefront designed with responsive layouts and smooth shopping flows. Showcases modern UI and scalable structure for online retail experiences.",
+    "isFork": false,
+    "languages": [
+      { "name": "Angular", "iconifyClass": "logos:angular-icon" },
+      { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
+    ],
+    "image": "/images/projects/ecommerce-ang.png"
+  },
+  {
+    "id": "proj010",
+    "name": "DataPros DGS",
+    "createdAt": "2024",
+    "url": "https://dataprosdgs.netlify.app/",
+    "description": "A collaborative platform built to support the United Nations’ Sustainable Development Goals. It enables stakeholders across industries to share, process, and measure data, while also raising campaign awareness through interactive insights.",
+    "isFork": false,
+    "languages": [
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+      { "name": "Bootstrap", "iconifyClass": "logos:bootstrap" }
+    ],
+    "image": "/images/projects/dataprosdgs.png"
+  },
+  {
+    "id": "proj011",
+    "name": "OGAMB Website",
+    "createdAt": "2023",
+    "url": "https://ogamb.com.ng/",
+    "description": "The official website for Ogun State Alternate Medicine Board. Designed to provide public resources, announcements, and engagement for alternative medicine initiatives.",
+    "isFork": false,
+    "languages": [
+      { "name": "WordPress", "iconifyClass": "fa-wordpress" },
       { "name": "CSS", "iconifyClass": "logos-css-3" },
       { "name": "PHP", "iconifyClass": "logos-php" },
       { "name": "JavaScript", "iconifyClass": "logos-javascript" }
@@ -15,192 +158,142 @@
     "image": "/images/projects/ogamb.png"
   },
   {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "SunSolar Dashboard",
-    "createdAt": "September 2023",
-    "url": "https://sun-solar.vercel.app/",
-    "description": "The dashboard for Investment. Visit the website here ",
-    "isFork": false,
-    "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
-    ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "PlugIt Dashboard",
-    "createdAt": "May 2023",
-    "url": "https://plugit-dashboard.vercel.app/",
-    "description": "The dashboard for PlugIt Automation. Visit the website here ",
-    "isFork": false,
-    "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
-    ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "PlugIt Website",
-    "createdAt": "March 2023",
-    "url": "https://landing-page-rho-sandy.vercel.app/",
-    "description": "The website for PlugIt Automation. Visit the website here ",
-    "isFork": false,
-    "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
-    ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "Audit & Systems Solutions",
-    "createdAt": "November 2022",
+    "id": "proj021",
+    "name": "IT Solutions Audit Website",
+    "createdAt": "2022",
     "url": "https://itauditsolution.ng",
-    "description": "The website for Audit & Systems Solutions. Visit the website here ",
+    "description": "A professional platform for Audit and Systems Solution, a licensed Data Protection Compliance Organisation (DPCO)",
     "isFork": false,
     "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+
       { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "JavaScript", "iconifyClass": "logos-javascript" },
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
+      { "name": "HTML", "iconifyClass": "logos-html-5" }
     ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "Boxin Logistics",
-    "createdAt": "May 2021",
-    "url": "https://boxin.ng/",
-    "description": "The website for Boxin Logistics. Visit the website here ",
-    "isFork": false,
-    "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "JavaScript", "iconifyClass": "logos-javascript" }
-    ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "Boxin Store",
-    "createdAt": "May 2022",
-    "url": "http://20.119.67.205:8000/",
-    "description": "Online Store for Boxin users. The site is Unique to each particular store owner ",
-    "isFork": false,
-    "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
-      { "name": "Sass", "iconifyClass": "logos-sass" },
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
-    ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "AA Magazine",
-    "createdAt": "June 2022",
-    "url": "https://aamagazine.net",
-    "description": "The website for AA Magazine where Users can read news and also subscribe to read premium magazines. Visit the website here ",
-    "isFork": false,
-    "languages": [{ "name": "Wordpress", "iconifyClass": "fa-wordpress" }],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-    "name": "The LightGivers Foundation",
-    "createdAt": "October 2022",
-    "url": "https://thelightgivers.org",
-    "description": "The website for The LightGiversHumanitarian Foundation with multi-currency donations capabilities. Visit the website here ",
-    "isFork": false,
-    "languages": [
-      { "name": "Wordpress", "iconifyClass": "fa-wordpress" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "PHP", "iconifyClass": "logos-php" }
-    ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
-    "name": "My Portfolio Site",
-    "createdAt": "January 2021",
-    "url": "https://ogooluwaniadewale.com",
-    "description": "My Portfolio website. Visit the website here",
-    "isFork": false,
-    "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
-    ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNzM1MTI1NTE=",
-    "name": "DP Creator",
-    "createdAt": "June 2020",
-    "url": "https://dpcreator.netlify.app/",
-    "description": "A Display Picture creator for Online Seminars and Conferences. Click to view",
-    "isFork": false,
-    "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "JavaScript", "iconifyClass": "logos-javascript" }
-    ],
-    "image": "/images/projects/ogamb.png"
-  },
-  {
-    "id": "MDEwOlJlcG9zaXRvcnkyNzM1MTI1NTE=",
-    "name": "Online Calculator",
-    "createdAt": "April 2022",
-    "url": "https://o-robot.github.io/online-calculator/",
-    "description": "A Basic Calculator WebApp using React JS. Click to view",
-    "isFork": false,
-    "languages": [
-      { "name": "HTML", "iconifyClass": "logos-html-5" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactts" }
-    ],
-    "image": "/images/projects/ogamb.png"
+    "image": "/images/projects/itaudit.png"
   },
 
   {
-    "id": "MDEwOlJlcG9zaXRvcnkyMDIxNDc4ODA=",
-    "name": "Graphics Design Portfolio",
-    "createdAt": "",
-    "url": "https://drive.google.com/drive/folders/1qSKTqEuMO3WixSqvq5FJLugPlX2ORdbH?usp=sharing",
-    "description": "",
+    "id": "proj012",
+    "name": "PlugIt Dashboard",
+    "createdAt": "2023",
+    "url": "https://plugit-dashboard.vercel.app/",
+    "description": "A web dashboard for PlugIt Automation that simplifies business operations and tracks automated workflows in real time.",
     "isFork": false,
     "languages": [
-      { "name": "Corel Draw", "iconifyClass": "file-icons:coreldraw-alt" },
-      {
-        "name": "Photoshop",
-        "iconifyClass": "vscode-icons:file-type-photoshop2"
-      },
-      { "name": "Illustrator", "iconifyClass": "vscode-icons:file-type-ai2" },
-      { "name": "Canva", "iconifyClass": "simple-icons:canva" }
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+
+      { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
-    "image": "/images/projects/ogamb.png"
+    "image": "/images/projects/plugit-dashboard.png"
   },
   {
-    "id": "MDEwOlJlcG9zaXRvcnkxODIxMjk3NTQ=",
-    "name": "Motion Design Portfolio",
-    "createdAt": "",
-    "url": "https://drive.google.com/drive/folders/17SY1VTVE6VePs6VInHEdlNh4GrDS7WD9?usp=sharing",
-    "description": "",
+    "id": "proj013",
+    "name": "PlugIt Website",
+    "createdAt": "2023",
+    "url": "https://landing-page-rho-sandy.vercel.app/",
+    "description": "Corporate website for PlugIt Automation, presenting its services and brand identity with a clean landing page experience.",
     "isFork": false,
     "languages": [
-      {
-        "name": "After Effects",
-        "iconifyClass": "logos:adobe-after-effects"
-      },
-      { "name": "After Premiere Pro", "iconifyClass": "logos:adobe-premiere" }
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+
+      { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
-    "image": "/images/projects/ogamb.png"
+    "image": "/images/projects/plugit-site.png"
+  },
+  {
+    "id": "proj014",
+    "name": "SunSolar Dashboard",
+    "createdAt": "2023",
+    "url": "https://sun-solar.vercel.app/",
+    "description": "An investment management dashboard for SunSolar, providing users with data-driven insights and a modern, intuitive UI for tracking performance.",
+    "isFork": false,
+    "languages": [
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "HTML", "iconifyClass": "logos-html-5" }
+    ],
+    "image": "/images/projects/sunsolar.png"
+  },
+  {
+    "id": "proj015",
+    "name": "AA Magazine",
+    "createdAt": "2022",
+    "url": "https://aamagazine.net",
+    "description": "An online magazine where users can explore news and premium magazine content with subscription options. Designed for engaging reading experiences.",
+    "isFork": false,
+    "languages": [{ "name": "WordPress", "iconifyClass": "fa-wordpress" }],
+    "image": "/images/projects/aamagazine.png"
+  },
+  {
+    "id": "proj016",
+    "name": "Interactive Dashboard",
+    "createdAt": "2022",
+    "url": "https://ogooluwani-adewale-lendsqr-fe-test.vercel.app/",
+    "description": "An interactive admin dashboard showcasing clean data visualization, user management, and responsive design. Built to demonstrate practical frontend architecture.",
+    "isFork": false,
+    "languages": [
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" }
+    ],
+    "image": "/images/projects/dashboard.png"
+  },
+  {
+    "id": "proj017",
+    "name": "The LightGivers Foundation",
+    "createdAt": "2022",
+    "url": "https://thelightgivers.org",
+    "description": "A humanitarian foundation website with integrated multi-currency donation features to support impactful projects globally.",
+    "isFork": false,
+    "languages": [
+      { "name": "WordPress", "iconifyClass": "fa-wordpress" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "PHP", "iconifyClass": "logos-php" }
+    ],
+    "image": "/images/projects/lightgivers.png"
+  },
+  {
+    "id": "proj018",
+    "name": "Portfolio V1",
+    "createdAt": "2021",
+    "url": "https://v1.ogooluwaniadewale.com",
+    "description": "My first professional portfolio website, designed to highlight early works and skills in web development and design.",
+    "isFork": false,
+    "languages": [
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "HTML", "iconifyClass": "logos-html-5" }
+    ],
+    "image": "/images/projects/portfolio-v1.png"
+  },
+  {
+    "id": "proj019",
+    "name": "Boxin Store",
+    "createdAt": "2021",
+    "url": "http://20.119.67.205:8000/",
+    "description": "An e-commerce platform built for Boxin users, allowing store owners to manage and personalize their online storefronts.",
+    "isFork": false,
+    "languages": [
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+      { "name": "Sass", "iconifyClass": "logos-sass" },
+      { "name": "HTML", "iconifyClass": "logos-html-5" }
+    ],
+    "image": "/images/projects/boxin-store.png"
+  },
+  {
+    "id": "proj020",
+    "name": "Boxin Logistics",
+    "createdAt": "2021",
+    "url": "https://boxin.ng/",
+    "description": "Corporate website for Boxin Logistics, offering logistics services with a straightforward design and user-friendly interface.",
+    "isFork": false,
+    "languages": [
+      { "name": "HTML", "iconifyClass": "logos-html-5" },
+      { "name": "CSS", "iconifyClass": "logos-css-3" },
+      { "name": "JavaScript", "iconifyClass": "logos-javascript" }
+    ],
+    "image": "/images/projects/boxin.png"
   }
 ]

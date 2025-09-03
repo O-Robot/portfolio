@@ -31,7 +31,11 @@ export default function Timeline({ timelineData }: any) {
               className="absolute left-8 md:left-1/2 transform -translate-x-1/2 md:transform md:-translate-x-1/2 z-10"
             >
               <div className="w-12 h-12 md:w-16 lg:w-20 md:h-16 lg:h-20 rounded-full border-2 md:border-4 border-primary/20 overflow-hidden shadow-2xl ring-2 md:ring-4 ring-primary/30 backdrop-blur-sm bg-white flex justify-center items-center">
-                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={item.link ? item.link : "#"}
+                  target={item.link ? "_blank" : ""}
+                  rel="noopener noreferrer"
+                >
                   <Image
                     src={item?.image}
                     alt="me"

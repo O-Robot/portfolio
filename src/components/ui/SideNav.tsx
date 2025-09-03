@@ -16,7 +16,7 @@ export default function SideNav() {
           className={`text-base font-medium ${
             theme === "dark"
               ? "text-white hover:text-[#FF7B4C]"
-              : "text-black hover:text-white"
+              : "text-black hover:text-white/80"
           } `}
         >
           <div className="relative flex items-center">

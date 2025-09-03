@@ -44,24 +44,23 @@ export default function LiveGitHub() {
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="flex gap-4">
-        {/* Graph + Stats */}
+      <CardContent className="flex flex-col md:flex-row gap-6">
         {loading ? (
-          <div className="w-full flex flex-col items-center  px-4 ">
-            <Skeleton className="w-1/2 h-[20px] rounded-lg" />{" "}
-            <Separator className="mb-4" />{" "}
+          <div className="w-full flex flex-col items-center px-4">
+            <Skeleton className="w-1/2 h-[20px] rounded-lg" />
+            <Separator className="mb-4" />
             <Skeleton className="w-full h-[100px] rounded-lg" />
           </div>
         ) : (
-          <div className="flex-1 space-y-4 ">
+          <div className="flex-1 space-y-4 overflow-x-auto">
             {/* Contributions count */}
-            <div className="text-xl font-bold text-green-400">
+            <div className="text-lg md:text-xl font-bold text-green-400">
               {calendar?.totalContributions ?? 0} contributions in {year}
             </div>
 
             {/* Contribution Graph */}
             {calendar && (
-              <div className="grid grid-cols-[repeat(53,1fr)] gap-0.5 overflow-x-auto">
+              <div className="grid grid-cols-[repeat(53,1fr)] gap-0.5 min-w-max">
                 {calendar.weeks.map((week, wi) => (
                   <div key={wi} className="grid grid-rows-7 gap-0.5">
                     {week.contributionDays.map((day, di) => (
@@ -80,14 +79,14 @@ export default function LiveGitHub() {
         )}
 
         {/* Sidebar Tabs */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex md:flex-col md:space-y-2 gap-2 md:gap-0 justify-center md:justify-start">
           {Array.from({ length: 4 }).map((_, i) => {
             const y = currentYear - i;
             return (
               <button
                 key={y}
                 onClick={() => setYear(y)}
-                className={`px-3 py-1 rounded-lg text-sm cursor-pointer ${
+                className={`px-3 py-1 rounded-lg text-sm cursor-pointer transition-colors ${
                   year === y
                     ? "bg-primary text-white font-bold"
                     : "bg-white/10 text-primary-text/70 hover:bg-white/20"
