@@ -2,8 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // --- ENVIRONMENT VARIABLES ---
-const CHATWOOT_URL =
-  process.env.CHATWOOT_URL || "https://57287ec6edbc.ngrok-free.app/";
+const CHATWOOT_URL = process.env.CHATWOOT_URL || "http://localhost:3000";
 const CHATWOOT_ACCOUNT_ID = process.env.CHATWOOT_ACCOUNT_ID || 1;
 const CHATWOOT_BOT_TOKEN =
   process.env.CHATWOOT_BOT_TOKEN || process.env.CHATWOOT_API_KEY || "";
@@ -19,8 +18,6 @@ interface ConversationState {
   conversationHistory: Array<{ role: string; content: string }>;
   hasBeenGreeted: boolean;
   isTransferRequested: boolean;
-  userName: string | null;
-  nigeria: boolean;
 }
 
 const conversationStates = new Map<number, ConversationState>();
@@ -57,10 +54,8 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // --- EXTRACT FIRST NAME AND CHECK NIGERIAN PHONE ---
+    // Extract first name for friendliness
     const firstName = senderName.split(" ")[0] || "Guest";
-    const phone = payload.conversation.contact_inbox?.source_id || "";
-    const nigeria = phone.startsWith("+234");
 
     // --- INIT STATE ---
     if (!conversationStates.has(conversationId)) {
@@ -69,8 +64,6 @@ export async function POST(req: NextRequest) {
         conversationHistory: [],
         hasBeenGreeted: false,
         isTransferRequested: false,
-        userName: firstName,
-        nigeria,
       });
     }
     const convoState = conversationStates.get(conversationId)!;
@@ -80,7 +73,9 @@ export async function POST(req: NextRequest) {
       convoState.hasBeenGreeted = true;
       await sendChatwootMessage(
         conversationId,
-        `👋 Hi ${firstName}! I'm Robot, Ogooluwani’s assistant.\nHow can I help you today?`
+        `👋 Hi ${firstName}! I'm Robot, Ogooluwani’s assistant.  
+I can help with project inquiries, pricing estimates, and general web development questions.  
+How can I help you today?`
       );
       return NextResponse.json({ status: "greeted" });
     }
@@ -101,7 +96,7 @@ export async function POST(req: NextRequest) {
     if (convoState.isTransferRequested) {
       if (messageContent.toLowerCase().includes("transfer")) {
         await transferToHuman(conversationId);
-        conversationStates.delete(conversationId); // stop bot after transfer
+        conversationStates.delete(conversationId);
         return NextResponse.json({ status: "transferred" });
       } else {
         convoState.isTransferRequested = false;
@@ -128,8 +123,7 @@ export async function POST(req: NextRequest) {
     const response = await generateGroqResponse(
       messageContent,
       convoState.conversationHistory,
-      firstName,
-      nigeria
+      firstName
     );
 
     convoState.conversationHistory.push({
@@ -163,15 +157,15 @@ export async function POST(req: NextRequest) {
 async function generateGroqResponse(
   userMessage: string,
   history: Array<{ role: string; content: string }>,
-  firstName: string,
-  nigeria: boolean
+  firstName: string
 ): Promise<string> {
-  const systemPrompt = `You are Robot, Ogooluwani's AI assistant. You help with web development inquiries and pricing.
+  const systemPrompt = `You are Robot, Ogooluwani's AI assistant.  
 
 ABOUT OGOOLUWANI:  
-- Male software developer (React, Next.js, Vue, Angular, Node.js, Python, Wordpress, Framer, Webflow).  
+- Male full-stack developer (React, Next.js, Node.js).  
 - Builds responsive, accessible web applications.  
-- Provides competitive pricing based on project scope. 
+- Based in Nigeria 🇳🇬 — pricing may be in USD or NGN depending on the client.  
+- Provides competitive pricing based on project scope.  
 
 WHAT YOU CAN DO:  
 - Answer questions about web development services.  
@@ -179,21 +173,11 @@ WHAT YOU CAN DO:
 - Discuss project requirements and timelines.  
 - Explain technical concepts simply.  
 
-PRICING GUIDELINES:
-${
-  nigeria
-    ? `- Small website: 250,000 - 450,000 NGN
-- One-time use websites (e.g. weddings, birthdays) hosted under the ogooluwani.websites domain can be offered at a reduced price.
-- Medium web app: 450,000 - 1,500,000 NGN
-- Complex application: 1,500,000+ NGN
-- Can offer monthly plan.
-- Always note: "Exact pricing depends on specific requirements"`
-    : `- Small website: $500 - $1,500 USD
-- One-time use websites (e.g. weddings, birthdays) hosted under the ogooluwani.websites domain can be offered at a reduced price.
-- Medium web app: $1,500 - $5,000 USD
-- Complex application: $5,000+ USD
-- Always note: "Exact pricing depends on specific requirements"`
-}
+PRICING GUIDELINES:  
+- Small website: $500–$1500  
+- Medium web app: $1500–$5000  
+- Complex app: $5000+  
+- Always note: "Exact pricing depends on specific requirements."  
 
 TRANSFER RULES:  
 If asked about:  
@@ -271,7 +255,7 @@ async function transferToHuman(conversationId: number) {
   try {
     await sendChatwootMessage(
       conversationId,
-      "🔀 Transferring you to Ogooluwani. He'll be with you shortly!"
+      "🔀 Transferring you to Ogooluwani. He’ll be with you shortly!"
     );
 
     if (OGOOLUWANI_AGENT_ID) {

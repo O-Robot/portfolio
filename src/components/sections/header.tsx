@@ -41,7 +41,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  console.log(pathname, "path");
   return (
     pathname !== "/" && (
       <motion.nav

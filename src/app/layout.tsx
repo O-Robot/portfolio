@@ -40,21 +40,21 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
       (function(d,t) {
-        const BASE_URL="https://2ca5ac3ce5cd.ngrok-free.app/";
+        const BASE_URL="https://57287ec6edbc.ngrok-free.app/";
         var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=BASE_URL+"/packs/js/sdk.js";
         g.async = true;
         s.parentNode.insertBefore(g,s);
         g.onload=function(){
           window.chatwootSDK.run({
-            websiteToken: 'S4UJKmPeDPMsCG9vXQsBHFFR',
+            websiteToken: '1cBogHNfh4iYu7TtB2neHFx3',
             baseUrl: BASE_URL
           })
         }
       })(document,"script");
     `,
           }}
-        />
+        ></script>
       </head>
       <body
         className={`${space.className} antialiased  bg-background text-foreground h-screen flex flex-col justify-between`}

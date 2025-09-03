@@ -117,3 +117,16 @@ export const TruncateText = (text?: string, count?: number): string => {
 
   return truncate(text || "");
 };
+
+export const MODELS = [
+  "llama-3.1-8b-instant",
+  "llama-3.1-70b-versatile",
+  "llama3-70b-8192",
+  "llama3-8b-8192",
+  "gemma2-9b-it",
+  "meta-llama/llama-guard-4-12b",
+  "meta-llama/llama-prompt-guard-2-22m",
+  "meta-llama/llama-prompt-guard-2-86m",
+  "openai/gpt-oss-120b",
+  "openai/gpt-oss-20b",
+];
