@@ -1,11 +1,12 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link2, Loader2, X } from "lucide-react";
+import { Link2, X } from "lucide-react";
 import Image from "next/image";
 import Tilt from "react-parallax-tilt";
 
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { event } from "@/utils/gtag";
 
 export default function Projects({ projectsData }: any) {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
@@ -14,7 +15,6 @@ export default function Projects({ projectsData }: any) {
 
   useEffect(() => {
     if (selectedItem) {
-      console.log(selectedItem);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -51,17 +51,27 @@ export default function Projects({ projectsData }: any) {
                 className="w-full h-full object-cover object-left-center rounded-2xl cursor-pointer z-10"
                 width={1300}
                 height={50}
-                onClick={() =>
+                onClick={() => {
                   setSelectedItem(
                     selectedItem === project.id ? null : project.id
-                  )
-                }
+                  );
+                  event({
+                    action: "click",
+                    category: "Project Frame Clicked",
+                    label: project.name,
+                  });
+                }}
               />
               <div className="absolute inset-0 flex justify-end m-3 pointer-events-none">
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
                     window.open(project.url, "_blank");
+                    event({
+                      action: "click",
+                      category: "Project Link Clicked",
+                      label: project.name,
+                    });
                   }}
                   className="bg-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer pointer-events-auto"
                 >
@@ -128,12 +138,12 @@ export default function Projects({ projectsData }: any) {
                   <div className="relative h-[80vh] rounded-2xl overflow-hidden  flex flex-col">
                     {/* Header */}
                     <div className="flex justify-between items-center p-3 border-b flex-shrink-0">
-                      <h2 className="text-lg font-semibold">
+                      <h2 className="text-lg font-semibold text-primary-text">
                         {item?.name} Preview
                       </h2>
                       <button
                         onClick={() => setSelectedItem(null)}
-                        className="p-2 rounded-full hover:bg-gray-200"
+                        className="p-2 rounded-full hover:bg-link-active hover:text-white text-primary-text cursor-pointer"
                       >
                         <X className="w-5 h-5" />
                       </button>
@@ -141,20 +151,38 @@ export default function Projects({ projectsData }: any) {
 
                     {/* Iframe Viewer */}
                     <div className="relative flex-1 overflow-y-auto">
-                      {isLoading && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-white">
-                          <Loader2 className="animate-spin w-8 h-8 text-primary" />
-                          <span className="ml-2 text-primary">Loading...</span>
+                      {isLoading && !item.isFork && (
+                        <div className="absolute inset-0 flex justify-center items-center bg-background">
+                          <p>Loading {item.name}...</p>
                         </div>
                       )}
 
-                      <iframe
-                        src={item.url}
-                        className="w-full h-full border-0"
-                        onLoad={() => setIsLoading(false)}
-                        title={item.name}
-                        loading="lazy"
-                      />
+                      {!item.isFork ? (
+                        <iframe
+                          src={item.url}
+                          className="w-full h-full border-0"
+                          onLoad={() => setIsLoading(false)}
+                          title={item.name}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex flex-col justify-center items-center h-full text-center p-4 gap-6">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            width={900}
+                            height={500}
+                          />
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 glass-morphism text-primary rounded transition"
+                          >
+                            View Live Site
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Download, RotateCw } from "lucide-react";
+import { event } from "@/utils/gtag";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -64,8 +65,8 @@ export default function ResumePage() {
       <div
         className={`min-h-screen flex items-center justify-center bg-background`}
       >
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+        <div className="text-center text-primary-text">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-text mx-auto mb-4"></div>
           <p>Loading résumé...</p>
         </div>
       </div>
@@ -168,6 +169,9 @@ export default function ResumePage() {
         href="/api/resume"
         download="ogooluwaniAdewale_software-developer.pdf"
         className="mt-4"
+        onClick={() =>
+          event({ action: "download", category: "Resume", label: "Resume PDF" })
+        }
       >
         <Button
           size="lg"

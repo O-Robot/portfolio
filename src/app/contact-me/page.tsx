@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { InlineWidget } from "react-calendly";
 import contact from "@/data/contact.json";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { event } from "@/utils/gtag";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -30,6 +31,11 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    event({
+      action: "submit",
+      category: "Contact Form",
+      label: "Message Form",
+    });
 
     try {
       const res = await fetch("/api/send", {

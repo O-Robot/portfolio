@@ -35,7 +35,6 @@ export function useClickListeners() {
         if (objectName === "SwitchBoard" || objectName === "Switch") {
           const newTheme = theme === "light" ? "dark" : "light";
           setTheme(newTheme);
-          console.log("clicked");
           // Animate switch rotation
           if (lightSwitch) {
             const targetRotation = newTheme === "dark" ? Math.PI / 7 : 0;

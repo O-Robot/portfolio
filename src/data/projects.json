@@ -22,7 +22,7 @@
     "createdAt": "2025",
     "url": "https://mydealsbro.com/",
     "description": "Affiliate marketing website for UK audiences, with WordPress-based content management and integrated deal-tracking features.",
-    "isFork": false,
+    "isFork": true,
     "languages": [
       { "name": "WordPress", "iconifyClass": "fa-wordpress" },
       { "name": "PHP", "iconifyClass": "logos-php" },
@@ -240,20 +240,7 @@
     ],
     "image": "/images/projects/dashboard.png"
   },
-  {
-    "id": "proj017",
-    "name": "The LightGivers Foundation",
-    "createdAt": "2022",
-    "url": "https://thelightgivers.org",
-    "description": "A humanitarian foundation website with integrated multi-currency donation features to support impactful projects globally.",
-    "isFork": false,
-    "languages": [
-      { "name": "WordPress", "iconifyClass": "fa-wordpress" },
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "PHP", "iconifyClass": "logos-php" }
-    ],
-    "image": "/images/projects/lightgivers.png"
-  },
+
   {
     "id": "proj018",
     "name": "Portfolio V1",
@@ -268,20 +255,7 @@
     ],
     "image": "/images/projects/portfolio-v1.png"
   },
-  {
-    "id": "proj019",
-    "name": "Boxin Store",
-    "createdAt": "2021",
-    "url": "http://20.119.67.205:8000/",
-    "description": "An e-commerce platform built for Boxin users, allowing store owners to manage and personalize their online storefronts.",
-    "isFork": false,
-    "languages": [
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
-      { "name": "Sass", "iconifyClass": "logos-sass" },
-      { "name": "HTML", "iconifyClass": "logos-html-5" }
-    ],
-    "image": "/images/projects/boxin-store.png"
-  },
+
   {
     "id": "proj020",
     "name": "Boxin Logistics",
