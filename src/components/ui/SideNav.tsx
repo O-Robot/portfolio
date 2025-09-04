@@ -4,11 +4,10 @@ import Link from "next/link";
 import navItems from "@/data/nav.json";
 import { useStore } from "@/store";
 export default function SideNav() {
-  // const [showContact, setShowContact] = useState(false);
-  const { theme } = useStore();
-
+  const { theme, view } = useStore();
+  if (view === "about") return null;
   return (
-    <nav className="fixed bottom-4 flex items-center justify-center gap-6 z-20 pb-10 w-full">
+    <nav className="fixed bottom-4 flex flex-wrap items-center px-2 justify-center gap-6 z-20 pb-10 w-full">
       {navItems.map((nav, _) => (
         <Link
           key={_}

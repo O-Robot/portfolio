@@ -10,7 +10,7 @@ export default function Model() {
   const mixer = useRef<THREE.AnimationMixer>(null);
   const videoTexture = useVideoTexture("/textures/arcane.mp4");
   const bookTexture = useTexture("/textures/book-inner.jpg");
-  const screenTexture = useTexture("/textures/book-inner.jpg");
+  const screenTexture = useTexture("/textures/screen.png");
   const plantRefs = useRef<{ [key: string]: THREE.Mesh }>({});
   const speakerRefs = useRef<{ [key: string]: THREE.Mesh }>({});
   bookTexture.flipY = false;
@@ -39,7 +39,6 @@ export default function Model() {
       // book
       if (child.children) {
         child.children.forEach((innerChild) => {
-          // disable shadow by book cover & switch btn
           if (innerChild instanceof THREE.Mesh) {
             if (innerChild.name !== "Book001" && innerChild.name !== "Switch") {
               innerChild.castShadow = true;
@@ -194,7 +193,6 @@ export default function Model() {
       }
     });
 
-    // Plant glow intensities
     // const plantIntensity = theme === "dark" ? 0.2 : 0.05;
     // Object.values(plantRefs.current).forEach((mesh) => {
     //   if (mesh?.material) {
@@ -205,7 +203,6 @@ export default function Model() {
     //   }
     // });
 
-    // RGB device glow intensities
     // const rgbIntensity = theme === "dark" ? 0.3 : 0.1;
     // Object.values(rgbRefs.current).forEach((mesh) => {
     //   if (mesh?.material) {
@@ -220,7 +217,6 @@ export default function Model() {
   // Animation loop
   useFrame((state, delta) => {
     mixer.current?.update(delta);
-    // Add subtle pulsing effect to speakers in dark mode
     if (theme === "dark") {
       const time = state.clock.elapsedTime;
       const speakerR = speakerRefs.current.speakerR;

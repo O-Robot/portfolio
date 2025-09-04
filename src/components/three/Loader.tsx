@@ -1,5 +1,11 @@
 "use client";
+import { useStore } from "@/store";
+
 export default function Loader() {
+  const { sceneReady } = useStore();
+
+  if (sceneReady) return null;
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
       <div className="loader">
@@ -14,7 +20,7 @@ export default function Loader() {
             content: "";
             width: 48px;
             height: 5px;
-            background: #f0808050;
+            background: #e0b1cb2a;
             position: absolute;
             top: 60px;
             left: 0;
@@ -25,7 +31,7 @@ export default function Loader() {
             content: "";
             width: 100%;
             height: 100%;
-            background: #f08080;
+            background: #e0b1cb;
             position: absolute;
             top: 0;
             left: 0;
@@ -60,7 +66,6 @@ export default function Loader() {
             }
           }
         `}</style>
-        hi
       </div>
     </div>
   );

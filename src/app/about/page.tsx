@@ -111,7 +111,6 @@ export default function AboutPage() {
         </div>
       </section>
       {/* top skills */}
-      {/* top skills */}
       <section id="skills" className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.div
@@ -123,9 +122,6 @@ export default function AboutPage() {
             <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
               Top Skills
             </h2>
-            {/* <p className="text-xl text-white/80 max-w-3xl mx-auto">
-                    A timeline of growth, learning, and achievements
-                  </p> */}
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -140,7 +136,11 @@ export default function AboutPage() {
                 <span
                   className="iconify w-14 h-14 z-10"
                   data-icon={logo.fontAwesomeClassname}
-                  style={logo.style}
+                  style={
+                    logo.style.color === "#000000"
+                      ? { color: "var(--primary-text)" }
+                      : logo.style
+                  }
                   data-inline="false"
                 ></span>
                 <h4 className="z-10 font-medium">{logo.skillName}</h4>
@@ -148,7 +148,10 @@ export default function AboutPage() {
                   className="animated-border"
                   style={
                     {
-                      "--border-color": logo.style.color,
+                      "--border-color":
+                        logo.style.color === "#000000"
+                          ? "var(--primary-text)"
+                          : logo.style.color,
                     } as React.CSSProperties
                   }
                 ></span>

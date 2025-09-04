@@ -239,27 +239,38 @@ export default function HomePage() {
             className="skill-container text-center m
             b-16"
           >
-            {skills.map((logo, i) => (
-              <li className="skill-content" key={i}>
-                {/* Icon */}
-                <span
-                  className="iconify w-14 h-14 z-10"
-                  data-icon={logo.fontAwesomeClassname}
-                  style={logo.style} // Still applies the icon color
-                  data-inline="false"
-                ></span>
-                <h4 className="z-10 font-medium">{logo.skillName}</h4>
-                {/* Animated rotating border */}
-                <span
-                  className="animated-border"
-                  style={
-                    {
-                      "--border-color": logo.style.color,
-                    } as React.CSSProperties
-                  }
-                ></span>
-              </li>
-            ))}
+            {skills.map((logo, i) => {
+              return (
+                <li className="skill-content" key={i}>
+                  <>
+                    {/* Icon */}
+                    <span
+                      className="iconify w-14 h-14 z-10"
+                      data-icon={logo.fontAwesomeClassname}
+                      style={
+                        logo.style.color === "#000000"
+                          ? { color: "var(--primary-text)" }
+                          : logo.style
+                      }
+                      data-inline="false"
+                    ></span>
+                    <h4 className="z-10 font-medium">{logo.skillName}</h4>
+                    {/* Animated rotating border */}
+                    <span
+                      className="animated-border"
+                      style={
+                        {
+                          "--border-color":
+                            logo.style.color === "#000000"
+                              ? "var(--primary-text)"
+                              : logo.style.color,
+                        } as React.CSSProperties
+                      }
+                    ></span>
+                  </>
+                </li>
+              );
+            })}
           </motion.div>{" "}
         </div>
       </section>
