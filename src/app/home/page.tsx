@@ -3,11 +3,10 @@ import ParticleBackground from "@/components/three/particle-background";
 import { isWebGLSupported } from "@/utils/webgl-utils";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertCircle, Download, Pencil, Send } from "lucide-react";
+import { AlertCircle, Pencil, Send } from "lucide-react";
 import HolographicAvatar from "@/components/three/holographic-avatar";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Timeline from "@/components/sections/timeline";
 import timelineData from "@/data/experience.json";
@@ -105,14 +104,6 @@ export default function HomePage() {
               transition={{ delay: 1.2, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              {/* <Button
-                size="lg"
-                className="glass-morphism hover:animate-glow text-white border-cyan-400 hover:border-cyan-300 px-8 py-4 text-lg bg-transparent"
-                variant="outline"
-              >
-                <Rocket className="mr-2 h-5 w-5" />
-                Explore My Universe
-              </Button> */}
               <Button
                 size="lg"
                 className="glass-morphism hover:animate-glow text-primary-text  px-8 py-4 text-lg bg-transparent"
