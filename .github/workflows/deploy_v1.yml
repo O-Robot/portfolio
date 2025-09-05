@@ -1,0 +1,39 @@
+name: Deploy Portfolio V1
+
+on:
+  push:
+    branches:
+      - v1
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build React site
+        run: npm run build
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: |
+            mkdir -p /home/ubuntu/v1_site_backup
+            if [ -d "/home/ubuntu/v1_site" ]; then
+              mv /home/ubuntu/v1_site/* /home/ubuntu/v1_site_backup/
+            fi
+            cp -r build/* /home/ubuntu/v1_site/
+            sudo systemctl reload nginx
