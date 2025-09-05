@@ -1,12 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Download, RotateCw } from "lucide-react";
 import { event } from "@/utils/gtag";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+const Document = dynamic(
+  () => import("react-pdf").then((mod) => mod.Document),
+  { ssr: false }
+);
+const Page = dynamic(() => import("react-pdf").then((mod) => mod.Page), {
+  ssr: false,
+});
+
+// Configure PDF.js worker on client side only
+if (typeof window !== "undefined") {
+  import("react-pdf").then((pdfjs) => {
+    pdfjs.pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.pdfjs.version}/build/pdf.worker.min.mjs`;
+  });
+}
 
 export default function ResumePage() {
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
@@ -14,6 +27,13 @@ export default function ResumePage() {
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [pageWidth, setPageWidth] = useState(670);
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure component only renders on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     async function loadPdf() {
@@ -47,8 +67,25 @@ export default function ResumePage() {
       }
     }
 
-    loadPdf();
-  }, []);
+    if (isClient) {
+      loadPdf();
+    }
+  }, [isClient]);
+
+  useEffect(() => {
+    if (!isClient) return;
+
+    const handleResize = () => {
+      setPageWidth(
+        window.innerWidth < 640 ? Math.min(window.innerWidth - 32, 450) : 670
+      );
+    };
+
+    handleResize(); // set initial width
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isClient]);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
@@ -60,7 +97,8 @@ export default function ResumePage() {
     setError("Failed to load PDF document");
   }
 
-  if (loading) {
+  // Show loading state during SSR and initial client render
+  if (!isClient || loading) {
     return (
       <div
         className={`min-h-screen flex items-center justify-center bg-background`}
@@ -116,20 +154,15 @@ export default function ResumePage() {
               pageNumber={pageNumber}
               renderTextLayer={false}
               renderAnnotationLayer={false}
-              // width={pageWidth}
               className="[&>canvas]:mx-auto !m-0 max-w-full"
-              width={
-                window.innerWidth < 640
-                  ? Math.min(window.innerWidth - 32, 450)
-                  : 670
-              }
+              width={pageWidth}
             />
           </Document>
         ) : (
           <p className="text-center p-6">No PDF loaded</p>
         )}
 
-        {/* nav pagianation */}
+        {/* nav pagination */}
         {numPages && numPages > 1 && (
           <>
             {pageNumber > 1 && (
@@ -179,7 +212,6 @@ export default function ResumePage() {
           variant="outline"
         >
           <Download className="mr-2 h-5 w-5" />
-          {/* 📄 */}
           Download Résumé
         </Button>
       </a>
