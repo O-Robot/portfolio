@@ -1,0 +1,80 @@
+name: Deploy Current Version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+  
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Build Next.js
+        run: |
+          npm ci
+          npm run build
+
+      - name: Archive build
+        run: |
+          tar czf next_build.tar.gz .next package.json package-lock.json node_modules
+
+      - name: Deploy to Oracle VM
+        uses: appleboy/scp-action@v0.1.5
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: "next_build.tar.gz"
+          target: "~/portfolio/"
+
+      - name: Extract & restart on VM with rollback
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            set -e
+            cd ~/portfolio
+
+            # Backup current build
+            if [ -d ".next" ]; then
+              mv .next .next_backup_$(date +%s)
+            fi
+
+            # Extract new build
+            tar xzf next_build.tar.gz
+
+            # Install production dependencies
+            npm install --production
+
+            # Restart server
+            pm2 restart portfolio || pm2 start npm --name "portfolio" -- start
+            pm2 save
+
+            # SSL renewal
+            sudo certbot renew --quiet || echo "Certbot error ignored"
+
+            # Health check
+            if ! curl -f https://${{ secrets.DOMAIN }}; then
+              echo "Health check failed! Rolling back..."
+              rm -rf .next
+              mv .next_backup_* .next
+              pm2 restart portfolio
+              exit 1
+            fi
+
+            # Cleanup backup if deployment successful
+            rm -rf .next_backup_*
