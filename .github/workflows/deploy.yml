@@ -19,6 +19,10 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Create build-time .env.production
+        run: |
+          echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" > .env.production
+                
       - name: Build Next.js
         run: |
           npm ci
