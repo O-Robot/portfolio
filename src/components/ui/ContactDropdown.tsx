@@ -1,5 +1,5 @@
 "use client";
-export default function ContactDropdown({ onClose }: { onClose: () => void }) {
+export default function ContactDropdown() {
   return (
     <div className="absolute bottom-0 right-full mb-4 mr-4 bg-background text-foreground p-6 rounded-lg w-72 shadow-lg z-30">
       <svg

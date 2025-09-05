@@ -1,8 +1,8 @@
 "use client";
+
 import { motion } from "framer-motion";
 import ParticleBackground from "@/components/three/particle-background";
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 

@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { OrbitControls } from "@react-three/drei";
 import Model from "../../model/Model";
 import Lights from "./Lights";
-import Loader from "./Loader";
 import { useStore } from "@/store";
 import Text3D from "../ui/Text";
 import { useClickListeners } from "@/hooks/listeners";

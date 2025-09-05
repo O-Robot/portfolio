@@ -6,7 +6,15 @@ import "./globals.css";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Toaster } from "@/components/ui/toaster";
-import AnalyticsTracker from "@/components/AnalyticsTracker";
+
+import dynamic from "next/dynamic";
+
+const AnalyticsTracker = dynamic(
+  () => import("@/components/AnalyticsTracker"),
+  {
+    ssr: false,
+  }
+);
 
 declare global {
   interface Window {

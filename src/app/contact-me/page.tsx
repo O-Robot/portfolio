@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, MessageCircle, Send, Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
