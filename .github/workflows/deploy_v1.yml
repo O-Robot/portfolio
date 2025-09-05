@@ -30,6 +30,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          source: "build/*"
+          source: "build/"
           target: "/home/ubuntu/v1_site/"
+          strip_components: 1   
+          overwrite: true       
+
          
