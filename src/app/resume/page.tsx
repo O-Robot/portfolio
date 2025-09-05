@@ -192,7 +192,7 @@ export default function ResumePage() {
 
       {/*pages count */}
       {numPages && (
-        <p className="mt-4">
+        <p className="mt-4 text-primary-text">
           Page {pageNumber} of {numPages}
         </p>
       )}
