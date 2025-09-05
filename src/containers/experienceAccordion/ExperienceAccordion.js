@@ -22,6 +22,7 @@ class ExperienceAccordion extends Component {
                       href={experience["company_url"]}
                       target="_blank"
                       className="txtexp"
+                      rel="noopener noreferrer"
                     >
                       <ExperienceCard experience={experience} theme={theme} />
                     </a>

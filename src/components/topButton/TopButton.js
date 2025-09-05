@@ -65,6 +65,7 @@ export default function TopButton({ theme }) {
           href="https://api.whatsapp.com/send?phone=2348134041124"
           class="float"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i class="fab fa-whatsapp my-float"></i>
         </a>
