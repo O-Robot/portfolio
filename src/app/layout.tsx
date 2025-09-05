@@ -6,15 +6,7 @@ import "./globals.css";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Toaster } from "@/components/ui/toaster";
-
-import dynamic from "next/dynamic";
-
-const AnalyticsTracker = dynamic(
-  () => import("@/components/AnalyticsTracker"),
-  {
-    ssr: false,
-  }
-);
+import AnalyticsProvider from "@/components/AnalyticsProvider";
 
 declare global {
   interface Window {
@@ -66,7 +58,7 @@ export default function RootLayout({
         className={`${space.className} antialiased  bg-background text-foreground h-screen flex flex-col justify-between`}
         suppressHydrationWarning
       >
-        <AnalyticsTracker />
+        <AnalyticsProvider />
         <Header />
         {children}
         <Toaster />
