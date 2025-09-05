@@ -18,22 +18,26 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build React site
         run: npm run build
 
-      - name: Deploy to server
+      - name: Upload build to server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: "build/*"
+          target: "/home/ubuntu/v1_site"
+
+      - name: Reload nginx
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          script: |
-            mkdir -p /home/ubuntu/v1_site_backup
-            if [ -d "/home/ubuntu/v1_site" ]; then
-              mv /home/ubuntu/v1_site/* /home/ubuntu/v1_site_backup/
-            fi
-            cp -r build/* /home/ubuntu/v1_site/
-            sudo systemctl reload nginx
+          script: sudo systemctl reload nginx
