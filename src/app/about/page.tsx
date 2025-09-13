@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import Timeline from "@/components/sections/timeline";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import skills from "@/data/skills.json";
 import robot from "@/data/about.json";
@@ -13,11 +13,29 @@ import contact from "@/data/contact.json";
 export default function AboutPage() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const handlePlay = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio(robot.pronunciation.audio);
+      audioRef.current.onended = () => setIsPlaying(false);
+    }
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
+  const parts = robot.about.split(/(\[\[NAME\]\]|\[\[SPEAKER\]\])/);
   if (!mounted) return null;
 
   return (
@@ -42,7 +60,52 @@ export default function AboutPage() {
             className=" mb-16 flex flex-col lg:flex-row gap-10 justify-between px-2 lg:px-10"
           >
             <div className="text-xl text-justify  text-primary-text/80 w-full lg:w-1/2 whitespace-pre-line">
-              {robot.about}
+              {parts.map((part, index) => {
+                if (part === "[[NAME]]") {
+                  return (
+                    <span
+                      key={index}
+                      className="relative group font-semibold cursor-pointer"
+                    >
+                      {/* Default: full name */}
+                      <span className="group-hover:hidden">{robot.name}</span>
+
+                      <span className="hidden group-hover:inline-flex gap-1">
+                        {robot.pronunciation.tooltip.map((syllable, i) => {
+                          const isLastOfFirstName =
+                            i === robot.pronunciation.firstNameLastIndex;
+                          const isLastOverall =
+                            i < robot.pronunciation.tooltip.length - 1;
+                          return (
+                            <span
+                              key={i}
+                              className="relative group/syllable cursor-help"
+                            >
+                              {syllable.part} {isLastOfFirstName && "\u00A0"}
+                              {!isLastOfFirstName && isLastOverall ? "-" : ""}
+                              <span className="absolute left-1/2 -translate-x-1/2 mt-1 hidden group-hover/syllable:block bg-primary-text text-background text-xs rounded px-2 py-1 whitespace-nowrap">
+                                {syllable.explanation}
+                              </span>
+                            </span>
+                          );
+                        })}
+                      </span>
+                    </span>
+                  );
+                }
+                if (part === "[[SPEAKER]]") {
+                  return (
+                    <button
+                      key={index}
+                      onClick={handlePlay}
+                      className="inline-flex items-center justify-center w-7 h-7 rounded-full cursor-pointer hover:bg-background/80"
+                    >
+                      {isPlaying ? "⏹️" : "🗣️"}
+                    </button>
+                  );
+                }
+                return part; // normal text
+              })}
             </div>
             <div className="text-xl text-white/80 w-full lg:w-1/2 px-2 lg:px-8 flex flex-col gap-8">
               <Image

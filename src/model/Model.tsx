@@ -8,7 +8,10 @@ export default function Model() {
   const { scene, animations } = useGLTF("/models/room.glb");
   const { theme, setBookCover, setLightSwitch, setSceneReady } = useStore();
   const mixer = useRef<THREE.AnimationMixer>(null);
-  const videoTexture = useVideoTexture("/textures/arcane.mp4");
+  const videoTexture = useVideoTexture("/textures/arcane.mp4", {
+    start: false,
+    loop: true,
+  });
   const bookTexture = useTexture("/textures/book-inner.jpg");
   const screenTexture = useTexture("/textures/screen.png");
   const plantRefs = useRef<{ [key: string]: THREE.Mesh }>({});
@@ -18,6 +21,11 @@ export default function Model() {
   useEffect(() => {
     if (!scene || !animations) return;
 
+    if (scene && videoTexture?.image instanceof HTMLVideoElement) {
+      videoTexture.image.play().catch((err) => {
+        console.warn("Video autoplay failed:", err);
+      });
+    }
     // Setup animations
     mixer.current = new THREE.AnimationMixer(scene);
 

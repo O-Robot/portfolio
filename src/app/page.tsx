@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     if (sceneReady) {
-      const timer = setTimeout(() => setShowLoader(false), 500);
+      const timer = setTimeout(() => setShowLoader(false), 200);
       return () => clearTimeout(timer);
     }
   }, [sceneReady]);

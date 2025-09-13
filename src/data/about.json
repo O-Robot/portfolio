@@ -3,7 +3,25 @@
   "tagline": "Inventing tomorrow's web, one line of code at a time.",
   "resume": "",
   "image": "/images/raw.png",
-  "about": "👋 Hey there! I’m Ogooluwani Adewale, an IT professional with over five years of experience in software development. My work goes beyond writing code. For me, it is about telling a story with design and ensuring every user walks away with a smooth and memorable experience.\n\n 💻 I work with HTML, CSS, JavaScript, Dart and Python, alongside frameworks like React, Angular, Vue and Flutter. I also use Framer, WordPress and Shopify to help brands and businesses create modern websites, sleek portfolios and powerful e-commerce solutions that stand out.\n\n 🚀 I thrive where creativity meets technology. Every project is a chance to transform ideas into digital products that are not only functional but also beautiful and impactful. I enjoy blending design with performance and innovation with usability.\n\n 🎨 Beyond code, I am passionate about continuous learning and growth. I love exploring new technologies, experimenting with tools that push boundaries and finding fresh ways to improve the user experience.\n\n 🙌 At the core, I value collaboration, authenticity and excellence. I bring not just technical ability but also creativity, problem solving and a genuine drive to deliver work that truly matters. \n\nLet’s connect and create something remarkable together 🤝✨",
+  "about": "👋 Hey there! I'm [[NAME]] [[SPEAKER]], an IT professional with over five years of experience in software development. My work goes beyond writing code. For me, it is about telling a story with design and ensuring every user walks away with a smooth and memorable experience.\n\n 💻 I work with HTML, CSS, JavaScript, Dart and Python, alongside frameworks like React, Angular, Vue and Flutter. I also use Framer, WordPress and Shopify to help brands and businesses create modern websites, sleek portfolios and powerful e-commerce solutions that stand out.\n\n 🚀 I thrive where creativity meets technology. Every project is a chance to transform ideas into digital products that are not only functional but also beautiful and impactful. I enjoy blending design with performance and innovation with usability.\n\n 🎨 Beyond code, I am passionate about continuous learning and growth. I love exploring new technologies, experimenting with tools that push boundaries and finding fresh ways to improve the user experience.\n\n 🙌 At the core, I value collaboration, authenticity and excellence. I bring not just technical ability but also creativity, problem solving and a genuine drive to deliver work that truly matters. \n\nLet’s connect and create something remarkable together 🤝✨",
+  "pronunciation": {
+    "audio": "/audio/ogooluwani.mp3",
+    "firstNameLastIndex": 4,
+    "tooltip": [
+      { "part": "O", "explanation": "Like 'O' in 'o'clock'" },
+      { "part": "go", "explanation": "Like 'go' as in move forward/back" },
+      {
+        "part": "loo",
+        "explanation": "As in 'loo' - The british slang for bathroom"
+      },
+      { "part": "wah", "explanation": "Like 'wah' in 'wand'" },
+      { "part": "nee", "explanation": "Like knee" },
+      { "part": "Ah", "explanation": "Like 'ah' in 'father'" },
+      { "part": "deh", "explanation": "Like 'debt' without the 't'" },
+      { "part": "wah", "explanation": "Like 'wah' in 'wander'" },
+      { "part": "leh", "explanation": "Like 'le' in late without the 't'" }
+    ]
+  },
   "education": [
     {
       "id": 1,

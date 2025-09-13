@@ -1,7 +1,7 @@
 "use client";
 import ParticleBackground from "@/components/three/particle-background";
 import { isWebGLSupported } from "@/utils/webgl-utils";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { AlertCircle, Pencil, Send } from "lucide-react";
 import HolographicAvatar from "@/components/three/holographic-avatar";
@@ -21,6 +21,33 @@ export default function HomePage() {
   const [webglSupported, setWebglSupported] = useState(true);
   const [mounted, setMounted] = useState(false);
   const connect = ["Github", "LinkedIn"];
+
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const handlePlay = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio(robot.pronunciation.audio);
+      audioRef.current.onended = () => setIsPlaying(false);
+    }
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const parts = robot.about
+    .split(/(\[\[NAME\]\]|\[\[SPEAKER\]\])/)
+    .map((part) => TruncateText(part, 565));
 
   useEffect(() => {
     setWebglSupported(isWebGLSupported());
@@ -154,7 +181,52 @@ export default function HomePage() {
             className="  flex justify-center"
           >
             <div className="text-xl text-center  text-primary-text/80 w-full whitespace-pre-line">
-              {TruncateText(robot.about, 550)}
+              {parts.map((part, index) => {
+                if (part === "[[NAME]]") {
+                  return (
+                    <span
+                      key={index}
+                      className="relative group font-semibold cursor-pointer"
+                    >
+                      {/* Default: full name */}
+                      <span className="group-hover:hidden">{robot.name}</span>
+
+                      <span className="hidden group-hover:inline-flex gap-1">
+                        {robot.pronunciation.tooltip.map((syllable, i) => {
+                          const isLastOfFirstName =
+                            i === robot.pronunciation.firstNameLastIndex;
+                          const isLastOverall =
+                            i < robot.pronunciation.tooltip.length - 1;
+                          return (
+                            <span
+                              key={i}
+                              className="relative group/syllable cursor-help"
+                            >
+                              {syllable.part} {isLastOfFirstName && "\u00A0"}
+                              {!isLastOfFirstName && isLastOverall ? "-" : ""}
+                              <span className="absolute left-1/2 -translate-x-1/2 mt-1 hidden group-hover/syllable:block bg-primary-text text-background text-xs rounded px-2 py-1 whitespace-nowrap">
+                                {syllable.explanation}
+                              </span>
+                            </span>
+                          );
+                        })}
+                      </span>
+                    </span>
+                  );
+                }
+                if (part === "[[SPEAKER]]") {
+                  return (
+                    <button
+                      key={index}
+                      onClick={handlePlay}
+                      className="inline-flex items-center justify-center w-7 h-7 rounded-full cursor-pointer hover:bg-background/80"
+                    >
+                      {isPlaying ? "⏹️" : "🗣️"}
+                    </button>
+                  );
+                }
+                return part; // normal text
+              })}
               <div className="flex justify-center gap-3 py-6">
                 <Button
                   size="lg"
@@ -318,6 +390,13 @@ export default function HomePage() {
                     type="submit"
                     className="w-full glass-morphism  hover:animate-glow"
                     size="lg"
+                    onClick={() =>
+                      window.open(
+                        "https://forms.visme.co/fv/q74g8wwe-179ngw",
+                        "_blank",
+                        "noopener,noreferrer"
+                      )
+                    }
                   >
                     <Pencil className="mr-2 h-5 w-5" />
                     Write a Review
@@ -385,9 +464,11 @@ export default function HomePage() {
                       .map((social) => (
                         <motion.a
                           key={social.name}
-                          href="#"
+                          href={social.link}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border text-primary-text/80  cursor-pointer hover:bg-white/20 transition-colors ${social.color}`}
                         >
                           <Icon

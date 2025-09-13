@@ -1,7 +1,14 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, MessageCircle, Send, Loader } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  MessageCircle,
+  Send,
+  Loader,
+  Pencil,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -313,7 +320,26 @@ export default function ContactPage() {
                   </div>
                 </CardContent>
               </Card> */}
-
+              {/* Contact Information */}
+              <Card className="glass-morphism border-white/20 flex justify-center items-center p-0 py-3 px-5">
+                <CardContent className="w-full">
+                  <Button
+                    type="submit"
+                    className="w-full glass-morphism  hover:animate-glow"
+                    size="lg"
+                    onClick={() =>
+                      window.open(
+                        "https://forms.visme.co/fv/q74g8wwe-179ngw",
+                        "_blank",
+                        "noopener,noreferrer"
+                      )
+                    }
+                  >
+                    <Pencil className="mr-2 h-5 w-5" />
+                    Write a Review
+                  </Button>
+                </CardContent>
+              </Card>
               {/* Social Links */}
               <Card className="glass-morphism border-white/20">
                 <CardHeader>
@@ -328,7 +354,8 @@ export default function ContactPage() {
                       .map((social) => (
                         <motion.a
                           key={social.name}
-                          href="#"
+                          href={social.link}
+                          rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border text-primary-text/80  cursor-pointer hover:bg-white/20 transition-colors ${social.color}`}

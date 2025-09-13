@@ -19,19 +19,23 @@ export default function Scene() {
     <>
       <Suspense fallback={null}>
         <Lights />
-        <Model />
-        <Text3D />
-        <OrbitControls
-          enabled={controlsEnabled}
-          enablePan={false}
-          minDistance={0.9}
-          maxDistance={1.6}
-          minAzimuthAngle={0.2}
-          maxAzimuthAngle={Math.PI * 0.78}
-          minPolarAngle={0.3}
-          maxPolarAngle={Math.PI / 2}
-        />
       </Suspense>
+      <Suspense fallback={null}>
+        <Model />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Text3D />
+      </Suspense>
+      <OrbitControls
+        enabled={controlsEnabled}
+        enablePan={false}
+        minDistance={0.9}
+        maxDistance={1.6}
+        minAzimuthAngle={0.2}
+        maxAzimuthAngle={Math.PI * 0.78}
+        minPolarAngle={0.3}
+        maxPolarAngle={Math.PI / 2}
+      />
     </>
   );
 }

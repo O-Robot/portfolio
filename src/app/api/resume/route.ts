@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const docId = "1-QkJ9tTplt8XnW4-IiuHtASSird6FPLk4GWElz2PH8c";
+    const docId = "161a5eJ0EVI1xSsrYurkGZXMx5ZjuAjWM";
     const googleDocsUrl = `https://docs.google.com/document/d/${docId}/export?format=pdf`;
 
     const response = await fetch(googleDocsUrl);

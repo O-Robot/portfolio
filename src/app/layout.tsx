@@ -33,10 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
+        <Script
           src="https://code.iconify.design/2/2.2.1/iconify.min.js"
           defer
-        ></script>
+        />
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-1JV5XE6QBL`}
