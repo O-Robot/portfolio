@@ -25,6 +25,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    phone: "",
     subject: "",
     email: "",
     message: "",
@@ -77,6 +78,7 @@ export default function ContactPage() {
       setFormData({
         firstName: "",
         lastName: "",
+        phone: "",
         email: "",
         message: "",
         subject: "",
@@ -160,6 +162,18 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
+                        }
+                        className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Input
+                        type="tel"
+                        placeholder="Your Phone Number"
+                        value={formData.phone}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                         required

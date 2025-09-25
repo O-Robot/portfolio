@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    const { firstName, lastName, email, subject, message, subscribe } =
+    const { firstName, lastName, phone, email, subject, message, subscribe } =
       await req.json();
 
     await resend.emails.send({
@@ -20,6 +20,7 @@ export async function POST(req: Request) {
         Lastname: ${lastName}
         Email: ${email}
         Message: ${message}
+        Phone: ${phone}
         Subscribe to Newsletter: ${subscribe ? "Yes" : "No"}
       `,
     });
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
         subject: "Thanks for reaching out 🚀",
         html: `
           <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto; padding:20px; border-radius:12px; background:#f8eff4; text-align:center;">
-            <img src="https://ogooluwaniadewale.com/icons/favicon.ico" alt="Ogooluwani Logo" width="80" style="margin-bottom:20px;" />
+            <img src="https://ogooluwaniadewale.com/favicon.ico" alt="Ogooluwani Logo" width="80" style="margin-bottom:20px;" />
             <h2 style="color:#231942;">Hi ${firstName} ${lastName},</h2>
             <p style="color:#655e7a; font-size:16px; line-height:1.5;">
              Thank you for reaching out 🎉
