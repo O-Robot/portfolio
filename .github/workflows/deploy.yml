@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-  
       - name: Checkout repo
         uses: actions/checkout@v3
 
@@ -22,15 +21,15 @@ jobs:
       - name: Create build-time .env.production
         run: |
           echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" > .env.production
-                
-      - name: Build Next.js
+
+      - name: Install dependencies & build
         run: |
           npm ci
           npm run build
 
-      - name: Archive build
+      - name: Archive build including public folder
         run: |
-          tar czf next_build.tar.gz .next package.json package-lock.json node_modules
+          tar czf next_build.tar.gz .next package.json package-lock.json node_modules public
 
       - name: Deploy to Oracle VM
         uses: appleboy/scp-action@v0.1.5
@@ -61,7 +60,7 @@ jobs:
             # Extract new build
             tar xzf next_build.tar.gz
 
-            # Install production dependencies
+            # Install production dependencies only
             npm install --production
 
             # Restart server
