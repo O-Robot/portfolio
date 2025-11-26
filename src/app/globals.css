@@ -216,7 +216,8 @@ input[type="tel"] {
 
 input[type="tel"]::placeholder {
   color: var(--color-secondary-text);
-  opacity: 1;
+  opacity: .6;
+  font-size: 15px;
 }
 
 .PhoneInput:focus-within {

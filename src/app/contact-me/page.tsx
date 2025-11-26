@@ -52,7 +52,7 @@ export default function ContactPage() {
     if (!formData.lastName.trim()) {
       toast({
         title: "Hold up 😅",
-        description: "Last name is required.",
+        description: "Last name is required",
         variant: "destructive",
       });
       return;
@@ -201,7 +201,7 @@ export default function ContactPage() {
                             firstName: e.target.value,
                           })
                         }
-                        required
+                        
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                       <Input
@@ -210,7 +210,7 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, lastName: e.target.value })
                         }
-                        required
+                        
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                     </div>
@@ -224,7 +224,7 @@ export default function ContactPage() {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
-                        required
+                        
                       />
                     </div>
                     <div>
@@ -238,7 +238,7 @@ export default function ContactPage() {
                             phone: value,
                           })
                         }
-                        required
+                        
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                     </div>
@@ -249,7 +249,7 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, subject: e.target.value })
                         }
-                        required
+                        
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                     </div>
@@ -262,7 +262,7 @@ export default function ContactPage() {
                           setFormData({ ...formData, message: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50 min-h-32"
-                        required
+                        
                       />
                     </div>
                     <div className="flex items-center gap-2 text-sm">
