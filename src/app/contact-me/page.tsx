@@ -18,6 +18,8 @@ import { InlineWidget } from "react-calendly";
 import contact from "@/data/contact.json";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { event } from "@/utils/gtag";
+import { InputPhone } from "@/components/ui/phone-input";
+import { isValidPhoneNumber } from "react-phone-number-input";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -37,7 +39,64 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.firstName.trim()) {
+      toast({
+        title: "Wait a sec 👀",
+        description: "Please enter your first name.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.lastName.trim()) {
+      toast({
+        title: "Hold up 😅",
+        description: "Last name is required.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Invalid email 📧",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.phone || !isValidPhoneNumber(formData.phone)) {
+      toast({
+        title: "Phone number error 📱",
+        description: "Please enter a valid phone number.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.subject.trim()) {
+      toast({
+        title: "Subject missing ✍🏽",
+        description: "Please include a subject.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      toast({
+        title: "Message empty 📨",
+        description: "Please type your message.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setLoading(true);
+
     event({
       action: "submit",
       category: "Contact Form",
@@ -75,6 +134,7 @@ export default function ContactPage() {
         title: "Message sent! 🚀",
         description: "Thanks for reaching out. I'll get back to you soon!",
       });
+
       setFormData({
         firstName: "",
         lastName: "",
@@ -168,15 +228,18 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <Input
-                        type="tel"
+                      <InputPhone
                         placeholder="Your Phone Number"
+                        defaultCountry="NG"
                         value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
+                        onChange={(value: any) =>
+                          setFormData({
+                            ...formData,
+                            phone: value,
+                          })
                         }
-                        className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                         required
+                        className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                     </div>
                     <div>

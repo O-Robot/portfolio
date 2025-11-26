@@ -195,3 +195,45 @@ html {
 ._2lGLeKv6vr5ITdzoz_1 {
   display: block;
 }
+
+input[type="tel"] {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: 100%;
+  
+  border: none;
+  background-color: transparent;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: var(--color-primary-text);
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: box-shadow 0.2s, border-color 0.2s, background-color 0.2s,
+    color 0.2s;
+}
+
+input[type="tel"]::placeholder {
+  color: var(--color-secondary-text);
+  opacity: 1;
+}
+
+.PhoneInput:focus-within {
+  border-color: var(--color-primary-text);
+  box-shadow: 0 0 0 2px var(--color-primary-text);
+  outline: none;
+}
+
+.PhoneInputInput:focus,
+.PhoneInputInput:focus-visible {
+  outline: none;
+  outline-offset: 2;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+input[type="tel"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
