@@ -1,4 +1,4 @@
-name: Deploy Current Version
+name: Deploy Portfolio
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
           npm ci
           npm run build
 
-      - name: Archive build including public folder
+      - name: Archive build
         run: |
           tar czf next_build.tar.gz .next package.json package-lock.json node_modules public
 
@@ -41,8 +41,8 @@ jobs:
           source: "next_build.tar.gz"
           target: "~/portfolio/"
 
-      - name: Extract & restart on VM with rollback
-        uses: appleboy/ssh-action@v0.1.6
+      - name: Extract & restart server
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -63,13 +63,11 @@ jobs:
             # Install production dependencies only
             npm install --production
 
-            # Restart server
+            # Restart server with PM2
             pm2 restart portfolio || pm2 start npm --name "portfolio" -- start
             pm2 save
-
             # SSL renewal
             sudo certbot renew --quiet || echo "Certbot error ignored"
-
             # Health check
             if ! curl -f https://${{ secrets.DOMAIN }}; then
               echo "Health check failed! Rolling back..."
@@ -79,5 +77,5 @@ jobs:
               exit 1
             fi
 
-            # Cleanup backup if deployment successful
+            # Cleanup backup if successful
             rm -rf .next_backup_*
