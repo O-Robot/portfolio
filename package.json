@@ -50,7 +50,7 @@
     "next": "15.4.8",
     "react": "19.1.2",
     "react-calendly": "^4.4.0",
-    "react-dom": "19.1.0",
+    "react-dom": "19.1.2",
     "react-parallax-tilt": "^1.7.304",
     "react-pdf": "^10.1.0",
     "react-phone-number-input": "^3.4.14",
