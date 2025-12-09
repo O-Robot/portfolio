@@ -35,29 +35,29 @@ export default function Home() {
       <div className="absolute inset-0">
         {/* WebGL Warning */}
         {!webglSupported && (
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-20 left-4 right-4 z-60"
-        >
-          <div className="glass-morphism border-accent/50 rounded-lg p-3 max-w-md mx-auto">
-            <div className="flex items-center gap-2 text-accent">
-              <AlertCircle className="h-4 w-4" />
-              <span className="text-sm">
-                3D features unavailable - displaying in 2D mode
-              </span>
-              <Button
-                size="lg"
-                className="text-white"
-                variant="default"
-                onClick={() => router.push("/")}
-              >
-                Take me Home
-              </Button>
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="absolute top-20 left-4 right-4 z-60"
+          >
+            <div className="glass-morphism border-accent/50 rounded-lg p-3 max-w-md mx-auto">
+              <div className="flex items-center gap-2 text-accent">
+                <AlertCircle className="h-4 w-4" />
+                <span className="text-sm text-skill-text">
+                  3D features unavailable - displaying in 2D mode
+                </span>
+                <Button
+                  size="lg"
+                  className="text-white"
+                  variant="default"
+                  onClick={() => router.push("/home")}
+                >
+                  Take me Home
+                </Button>
+              </div>
             </div>
-          </div>
-        </motion.div>
-         )} 
+          </motion.div>
+        )}
         {showLoader && <Loader />}
         <Suspense fallback={null}>
           <Canvas
