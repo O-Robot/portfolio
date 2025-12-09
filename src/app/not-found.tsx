@@ -57,7 +57,7 @@ export default function NotFound() {
                   size="lg"
                   className="text-white"
                   variant="default"
-                  onClick={() => router.push("/")}
+                  onClick={() => router.push("/home")}
                 >
                   Take me Home
                 </Button>
