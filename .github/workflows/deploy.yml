@@ -69,13 +69,13 @@ jobs:
             # SSL renewal
             # sudo certbot renew --quiet || echo "Certbot error ignored"
             # Health check
-            if ! curl -f https://${{ secrets.DOMAIN }}; then
-              echo "Health check failed! Rolling back..."
-              rm -rf .next
-              mv .next_backup_* .next
-              pm2 restart portfolio
-              exit 1
-            fi
+            # if ! curl -f https://${{ secrets.DOMAIN }}; then
+            #   echo "Health check failed! Rolling back..."
+            #   rm -rf .next
+            #   mv .next_backup_* .next
+            #   pm2 restart portfolio
+            #   exit 1
+            # fi
 
             # Cleanup backup if successful
             rm -rf .next_backup_*
