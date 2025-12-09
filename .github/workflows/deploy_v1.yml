@@ -31,7 +31,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           source: "build/"
-          target: "/home/ubuntu/v1_site/"
+          target: "/home/deployer/v1_site/"
           strip_components: 1   
           overwrite: true       
 
