@@ -35,7 +35,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            className="absolute top-20 left-4 right-4 z-20"
+            className="absolute top-20 left-4 right-4 z-60"
           >
             <div className="glass-morphism border-accent/50 rounded-lg p-3 max-w-md mx-auto">
               <div className="flex items-center gap-2 text-accent">
@@ -47,7 +47,7 @@ export default function Home() {
                   size="lg"
                   className="text-white"
                   variant="default"
-                  onClick={() => router.push("/home")}
+                  onClick={() => router.push("/")}
                 >
                   Take me Home
                 </Button>
