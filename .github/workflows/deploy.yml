@@ -16,11 +16,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: "22"
 
       - name: Create build-time .env.production
         run: |
           echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" > .env.production
+          echo "NEXT_PUBLIC_CHAT_URL=https://chat.ogooluwaniadewale.com" > .env.production
 
       - name: Install dependencies & build
         run: |
