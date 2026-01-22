@@ -7,10 +7,17 @@ import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Toaster } from "@/components/ui/toaster";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import ChatLoader from "@/components/chat-loader";
 
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void;
+    OgooluwaniChat?: {
+      open: () => void;
+      close: () => void;
+      toggle: () => void;
+      destroy: () => void;
+    };
   }
 }
 
@@ -62,6 +69,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Toaster />
+        <ChatLoader />
+
         <Footer />
       </body>
     </html>

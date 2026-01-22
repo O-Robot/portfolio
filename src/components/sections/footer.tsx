@@ -12,13 +12,6 @@ export default function Footer() {
       >
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <div className="text-primary-text">© 2025 Ogooluwani Adewale.</div>
-
-          {/* <div className="flex items-center gap-4">
-            <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full animate-pulse" />
-            <span className="text-white/40 text-sm">
-              Crafted with ❤️ and cutting-edge tech.
-            </span>
-          </div> */}
         </div>
       </motion.footer>
     </div>
