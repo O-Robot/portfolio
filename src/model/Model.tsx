@@ -31,7 +31,7 @@ export default function Model() {
 
     // fan animation
     const clips = animations.filter((clip) =>
-      clip.name.includes("fan_rotation")
+      clip.name.includes("fan_rotation"),
     );
     clips.forEach((clip) => {
       const action = mixer.current!.clipAction(clip);
@@ -54,7 +54,7 @@ export default function Model() {
 
             if (innerChild.name === "Book001") {
               const bookCoverTexture = new THREE.TextureLoader().load(
-                "/textures/book-cover.jpg"
+                "/textures/book-cover.jpg",
               );
               bookCoverTexture.flipY = false;
               innerChild.material = new THREE.MeshStandardMaterial({
@@ -111,14 +111,21 @@ export default function Model() {
       }
 
       // stand
-      if (child.name === "Stand") {
-        const screen = child.children[0];
-        if (screen instanceof THREE.Mesh) {
-          screen.material = new THREE.MeshBasicMaterial({
-            map: videoTexture,
-          });
-        }
+    if (child.name === "Stand") {
+      const screen = child.children[0];
+      if (screen instanceof THREE.Mesh) {
+        // Flip the texture horizontally
+        videoTexture.center.set(0.5, 0.5);
+        videoTexture.repeat.x = -1;
+        videoTexture.wrapS = THREE.ClampToEdgeWrapping;
+
+        screen.material = new THREE.MeshBasicMaterial({
+          map: videoTexture,
+          toneMapped: false,
+        });
       }
+    }
+
 
       const applyRGBGlow = (mesh: THREE.Mesh) => {
         mesh.material = new THREE.MeshStandardMaterial({

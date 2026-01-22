@@ -1,5 +1,25 @@
 [
   {
+    "id": "cproj001",
+    "name": "Portfolio Chat",
+    "createdAt": "2026",
+    "url": "https://chat.ogooluwaniadewale.com",
+    "description": "An AI-powered chat assistant integrated into my personal portfolio, providing real-time interaction, project guidance, and seamless user communication.",
+    "isFork": false,
+    "languages": [
+      {
+        "name": "Next.js",
+        "iconifyClass": "vscode-icons:file-type-light-next"
+      },
+      { "name": "Tailwind CSS", "iconifyClass": "logos:tailwindcss-icon" },
+      { "name": "Node.js", "iconifyClass": "logos:nodejs-icon" },
+      { "name": "SQLite", "iconifyClass": "vscode-icons:file-type-sqlite" },
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
+      { "name": "JavaScript", "iconifyClass": "logos:javascript" }
+    ],
+    "image": "/images/projects/portfolio-chat.png"
+  },
+  {
     "id": "proj001",
     "name": "Portfolio V2",
     "createdAt": "2025",
@@ -11,7 +31,7 @@
         "name": "Next.js",
         "iconifyClass": "vscode-icons:file-type-light-next"
       },
-
+      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
       { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
     ],
     "image": "/images/projects/portfolio-v2.png"
@@ -260,7 +280,7 @@
     "id": "proj020",
     "name": "Boxin Logistics",
     "createdAt": "2021",
-    "url": "https://boxin.ng/",
+    "url": "https://boxin-landing.netlify.app/",
     "description": "Corporate website for Boxin Logistics, offering logistics services with a straightforward design and user-friendly interface.",
     "isFork": false,
     "languages": [

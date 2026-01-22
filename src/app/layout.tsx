@@ -40,6 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
         <Script
           src="https://code.iconify.design/2/2.2.1/iconify.min.js"
           defer
@@ -69,8 +71,10 @@ export default function RootLayout({
         <Header />
         {children}
         <Toaster />
-        <ChatLoader />
 
+        {typeof window !== "undefined" && window.location.pathname !== "/" && (
+          <ChatLoader />
+        )}
         <Footer />
       </body>
     </html>
