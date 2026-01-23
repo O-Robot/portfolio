@@ -72,9 +72,7 @@ export default function RootLayout({
         {children}
         <Toaster />
 
-        {typeof window !== "undefined" && window.location.pathname !== "/" && (
-          <ChatLoader />
-        )}
+        <ChatLoader />
         <Footer />
       </body>
     </html>
