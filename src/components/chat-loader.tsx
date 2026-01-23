@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 export default function ChatLoader() {
   const chatUrl = process.env.NEXT_PUBLIC_CHAT_URL;
   const [isAvailable, setIsAvailable] = useState(false);
+  console.log("this is", chatUrl);
 
   useEffect(() => {
     if (!chatUrl) return;
