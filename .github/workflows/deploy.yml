@@ -13,21 +13,37 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Archive code
-        run: |
-          tar czf portfolio_code.tar.gz .  # archives everything
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22"
 
-      - name: Deploy to server
+      - name: Install dependencies & build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Archive build
+        run: |
+          tar czf next_build.tar.gz \
+            .next \
+            public \
+            package.json \
+            package-lock.json \
+            node_modules \
+            ecosystem.config.js
+
+      - name: Deploy to Oracle VM
         uses: appleboy/scp-action@v0.1.5
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          source: "portfolio_code.tar.gz"
+          source: "next_build.tar.gz"
           target: "~/portfolio/"
 
-      - name: Build & restart on server
+      - name: Extract & restart server
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -38,23 +54,24 @@ jobs:
             set -e
             cd ~/portfolio
 
-            # Backup old build
+            echo "🚀 Deploying new build..."
+
+            #  Backup old build folder
             if [ -d ".next" ]; then
               mv .next .next_backup_$(date +%s)
             fi
 
-            # Extract new code
-            tar xzf portfolio_code.tar.gz
+            #  Extract new build
+            tar xzf next_build.tar.gz
 
-            # Ensure dependencies are installed
-            npm ci
+            #  Install production dependencies only
+            npm install --production
 
-            # Build on server (reads server-side .env.production automatically)
-            npm run build
-
-            # Restart PM2
-            pm2 restart portfolio || pm2 start npm --name "portfolio" -- start
+            #  Restart using ecosystem config (loads env_file)
+            pm2 restart ecosystem.config.js || pm2 start ecosystem.config.js
             pm2 save
 
-            # Cleanup backup if successful
+            #  Cleanup backups
             rm -rf .next_backup_*
+
+            echo "Deployment complete."
