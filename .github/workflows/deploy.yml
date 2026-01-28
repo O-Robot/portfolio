@@ -19,7 +19,11 @@ jobs:
           node-version: "22"
       - name: Create build-time .env.production
         run: |
-          echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" > .env.production
+          cat > .env.production <<EOL
+          RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_CHAT_URL=${{ secrets.NEXT_PUBLIC_CHAT_URL }}
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+          EOL
 
       - name: Install dependencies & build
         run: |
