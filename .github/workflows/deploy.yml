@@ -29,7 +29,7 @@ jobs:
       - name: Archive build
         run: |
           rm -f next_build.tar.gz
-          tar czf next_build.tar.gz .next public package.json package-lock.json node_modules ecosystem.config.js
+          tar czf next_build.tar.gz .next public package.json package-lock.json node_modules
       - name: Deploy to Oracle VM
         uses: appleboy/scp-action@v0.1.5
         with:
