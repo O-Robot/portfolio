@@ -13,36 +13,21 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "22"
-
-      - name: Create build-time .env.production
+      - name: Archive code
         run: |
-          echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" > .env.production
-          echo "NEXT_PUBLIC_CHAT_URL=https://chat.ogooluwaniadewale.com" >> .env.production
+          tar czf portfolio_code.tar.gz .  # archives everything
 
-      - name: Install dependencies & build
-        run: |
-          npm ci
-          npm run build
-
-      - name: Archive build
-        run: |
-          tar czf next_build.tar.gz .next package.json package-lock.json node_modules public
-
-      - name: Deploy to Oracle VM
+      - name: Deploy to server
         uses: appleboy/scp-action@v0.1.5
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          source: "next_build.tar.gz"
+          source: "portfolio_code.tar.gz"
           target: "~/portfolio/"
 
-      - name: Extract & restart server
+      - name: Build & restart on server
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -53,30 +38,23 @@ jobs:
             set -e
             cd ~/portfolio
 
-            # Backup current build
+            # Backup old build
             if [ -d ".next" ]; then
               mv .next .next_backup_$(date +%s)
             fi
 
-            # Extract new build
-            tar xzf next_build.tar.gz
+            # Extract new code
+            tar xzf portfolio_code.tar.gz
 
-            # Install production dependencies only
-            npm install --production
+            # Ensure dependencies are installed
+            npm ci
 
-            # Restart server with PM2
+            # Build on server (reads server-side .env.production automatically)
+            npm run build
+
+            # Restart PM2
             pm2 restart portfolio || pm2 start npm --name "portfolio" -- start
             pm2 save
-            # SSL renewal
-            # sudo certbot renew --quiet || echo "Certbot error ignored"
-            # Health check
-            # if ! curl -f https://${{ secrets.DOMAIN }}; then
-            #   echo "Health check failed! Rolling back..."
-            #   rm -rf .next
-            #   mv .next_backup_* .next
-            #   pm2 restart portfolio
-            #   exit 1
-            # fi
 
             # Cleanup backup if successful
             rm -rf .next_backup_*

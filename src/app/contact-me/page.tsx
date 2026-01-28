@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -20,6 +20,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { event } from "@/utils/gtag";
 import { InputPhone } from "@/components/ui/phone-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -34,11 +35,17 @@ export default function ContactPage() {
     subscribe: false,
   });
   const [loading, setLoading] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const connect = ["Github", "LinkedIn"];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!captchaToken) {
+      turnstileRef.current?.execute();
+      return;
+    }
 
     if (!formData.firstName.trim()) {
       toast({
@@ -107,7 +114,10 @@ export default function ContactPage() {
       const res = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          captchaToken,
+        }),
       });
 
       if (!res.ok) {
@@ -135,6 +145,9 @@ export default function ContactPage() {
         description: "Thanks for reaching out. I'll get back to you soon!",
       });
 
+      setCaptchaToken("");
+      turnstileRef.current?.reset();
+
       setFormData({
         firstName: "",
         lastName: "",
@@ -146,6 +159,8 @@ export default function ContactPage() {
       });
     } catch (err) {
       console.error(err);
+      setCaptchaToken("");
+      turnstileRef.current?.reset();
       toast({
         title: "Error ⚡",
         description: "Network issue, please try again.",
@@ -201,7 +216,6 @@ export default function ContactPage() {
                             firstName: e.target.value,
                           })
                         }
-                        
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                       <Input
@@ -210,7 +224,6 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, lastName: e.target.value })
                         }
-                        
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                     </div>
@@ -224,7 +237,6 @@ export default function ContactPage() {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
-                        
                       />
                     </div>
                     <div>
@@ -238,7 +250,6 @@ export default function ContactPage() {
                             phone: value,
                           })
                         }
-                        
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                     </div>
@@ -249,7 +260,6 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, subject: e.target.value })
                         }
-                        
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
                       />
                     </div>
@@ -262,7 +272,6 @@ export default function ContactPage() {
                           setFormData({ ...formData, message: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50 min-h-32"
-                        
                       />
                     </div>
                     <div className="flex items-center gap-2 text-sm">
@@ -284,6 +293,26 @@ export default function ContactPage() {
                       >
                         Subscribe
                       </label>
+                    </div>
+                    <div className="flex justify-center">
+                      <Turnstile
+                        ref={turnstileRef}
+                        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                        options={{
+                          size: "invisible",
+                        }}
+                        onSuccess={(token) => setCaptchaToken(token)}
+                        onExpire={() => {
+                          setCaptchaToken("");
+                        }}
+                        onError={() =>
+                          toast({
+                            title: "Captcha failed",
+                            description: "Please refresh and try again.",
+                            variant: "destructive",
+                          })
+                        }
+                      />
                     </div>
 
                     <Button
@@ -408,7 +437,7 @@ export default function ContactPage() {
                       window.open(
                         "https://forms.visme.co/fv/q74g8wwe-179ngw",
                         "_blank",
-                        "noopener,noreferrer"
+                        "noopener,noreferrer",
                       )
                     }
                   >
