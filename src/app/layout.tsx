@@ -26,6 +26,9 @@ const space = Space_Grotesk({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
 });
+if (typeof window !== "undefined") {
+  console.log("path", window.location.pathname);
+}
 
 export const metadata: Metadata = {
   title: "Ogooluwani Adewale",
@@ -72,9 +75,7 @@ export default function RootLayout({
         {children}
         <Toaster />
 
-        {typeof window !== "undefined" && window.location.pathname !== "/" && (
-          <ChatLoader />
-        )}
+        <ChatLoader />
         <Footer />
       </body>
     </html>

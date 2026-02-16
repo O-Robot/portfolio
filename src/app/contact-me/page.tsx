@@ -210,6 +210,7 @@ export default function ContactPage() {
                       <Input
                         placeholder="First Name"
                         value={formData.firstName}
+                        name={"firstName"}
                         onChange={(e) =>
                           setFormData({
                             ...formData,
@@ -220,6 +221,7 @@ export default function ContactPage() {
                       />
                       <Input
                         placeholder="Last Name"
+                        name={"lastName"}
                         value={formData.lastName}
                         onChange={(e) =>
                           setFormData({ ...formData, lastName: e.target.value })
@@ -232,6 +234,7 @@ export default function ContactPage() {
                       <Input
                         type="email"
                         placeholder="Your Email"
+                        name="email"
                         value={formData.email}
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
@@ -256,6 +259,7 @@ export default function ContactPage() {
                     <div>
                       <Input
                         placeholder="Subject"
+                        name="subject"
                         value={formData.subject}
                         onChange={(e) =>
                           setFormData({ ...formData, subject: e.target.value })

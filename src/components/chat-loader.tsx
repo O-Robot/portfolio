@@ -1,14 +1,16 @@
 "use client";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useState, useEffect } from "react";
 
 export default function ChatLoader() {
+  const pathname = usePathname();
   const chatUrl = process.env.NEXT_PUBLIC_CHAT_URL;
   const [isAvailable, setIsAvailable] = useState(false);
-  console.log("this is", chatUrl);
 
   useEffect(() => {
     if (!chatUrl) return;
+    if (pathname === "/") return;
 
     fetch(`${chatUrl}/embed.js`, { method: "HEAD" })
       .then((res) => {
@@ -17,19 +19,15 @@ export default function ChatLoader() {
       .catch(() => {
         setIsAvailable(false);
       });
-  }, [chatUrl]);
+  }, [chatUrl, pathname]);
 
   if (!chatUrl || !isAvailable) return null;
 
   return (
-    <>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `window.CHAT_WIDGET_URL = "${chatUrl}";`,
-        }}
-        suppressHydrationWarning
-      />
-      <Script src={`${chatUrl}/embed.js`} strategy="afterInteractive" />
-    </>
+    <Script
+      src={`${chatUrl}/embed.js`}
+      strategy="afterInteractive"
+      data-widget-url={chatUrl}
+    />
   );
 }
