@@ -1,7 +1,77 @@
 [
   {
+    "id": "olyvax",
+    "name": "Olyvax",
+    "category": "mobile",
+    "image": "/images/projects/olyvax.png",
+    "videoUrl": "",
+    "apkUrl": "",
+    "figmaUrl": "https://www.figma.com/design/yCCSC6xLvq2h2i316wnGTa/RealEstate?node-id=2-2&t=wGVBQ37TM90IJw1c-1",
+    "expoUrl": "",
+    "previewUrl": "",
+    "url": "https://github.com/O-Robot/olyvax/",
+    "screenshots": [
+      {
+        "src": "https://cdn.jsdelivr.net/gh/O-Robot/olyvax@main/assets/screenshots/splash.png",
+        "label": "Splash Screen"
+      },
+      {
+        "src": "https://cdn.jsdelivr.net/gh/O-Robot/olyvax@main/assets/screenshots/auth.png",
+        "label": "Sign In"
+      },
+      {
+        "src": "https://cdn.jsdelivr.net/gh/O-Robot/olyvax@main/assets/screenshots/home.png",
+        "label": "Home"
+      },
+      {
+        "src": "https://cdn.jsdelivr.net/gh/O-Robot/olyvax@main/assets/screenshots/explore.png",
+        "label": "Explore"
+      },
+      {
+        "src": "https://cdn.jsdelivr.net/gh/O-Robot/olyvax@main/assets/screenshots/profile.png",
+        "label": "Profile"
+      },
+      {
+        "src": "https://cdn.jsdelivr.net/gh/O-Robot/olyvax@main/assets/screenshots/details.png",
+        "label": "Details"
+      },
+      {
+        "src": "https://cdn.jsdelivr.net/gh/O-Robot/olyvax@main/assets/screenshots/filters.png",
+        "label": "Filters"
+      }
+    ],
+    "languages": [
+      { "name": "React Native", "iconifyClass": "logos:react" },
+      { "name": "Expo", "iconifyClass": "simple-icons:expo" },
+      { "name": "Tailwind CSS", "iconifyClass": "logos:tailwindcss-icon" }
+    ],
+    "description": "Olyvax is a React Native property discovery project built with Expo. It is not a real estate product or a production marketplace. It is a portfolio/practice project that explores how a modern property browsing mobile app could work: authentication, listings, search, filters, pagination, property details, galleries, and a profile area. \n\n The app uses Appwrite as its backend for authentication and property data. Users can sign in, browse featured and recommended properties, search listings, apply filters, view property details, and inspect gallery images.",
+    "createdAt": "2026"
+  },
+  {
+    "id": "movieflix",
+    "name": "MovieFlix",
+    "category": "mobile",
+    "image": "/images/projects/movieflix.png",
+    "videoUrl": "https://raw.githubusercontent.com/O-Robot/movie_app/main/assets/record/record.mp4",
+    "apkUrl": "",
+    "figmaUrl": "",
+    "expoUrl": "",
+    "previewUrl": "",
+    "url": "https://github.com/O-Robot/movie_app/",
+    "screenshots": [],
+    "languages": [
+      { "name": "React Native", "iconifyClass": "logos:react" },
+      { "name": "Expo", "iconifyClass": "simple-icons:expo" },
+      { "name": "Tailwind CSS", "iconifyClass": "logos:tailwindcss-icon" }
+    ],
+    "description": "A cross-platform mobile movie discovery app built with React Native and Expo, featuring real-time trending tracking, genre filtering, search, and a personal saved movies list.",
+    "createdAt": "2026"
+  },
+  {
     "id": "cproj001",
     "name": "Portfolio Chat",
+    "category": "web",
     "createdAt": "2026",
     "url": "https://chat.ogooluwaniadewale.com",
     "description": "An AI-powered chat assistant integrated into my personal portfolio, providing real-time interaction, project guidance, and seamless user communication.",
@@ -22,6 +92,7 @@
   {
     "id": "proj001",
     "name": "Portfolio V2",
+    "category": "web",
     "createdAt": "2025",
     "url": "https://ogooluwaniadewale.com",
     "description": "My latest portfolio site showcasing selected works, case studies, and projects across web development, design, and product experiences.",
@@ -39,6 +110,7 @@
   {
     "id": "proj002",
     "name": "My Deals Bro",
+    "category": "web",
     "createdAt": "2025",
     "url": "https://mydealsbro.com/",
     "description": "Affiliate marketing website for UK audiences, with WordPress-based content management and integrated deal-tracking features.",
@@ -55,6 +127,7 @@
   {
     "id": "proj003",
     "name": "Cordea Project",
+    "category": "web",
     "createdAt": "2024",
     "url": "https://cordeaproject.com/",
     "description": "A real estate platform featuring property listings, project showcases, and modern design to attract investors and clients.",
@@ -71,6 +144,7 @@
   {
     "id": "proj004",
     "name": "Goldfish Landing Page",
+    "category": "web",
     "createdAt": "2024",
     "url": "https://goldfish.framer.website/",
     "description": "Landing page for Goldfish (a 54Collective startup), crafted in Framer with clean animations and a bold brand story.",
@@ -81,6 +155,7 @@
   {
     "id": "proj005",
     "name": "Clinigo",
+    "category": "web",
     "createdAt": "2024",
     "url": "https://clinigo.netlify.app/",
     "description": "A multilingual landing page (Arabic & English) for Clinigo, a 54Collective startup in digital health. Built with a waitlist action to engage early adopters managing chronic conditions.",
@@ -94,6 +169,7 @@
   {
     "id": "proj006",
     "name": "Donikristen Shoes",
+    "category": "web",
     "createdAt": "2024",
     "url": "https://donikristenshoes.com/",
     "description": "An e-commerce platform for a shoe retailer. Customized WordPress setup with integrated shopping features and modern styling.",
@@ -109,6 +185,7 @@
   {
     "id": "proj007",
     "name": "iLearn Africa Edu",
+    "category": "web",
     "createdAt": "2024",
     "url": "https://ilearnafricaedu.com/",
     "description": "Transformative learning platform with WordPress-based modules, enabling users to engage with educational resources and communities.",
@@ -123,6 +200,7 @@
   {
     "id": "proj008",
     "name": "John Water Tech",
+    "category": "web",
     "createdAt": "2024",
     "url": "https://johnwatertech.com/",
     "description": "Technology solutions provider website, offering industrial-grade services with a professional and informative online presence.",
@@ -139,6 +217,7 @@
   {
     "id": "proj009",
     "name": "Ecommerce Storefront",
+    "category": "web",
     "createdAt": "2024",
     "url": "https://ecommerce-ang.vercel.app/home",
     "description": "A sleek e-commerce storefront designed with responsive layouts and smooth shopping flows. Showcases modern UI and scalable structure for online retail experiences.",
@@ -152,6 +231,7 @@
   {
     "id": "proj010",
     "name": "DataPros DGS",
+    "category": "web",
     "createdAt": "2024",
     "url": "https://dataprosdgs.netlify.app/",
     "description": "A collaborative platform built to support the United Nations’ Sustainable Development Goals. It enables stakeholders across industries to share, process, and measure data, while also raising campaign awareness through interactive insights.",
@@ -165,6 +245,7 @@
   {
     "id": "proj011",
     "name": "OGAMB Website",
+    "category": "web",
     "createdAt": "2023",
     "url": "https://ogamb.com.ng/",
     "description": "The official website for Ogun State Alternate Medicine Board. Designed to provide public resources, announcements, and engagement for alternative medicine initiatives.",
@@ -180,6 +261,7 @@
   {
     "id": "proj021",
     "name": "IT Solutions Audit Website",
+    "category": "web",
     "createdAt": "2022",
     "url": "https://itauditsolution.ng",
     "description": "A professional platform for Audit and Systems Solution, a licensed Data Protection Compliance Organisation (DPCO)",
@@ -196,6 +278,7 @@
   {
     "id": "proj012",
     "name": "PlugIt Dashboard",
+    "category": "web",
     "createdAt": "2023",
     "url": "https://plugit-dashboard.vercel.app/",
     "description": "A web dashboard for PlugIt Automation that simplifies business operations and tracks automated workflows in real time.",
@@ -210,6 +293,7 @@
   {
     "id": "proj013",
     "name": "PlugIt Website",
+    "category": "web",
     "createdAt": "2023",
     "url": "https://landing-page-rho-sandy.vercel.app/",
     "description": "Corporate website for PlugIt Automation, presenting its services and brand identity with a clean landing page experience.",
@@ -221,24 +305,11 @@
     ],
     "image": "/images/projects/plugit-site.png"
   },
-  {
-    "id": "proj014",
-    "name": "SunSolar Dashboard",
-    "createdAt": "2023",
-    "url": "https://sun-solar.vercel.app/",
-    "description": "An investment management dashboard for SunSolar, providing users with data-driven insights and a modern, intuitive UI for tracking performance.",
-    "isFork": false,
-    "languages": [
-      { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
 
-      { "name": "CSS", "iconifyClass": "logos-css-3" },
-      { "name": "HTML", "iconifyClass": "logos-html-5" }
-    ],
-    "image": "/images/projects/sunsolar.png"
-  },
   {
     "id": "proj015",
     "name": "AA Magazine",
+    "category": "web",
     "createdAt": "2022",
     "url": "https://aamagazine.net",
     "description": "An online magazine where users can explore news and premium magazine content with subscription options. Designed for engaging reading experiences.",
@@ -249,6 +320,7 @@
   {
     "id": "proj016",
     "name": "Interactive Dashboard",
+    "category": "web",
     "createdAt": "2022",
     "url": "https://ogooluwani-adewale-lendsqr-fe-test.vercel.app/",
     "description": "An interactive admin dashboard showcasing clean data visualization, user management, and responsive design. Built to demonstrate practical frontend architecture.",
@@ -264,6 +336,7 @@
   {
     "id": "proj018",
     "name": "Portfolio V1",
+    "category": "web",
     "createdAt": "2021",
     "url": "https://v1.ogooluwaniadewale.com",
     "description": "My first professional portfolio website, designed to highlight early works and skills in web development and design.",
@@ -279,6 +352,7 @@
   {
     "id": "proj020",
     "name": "Boxin Logistics",
+    "category": "web",
     "createdAt": "2021",
     "url": "https://boxin-landing.netlify.app/",
     "description": "Corporate website for Boxin Logistics, offering logistics services with a straightforward design and user-friendly interface.",

@@ -12,7 +12,7 @@ export default function Timeline({ timelineData }: any) {
   return (
     <div className="relative">
       {/* Timeline Line */}
-      <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary/60 to-primary rounded-full" />
+      <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-1 h-full bg-linear-to-b from-primary/60 to-primary rounded-full" />
 
       <div className="space-y-8 md:space-y-12">
         {timelineData.map((item: any, index: any) => (
@@ -67,7 +67,7 @@ export default function Timeline({ timelineData }: any) {
                 <Card className="glass-morphism border border-white/20 transition-all duration-300 backdrop-blur-sm bg-white/5">
                   <CardContent className="p-4 md:p-6">
                     <div className="flex items-center gap-2 mb-2">
-                      <Calendar className="h-3 w-3 md:h-4 md:w-4 text-link-active flex-shrink-0" />
+                      <Calendar className="h-3 w-3 md:h-4 md:w-4 text-link-active shrink-0" />
                       <span className="text-link-active font-semibold text-sm md:text-base">
                         {item.year}
                       </span>
@@ -78,14 +78,14 @@ export default function Timeline({ timelineData }: any) {
                     </h3>
 
                     <div className="flex items-center gap-2 mb-3">
-                      <BriefcaseBusiness className="h-3 w-3 md:h-4 md:w-4 text-skill-text flex-shrink-0" />
+                      <BriefcaseBusiness className="h-3 w-3 md:h-4 md:w-4 text-skill-text shrink-0" />
                       <span className="text-skill-text/80 text-sm md:text-base truncate">
                         {item.company}
                       </span>
                     </div>
 
                     <div className="flex items-center gap-2 mb-4">
-                      <MapPin className="h-3 w-3 md:h-4 md:w-4 text-skill-text flex-shrink-0" />
+                      <MapPin className="h-3 w-3 md:h-4 md:w-4 text-skill-text shrink-0" />
                       <span className="text-skill-text/60 text-sm md:text-base">
                         {item.location}
                       </span>
@@ -132,7 +132,7 @@ export default function Timeline({ timelineData }: any) {
             >
               {(() => {
                 const item = timelineData.find(
-                  (i: any) => i.id === selectedItem
+                  (i: any) => i.id === selectedItem,
                 );
                 if (!item) return null;
 
@@ -140,7 +140,7 @@ export default function Timeline({ timelineData }: any) {
                   <div>
                     <div className="space-y-1 mb-4">
                       <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4 text-link-active flex-shrink-0" />
+                        <Calendar className="h-4 w-4 text-link-active shrink-0" />
                         <span className="text-link-active font-semibold text-sm md:text-base">
                           {item.year}
                         </span>
@@ -149,7 +149,7 @@ export default function Timeline({ timelineData }: any) {
                         {item.title}
                       </h3>
                       <div className="flex items-start gap-2">
-                        <BriefcaseBusiness className="h-4 w-4 text-skill-text flex-shrink-0 mt-0.5" />
+                        <BriefcaseBusiness className="h-4 w-4 text-skill-text shrink-0 mt-0.5" />
                         <span className="text-skill-text/80 text-sm md:text-base">
                           {item.company}, {item.location}
                         </span>
@@ -169,7 +169,7 @@ export default function Timeline({ timelineData }: any) {
                           key={i}
                           className="text-skill-text/70 flex text-sm md:text-base"
                         >
-                          <span className="flex-shrink-0 w-2 h-2 bg-accent rounded-full mt-2 mr-3" />
+                          <span className="shrink-0 w-2 h-2 bg-accent rounded-full mt-2 mr-3" />
                           <span className="flex-1 leading-relaxed">
                             {achievement}
                           </span>

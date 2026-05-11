@@ -47,9 +47,9 @@ export default function LiveGitHub() {
       <CardContent className="flex flex-col md:flex-row gap-6">
         {loading ? (
           <div className="w-full flex flex-col items-center px-4">
-            <Skeleton className="w-1/2 h-[20px] rounded-lg" />
+            <Skeleton className="w-1/2 h-5 rounded-lg" />
             <Separator className="mb-4" />
-            <Skeleton className="w-full h-[100px] rounded-lg" />
+            <Skeleton className="w-full h-25 rounded-lg" />
           </div>
         ) : (
           <div className="flex-1 space-y-4 overflow-x-auto">

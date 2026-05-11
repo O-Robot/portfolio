@@ -5,12 +5,21 @@
     "title": "Senior Frontend Developer",
     "company": "Swifta Systems",
     "location": "Nigeria",
-    "description": "Building HR solutions with Angular and client-facing portals with Next.js, turning complex business requirements into smooth, scalable digital experiences",
-    "technologies": ["Angular", "Next.js", "React", "TypeScript", "JavaScript"],
+    "description": "Engineering production-grade HR applications used by multiple client organisations, contributing to systems that support real business operations at scale.",
+    "technologies": [
+      "Angular",
+      "Next.js",
+      "TypeScript",
+      "RESTful APIs",
+      "Docker",
+      "Jest",
+      "Git"
+    ],
     "achievements": [
-      "Collaborated on enterprise-level Angular solutions with a team of engineers.",
-      "Spearheaded a greenfield project built with Next.js, owning the full development lifecycle from architecture through deployment.",
-      "Improved platform performance by 40% while establishing a scalable codebase for future projects."
+      "Led a greenfield Lawn Tennis platform from inception, defining frontend architecture and implementation approach before scaling into a multi-team effort, reporting directly to the CTO.",
+      "Implemented real-time functionality using WebSockets for live data interactions.",
+      "Improved frontend performance by 40% through code-splitting and efficient state management.",
+      "Led cross-functional coordination across backend and mobile teams to align on feature delivery and reduce integration friction."
     ],
     "image": "/images/companies/swifta.png",
     "link": "https://swifta.com",
@@ -18,16 +27,19 @@
   },
   {
     "id": 2,
-    "year": "May 2024 - Nov 2025",
+    "year": "May 2024 - Oct 2025",
     "title": "Software Developer",
-    "company": "Jollof Radio",
+    "company": "The Jollof Radio Media",
     "location": "Nigeria",
-    "description": "Shaping the future of African digital media by crafting fast, engaging mobile and web platforms.",
-    "technologies": ["Flutter", "Vue.js", "API Integration"],
+    "description": "Contributed to the redesign and modernisation of the podcast streaming platform across web and mobile, improving performance, usability, creator workflows, and overall user experience.",
+    "technologies": ["Vue.js", "TypeScript", "Flutter", "Python", "Firebase"],
     "achievements": [
-      "Revamped mobile and web platforms, increasing satisfaction by 50% and boosting session time by 35%.",
-      "Optimised mobile and web performance, reducing load times by 40%.",
-      "Integrated streaming APIs, authentication, and secure payments for seamless experiences."
+      "Led the frontend revamp of the platform experience, significantly improving responsiveness, usability, and streaming performance.",
+      "Reworked platform architecture by separating creator and listener experiences into dedicated systems, improving workflow clarity and scalability.",
+      "Increased listener engagement by ~30% and creator activity by ~20% following UX and performance improvements.",
+      "Revamped creator upload workflows from single to bulk uploads, supporting up to 20 podcast episodes at once.",
+      "Implemented a creator gifting system with integrated analytics and withdrawal workflows.",
+      "Contributed to mobile app stability improvements of ~40%, restoring user engagement momentum."
     ],
     "image": "/images/companies/jollof.png",
     "link": "https://jollofradio.com",
@@ -39,12 +51,22 @@
     "title": "Full Stack Developer",
     "company": "iRatein Multimedia Limited",
     "location": "Nigeria",
-    "description": "Delivered sleek, high-performing digital platforms by pairing refined frontend craft with dependable backend systems.",
-    "technologies": ["Next.js", "React", "Node.js", "Python"],
+    "description": "Contributed to the development of an inventory and operations management platform, building scalable interfaces and workflow-driven systems across both frontend and backend environments.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "AWS",
+      "Cypress"
+    ],
     "achievements": [
-      "Built and optimised web interfaces with Next.js and React, cutting load times by 45%.",
-      "Integrated backend modules with Node.js and Python, enabling business-critical features.",
-      "Worked with designers to modernise interfaces and reduce drop-offs by 30%."
+      "Developed high-performance React and Next.js interfaces for customer-facing platforms and authenticated operational dashboards.",
+      "Reduced page load times by approximately 45% through API optimisation, lazy loading, and improved asset handling.",
+      "Built reusable component systems that improved UI consistency and accelerated feature development across the platform.",
+      "Worked closely with product and design teams to refine workflows, contributing to a ~30% reduction in user drop-offs."
     ],
     "image": "/images/companies/iratein.png",
     "link": "https://inventory.iratein.com",
@@ -69,23 +91,53 @@
   },
   {
     "id": 5,
+    "year": "Jun 2021 - Present",
+    "title": "Software Developer",
+    "company": "Audit and System Solutions",
+    "location": "Lagos, Nigeria",
+    "description": "Delivering web solutions across multiple client projects, handling technical implementation, deployment, and client communication from concept to production.",
+    "technologies": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "WordPress"
+    ],
+    "achievements": [
+      "Built and deployed multiple client-facing applications across different industries.",
+      "Integrated authentication systems and payment workflows into production applications.",
+      "Managed projects independently from planning through to deployment.",
+      "Worked across both fully custom solutions and CMS-based systems depending on project requirements."
+    ],
+    "image": "/images/companies/audit.png",
+    "link": "https://itauditsolutions.com",
+    "type": "freelance"
+  },
+  {
+    "id": 6,
     "year": "Feb 2023 - Jan 2024",
     "title": "IT Support Specialist",
     "company": "MacTay",
     "location": "Lagos, Nigeria",
-    "description": "Kept teams running smoothly by solving technical issues, securing systems, and training staff to work smarter.",
-    "technologies": ["IT Support", "Windows", "Linux", "Active Directory"],
+    "description": "Supported enterprise IT infrastructure across Windows and Linux environments, ensuring system stability, security, and smooth day-to-day operations.",
+    "technologies": [
+      "IT Support",
+      "Windows",
+      "Linux",
+      "Active Directory",
+      "Office 365"
+    ],
     "achievements": [
-      "Resolved hardware and software issues across Windows and Linux systems.",
-      "Managed user accounts, domains, and security permissions.",
-      "Delivered IT training to staff and monitored network infrastructure."
+      "Resolved hardware and software issues across Windows and Linux systems, maintaining high system uptime.",
+      "Managed user accounts, security groups, and domain permissions via Active Directory and Office 365 admin tools.",
+      "Provided staff training and monitored network infrastructure to keep systems stable and secure."
     ],
     "image": "/images/companies/mactay.png",
     "link": "https://mactay.com/",
     "type": "work"
   },
   {
-    "id": 6,
+    "id": 7,
     "year": "Mar 2023 - Jul 2023",
     "title": "Frontend Developer",
     "company": "Plugit Automation",
@@ -102,29 +154,35 @@
     "type": "contract"
   },
   {
-    "id": 7,
+    "id": 8,
     "year": "May 2022 - Jan 2023",
-    "title": "Web Developer",
-    "company": "Boxin Logistics",
+    "title": "Frontend Developer",
+    "company": "Boxin",
     "location": "Lagos, Nigeria",
-    "description": "Redesigned and managed the company website to improve customer trust and enable seamless e-commerce experiences.",
-    "technologies": ["HTML", "CSS", "JavaScript", "E-commerce"],
+    "description": "Built customer-facing web interfaces and a mobile delivery application, improving operational efficiency and user experience.",
+    "technologies": [
+      "React",
+      "React Native",
+      "REST APIs",
+      "Firebase",
+      "Node.js"
+    ],
     "achievements": [
-      "Developed and maintained the company website with up-to-date content.",
-      "Integrated e-commerce functionalities, enhancing user experience.",
-      "Improved website security measures to protect customer data."
+      "Developed responsive React-based web interfaces and a React Native delivery application for riders.",
+      "Improved delivery application performance by ~40% through frontend optimisation and structural improvements.",
+      "Integrated e-commerce functionality and implemented security enhancements to protect customer data."
     ],
     "image": "/images/companies/boxin.png",
     "link": "https://boxin-landing.netlify.app/",
     "type": "work"
   },
   {
-    "id": 8,
+    "id": 9,
     "year": "Dec 2020 - May 2022",
     "title": "Graphics & Motion Designer",
-    "company": "Boxin Logistics",
+    "company": "Boxin",
     "location": "Lagos, Nigeria",
-    "description": "Produced graphics, animations, and motion assets that shaped the brand’s identity and powered successful campaigns.",
+    "description": "Produced graphics, animations, and motion assets that shaped the brand's identity and powered successful campaigns.",
     "technologies": [
       "Adobe Photoshop",
       "Illustrator",
@@ -141,7 +199,7 @@
     "type": "work"
   },
   {
-    "id": 9,
+    "id": 10,
     "year": "Jun 2020 - May 2022",
     "title": "Web Developer",
     "company": "GI Career Services",
@@ -158,7 +216,7 @@
     "type": "work"
   },
   {
-    "id": 10,
+    "id": 11,
     "year": "Sep 2016 - Present",
     "title": "Freelance Web & Graphics Designer",
     "company": "Self-employed",
@@ -182,7 +240,7 @@
     "type": "freelance"
   },
   {
-    "id": 11,
+    "id": 12,
     "year": "Sep 2016 - Apr 2017",
     "title": "Web Development Tutor",
     "company": "Audit and Systems Solutions",
@@ -199,7 +257,7 @@
     "type": "intern"
   },
   {
-    "id": 12,
+    "id": 13,
     "year": "Apr 2018 - Dec 2019",
     "title": "Volunteership",
     "company": "Nigerian Economics Students' Association (NESA) & Leadership Programmes",
