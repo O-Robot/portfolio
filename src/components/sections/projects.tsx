@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { event } from "@/utils/gtag";
 import Filter, { FilterOption } from "../filter";
-import MobileProjectCard from "./mobile-projects";
+
 import MobilePreview from "./mobile-projects";
 import { TruncateText } from "@/utils/constants";
 
@@ -187,7 +187,7 @@ export default function Projects({ projectsData }: any) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="glass-morphism rounded-lg p-4 md:p-6 lg:p-8 w-full overflow-y-auto bg-white/5 shadow-lg"
+              className="glass-morphism rounded-lg p-4 md:p-6 lg:p-8 w-full max-h-[95vh] pb-30 overflow-y-auto bg-white/5 shadow-lg "
             >
               {/* Modal header */}
               <div className="flex justify-between items-center p-4 border-b border-white/10 sticky top-0 bg-background/60 backdrop-blur-sm z-10">
@@ -203,7 +203,7 @@ export default function Projects({ projectsData }: any) {
               </div>
 
               {/* Modal body */}
-              <div className="p-4 min-h-125 flex items-center justify-center">
+              <div className="p-4 min-h-125 flex items-center justify-center  bg-background/80 backdrop-blur-sm">
                 {selectedProject.category === "mobile" &&
                 !selectedProject?.previewUrl.trim() ? (
                   <MobilePreview project={selectedProject} />

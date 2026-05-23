@@ -1,5 +1,28 @@
 [
   {
+    "id": "chopnow",
+    "name": "ChopNow",
+    "category": "mobile",
+    "image": "/images/projects/chownow.png",
+    "videoUrl": "https://raw.githubusercontent.com/O-Robot/chopnow/main/assets/record/record.mp4",
+    "apkUrl": "https://expo.dev/accounts/orobot/projects/chopnow/builds/9a246de2-ba3a-4c76-8806-b35d81ed3210",
+    "figmaUrl": "https://www.figma.com/proto/JwS3tcvrjCJCjTqROyWMlc/FoodDelivery?node-id=0-1&t=eXVJ3looy4TFkKpE-1",
+    "expoUrl": "",
+    "previewUrl": "",
+    "url": "https://github.com/O-Robot/chopnow",
+    "screenshots": [],
+    "languages": [
+      { "name": "React Native", "iconifyClass": "logos:react" },
+      { "name": "Expo", "iconifyClass": "simple-icons:expo" },
+      { "name": "Zustand", "iconifyClass": "devicon-plain:zustand" },
+      { "name": "NativeWind", "iconifyClass": "logos:tailwindcss-icon" },
+      { "name": "Appwrite", "iconifyClass": "skill-icons:appwrite" },
+      { "name": "Sentry", "iconifyClass": "logos:sentry" }
+    ],
+    "description": "ChopNow (ChowNow) is a food ordering mobile app built with Expo, React Native, TypeScript, Appwrite, NativeWind, and Zustand. \n\n It presents a polished restaurant ordering experience with authentication, menu browsing, product customization, cart management, and profile editing",
+    "createdAt": "2026"
+  },
+  {
     "id": "olyvax",
     "name": "Olyvax",
     "category": "mobile",
@@ -43,7 +66,8 @@
     "languages": [
       { "name": "React Native", "iconifyClass": "logos:react" },
       { "name": "Expo", "iconifyClass": "simple-icons:expo" },
-      { "name": "Tailwind CSS", "iconifyClass": "logos:tailwindcss-icon" }
+      { "name": "NativeWind", "iconifyClass": "logos:tailwindcss-icon" },
+      { "name": "Appwrite", "iconifyClass": "skill-icons:appwrite" }
     ],
     "description": "Olyvax is a React Native property discovery project built with Expo. It is not a real estate product or a production marketplace. It is a portfolio/practice project that explores how a modern property browsing mobile app could work: authentication, listings, search, filters, pagination, property details, galleries, and a profile area. \n\n The app uses Appwrite as its backend for authentication and property data. Users can sign in, browse featured and recommended properties, search listings, apply filters, view property details, and inspect gallery images.",
     "createdAt": "2026"
@@ -63,7 +87,8 @@
     "languages": [
       { "name": "React Native", "iconifyClass": "logos:react" },
       { "name": "Expo", "iconifyClass": "simple-icons:expo" },
-      { "name": "Tailwind CSS", "iconifyClass": "logos:tailwindcss-icon" }
+      { "name": "NativeWind", "iconifyClass": "logos:tailwindcss-icon" },
+      { "name": "Appwrite", "iconifyClass": "skill-icons:appwrite" }
     ],
     "description": "A cross-platform mobile movie discovery app built with React Native and Expo, featuring real-time trending tracking, genre filtering, search, and a personal saved movies list.",
     "createdAt": "2026"

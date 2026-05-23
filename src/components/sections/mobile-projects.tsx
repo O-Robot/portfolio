@@ -132,7 +132,7 @@ export default function MobilePreview({ project }: { project: MobileProject }) {
   const hasScreenshots = screenshots.length > 0;
 
   return (
-    <div className="flex flex-col md:flex-row gap-10 h-full p-4 items-center justify-center z-20">
+    <div className="flex flex-col md:flex-row gap-6 md:gap-10 h-full w-full p-2 md:p-4 items-center md:justify-center overflow-y-auto z-20">
       {/* Phone preview */}
       <div className="flex flex-col items-center gap-4">
         <PhoneFrame>
