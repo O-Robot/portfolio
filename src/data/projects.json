@@ -1,5 +1,30 @@
 [
   {
+    "id": "zayrova",
+    "name": "Zayrova",
+    "category": "mobile",
+    "image": "/images/projects/zayrova.png",
+    "videoUrl": "",
+    "apkUrl": "",
+    "figmaUrl": "",
+    "expoUrl": "",
+    "previewUrl": "",
+    "devicePreview": "https://zayrova.ogooluwaniadewale.com/",
+    "url": "https://github.com/O-Robot/zayrova",
+    "screenshots": [
+      {
+        "src": "/images/projects/zayrova.png",
+        "label": "Splash Screen"
+      }
+    ],
+    "languages": [
+      { "name": "Flutter", "iconifyClass": "logos:flutter" },
+      { "name": "Dart", "iconifyClass": "logos:dart" }
+    ],
+    "description": "Zayrova is a Flutter e-commerce application with onboarding, authentication, catalog browsing, search and filtering, cart and checkout flows, order tracking, notifications, messaging, wishlist, and profile management. The project uses a layered architecture with Riverpod for state management.",
+    "createdAt": "2025"
+  },
+  {
     "id": "chopnow",
     "name": "ChopNow",
     "category": "mobile",

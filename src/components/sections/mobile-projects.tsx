@@ -22,7 +22,7 @@ interface MobileProject {
   screenshots?: MobileScreenshot[];
   previewUrl?: string;
   url?: string;
-
+  devicePreview?: string;
   apkUrl?: string;
   expoUrl?: string;
   figmaUrl?: string;
@@ -222,6 +222,15 @@ export default function MobilePreview({ project }: { project: MobileProject }) {
 
         {/* CTAs */}
         <div className="flex flex-wrap gap-2 pt-2">
+          {project.devicePreview && (
+            <CtaButton
+              href={project.devicePreview}
+              icon="mdi:android"
+              label="View Application"
+              analyticsLabel="Device Preview"
+              projectName={project.name}
+            />
+          )}
           {project.apkUrl && (
             <CtaButton
               href={project.apkUrl}
