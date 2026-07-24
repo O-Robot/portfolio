@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Github } from "lucide-react";
-import { Skeleton } from "./ui/skeleton";
+import { useEffect, useState } from "react";
 import { Separator } from "./ui/separator";
+import { Skeleton } from "./ui/skeleton";
 
 interface ContributionDay {
   date: string;
@@ -61,7 +61,7 @@ export default function LiveGitHub() {
             {/* Contribution Graph */}
             {calendar && (
               <div className="grid grid-cols-[repeat(53,1fr)] gap-0.5 min-w-max">
-                {calendar.weeks.map((week, wi) => (
+                {calendar?.weeks?.map((week, wi) => (
                   <div key={wi} className="grid grid-rows-7 gap-0.5">
                     {week.contributionDays.map((day, di) => (
                       <div

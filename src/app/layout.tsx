@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 
+import AnalyticsProvider from "@/components/AnalyticsProvider";
+import ChatLoader from "@/components/chat-loader";
+import Footer from "@/components/sections/footer";
+import Header from "@/components/sections/header";
+import JsonLd from "@/components/seo/JsonLd";
+import { Toaster } from "@/components/ui/toaster";
+import { metadataSiteConfig } from "@/utils/metadata";
+import { buildWebsiteSchema } from "@/utils/schema";
 import { Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Header from "@/components/sections/header";
-import Footer from "@/components/sections/footer";
-import { Toaster } from "@/components/ui/toaster";
-import AnalyticsProvider from "@/components/AnalyticsProvider";
-import ChatLoader from "@/components/chat-loader";
-import { metadataSiteConfig } from "@/utils/metadata";
 
 declare global {
   interface Window {
@@ -111,6 +113,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <JsonLd id="website-jsonld" data={buildWebsiteSchema()} />
         <Script
           src="https://code.iconify.design/2/2.2.1/iconify.min.js"
           defer
