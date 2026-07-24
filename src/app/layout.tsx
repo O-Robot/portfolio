@@ -8,6 +8,7 @@ import Footer from "@/components/sections/footer";
 import { Toaster } from "@/components/ui/toaster";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import ChatLoader from "@/components/chat-loader";
+import { metadataSiteConfig } from "@/utils/metadata";
 
 declare global {
   interface Window {
@@ -31,8 +32,75 @@ if (typeof window !== "undefined") {
 }
 
 export const metadata: Metadata = {
-  title: "Ogooluwani Adewale",
-  description: "",
+  metadataBase: new URL(metadataSiteConfig.siteUrl),
+  title: {
+    default: `${metadataSiteConfig.personName} | Software Developer`,
+    template: `%s | ${metadataSiteConfig.personName}`,
+  },
+  description: metadataSiteConfig.homepageDescription,
+  applicationName: metadataSiteConfig.siteName,
+  authors: [
+    {
+      name: metadataSiteConfig.personName,
+      url: metadataSiteConfig.siteUrl,
+    },
+  ],
+  creator: metadataSiteConfig.personName,
+  publisher: metadataSiteConfig.personName,
+  manifest: "/manifest.json",
+  category: "technology",
+  keywords: [
+    metadataSiteConfig.personName,
+    "Software Developer",
+    "Frontend Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Lagos, Nigeria",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: metadataSiteConfig.siteUrl,
+    siteName: metadataSiteConfig.siteName,
+    title: `${metadataSiteConfig.personName} | Software Developer`,
+    description: metadataSiteConfig.homepageDescription,
+    locale: "en_US",
+    images: [
+      {
+        url: metadataSiteConfig.socialImageUrl,
+        alt: metadataSiteConfig.siteName,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${metadataSiteConfig.personName} | Software Developer`,
+    description: metadataSiteConfig.homepageDescription,
+    creator: metadataSiteConfig.twitterHandle,
+    images: [metadataSiteConfig.socialImageUrl],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/icon-192.png" }],
+    shortcut: ["/favicon.ico"],
+  },
 };
 
 export default function RootLayout({
@@ -43,8 +111,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
         <Script
           src="https://code.iconify.design/2/2.2.1/iconify.min.js"
           defer

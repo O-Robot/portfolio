@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function ChatLoader() {
   const pathname = usePathname();
@@ -9,7 +9,7 @@ export default function ChatLoader() {
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    if (!chatUrl || pathname === "/") {
+    if (!chatUrl || pathname === "/three") {
       setShouldLoad(false);
       return;
     }
