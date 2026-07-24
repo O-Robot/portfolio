@@ -3,6 +3,7 @@
 import Link from "next/link";
 import navItems from "@/data/nav.json";
 import { useStore } from "@/store";
+import { getPageRoute } from "@/utils/routes";
 export default function SideNav() {
   const { theme, view } = useStore();
   if (view === "about") return null;
@@ -11,7 +12,7 @@ export default function SideNav() {
       {navItems.map((nav, _) => (
         <Link
           key={_}
-          href={nav.href}
+          href={getPageRoute(nav.href)}
           className={`text-base font-medium ${
             theme === "dark"
               ? "text-white hover:text-[#FF7B4C]"

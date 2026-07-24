@@ -144,7 +144,7 @@ export default function AboutPage() {
                 <Button
                   variant={"outline"}
                   onClick={() => {
-                    router.push("/contact-me");
+                    router.push("/contact");
                   }}
                 >
                   Contact

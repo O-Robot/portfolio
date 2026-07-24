@@ -379,7 +379,7 @@ export default function HomePage() {
                     className="w-full glass-morphism hover:animate-glow"
                     size="lg"
                     onClick={() => {
-                      router.push("/contact-me");
+                      router.push("/contact");
                     }}
                   >
                     <Send className="mr-2 h-5 w-5" />

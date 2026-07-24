@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import navItems from "@/data/nav.json";
+import { getNavHref, isNavItemActive } from "@/utils/routes";
 
 export default function Header() {
   const pathname = usePathname();
@@ -43,7 +44,7 @@ export default function Header() {
   }, []);
   // console.log(pathname, "path");
   return (
-    pathname !== "/" && (
+    pathname !== "/three" && (
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -68,13 +69,12 @@ export default function Header() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => {
-                const isActive = pathname
-                  ?.toLowerCase()
-                  .includes(item.href.toLowerCase());
+                const href = getNavHref(item.href, pathname);
+                const isActive = isNavItemActive(item.href, pathname);
                 return (
                   <motion.a
                     key={item.name}
-                    href={item.href}
+                    href={href}
                     whileHover={{ scale: 1.09 }}
                     className={`hover:text-link-active hover:font-medium transition-colors ${
                       isActive
@@ -125,13 +125,12 @@ export default function Header() {
               className="md:hidden mt-4 glass-morphism rounded-lg p-4"
             >
               {navItems.map((item) => {
-                const isActive = pathname
-                  ?.toLowerCase()
-                  .includes(item.href.toLowerCase());
+                const href = getNavHref(item.href, pathname);
+                const isActive = isNavItemActive(item.href, pathname);
                 return (
                   <a
                     key={item.name}
-                    href={item.href}
+                    href={href}
                     className={`block py-2 hover:text-link-active hover:font-medium  transition-colors ${
                       isActive
                         ? "text-link-active font-medium"
