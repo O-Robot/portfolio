@@ -46,6 +46,7 @@ export default function Header() {
   return (
     pathname !== "/three" && (
       <motion.nav
+        aria-label="Primary"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 w-full right-0 z-50 transition-all duration-300 ${
@@ -91,6 +92,7 @@ export default function Header() {
                 size="icon"
                 onClick={toggleTheme}
                 className="text-link-inactive hover:text-link-active"
+                aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
               >
                 {isDark ? (
                   <Sun className="h-5 w-5" />
@@ -107,6 +109,9 @@ export default function Header() {
                 size="icon"
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-skill-text"
+                aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isOpen}
+                aria-controls="mobile-navigation"
               >
                 {isOpen ? (
                   <X className="h-6 w-6" />
@@ -120,6 +125,7 @@ export default function Header() {
           {/* Mobile Menu */}
           {isOpen && (
             <motion.div
+              id="mobile-navigation"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               className="md:hidden mt-4 glass-morphism rounded-lg p-4"

@@ -41,7 +41,7 @@ export default function AboutPage() {
   return (
     <section className="bg-background">
       {/* about */}
-      <section id="about" className="py-32 relative">
+      <section id="about" className="py-32 relative" aria-labelledby="about-page-title">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -49,9 +49,12 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h1
+              id="about-page-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               About Me
-            </h2>
+            </h1>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -98,6 +101,9 @@ export default function AboutPage() {
                     <button
                       key={index}
                       onClick={handlePlay}
+                      aria-label={
+                        isPlaying ? "Stop pronunciation" : "Play pronunciation"
+                      }
                       className="inline-flex items-center justify-center w-7 h-7 rounded-full cursor-pointer hover:bg-background/80"
                     >
                       {isPlaying ? "⏹️" : "🗣️"}
@@ -110,7 +116,7 @@ export default function AboutPage() {
             <div className="text-xl text-white/80 w-full lg:w-1/2 px-2 lg:px-8 flex flex-col gap-8">
               <Image
                 src={robot.image}
-                alt="me"
+                alt={`Portrait of ${robot.name}`}
                 height={400}
                 width={600}
                 className="rounded-2xl object-cover"
@@ -126,12 +132,13 @@ export default function AboutPage() {
                     title={media.name}
                     className="text-white rounded-full cursor-pointer text-xl w-10 h-10 flex justify-center items-center"
                     style={{ background: media.color }}
-                  >
-                    <Icon
-                      icon={media.icon}
-                      className="transition-transform hover:scale-110"
-                    />
-                  </a>
+                    >
+                      <Icon
+                        icon={media.icon}
+                        aria-hidden="true"
+                        className="transition-transform hover:scale-110"
+                      />
+                    </a>
                 ))}
               </div>
               <div className="rounded-xl flex justify-center flex-col px-4 py-6  bg-[#070d1e]items-center text-center gap-4">
@@ -155,7 +162,11 @@ export default function AboutPage() {
         </div>
       </section>
       {/* education */}
-      <section id="experience" className="py-20 relative">
+      <section
+        id="experience"
+        className="py-20 relative"
+        aria-labelledby="education-section-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -163,7 +174,10 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h2
+              id="education-section-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               My Educational Journey
             </h2>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
@@ -174,7 +188,11 @@ export default function AboutPage() {
         </div>
       </section>
       {/* top skills */}
-      <section id="skills" className="py-20 relative">
+      <section
+        id="skills"
+        className="py-20 relative"
+        aria-labelledby="top-skills-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -182,11 +200,14 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h2
+              id="top-skills-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               Top Skills
             </h2>
           </motion.div>
-          <motion.div
+          <motion.ul
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -220,7 +241,7 @@ export default function AboutPage() {
                 ></span>
               </li>
             ))}
-          </motion.div>{" "}
+          </motion.ul>{" "}
         </div>
       </section>
     </section>

@@ -9,9 +9,10 @@ export default function CloseButton() {
   return (
     <button
       onClick={resetCamera}
+      aria-label="Close about view"
       className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-white/90 hover:bg-white text-black px-6 py-3 rounded-full shadow-lg transition-all cursor-pointer"
     >
-      <X />
+      <X aria-hidden="true" />
     </button>
   );
 }

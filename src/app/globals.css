@@ -10,6 +10,10 @@ html {
   transition: background-color 0.3s, color 0.3s;
 }
 
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -237,4 +241,38 @@ input[type="tel"]::placeholder {
 input[type="tel"]:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border-radius: 9999px;
+  background: var(--background);
+  color: var(--primary-text);
+  border: 1px solid color-mix(in srgb, var(--primary-text) 24%, transparent);
+  padding: 0.75rem 1rem;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--primary-text);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  .animate-float,
+  .animate-glow,
+  .liquid-gradient,
+  .animated-border::before {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

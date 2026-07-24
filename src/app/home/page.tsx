@@ -62,9 +62,10 @@ export default function HomePage() {
       <section
         id="home"
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        aria-labelledby="home-page-title"
       >
         {/* 3D Background */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <ParticleBackground />
         </div>
 
@@ -110,6 +111,7 @@ export default function HomePage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
               className="text-6xl md:text-8xl font-bold mb-6 text-primary-text liquid-gradient"
+              id="home-page-title"
             >
               {robot.name}
             </motion.h1>
@@ -151,6 +153,7 @@ export default function HomePage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          aria-hidden="true"
         >
           <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
             <motion.div
@@ -162,7 +165,11 @@ export default function HomePage() {
         </motion.div>
       </section>
       {/* section about */}
-      <section id="about" className="py-20 relative">
+      <section
+        id="about"
+        className="py-20 relative"
+        aria-labelledby="home-about-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -170,7 +177,10 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h2
+              id="home-about-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               About Me
             </h2>
           </motion.div>
@@ -219,6 +229,9 @@ export default function HomePage() {
                     <button
                       key={index}
                       onClick={handlePlay}
+                      aria-label={
+                        isPlaying ? "Stop pronunciation" : "Play pronunciation"
+                      }
                       className="inline-flex items-center justify-center w-7 h-7 rounded-full cursor-pointer hover:bg-background/80"
                     >
                       {isPlaying ? "⏹️" : "🗣️"}
@@ -250,7 +263,11 @@ export default function HomePage() {
         </div>
       </section>
       {/* experience tabs  */}
-      <section id="experience" className="py-20 relative">
+      <section
+        id="experience"
+        className="py-20 relative"
+        aria-labelledby="home-experience-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -258,7 +275,10 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h2
+              id="home-experience-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               My Professional Journey
             </h2>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
@@ -280,7 +300,11 @@ export default function HomePage() {
       </section>
 
       {/* top skills */}
-      <section id="skills" className="py-20 relative">
+      <section
+        id="skills"
+        className="py-20 relative"
+        aria-labelledby="home-skills-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -288,14 +312,17 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h2
+              id="home-skills-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               Top Skills
             </h2>
             {/* <p className="text-xl text-white/80 max-w-3xl mx-auto">
               A timeline of growth, learning, and achievements
             </p> */}
           </motion.div>
-          <motion.div
+          <motion.ul
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -334,12 +361,16 @@ export default function HomePage() {
                 </li>
               );
             })}
-          </motion.div>{" "}
+          </motion.ul>{" "}
         </div>
       </section>
       {/* testimonial */}
       {/*  contact */}
-      <section id="contact" className="py-20 relative">
+      <section
+        id="contact"
+        className="py-20 relative"
+        aria-labelledby="home-contact-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -347,7 +378,10 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h2
+              id="home-contact-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               Let&apos;s Connect
             </h2>
             <p className="text-xl text-secondary-text max-w-3xl mx-auto">

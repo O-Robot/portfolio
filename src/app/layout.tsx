@@ -8,6 +8,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { Toaster } from "@/components/ui/toaster";
 import { metadataSiteConfig } from "@/utils/metadata";
 import { buildWebsiteSchema } from "@/utils/schema";
+import { MotionConfig } from "framer-motion";
 import { Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -139,13 +140,24 @@ export default function RootLayout({
         className={`${space.className} antialiased  bg-background text-foreground h-screen flex flex-col justify-between`}
         suppressHydrationWarning
       >
-        <AnalyticsProvider />
-        <Header />
-        {children}
-        <Toaster />
+        <MotionConfig reducedMotion="user">
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <AnalyticsProvider />
+          <header id="site-header">
+            <Header />
+          </header>
+          <main id="main-content" tabIndex={-1} className="flex-1">
+            {children}
+          </main>
+          <Toaster />
 
-        <ChatLoader />
-        <Footer />
+          <ChatLoader />
+          <footer id="site-footer">
+            <Footer />
+          </footer>
+        </MotionConfig>
       </body>
     </html>
   );

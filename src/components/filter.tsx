@@ -15,13 +15,13 @@ interface FilterProps {
   onFilterChange: (filter: string) => void;
 }
 
-export default function Filter({
-  filters,
-  selectedFilter,
-  onFilterChange,
-}: FilterProps) {
+export default function Filter({ filters, selectedFilter, onFilterChange }: FilterProps) {
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <div
+      className="flex flex-wrap justify-center gap-4"
+      role="toolbar"
+      aria-label="Filter content"
+    >
       {filters.map((filter) => (
         <motion.div
           key={filter.id}
@@ -31,6 +31,7 @@ export default function Filter({
           <Button
             variant={selectedFilter === filter.id ? "default" : "outline"}
             onClick={() => onFilterChange(filter.id)}
+            aria-pressed={selectedFilter === filter.id}
             className={`glass-morphism border-white/20 cursor-pointer ${
               selectedFilter === filter.id
                 ? "text-link-active"

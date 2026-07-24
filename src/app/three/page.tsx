@@ -30,6 +30,7 @@ export default function ThreePage() {
 
   return (
     <div className="fixed inset-0">
+      <h1 className="sr-only">Three.js Portfolio Experience</h1>
       <SideNav />
       <CloseButton />
 
@@ -42,7 +43,7 @@ export default function ThreePage() {
           >
             <div className="glass-morphism border-accent/50 rounded-lg p-3 max-w-md mx-auto">
               <div className="flex items-center gap-2 text-accent">
-                <AlertCircle className="h-4 w-4" />
+                <AlertCircle className="h-4 w-4" aria-hidden="true" />
                 <span className="text-sm text-skill-text">
                   3D features unavailable - displaying in 2D mode
                 </span>

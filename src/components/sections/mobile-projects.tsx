@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import Tilt from "react-parallax-tilt";
 
 interface MobileScreenshot {
   src: string;
@@ -31,7 +30,7 @@ interface MobileProject {
 //! my phone frame
 function PhoneFrame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative mx-auto w-49.75 h-107 shrink-0">
+    <div className="relative mx-auto w-49.75 h-107 shrink-0" aria-hidden="true">
       {/* Shell */}
       <div className="absolute inset-0 rounded-[2.2rem] border-[6px] border-white/20 bg-[#111] shadow-xl shadow-black/40" />
       {/* Side buttons */}
@@ -157,6 +156,7 @@ export default function MobilePreview({ project }: { project: MobileProject }) {
               <button
                 onClick={() => setScreenshotIndex((i) => Math.max(0, i - 1))}
                 disabled={screenshotIndex === 0}
+                aria-label="Show previous screenshot"
                 className="p-1.5 rounded-full glass-morphism disabled:opacity-30 cursor-pointer hover:opacity-80 transition"
               >
                 <ChevronLeft className="w-4 h-4 text-primary-text" />
@@ -168,6 +168,8 @@ export default function MobilePreview({ project }: { project: MobileProject }) {
                   <button
                     key={i}
                     onClick={() => setScreenshotIndex(i)}
+                    aria-label={`Show screenshot ${i + 1}`}
+                    aria-current={i === screenshotIndex}
                     className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
                       i === screenshotIndex
                         ? "bg-primary-text scale-125"
@@ -184,6 +186,7 @@ export default function MobilePreview({ project }: { project: MobileProject }) {
                   )
                 }
                 disabled={screenshotIndex === screenshots.length - 1}
+                aria-label="Show next screenshot"
                 className="p-1.5 rounded-full glass-morphism disabled:opacity-30 cursor-pointer hover:opacity-80 transition"
               >
                 <ChevronRight className="w-4 h-4 text-primary-text" />

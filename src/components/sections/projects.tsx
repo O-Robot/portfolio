@@ -11,6 +11,7 @@ import Filter, { FilterOption } from "../filter";
 
 import MobilePreview from "./mobile-projects";
 import { TruncateText } from "@/utils/constants";
+import AccessibleDialog from "../ui/accessible-dialog";
 
 function EmptyState({ filter }: { filter: string }) {
   return (
@@ -102,39 +103,51 @@ export default function Projects({ projectsData }: any) {
                 >
                   {/* Image */}
                   <div className="relative w-full h-57.5">
-                    <Image
-                      src={project?.image || "/images/logo.png"}
-                      alt="project_image"
-                      className="w-full h-full object-cover object-left-center rounded-xl cursor-pointer z-10"
-                      width={1300}
-                      height={50}
+                    <button
+                      type="button"
                       onClick={() => {
                         setSelectedItem(
                           selectedItem === project.id ? null : project.id,
                         );
+                        setIsLoading(true);
                         event({
                           action: "click",
                           category: "Project Frame Clicked",
                           label: project.name,
                         });
                       }}
-                    />
-                    <div className="absolute inset-0 flex justify-end m-3 pointer-events-none">
-                      <div
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(project.url || project.repoUrl, "_blank");
-                          event({
-                            action: "click",
-                            category: "Project Link Clicked",
-                            label: project.name,
-                          });
-                        }}
-                        className="bg-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer pointer-events-auto rotate-125"
-                      >
-                        <Link2 />
+                      className="block w-full h-full rounded-xl cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-text"
+                      aria-label={`Preview ${project.name}`}
+                    >
+                      <Image
+                        src={project?.image || "/images/logo.png"}
+                        alt={`${project.name} preview`}
+                        className="w-full h-full object-cover object-left-center rounded-xl z-10"
+                        width={1300}
+                        height={50}
+                      />
+                    </button>
+                    {(project.url || project.repoUrl) && (
+                      <div className="absolute inset-0 flex justify-end m-3 pointer-events-none">
+                        <a
+                          href={project.url || project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            event({
+                              action: "click",
+                              category: "Project Link Clicked",
+                              label: project.name,
+                            });
+                          }}
+                          aria-label={`Open ${project.name} in a new tab`}
+                          className="bg-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer pointer-events-auto rotate-125"
+                        >
+                          <Link2 aria-hidden="true" />
+                        </a>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* Info */}
@@ -175,77 +188,80 @@ export default function Projects({ projectsData }: any) {
       {/* Expanded Details Modal */}
       <AnimatePresence>
         {selectedItem && selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center overflow-hidden justify-center p-4"
-            onClick={() => setSelectedItem(null)}
+          <AccessibleDialog
+            labelledBy={`project-dialog-title-${selectedProject.id}`}
+            describedBy={`project-dialog-description-${selectedProject.id}`}
+            onClose={() => setSelectedItem(null)}
+            panelClassName="w-full max-h-[95vh] pb-30 overflow-y-auto"
           >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="glass-morphism rounded-lg p-4 md:p-6 lg:p-8 w-full max-h-[95vh] pb-30 overflow-y-auto bg-white/5 shadow-lg "
-            >
-              {/* Modal header */}
-              <div className="flex justify-between items-center p-4 border-b border-white/10 sticky top-0 bg-background/60 backdrop-blur-sm z-10">
-                <h2 className="text-lg font-semibold text-primary-text">
+            {/* Modal header */}
+            <div className="flex justify-between items-center p-4 border-b border-white/10 sticky top-0 bg-background/60 backdrop-blur-sm z-10">
+              <div>
+                <h2
+                  id={`project-dialog-title-${selectedProject.id}`}
+                  className="text-lg font-semibold text-primary-text"
+                >
                   {selectedProject.name} Preview
                 </h2>
-                <button
-                  onClick={() => setSelectedItem(null)}
-                  className="p-2 rounded-full hover:bg-link-active hover:text-white text-primary-text cursor-pointer transition"
+                <p
+                  id={`project-dialog-description-${selectedProject.id}`}
+                  className="sr-only"
                 >
-                  <X className="w-5 h-5" />
-                </button>
+                  Preview and links for {selectedProject.name}.
+                </p>
               </div>
+              <button
+                onClick={() => setSelectedItem(null)}
+                aria-label={`Close ${selectedProject.name} preview`}
+                className="p-2 rounded-full hover:bg-link-active hover:text-white text-primary-text cursor-pointer transition"
+              >
+                <X className="w-5 h-5" aria-hidden="true" />
+              </button>
+            </div>
 
-              {/* Modal body */}
-              <div className="p-4 min-h-125 flex items-center justify-center  bg-background/80 backdrop-blur-sm">
-                {selectedProject.category === "mobile" &&
-                !selectedProject?.previewUrl.trim() ? (
-                  <MobilePreview project={selectedProject} />
-                ) : !selectedProject.isFork ? (
-                  <div className="relative w-full h-[70vh]">
-                    {isLoading && (
-                      <div className="absolute inset-0 flex justify-center items-center bg-background rounded-xl">
-                        <p className="text-primary-text/60">
-                          Loading {selectedProject.name}...
-                        </p>
-                      </div>
-                    )}
-                    <iframe
-                      src={selectedProject?.previewUrl || selectedProject.url}
-                      className="w-full h-full border-0 rounded-xl"
-                      onLoad={() => setIsLoading(false)}
-                      title={selectedProject.name}
-                      loading="lazy"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col justify-center items-center h-full text-center p-4 gap-6">
-                    <Image
-                      src={selectedProject.image}
-                      alt={selectedProject.name}
-                      width={900}
-                      height={500}
-                      className="rounded-xl"
-                    />
-                    <a
-                      href={selectedProject.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 glass-morphism text-primary rounded transition"
-                    >
-                      View Live Site
-                    </a>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
+            {/* Modal body */}
+            <div className="p-4 min-h-125 flex items-center justify-center  bg-background/80 backdrop-blur-sm">
+              {selectedProject.category === "mobile" &&
+              !selectedProject?.previewUrl.trim() ? (
+                <MobilePreview project={selectedProject} />
+              ) : !selectedProject.isFork ? (
+                <div className="relative w-full h-[70vh]">
+                  {isLoading && (
+                    <div className="absolute inset-0 flex justify-center items-center bg-background rounded-xl">
+                      <p className="text-primary-text/60">
+                        Loading {selectedProject.name}...
+                      </p>
+                    </div>
+                  )}
+                  <iframe
+                    src={selectedProject?.previewUrl || selectedProject.url}
+                    className="w-full h-full border-0 rounded-xl"
+                    onLoad={() => setIsLoading(false)}
+                    title={selectedProject.name}
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <div className="flex flex-col justify-center items-center h-full text-center p-4 gap-6">
+                  <Image
+                    src={selectedProject.image}
+                    alt={selectedProject.name}
+                    width={900}
+                    height={500}
+                    className="rounded-xl"
+                  />
+                  <a
+                    href={selectedProject.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 glass-morphism text-primary rounded transition"
+                  >
+                    View Live Site
+                  </a>
+                </div>
+              )}
+            </div>
+          </AccessibleDialog>
         )}
       </AnimatePresence>
     </div>

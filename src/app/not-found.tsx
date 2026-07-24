@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <section className="bg-background">
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <ParticleBackground />
         </div>
 
@@ -23,6 +23,7 @@ export default function NotFound() {
             className="mx-auto w-full"
           >
             <div className="flex flex-col justify-center items-center text-primary-text">
+              <h1 className="sr-only">Page not found</h1>
               <motion.div
                 animate={{ y: [-8, 5, -5] }}
                 transition={{

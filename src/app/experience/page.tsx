@@ -15,7 +15,11 @@ export default function ExperiencePage() {
   ];
   return (
     <section className="bg-background">
-      <section id="projects" className="py-32 relative  ">
+      <section
+        id="projects"
+        className="py-32 relative  "
+        aria-labelledby="experience-page-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -23,9 +27,12 @@ export default function ExperiencePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h1
+              id="experience-page-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               My Professional Journey
-            </h2>
+            </h1>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto mb-8">
               A timeline of growth, learning, and achievements
             </p>

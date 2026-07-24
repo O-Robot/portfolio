@@ -36,73 +36,67 @@ export default function ContactPage() {
   });
   const [loading, setLoading] = useState(false);
   const [captchaToken, setCaptchaToken] = useState("");
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [statusMessage, setStatusMessage] = useState("");
   const turnstileRef = useRef<TurnstileInstance>(null);
 
   const connect = ["Github", "LinkedIn"];
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!captchaToken) {
-      turnstileRef.current?.execute();
-      return;
-    }
+  const validateForm = () => {
+    const nextErrors: Record<string, string> = {};
 
     if (!formData.firstName.trim()) {
-      toast({
-        title: "Wait a sec 👀",
-        description: "Please enter your first name.",
-        variant: "destructive",
-      });
-      return;
+      nextErrors.firstName = "Please enter your first name.";
     }
 
     if (!formData.lastName.trim()) {
-      toast({
-        title: "Hold up 😅",
-        description: "Last name is required",
-        variant: "destructive",
-      });
-      return;
+      nextErrors.lastName = "Please enter your last name.";
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      toast({
-        title: "Invalid email 📧",
-        description: "Please enter a valid email address.",
-        variant: "destructive",
-      });
-      return;
+      nextErrors.email = "Please enter a valid email address.";
     }
 
     if (!formData.phone || !isValidPhoneNumber(formData.phone)) {
-      toast({
-        title: "Phone number error 📱",
-        description: "Please enter a valid phone number.",
-        variant: "destructive",
-      });
-      return;
+      nextErrors.phone = "Please enter a valid phone number.";
     }
 
     if (!formData.subject.trim()) {
+      nextErrors.subject = "Please include a subject.";
+    }
+
+    if (!formData.message.trim()) {
+      nextErrors.message = "Please type your message.";
+    }
+
+    return nextErrors;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const nextErrors = validateForm();
+
+    setFormErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setStatusMessage("Please correct the highlighted fields and try again.");
       toast({
-        title: "Subject missing ✍🏽",
-        description: "Please include a subject.",
+        title: "Almost there",
+        description: Object.values(nextErrors)[0],
         variant: "destructive",
       });
       return;
     }
 
-    if (!formData.message.trim()) {
-      toast({
-        title: "Message empty 📨",
-        description: "Please type your message.",
-        variant: "destructive",
-      });
+    if (!captchaToken) {
+      setStatusMessage("Completing security check before sending your message.");
+      turnstileRef.current?.execute();
       return;
     }
 
     setLoading(true);
+    setStatusMessage("Sending your message.");
 
     event({
       action: "submit",
@@ -144,6 +138,8 @@ export default function ContactPage() {
         title: "Message sent! 🚀",
         description: "Thanks for reaching out. I'll get back to you soon!",
       });
+      setStatusMessage("Your message has been sent successfully.");
+      setFormErrors({});
 
       setCaptchaToken("");
       turnstileRef.current?.reset();
@@ -166,6 +162,7 @@ export default function ContactPage() {
         description: "Network issue, please try again.",
         variant: "destructive",
       });
+      setStatusMessage("There was a network issue. Please try again.");
     }
 
     setLoading(false);
@@ -174,7 +171,11 @@ export default function ContactPage() {
   return (
     <div className="bg-background">
       {" "}
-      <section id="contact" className="py-20 relative">
+      <section
+        id="contact"
+        className="py-20 relative"
+        aria-labelledby="contact-page-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -182,9 +183,12 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text">
+            <h1
+              id="contact-page-title"
+              className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
+            >
               Let&apos;s Connect
-            </h2>
+            </h1>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
               Ready to bring your ideas to life? Let&apos;s discuss how we can
               build something amazing together.
@@ -206,8 +210,15 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6 ">
+                    <p className="sr-only" aria-live="polite">
+                      {statusMessage}
+                    </p>
                     <div className="flex gap-4">
+                      <label htmlFor="firstName" className="sr-only">
+                        First name
+                      </label>
                       <Input
+                        id="firstName"
                         placeholder="First Name"
                         value={formData.firstName}
                         name={"firstName"}
@@ -218,8 +229,17 @@ export default function ContactPage() {
                           })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
+                        autoComplete="given-name"
+                        aria-invalid={Boolean(formErrors.firstName)}
+                        aria-describedby={
+                          formErrors.firstName ? "firstName-error" : undefined
+                        }
                       />
+                      <label htmlFor="lastName" className="sr-only">
+                        Last name
+                      </label>
                       <Input
+                        id="lastName"
                         placeholder="Last Name"
                         name={"lastName"}
                         value={formData.lastName}
@@ -227,11 +247,26 @@ export default function ContactPage() {
                           setFormData({ ...formData, lastName: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
+                        autoComplete="family-name"
+                        aria-invalid={Boolean(formErrors.lastName)}
+                        aria-describedby={
+                          formErrors.lastName ? "lastName-error" : undefined
+                        }
                       />
                     </div>
+                    <p id="firstName-error" className="sr-only">
+                      {formErrors.firstName}
+                    </p>
+                    <p id="lastName-error" className="sr-only">
+                      {formErrors.lastName}
+                    </p>
 
                     <div>
+                      <label htmlFor="email" className="sr-only">
+                        Email address
+                      </label>
                       <Input
+                        id="email"
                         type="email"
                         placeholder="Your Email"
                         name="email"
@@ -240,10 +275,23 @@ export default function ContactPage() {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
+                        autoComplete="email"
+                        inputMode="email"
+                        aria-invalid={Boolean(formErrors.email)}
+                        aria-describedby={
+                          formErrors.email ? "email-error" : undefined
+                        }
                       />
+                      <p id="email-error" className="sr-only">
+                        {formErrors.email}
+                      </p>
                     </div>
                     <div>
+                      <label htmlFor="phone" className="sr-only">
+                        Phone number
+                      </label>
                       <InputPhone
+                        id="phone"
                         placeholder="Your Phone Number"
                         defaultCountry="NG"
                         value={formData.phone}
@@ -254,10 +302,22 @@ export default function ContactPage() {
                           })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
+                        autoComplete="tel"
+                        aria-invalid={Boolean(formErrors.phone)}
+                        aria-describedby={
+                          formErrors.phone ? "phone-error" : undefined
+                        }
                       />
+                      <p id="phone-error" className="sr-only">
+                        {formErrors.phone}
+                      </p>
                     </div>
                     <div>
+                      <label htmlFor="subject" className="sr-only">
+                        Subject
+                      </label>
                       <Input
+                        id="subject"
                         placeholder="Subject"
                         name="subject"
                         value={formData.subject}
@@ -265,18 +325,38 @@ export default function ContactPage() {
                           setFormData({ ...formData, subject: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
+                        autoComplete="off"
+                        aria-invalid={Boolean(formErrors.subject)}
+                        aria-describedby={
+                          formErrors.subject ? "subject-error" : undefined
+                        }
                       />
+                      <p id="subject-error" className="sr-only">
+                        {formErrors.subject}
+                      </p>
                     </div>
 
                     <div className="relative">
+                      <label htmlFor="message" className="sr-only">
+                        Message
+                      </label>
                       <Textarea
+                        id="message"
                         placeholder="Your Message"
                         value={formData.message}
                         onChange={(e) =>
                           setFormData({ ...formData, message: e.target.value })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50 min-h-32"
+                        autoComplete="off"
+                        aria-invalid={Boolean(formErrors.message)}
+                        aria-describedby={
+                          formErrors.message ? "message-error" : undefined
+                        }
                       />
+                      <p id="message-error" className="sr-only">
+                        {formErrors.message}
+                      </p>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
                       <input
@@ -308,6 +388,7 @@ export default function ContactPage() {
                         onSuccess={(token) => setCaptchaToken(token)}
                         onExpire={() => {
                           setCaptchaToken("");
+                          setStatusMessage("Security check expired. Please try again.");
                         }}
                         onError={() =>
                           toast({
@@ -321,6 +402,7 @@ export default function ContactPage() {
 
                     <Button
                       type="submit"
+                      aria-busy={loading}
                       className="w-full glass-morphism  text-primary-text/80 hover:text-primary hover:animate-glow"
                       size="lg"
                     >
@@ -472,6 +554,7 @@ export default function ContactPage() {
                         >
                           <Icon
                             icon={social.icon}
+                            aria-hidden="true"
                             className="transition-transform hover:scale-110"
                           />
                           <span>{social.name}</span>

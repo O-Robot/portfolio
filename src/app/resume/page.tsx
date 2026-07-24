@@ -139,6 +139,7 @@ export default function ResumePage() {
     <div
       className={`flex flex-col items-center justify-center px-4 sm:px-8 bg-background lg:pt-20 py-20`}
     >
+      <h1 className="sr-only">Resume</h1>
       {/* PDF Viewer */}
       <div
         className={`group relative shadow-xl rounded-2xl overflow-hidden  max-w-sm sm:max-w-none`}
@@ -170,6 +171,7 @@ export default function ResumePage() {
                 className="cursor-pointer absolute top-1/2 left-2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full 
                      opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
                 onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}
+                aria-label="Previous page"
               >
                 <ChevronLeft size={20} />
               </button>
