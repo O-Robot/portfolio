@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import AmbientParticleBackground from "@/components/decorative/ambient-particle-background";
+import ParticleBackground from "@/components/three/particle-background";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,7 @@ export default function NotFound() {
     <section className="bg-background">
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0" aria-hidden="true">
-          <AmbientParticleBackground />
+          <ParticleBackground />
         </div>
 
         <div className="relative z-10 container mx-auto px-6 text-center ">

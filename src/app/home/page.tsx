@@ -1,5 +1,5 @@
 "use client";
-import AmbientParticleBackground from "@/components/decorative/ambient-particle-background";
+import ParticleBackground from "@/components/three/particle-background";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Pencil, Send } from "lucide-react";
@@ -50,9 +50,9 @@ export default function HomePage() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         aria-labelledby="home-page-title"
       >
-        {/* Ambient Background */}
+        {/* WebGL Background */}
         <div className="absolute inset-0 z-0" aria-hidden="true">
-          <AmbientParticleBackground />
+          <ParticleBackground />
         </div>
 
         {/* Content */}

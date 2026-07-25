@@ -16,15 +16,14 @@ export default function Header() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme") === "dark";
-    setIsDark(saved);
-    updateTheme(saved);
+    setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
   const updateTheme = (dark: boolean) => {
     const html = document.documentElement;
-    if (dark) html.setAttribute("class", "dark");
-    else html.setAttribute("class", "light");
+    html.classList.remove("light", "dark");
+    html.classList.add(dark ? "dark" : "light");
+    html.style.colorScheme = dark ? "dark" : "light";
     localStorage.setItem("theme", dark ? "dark" : "light");
   };
 
@@ -39,7 +38,7 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   // console.log(pathname, "path");

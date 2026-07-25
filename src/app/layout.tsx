@@ -30,9 +30,6 @@ const space = Space_Grotesk({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
 });
-if (typeof window !== "undefined") {
-  console.log("path", window.location.pathname);
-}
 
 export const metadata: Metadata = {
   metadataBase: new URL(metadataSiteConfig.siteUrl),
@@ -115,6 +112,25 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <JsonLd id="website-jsonld" data={buildWebsiteSchema()} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var storedTheme = localStorage.getItem("theme");
+                  var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                  var theme = storedTheme === "dark" || storedTheme === "light"
+                    ? storedTheme
+                    : (systemDark ? "dark" : "light");
+                  var root = document.documentElement;
+                  root.classList.remove("light", "dark");
+                  root.classList.add(theme);
+                  root.style.colorScheme = theme;
+                } catch (error) {}
+              })();
+            `,
+          }}
+        />
         <Script
           src="https://code.iconify.design/2/2.2.1/iconify.min.js"
           defer
