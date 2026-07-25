@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const revalidate = 3600;
+
 export async function GET(request: Request) {
   const query = `
     query ContributionGraph($login: String!, $from: DateTime!, $to: DateTime!) {
@@ -46,7 +48,7 @@ export async function GET(request: Request) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ query, variables: { login, from, to } }),
-    cache: "no-store",
+    next: { revalidate },
   });
 
   const ghJson = await ghRes.json();

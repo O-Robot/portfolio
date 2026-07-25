@@ -1,5 +1,5 @@
 "use client";
-import LiveGitHub from "@/components/live-github-widget";
+import LiveGithubCard from "@/components/lazy/live-github-card";
 import { motion } from "framer-motion";
 import projects from "@/data/projects.json";
 import Projects from "@/components/sections/projects";
@@ -40,7 +40,7 @@ export default function ProjectsPage() {
             transition={{ duration: 0.8 }}
             className="text-center py-16 px-6 w-full"
           >
-            <LiveGitHub />
+            <LiveGithubCard />
           </motion.div>
         </div>
       </section>

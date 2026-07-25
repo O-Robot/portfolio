@@ -1,26 +1,37 @@
 "use client";
-import { useRef, useState } from "react";
+import TurnstileWidget from "@/components/lazy/turnstile-widget";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { InputPhone } from "@/components/ui/phone-input";
+import { Textarea } from "@/components/ui/textarea";
+import contact from "@/data/contact.json";
+import { useToast } from "@/hooks/use-toast";
+import { event } from "@/utils/gtag";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import type { TurnstileInstance } from "@marsidev/react-turnstile";
 import { motion } from "framer-motion";
 import {
+  Loader,
   Mail,
   MapPin,
   MessageCircle,
-  Send,
-  Loader,
   Pencil,
+  Send,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { InlineWidget } from "react-calendly";
-import contact from "@/data/contact.json";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { event } from "@/utils/gtag";
-import { InputPhone } from "@/components/ui/phone-input";
+import dynamic from "next/dynamic";
+import { useRef, useState } from "react";
 import { isValidPhoneNumber } from "react-phone-number-input";
-import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+
+const CalendlyWidget = dynamic(
+  () => import("@/components/lazy/calendly-widget"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full min-h-175 rounded-2xl glass-morphism border border-white/20" />
+    ),
+  },
+);
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -90,7 +101,9 @@ export default function ContactPage() {
     }
 
     if (!captchaToken) {
-      setStatusMessage("Completing security check before sending your message.");
+      setStatusMessage(
+        "Completing security check before sending your message.",
+      );
       turnstileRef.current?.execute();
       return;
     }
@@ -379,24 +392,26 @@ export default function ContactPage() {
                       </label>
                     </div>
                     <div className="flex justify-center">
-                      <Turnstile
-                        ref={turnstileRef}
+                      <TurnstileWidget
+                        turnstileRef={turnstileRef}
                         siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                        options={{
-                          size: "invisible",
-                        }}
                         onSuccess={(token) => setCaptchaToken(token)}
                         onExpire={() => {
                           setCaptchaToken("");
-                          setStatusMessage("Security check expired. Please try again.");
+                          setStatusMessage(
+                            "Security check expired. Please try again.",
+                          );
                         }}
-                        onError={() =>
+                        onError={() => {
+                          setStatusMessage(
+                            "Captcha failed. Please refresh and try again.",
+                          );
                           toast({
                             title: "Captcha failed",
                             description: "Please refresh and try again.",
                             variant: "destructive",
-                          })
-                        }
+                          });
+                        }}
                       />
                     </div>
 
@@ -577,7 +592,7 @@ export default function ContactPage() {
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 gap-12 max-w-6xl mx-auto py-10 w-full lg:w-1/2 ">
-            <InlineWidget url="https://calendly.com/ogooluwaniadewale/" />
+            <CalendlyWidget url="https://calendly.com/ogooluwaniadewale/" />
           </div>
         </div>
       </section>

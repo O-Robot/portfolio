@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import Timeline from "@/components/sections/timeline";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import skills from "@/data/skills.json";
 import robot from "@/data/about.json";
@@ -12,7 +12,6 @@ import contact from "@/data/contact.json";
 
 export default function AboutPage() {
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -32,11 +31,7 @@ export default function AboutPage() {
     }
   };
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
   const parts = robot.about.split(/(\[\[NAME\]\]|\[\[SPEAKER\]\])/);
-  if (!mounted) return null;
 
   return (
     <section className="bg-background">

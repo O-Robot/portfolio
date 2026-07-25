@@ -1,9 +1,8 @@
 "use client";
-import ParticleBackground from "@/components/three/particle-background";
-import { isWebGLSupported } from "@/utils/webgl-utils";
-import { useEffect, useRef, useState } from "react";
+import AmbientParticleBackground from "@/components/decorative/ambient-particle-background";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertCircle, Pencil, Send } from "lucide-react";
+import { Pencil, Send } from "lucide-react";
 import HolographicAvatar from "@/components/three/holographic-avatar";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -18,8 +17,6 @@ import { TruncateText } from "@/utils/constants";
 
 export default function HomePage() {
   const router = useRouter();
-  const [webglSupported, setWebglSupported] = useState(true);
-  const [mounted, setMounted] = useState(false);
   const connect = ["Github", "LinkedIn"];
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -41,20 +38,9 @@ export default function HomePage() {
     }
   };
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const parts = robot.about
     .split(/(\[\[NAME\]\]|\[\[SPEAKER\]\])/)
     .map((part) => TruncateText(part, 565));
-
-  useEffect(() => {
-    setWebglSupported(isWebGLSupported());
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   return (
     <section className="bg-background">
@@ -64,28 +50,10 @@ export default function HomePage() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         aria-labelledby="home-page-title"
       >
-        {/* 3D Background */}
+        {/* Ambient Background */}
         <div className="absolute inset-0 z-0" aria-hidden="true">
-          <ParticleBackground />
+          <AmbientParticleBackground />
         </div>
-
-        {/* WebGL Warning */}
-        {!webglSupported && (
-          <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute top-20 left-4 right-4 z-20"
-          >
-            <div className="glass-morphism border-accent/50 rounded-lg p-3 max-w-md mx-auto">
-              <div className="flex items-center gap-2 text-accent">
-                <AlertCircle className="h-4 w-4" />
-                <span className="text-sm">
-                  3D features unavailable - displaying in 2D mode
-                </span>
-              </div>
-            </div>
-          </motion.div>
-        )}
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-6 text-center">
