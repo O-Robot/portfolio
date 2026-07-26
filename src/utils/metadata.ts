@@ -4,6 +4,12 @@ import about from "@/data/about.json";
 import contact from "@/data/contact.json";
 import experience from "@/data/experience.json";
 import projects from "@/data/projects.json";
+import {
+  getProfessionalSummary,
+  getProjectPageLead,
+  primaryTechnologies,
+  professionalProfile,
+} from "@/utils/profile";
 
 const portfolioProject =
   projects.find((project) => project.url === "https://ogooluwaniadewale.com") ??
@@ -19,32 +25,7 @@ const twitterHandle = twitterUrl
   ? `@${twitterUrl.replace(/\/$/, "").split("/").pop()}`
   : undefined;
 
-const technologyPriority = [
-  "React",
-  "Next.js",
-  "Angular",
-  "Vue",
-  "TypeScript",
-  "Node.js",
-  "React Native",
-  "Flutter",
-];
-
-const allTechnologies = new Set<string>();
-
-experience.forEach((item) => {
-  item.technologies.forEach((tech) => allTechnologies.add(tech));
-});
-
-projects.forEach((project) => {
-  project.languages.forEach((language) => allTechnologies.add(language.name));
-});
-
-const primaryTechnologies = technologyPriority.filter((tech) =>
-  allTechnologies.has(tech),
-);
-
-const homepageDescription = `${about.name} is a software developer in ${location} building fast, reliable web and mobile applications with ${primaryTechnologies.slice(0, 6).join(", ")}.`;
+const homepageDescription = getProfessionalSummary();
 
 function cleanText(value: string) {
   return value
@@ -85,7 +66,7 @@ export const metadataSiteConfig = {
 
 const defaultKeywords = buildKeywords([
   about.name,
-  "Software Developer",
+  professionalProfile.primaryRole,
   "Frontend Developer",
   "Frontend Engineer",
   "React Developer",
@@ -152,7 +133,7 @@ export function buildPageMetadata({
 export function getHomeMetadata(): Metadata {
   const baseMetadata = buildPageMetadata({
     path: "/",
-    title: "Software Developer",
+    title: professionalProfile.primaryRole,
     description: homepageDescription,
     keywords: ["TypeScript Developer", "Node.js Developer", "Nigeria", "Lagos"],
     image: socialImage,
@@ -170,7 +151,7 @@ export function getHomeMetadata(): Metadata {
 export function getAboutMetadata(): Metadata {
   return buildPageMetadata({
     path: "/about",
-    title: "About",
+    title: `About ${about.name}`,
     description: toDescription(about.about),
     keywords: ["About Ogooluwani Adewale", "Software Developer Bio"],
     image: about.image,
@@ -187,8 +168,8 @@ export function getExperienceMetadata(): Metadata {
 
   return buildPageMetadata({
     path: "/experience",
-    title: "Experience",
-    description: `${about.name}'s professional experience spans ${featuredCompanies}, building reliable applications across frontend, product, and enterprise software teams.`,
+    title: "Software Development Experience",
+    description: `${professionalProfile.fullName}'s experience spans ${featuredCompanies}, with ${professionalProfile.yearsOfExperience} across frontend, web, and mobile delivery.`,
     keywords: ["Frontend Experience", "Software Developer Experience"],
     category: "portfolio",
   });
@@ -205,8 +186,8 @@ export function getProjectsMetadata(): Metadata {
 
   return buildPageMetadata({
     path: "/projects",
-    title: "Projects",
-    description: `${projectCount} selected projects by ${about.name}, including ${webCount} web projects and ${mobileCount} mobile projects built with ${primaryTechnologies.slice(0, 5).join(", ")}.`,
+    title: "Web and Mobile Projects",
+    description: getProjectPageLead(projectCount, mobileCount, webCount),
     keywords: ["Portfolio Projects", "Web Projects", "Mobile Projects"],
     image: socialImage,
     category: "portfolio",
@@ -218,7 +199,7 @@ export function getResumeMetadata(): Metadata {
 
   return buildPageMetadata({
     path: "/resume",
-    title: "Resume",
+    title: `${about.name} Resume`,
     description: `View the resume of ${about.name}, ${currentRole?.title?.toLowerCase() || "software developer"} with experience in ${primaryTechnologies.slice(0, 5).join(", ")}.`,
     keywords: ["Software Developer Resume", "Frontend Resume"],
     category: "resume",
@@ -228,8 +209,8 @@ export function getResumeMetadata(): Metadata {
 export function getContactMetadata(): Metadata {
   return buildPageMetadata({
     path: "/contact",
-    title: "Contact",
-    description: `Contact ${about.name} in ${location} for frontend, web, mobile, and software development opportunities.`,
+    title: `Contact ${about.name}`,
+    description: `Contact ${about.name} in ${location} for software development, frontend, web, and mobile opportunities.`,
     keywords: ["Contact Ogooluwani Adewale", "Hire Software Developer"],
     category: "contact",
   });

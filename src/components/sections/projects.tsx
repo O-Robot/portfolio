@@ -42,6 +42,8 @@ export default function Projects({ projectsData }: any) {
 
   const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("all");
+  const getProjectTypeLabel = (category: string) =>
+    category === "mobile" ? "Mobile Project" : "Web Project";
 
   const PROJECT_FILTERS: FilterOption[] = [
     { id: "all", label: "All", icon: "✦" },
@@ -152,6 +154,11 @@ export default function Projects({ projectsData }: any) {
 
                   {/* Info */}
                   <div className="mt-5 flex flex-col flex-1">
+                    <div className="mb-2">
+                      <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-[11px] font-medium text-primary-text border border-white/20">
+                        {getProjectTypeLabel(project.category)}
+                      </span>
+                    </div>
                     <h3 className="text-primary-text font-bold text-[20px]">
                       {project.name}
                     </h3>
@@ -225,24 +232,52 @@ export default function Projects({ projectsData }: any) {
               !selectedProject?.previewUrl.trim() ? (
                 <MobilePreview project={selectedProject} />
               ) : !selectedProject.isFork ? (
-                <div className="relative w-full h-[70vh]">
-                  {isLoading && (
-                    <div className="absolute inset-0 flex justify-center items-center bg-background rounded-xl">
-                      <p className="text-primary-text/60">
-                        Loading {selectedProject.name}...
-                      </p>
-                    </div>
-                  )}
-                  <iframe
-                    src={selectedProject?.previewUrl || selectedProject.url}
-                    className="w-full h-full border-0 rounded-xl"
-                    onLoad={() => setIsLoading(false)}
-                    title={selectedProject.name}
-                    loading="lazy"
-                  />
+                <div className="w-full space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-primary-text border border-white/20">
+                      {getProjectTypeLabel(selectedProject.category)}
+                    </span>
+                    {selectedProject.languages.map((language: any) => (
+                      <span
+                        key={language.name}
+                        className="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-[#231942]"
+                      >
+                        {language.name}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="relative w-full h-[70vh]">
+                    {isLoading && (
+                      <div className="absolute inset-0 flex justify-center items-center bg-background rounded-xl">
+                        <p className="text-primary-text/60">
+                          Loading {selectedProject.name}...
+                        </p>
+                      </div>
+                    )}
+                    <iframe
+                      src={selectedProject?.previewUrl || selectedProject.url}
+                      className="w-full h-full border-0 rounded-xl"
+                      onLoad={() => setIsLoading(false)}
+                      title={selectedProject.name}
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               ) : (
                 <div className="flex flex-col justify-center items-center h-full text-center p-4 gap-6">
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-primary-text border border-white/20">
+                      {getProjectTypeLabel(selectedProject.category)}
+                    </span>
+                    {selectedProject.languages.map((language: any) => (
+                      <span
+                        key={language.name}
+                        className="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-[#231942]"
+                      >
+                        {language.name}
+                      </span>
+                    ))}
+                  </div>
                   <Image
                     src={selectedProject.image}
                     alt={selectedProject.name}

@@ -1,11 +1,62 @@
 "use client";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { AnimatePresence, motion } from "framer-motion";
 import { BriefcaseBusiness, Calendar, MapPin, X } from "lucide-react";
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import AccessibleDialog from "../ui/accessible-dialog";
+
+function formatEmploymentType(type?: string) {
+  const labels: Record<string, string> = {
+    work: "Work",
+    "full-time": "Full-time",
+    "part-time": "Part-time",
+    freelance: "Freelance",
+    contract: "Contract",
+    intern: "Internship",
+    volunteership: "Volunteership",
+  };
+
+  return type ? (labels[type] ?? type) : null;
+}
+
+function formatWorkMode(mode?: string) {
+  const labels: Record<string, string> = {
+    remote: "Remote",
+    hybrid: "Hybrid",
+    onsite: "Onsite",
+  };
+
+  return mode ? (labels[mode] ?? mode) : null;
+}
+
+function getCompactEmploymentLabel(type?: string) {
+  const compactTypes = [
+    "work",
+    "full-time",
+    "part-time",
+    "freelance",
+    "contract",
+  ];
+
+  if (!type || !compactTypes.includes(type)) {
+    return null;
+  }
+
+  return formatEmploymentType(type);
+}
+
+function getModalEmploymentLabel(item: { type?: string; workMode?: string }) {
+  const employmentType = formatEmploymentType(item.type);
+  const workMode = formatWorkMode(item.workMode);
+
+  if (employmentType && workMode) {
+    return `${employmentType} ${workMode}`;
+  }
+
+  return employmentType ?? workMode ?? null;
+}
 
 export default function Timeline({ timelineData }: any) {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
@@ -87,6 +138,11 @@ export default function Timeline({ timelineData }: any) {
                       <span className="text-link-active font-semibold text-sm md:text-base">
                         {item.year}
                       </span>
+                      {getCompactEmploymentLabel(item.type) && (
+                        <Badge className="bg-white/10 text-skill-text border border-white/20 text-[10px] md:text-xs">
+                          {getCompactEmploymentLabel(item.type)}
+                        </Badge>
+                      )}
                     </div>
 
                     <h3 className="text-lg md:text-xl font-bold text-skill-text mb-2 leading-tight">
@@ -181,6 +237,22 @@ export default function Timeline({ timelineData }: any) {
                     {item.description}
                   </p>
 
+                  {getModalEmploymentLabel(item) && (
+                    <>
+                      <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
+                        Employment Type:
+                      </h4>
+                      <div className="mb-6">
+                        <Badge
+                          variant="secondary"
+                          className="glass-morphism text-skill-text text-xs md:text-sm"
+                        >
+                          {getModalEmploymentLabel(item)}
+                        </Badge>
+                      </div>
+                    </>
+                  )}
+
                   <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
                     Key Achievements:
                   </h4>
@@ -198,6 +270,9 @@ export default function Timeline({ timelineData }: any) {
                     ))}
                   </ul>
 
+                  <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
+                    Technologies Used:
+                  </h4>
                   <div className="flex flex-wrap gap-1 md:gap-2">
                     {item.technologies?.map((tech: any) => (
                       <Badge

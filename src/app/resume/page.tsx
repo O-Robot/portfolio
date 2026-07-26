@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Download, RotateCw } from "lucide-react";
 import { event } from "@/utils/gtag";
+import Link from "next/link";
 
 const Document = dynamic(
   () => import("react-pdf").then((mod) => mod.Document),
@@ -217,6 +218,14 @@ export default function ResumePage() {
           Download Résumé
         </Button>
       </a>
+      <Button
+        size="lg"
+        className="glass-morphism hover:animate-glow text-primary-text mt-4 px-8 py-4 text-lg bg-transparent"
+        variant="outline"
+        asChild
+      >
+        <Link href="/contact">Contact Ogooluwani Adewale</Link>
+      </Button>
     </div>
   );
 }

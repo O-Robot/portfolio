@@ -13,7 +13,7 @@ export default function AboutLayout({ children }: { children: ReactNode }) {
         id="about-jsonld"
         data={buildWebPageSchema(
           "/about",
-          "About",
+          "About Ogooluwani Adewale",
           metadata.description as string,
         )}
       />

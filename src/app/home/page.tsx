@@ -1,11 +1,11 @@
 "use client";
 import ParticleBackground from "@/components/three/particle-background";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Pencil, Send } from "lucide-react";
 import HolographicAvatar from "@/components/three/holographic-avatar";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Timeline from "@/components/sections/timeline";
 import timelineData from "@/data/experience.json";
@@ -16,7 +16,6 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { TruncateText } from "@/utils/constants";
 
 export default function HomePage() {
-  const router = useRouter();
   const connect = ["Github", "LinkedIn"];
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -105,11 +104,9 @@ export default function HomePage() {
                 size="lg"
                 className="glass-morphism hover:animate-glow text-primary-text  px-8 py-4 text-lg bg-transparent"
                 variant="outline"
-                onClick={() => router.push("/resume")}
+                asChild
               >
-                {/* <Download className="mr-2 h-5 w-5" /> */}
-                {/* 📄 */}
-                View Résumé
+                <Link href="/resume">View Résumé</Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -211,11 +208,11 @@ export default function HomePage() {
               <div className="flex justify-center gap-3 py-6">
                 <Button
                   size="lg"
-                  onClick={() => router.push("/about")}
                   className="glass-morphism hover:animate-glow px-8 py-4 text-lg bg-transparent"
                   variant="outline"
+                  asChild
                 >
-                  Read More
+                  <Link href="/about">Read More</Link>
                 </Button>
                 {/* <Button
                   size="lg"
@@ -247,7 +244,7 @@ export default function HomePage() {
               id="home-experience-title"
               className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
             >
-              My Professional Journey
+              Experience
             </h2>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
               A timeline of growth, learning, and achievements
@@ -257,11 +254,19 @@ export default function HomePage() {
           <div className="flex justify-center gap-3 py-10">
             <Button
               size="lg"
-              onClick={() => router.push("/experience")}
               className="glass-morphism hover:animate-glow px-8 py-4 text-lg bg-transparent"
               variant="outline"
+              asChild
             >
-              View All
+              <Link href="/experience">View All</Link>
+            </Button>
+            <Button
+              size="lg"
+              className="glass-morphism hover:animate-glow px-8 py-4 text-lg bg-transparent"
+              variant="outline"
+              asChild
+            >
+              <Link href="/projects">See Projects</Link>
             </Button>
           </div>
         </div>
@@ -380,12 +385,12 @@ export default function HomePage() {
                     type="submit"
                     className="w-full glass-morphism hover:animate-glow"
                     size="lg"
-                    onClick={() => {
-                      router.push("/contact");
-                    }}
+                    asChild
                   >
-                    <Send className="mr-2 h-5 w-5" />
-                    Contact Me
+                    <Link href="/contact">
+                      <Send className="mr-2 h-5 w-5" />
+                      Contact Me
+                    </Link>
                   </Button>
 
                   <Button

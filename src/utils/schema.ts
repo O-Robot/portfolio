@@ -3,6 +3,12 @@ import contact from "@/data/contact.json";
 import experience from "@/data/experience.json";
 import projects from "@/data/projects.json";
 import { metadataSiteConfig } from "@/utils/metadata";
+import {
+  getProfessionalSummary,
+  getProjectPageLead,
+  primaryTechnologies,
+  professionalProfile,
+} from "@/utils/profile";
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -10,6 +16,7 @@ const context = "https://schema.org";
 const personId = `${metadataSiteConfig.siteUrl}#person`;
 const websiteId = `${metadataSiteConfig.siteUrl}#website`;
 const contactPointId = `${metadataSiteConfig.siteUrl}#contact-point`;
+const expertiseKeywords = professionalProfile.expertiseAreas;
 
 const publicProfileLinks = contact.socialMediaLinks
   .map((link) => link.link)
@@ -42,13 +49,11 @@ const dedupedOrganizations = experience.reduce<
 }, []);
 
 const allTechnologies = Array.from(
-  new Set(
-    [
-      ...experience.flatMap((item) => item.technologies),
-      ...projects.flatMap((project) => project.languages.map((language) => language.name)),
-    ].filter(Boolean),
-  ),
-);
+  new Set([
+    ...primaryTechnologies,
+    ...experience.flatMap((item) => item.technologies),
+  ]),
+).filter(Boolean);
 
 function slugify(value: string) {
   return value
@@ -100,7 +105,7 @@ export function buildWebsiteSchema() {
         url: metadataSiteConfig.siteUrl,
         name: metadataSiteConfig.siteName,
         alternateName: metadataSiteConfig.personName,
-        description: metadataSiteConfig.homepageDescription,
+        description: getProfessionalSummary(),
         publisher: {
           "@id": personId,
         },
@@ -159,10 +164,11 @@ export function buildHomeSchema() {
         name: metadataSiteConfig.personName,
         url: metadataSiteConfig.siteUrl,
         image: absoluteUrl(about.image),
-        description: metadataSiteConfig.homepageDescription,
+        description: getProfessionalSummary(),
         email: `mailto:${metadataSiteConfig.authorEmail}`,
         knowsAbout: allTechnologies,
         sameAs: publicProfileLinks,
+        jobTitle: professionalProfile.primaryRole,
         homeLocation: {
           "@type": "Place",
           name: metadataSiteConfig.location,
@@ -176,7 +182,7 @@ export function buildHomeSchema() {
         "@id": `${metadataSiteConfig.siteUrl}#profile-page`,
         url: metadataSiteConfig.siteUrl,
         name: `${metadataSiteConfig.personName} Portfolio`,
-        description: metadataSiteConfig.homepageDescription,
+        description: getProfessionalSummary(),
         isPartOf: {
           "@id": websiteId,
         },
@@ -213,6 +219,10 @@ export function buildWebPageSchema(path: string, name: string, description: stri
         about: {
           "@id": personId,
         },
+        mentions: expertiseKeywords.map((keyword) => ({
+          "@type": "Thing",
+          name: keyword,
+        })),
         breadcrumb: {
           "@id": `${absoluteUrl(path)}#breadcrumb`,
         },
@@ -224,6 +234,12 @@ export function buildWebPageSchema(path: string, name: string, description: stri
 
 export function buildProjectsSchema() {
   const creativeWorks = projects.map(buildCreativeWorkNode);
+  const mobileCount = projects.filter(
+    (project) => project.category === "mobile",
+  ).length;
+  const webCount = projects.filter(
+    (project) => project.category === "web",
+  ).length;
 
   return {
     "@context": context,
@@ -232,8 +248,8 @@ export function buildProjectsSchema() {
         "@type": "CollectionPage",
         "@id": `${absoluteUrl("/projects")}#collection-page`,
         url: absoluteUrl("/projects"),
-        name: "Projects",
-        description: `${projects.length} selected web and mobile projects by ${metadataSiteConfig.personName}.`,
+        name: "Web and Mobile Projects",
+        description: getProjectPageLead(projects.length, mobileCount, webCount),
         isPartOf: {
           "@id": websiteId,
         },
@@ -277,8 +293,8 @@ export function buildExperienceSchema() {
         "@type": "WebPage",
         "@id": `${absoluteUrl("/experience")}#webpage`,
         url: absoluteUrl("/experience"),
-        name: "Experience",
-        description: `${metadataSiteConfig.personName}'s professional experience across software, frontend, media, logistics, and enterprise teams.`,
+        name: "Software Development Experience",
+        description: `${professionalProfile.fullName}'s professional experience across software, frontend, media, logistics, and enterprise teams in ${professionalProfile.location}.`,
         isPartOf: {
           "@id": websiteId,
         },
@@ -288,9 +304,23 @@ export function buildExperienceSchema() {
         mentions: organizationNodes.map((organization) => ({
           "@id": organization["@id"],
         })),
+        mainEntity: {
+          "@id": `${absoluteUrl("/experience")}#experience-list`,
+        },
         breadcrumb: {
           "@id": `${absoluteUrl("/experience")}#breadcrumb`,
         },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${absoluteUrl("/experience")}#experience-list`,
+        itemListElement: experience.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: `${item.title} at ${item.company}`,
+          description: item.description,
+          keywords: item.technologies.join(", "),
+        })),
       },
       buildBreadcrumbSchema("/experience"),
       ...organizationNodes,
@@ -306,8 +336,8 @@ export function buildContactSchema() {
         "@type": "WebPage",
         "@id": `${absoluteUrl("/contact")}#webpage`,
         url: absoluteUrl("/contact"),
-        name: "Contact",
-        description: `Contact ${metadataSiteConfig.personName} for software development opportunities.`,
+        name: `Contact ${metadataSiteConfig.personName}`,
+        description: `Contact ${metadataSiteConfig.personName} for software development opportunities in ${professionalProfile.location}.`,
         isPartOf: {
           "@id": websiteId,
         },

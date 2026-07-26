@@ -13,7 +13,7 @@ export default function ResumeLayout({ children }: { children: ReactNode }) {
         id="resume-jsonld"
         data={buildWebPageSchema(
           "/resume",
-          "Resume",
+          "Ogooluwani Adewale Resume",
           metadata.description as string,
         )}
       />

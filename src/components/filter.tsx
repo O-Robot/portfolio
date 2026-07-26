@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export interface FilterOption {
   id: string;
@@ -15,7 +15,11 @@ interface FilterProps {
   onFilterChange: (filter: string) => void;
 }
 
-export default function Filter({ filters, selectedFilter, onFilterChange }: FilterProps) {
+export default function Filter({
+  filters,
+  selectedFilter,
+  onFilterChange,
+}: FilterProps) {
   return (
     <div
       className="flex flex-wrap justify-center gap-4"
@@ -32,10 +36,10 @@ export default function Filter({ filters, selectedFilter, onFilterChange }: Filt
             variant={selectedFilter === filter.id ? "default" : "outline"}
             onClick={() => onFilterChange(filter.id)}
             aria-pressed={selectedFilter === filter.id}
-            className={`glass-morphism border-white/20 cursor-pointer ${
+            className={`glass-morphism border-white/20 cursor-pointer transition-all ${
               selectedFilter === filter.id
-                ? "text-link-active"
-                : "text-link-inactive"
+                ? "bg-link-active text-primary-text border-link-active shadow-lg shadow-link-active/20"
+                : "bg-transparent text-link-inactive hover:text-link-active"
             }`}
           >
             {filter.icon && <span className="mr-2">{filter.icon}</span>}

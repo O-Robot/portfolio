@@ -2,16 +2,15 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Timeline from "@/components/sections/timeline";
 import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import skills from "@/data/skills.json";
 import robot from "@/data/about.json";
 import contact from "@/data/contact.json";
 
 export default function AboutPage() {
-  const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -143,14 +142,14 @@ export default function AboutPage() {
                 <p className="text-sm text-primary-text/40">
                   Send me a message!
                 </p>
-                <Button
-                  variant={"outline"}
-                  onClick={() => {
-                    router.push("/contact");
-                  }}
-                >
-                  Contact
-                </Button>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <Button variant="outline" asChild>
+                    <Link href="/experience">View Experience</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link href="/contact">Contact</Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </motion.div>{" "}
@@ -173,7 +172,7 @@ export default function AboutPage() {
               id="education-section-title"
               className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
             >
-              My Educational Journey
+              Education and Leadership Experience
             </h2>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
               A timeline of learning, milestones, and academic growth

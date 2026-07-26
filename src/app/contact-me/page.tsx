@@ -20,6 +20,7 @@ import {
   Send,
 } from "lucide-react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { isValidPhoneNumber } from "react-phone-number-input";
 
@@ -200,7 +201,7 @@ export default function ContactPage() {
               id="contact-page-title"
               className="text-4xl md:text-6xl font-bold mb-6 iquid-gradient text-primary-text"
             >
-              Let&apos;s Connect
+              Contact
             </h1>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto">
               Ready to bring your ideas to life? Let&apos;s discuss how we can
@@ -576,6 +577,17 @@ export default function ContactPage() {
                         </motion.a>
                       ))}
                   </div>
+                </CardContent>
+              </Card>
+              <Card className="glass-morphism border-white/20">
+                <CardContent className="pt-6 flex justify-center">
+                  <Button
+                    variant="outline"
+                    className="glass-morphism hover:animate-glow"
+                    asChild
+                  >
+                    <Link href="/resume">Review Résumé</Link>
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
