@@ -5,8 +5,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import projects from "@/data/projects.json";
 import Projects from "@/components/sections/projects";
+import type { ProjectItem } from "@/types/portfolio";
 
 export default function ProjectsPage() {
+  const projectItems = projects as ProjectItem[];
+
   return (
     <section className="bg-background">
       <section
@@ -34,7 +37,7 @@ export default function ProjectsPage() {
             </p>
           </motion.div>
           <div className="w-full">
-            <Projects projectsData={projects} />
+            <Projects projectsData={projectItems} />
           </div>
           <div className="flex justify-center gap-3 py-10">
             <Button

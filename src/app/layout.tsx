@@ -15,7 +15,7 @@ import "./globals.css";
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (...args: unknown[]) => void;
     OgooluwaniChat?: {
       open: () => void;
       close: () => void;

@@ -309,10 +309,10 @@ export default function ContactPage() {
                         placeholder="Your Phone Number"
                         defaultCountry="NG"
                         value={formData.phone}
-                        onChange={(value: any) =>
+                        onChange={(value) =>
                           setFormData({
                             ...formData,
-                            phone: value,
+                            phone: value ?? "",
                           })
                         }
                         className="glass-morphism border-white/20 text-primary-text/80 placeholder:text-primary-text/50"
@@ -600,7 +600,7 @@ export default function ContactPage() {
             className="text-center mt-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold iquid-gradient text-primary-text">
-              Schedule a Meeting
+              Schedule a Call
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 gap-12 max-w-6xl mx-auto py-10 w-full lg:w-1/2 ">

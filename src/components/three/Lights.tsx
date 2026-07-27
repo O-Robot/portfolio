@@ -54,7 +54,7 @@ export default function Lights() {
       duration,
     });
 
-    textLights.current.forEach((light: any) => {
+    textLights.current.forEach((light) => {
       if (light) {
         gsap.to(light, {
           intensity: textIntensity,

@@ -1,4 +1,7 @@
-export const textVariant = (delay: any) => {
+type Direction = "left" | "right" | "up" | "down";
+type TransitionType = "spring" | "tween" | "inertia" | "keyframes";
+
+export const textVariant = (delay: number) => {
   return {
     hidden: {
       y: -50,
@@ -17,10 +20,10 @@ export const textVariant = (delay: any) => {
 };
 
 export const fadeIn = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any
+  direction: Direction,
+  type: TransitionType,
+  delay: number,
+  duration: number
 ) => {
   return {
     hidden: {
@@ -42,7 +45,7 @@ export const fadeIn = (
   };
 };
 
-export const zoomIn = (delay: any, duration: any) => {
+export const zoomIn = (delay: number, duration: number) => {
   return {
     hidden: {
       scale: 0,
@@ -62,10 +65,10 @@ export const zoomIn = (delay: any, duration: any) => {
 };
 
 export const slideIn = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any
+  direction: Direction,
+  type: TransitionType,
+  delay: number,
+  duration: number
 ) => {
   return {
     hidden: {
@@ -85,13 +88,16 @@ export const slideIn = (
   };
 };
 
-export const staggerContainer = (staggerChildren: any, delayChildren: any) => {
+export const staggerContainer = (
+  staggerChildren: number,
+  delayChildren = 0,
+) => {
   return {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: staggerChildren,
-        delayChildren: delayChildren || 0,
+        staggerChildren,
+        delayChildren,
       },
     },
   };

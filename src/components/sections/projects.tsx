@@ -12,6 +12,12 @@ import Filter, { FilterOption } from "../filter";
 import MobilePreview from "./mobile-projects";
 import { TruncateText } from "@/utils/constants";
 import AccessibleDialog from "../ui/accessible-dialog";
+import type {
+  ProjectCategory,
+  ProjectItem,
+  ProjectLanguage,
+  MobileProjectItem,
+} from "@/types/portfolio";
 
 function EmptyState({ filter }: { filter: string }) {
   return (
@@ -37,13 +43,23 @@ function EmptyState({ filter }: { filter: string }) {
   );
 }
 
-export default function Projects({ projectsData }: any) {
-  const [selectedItem, setSelectedItem] = useState<number | null>(null);
+function getProjectTypeLabel(category: ProjectCategory) {
+  return category === "mobile" ? "Mobile Project" : "Web Project";
+}
+
+function getProjectSortValue(project: ProjectItem) {
+  return Number.parseInt(project.createdAt ?? "0", 10);
+}
+
+function isMobileProject(project: ProjectItem): project is MobileProjectItem {
+  return project.category === "mobile";
+}
+
+export default function Projects({ projectsData }: { projectsData: ProjectItem[] }) {
+  const [selectedItem, setSelectedItem] = useState<ProjectItem["id"] | null>(null);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [activeFilter, setActiveFilter] = useState("all");
-  const getProjectTypeLabel = (category: string) =>
-    category === "mobile" ? "Mobile Project" : "Web Project";
+  const [activeFilter, setActiveFilter] = useState<"all" | ProjectCategory>("all");
 
   const PROJECT_FILTERS: FilterOption[] = [
     { id: "all", label: "All", icon: "✦" },
@@ -54,10 +70,10 @@ export default function Projects({ projectsData }: any) {
   const filtered = [
     ...(activeFilter === "all"
       ? projectsData
-      : projectsData.filter((p: any) => p.category === activeFilter)),
-  ].sort((a: any, b: any) => b.createdAt - a.createdAt);
+      : projectsData.filter((project) => project.category === activeFilter)),
+  ].sort((a, b) => getProjectSortValue(b) - getProjectSortValue(a));
 
-  const selectedProject = projectsData.find((p: any) => p.id === selectedItem);
+  const selectedProject = projectsData.find((project) => project.id === selectedItem);
 
   useEffect(() => {
     document.body.style.overflow = selectedItem ? "hidden" : "";
@@ -73,7 +89,7 @@ export default function Projects({ projectsData }: any) {
         filters={PROJECT_FILTERS}
         selectedFilter={activeFilter}
         onFilterChange={(f) => {
-          setActiveFilter(f);
+          setActiveFilter(f as "all" | ProjectCategory);
           setSelectedItem(null);
         }}
       />
@@ -87,7 +103,7 @@ export default function Projects({ projectsData }: any) {
           {filtered.length === 0 ? (
             <EmptyState filter={activeFilter} />
           ) : (
-            filtered.map((project: any, index: number) => (
+            filtered.map((project, index: number) => (
               <motion.div
                 key={project.id + index}
                 layout
@@ -175,7 +191,7 @@ export default function Projects({ projectsData }: any) {
 
                   {/* Languages */}
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {project.languages.map((lang: any, i: number) => (
+                    {project.languages.map((lang: ProjectLanguage, i: number) => (
                       <span
                         key={i}
                         className="flex items-center gap-1 px-2 py-1 rounded-md bg-white text-xs text-[#231942]"
@@ -228,8 +244,8 @@ export default function Projects({ projectsData }: any) {
 
             {/* Modal body */}
             <div className="p-4 min-h-125 flex items-center justify-center  bg-background/80 backdrop-blur-sm">
-              {selectedProject.category === "mobile" &&
-              !selectedProject?.previewUrl.trim() ? (
+              {isMobileProject(selectedProject) &&
+              !(selectedProject.previewUrl ?? "").trim() ? (
                 <MobilePreview project={selectedProject} />
               ) : !selectedProject.isFork ? (
                 <div className="w-full space-y-4">
@@ -237,7 +253,7 @@ export default function Projects({ projectsData }: any) {
                     <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-primary-text border border-white/20">
                       {getProjectTypeLabel(selectedProject.category)}
                     </span>
-                    {selectedProject.languages.map((language: any) => (
+                    {selectedProject.languages.map((language: ProjectLanguage) => (
                       <span
                         key={language.name}
                         className="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-[#231942]"
@@ -269,7 +285,7 @@ export default function Projects({ projectsData }: any) {
                     <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-primary-text border border-white/20">
                       {getProjectTypeLabel(selectedProject.category)}
                     </span>
-                    {selectedProject.languages.map((language: any) => (
+                    {selectedProject.languages.map((language: ProjectLanguage) => (
                       <span
                         key={language.name}
                         className="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-[#231942]"

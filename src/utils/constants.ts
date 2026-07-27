@@ -1,33 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export const projects = [
-  {
-    image: "/textures/Screenshot 2025-06-22 103331.png",
-    url: "https://party-place-phi.vercel.app/",
-  },
-  {
-    image: "/textures/Screenshot 2025-06-22 103652.png",
-    url: "https://oguncimma.com//",
-  },
-  {
-    image: "/textures/Screenshot 2025-06-22 103904.png",
-    url: "https://www.yctmfb.online/",
-  },
-  {
-    image: "/textures/project-spaze.webp",
-    url: "https://thebearss.com/",
-  },
-  {
-    image: "/textures/project-myteachers.jpg",
-    url: "https://www.yctmfb.net/",
-  },
-  {
-    image: "/textures/project-wholesale.jpg",
-    url: "https://user.speedycardlister.ai/",
-  },
-];
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -37,11 +10,14 @@ export const Console = (() => {
   const isDevMode = process.env.NODE_ENV === "development";
 
   return new Proxy(console, {
-    get(target: any, prop: any) {
-      if (!isDevMode && typeof target[prop] === "function") {
+    get(target: typeof console, prop: keyof typeof console) {
+      const value = target[prop];
+
+      if (!isDevMode && typeof value === "function") {
         return () => {};
       }
-      return target[prop];
+
+      return value;
     },
   });
 })();
@@ -69,18 +45,6 @@ export const projectsCameraRot = {
   y: 0.05,
   z: 0,
 };
-
-// export const defaultCameraPos = {
-//   x: 1.109028643133046,
-//   y: 0.5463638814987481,
-//   z: 0.4983449671971262,
-// };
-
-// export const defaultCameraRot = {
-//   x: -0.8313297556598935,
-//   y: 0.9383399492446749,
-//   z: 0.7240714481613063,
-// };
 export const defaultCameraPos = {
   x: 1.2484806787751097,
   y: 0.46343620455819456,

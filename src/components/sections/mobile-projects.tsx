@@ -3,29 +3,11 @@ import { Icon } from "@iconify/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-
-interface MobileScreenshot {
-  src: string;
-  label?: string;
-}
-
-interface MobileProject {
-  id: number;
-  name: string;
-  category: "mobile";
-  description?: string;
-  createdAt?: string;
-  languages: { name: string; iconifyClass: string }[];
-
-  videoUrl?: string;
-  screenshots?: MobileScreenshot[];
-  previewUrl?: string;
-  url?: string;
-  devicePreview?: string;
-  apkUrl?: string;
-  expoUrl?: string;
-  figmaUrl?: string;
-}
+import type {
+  MobileProjectItem,
+  MobileScreenshot,
+  ProjectLanguage,
+} from "@/types/portfolio";
 
 //! my phone frame
 function PhoneFrame({ children }: { children: React.ReactNode }) {
@@ -81,19 +63,6 @@ function ScreenshotPreview({
   );
 }
 
-function IframePreview({ url, name }: { url: string; name: string }) {
-  return (
-    <PhoneFrame>
-      <iframe
-        src={url}
-        title={name}
-        className="w-full h-full border-0 scale-[0.7] origin-top-left"
-        style={{ width: "143%", height: "143%" }}
-        loading="lazy"
-      />
-    </PhoneFrame>
-  );
-}
 function CtaButton({
   href,
   icon,
@@ -125,7 +94,7 @@ function CtaButton({
 }
 
 //! mobile preview modal
-export default function MobilePreview({ project }: { project: MobileProject }) {
+export default function MobilePreview({ project }: { project: MobileProjectItem }) {
   const [screenshotIndex, setScreenshotIndex] = useState(0);
   const screenshots = project.screenshots || [];
   const hasScreenshots = screenshots.length > 0;
@@ -164,7 +133,7 @@ export default function MobilePreview({ project }: { project: MobileProject }) {
 
               {/* Dots */}
               <div className="flex gap-1.5">
-                {screenshots.map((_: any, i: number) => (
+                {screenshots.map((_: MobileScreenshot, i: number) => (
                   <button
                     key={i}
                     onClick={() => setScreenshotIndex(i)}
@@ -212,7 +181,7 @@ export default function MobilePreview({ project }: { project: MobileProject }) {
 
         {/* Tech badges */}
         <div className="flex flex-wrap gap-2">
-          {project.languages.map((lang: any, i: number) => (
+          {project.languages.map((lang: ProjectLanguage, i: number) => (
             <span
               key={i}
               className="flex items-center gap-1 px-2 py-1 rounded-md bg-white text-xs text-[#231942]"

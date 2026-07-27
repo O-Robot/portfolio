@@ -2,7 +2,7 @@
 import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useStore } from "@/store";
 import {
   aboutCameraPos,
@@ -15,7 +15,6 @@ import {
 
 export function CameraControls() {
   const { camera } = useThree();
-  const controlsRef = useRef<any>(null);
   const { view, setControlsEnabled, resetProjects } = useStore();
 
   useEffect(() => {
@@ -43,7 +42,6 @@ export function CameraControls() {
 
   return (
     <OrbitControls
-      ref={controlsRef}
       enabled={view === "default"}
       enablePan={false}
       minDistance={0.9}

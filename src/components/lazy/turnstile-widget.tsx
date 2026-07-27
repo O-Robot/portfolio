@@ -1,5 +1,7 @@
 "use client";
 
+import type { TurnstileInstance } from "@marsidev/react-turnstile";
+import type { Ref } from "react";
 import dynamic from "next/dynamic";
 
 const Turnstile = dynamic(
@@ -14,7 +16,7 @@ type TurnstileWidgetProps = {
   onExpire: () => void;
   onSuccess: (token: string) => void;
   siteKey: string;
-  turnstileRef: React.Ref<any>;
+  turnstileRef: Ref<TurnstileInstance | null>;
 };
 
 export default function TurnstileWidget({

@@ -14,6 +14,7 @@ import robot from "@/data/about.json";
 import contact from "@/data/contact.json";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { TruncateText } from "@/utils/constants";
+import type { ExperienceItem } from "@/types/portfolio";
 
 export default function HomePage() {
   const connect = ["Github", "LinkedIn"];
@@ -40,6 +41,7 @@ export default function HomePage() {
   const parts = robot.about
     .split(/(\[\[NAME\]\]|\[\[SPEAKER\]\])/)
     .map((part) => TruncateText(part, 565));
+  const featuredExperience = timelineData.slice(0, 3) as ExperienceItem[];
 
   return (
     <section className="bg-background">
@@ -250,7 +252,7 @@ export default function HomePage() {
               A timeline of growth, learning, and achievements
             </p>
           </motion.div>
-          <Timeline timelineData={timelineData.slice(0, 3)} />
+          <Timeline timelineData={featuredExperience} />
           <div className="flex justify-center gap-3 py-10">
             <Button
               size="lg"

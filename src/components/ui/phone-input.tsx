@@ -1,8 +1,11 @@
+import type { ComponentProps } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { cn } from "@/utils/constants";
 
-export function InputPhone({ className, ...props }: any) {
+type PhoneInputProps = ComponentProps<typeof PhoneInput>;
+
+export function InputPhone({ className, ...props }: PhoneInputProps) {
   return (
     <PhoneInput
       {...props}

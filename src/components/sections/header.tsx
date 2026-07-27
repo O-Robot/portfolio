@@ -41,7 +41,7 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  // console.log(pathname, "path");
+
   return (
     pathname !== "/three" && (
       <motion.nav
@@ -69,7 +69,7 @@ export default function Header() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => {
-                const href = getNavHref(item.href, pathname);
+                const href = getNavHref(item.href);
                 const isActive = isNavItemActive(item.href, pathname);
                 return (
                   <motion.a
@@ -130,7 +130,7 @@ export default function Header() {
               className="md:hidden mt-4 glass-morphism rounded-lg p-4"
             >
               {navItems.map((item) => {
-                const href = getNavHref(item.href, pathname);
+                const href = getNavHref(item.href);
                 const isActive = isNavItemActive(item.href, pathname);
                 return (
                   <a

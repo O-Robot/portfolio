@@ -6,8 +6,13 @@ import { BriefcaseBusiness, Calendar, MapPin, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import AccessibleDialog from "../ui/accessible-dialog";
+import type { ExperienceItem, TimelineItem, WorkMode } from "@/types/portfolio";
 
-function formatEmploymentType(type?: string) {
+function isExperienceItem(item: TimelineItem): item is ExperienceItem {
+  return "type" in item;
+}
+
+function formatEmploymentType(type?: ExperienceItem["type"]) {
   const labels: Record<string, string> = {
     work: "Work",
     "full-time": "Full-time",
@@ -21,8 +26,8 @@ function formatEmploymentType(type?: string) {
   return type ? (labels[type] ?? type) : null;
 }
 
-function formatWorkMode(mode?: string) {
-  const labels: Record<string, string> = {
+function formatWorkMode(mode?: WorkMode) {
+  const labels: Record<WorkMode, string> = {
     remote: "Remote",
     hybrid: "Hybrid",
     onsite: "Onsite",
@@ -31,7 +36,7 @@ function formatWorkMode(mode?: string) {
   return mode ? (labels[mode] ?? mode) : null;
 }
 
-function getCompactEmploymentLabel(type?: string) {
+function getCompactEmploymentLabel(type?: ExperienceItem["type"]) {
   const compactTypes = [
     "work",
     "full-time",
@@ -47,7 +52,10 @@ function getCompactEmploymentLabel(type?: string) {
   return formatEmploymentType(type);
 }
 
-function getModalEmploymentLabel(item: { type?: string; workMode?: string }) {
+function getModalEmploymentLabel(item: {
+  type?: ExperienceItem["type"];
+  workMode?: WorkMode;
+}) {
   const employmentType = formatEmploymentType(item.type);
   const workMode = formatWorkMode(item.workMode);
 
@@ -58,8 +66,8 @@ function getModalEmploymentLabel(item: { type?: string; workMode?: string }) {
   return employmentType ?? workMode ?? null;
 }
 
-export default function Timeline({ timelineData }: any) {
-  const [selectedItem, setSelectedItem] = useState<number | null>(null);
+export default function Timeline({ timelineData }: { timelineData: TimelineItem[] }) {
+  const [selectedItem, setSelectedItem] = useState<TimelineItem["id"] | null>(null);
 
   return (
     <div className="relative">
@@ -67,7 +75,7 @@ export default function Timeline({ timelineData }: any) {
       <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-1 h-full bg-linear-to-b from-primary/60 to-primary rounded-full" />
 
       <div className="space-y-8 md:space-y-12">
-        {timelineData.map((item: any, index: any) => (
+        {timelineData.map((item, index: number) => (
           <motion.div
             key={item.id}
             initial={{ opacity: 0, y: 50 }}
@@ -138,7 +146,8 @@ export default function Timeline({ timelineData }: any) {
                       <span className="text-link-active font-semibold text-sm md:text-base">
                         {item.year}
                       </span>
-                      {getCompactEmploymentLabel(item.type) && (
+                      {isExperienceItem(item) &&
+                        getCompactEmploymentLabel(item.type) && (
                         <Badge className="bg-white/10 text-skill-text border border-white/20 text-[10px] md:text-xs">
                           {getCompactEmploymentLabel(item.type)}
                         </Badge>
@@ -168,7 +177,7 @@ export default function Timeline({ timelineData }: any) {
                     </p>
 
                     <div className="flex flex-wrap gap-1 md:gap-2">
-                      {item.technologies.map((tech: any) => (
+                      {item.technologies.map((tech: string) => (
                         <Badge
                           key={tech}
                           className="bg-white/10 text-skill-text border border-white/20 hover:bg-white/20 transition-colors text-xs md:text-sm"
@@ -195,7 +204,7 @@ export default function Timeline({ timelineData }: any) {
             panelClassName="max-w-2xl w-full max-h-[90vh] md:max-h-[80vh] overflow-y-auto p-4 md:p-6 lg:p-8"
           >
             {(() => {
-              const item = timelineData.find((i: any) => i.id === selectedItem);
+              const item = timelineData.find((entry) => entry.id === selectedItem);
               if (!item) return null;
 
               return (
@@ -237,7 +246,7 @@ export default function Timeline({ timelineData }: any) {
                     {item.description}
                   </p>
 
-                  {getModalEmploymentLabel(item) && (
+                  {isExperienceItem(item) && getModalEmploymentLabel(item) && (
                     <>
                       <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
                         Employment Type:
@@ -257,7 +266,7 @@ export default function Timeline({ timelineData }: any) {
                     Key Achievements:
                   </h4>
                   <ul className="space-y-2 mb-6">
-                    {item.achievements.map((achievement: any, i: number) => (
+                    {item.achievements.map((achievement: string, i: number) => (
                       <li
                         key={i}
                         className="text-skill-text/70 flex text-sm md:text-base"
@@ -274,7 +283,7 @@ export default function Timeline({ timelineData }: any) {
                     Technologies Used:
                   </h4>
                   <div className="flex flex-wrap gap-1 md:gap-2">
-                    {item.technologies?.map((tech: any) => (
+                    {item.technologies?.map((tech: string) => (
                       <Badge
                         key={tech}
                         variant="secondary"

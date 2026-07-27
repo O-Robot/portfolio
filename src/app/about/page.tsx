@@ -1,14 +1,15 @@
 "use client";
+import Timeline from "@/components/sections/timeline";
 import { Button } from "@/components/ui/button";
+import robot from "@/data/about.json";
+import contact from "@/data/contact.json";
+import skills from "@/data/skills.json";
+import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
-import Timeline from "@/components/sections/timeline";
 import { useRef, useState } from "react";
-import skills from "@/data/skills.json";
-import robot from "@/data/about.json";
-import contact from "@/data/contact.json";
+import type { EducationItem } from "@/types/portfolio";
 
 export default function AboutPage() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -31,11 +32,16 @@ export default function AboutPage() {
   };
 
   const parts = robot.about.split(/(\[\[NAME\]\]|\[\[SPEAKER\]\])/);
+  const educationTimeline = robot.education as EducationItem[];
 
   return (
     <section className="bg-background">
       {/* about */}
-      <section id="about" className="py-32 relative" aria-labelledby="about-page-title">
+      <section
+        id="about"
+        className="py-32 relative"
+        aria-labelledby="about-page-title"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -126,13 +132,13 @@ export default function AboutPage() {
                     title={media.name}
                     className="text-white rounded-full cursor-pointer text-xl w-10 h-10 flex justify-center items-center"
                     style={{ background: media.color }}
-                    >
-                      <Icon
-                        icon={media.icon}
-                        aria-hidden="true"
-                        className="transition-transform hover:scale-110"
-                      />
-                    </a>
+                  >
+                    <Icon
+                      icon={media.icon}
+                      aria-hidden="true"
+                      className="transition-transform hover:scale-110"
+                    />
+                  </a>
                 ))}
               </div>
               <div className="rounded-xl flex justify-center flex-col px-4 py-6  bg-[#070d1e]items-center text-center gap-4">
@@ -147,7 +153,7 @@ export default function AboutPage() {
                     <Link href="/experience">View Experience</Link>
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href="/contact">Contact</Link>
+                    <Link href="/contact">Contact Me</Link>
                   </Button>
                 </div>
               </div>
@@ -178,7 +184,7 @@ export default function AboutPage() {
               A timeline of learning, milestones, and academic growth
             </p>
           </motion.div>
-          <Timeline timelineData={robot.education} />
+          <Timeline timelineData={educationTimeline} />
         </div>
       </section>
       {/* top skills */}

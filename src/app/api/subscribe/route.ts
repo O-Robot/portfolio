@@ -3,6 +3,10 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+function isContactNotFoundError(error: unknown) {
+  return error instanceof Error && error.message.includes("not found");
+}
+
 export async function POST(req: Request) {
   try {
     const { email, firstName, lastName } = await req.json();
@@ -49,9 +53,9 @@ export async function POST(req: Request) {
           message: "Email already subscribed",
         });
       }
-    } catch (err: any) {
-      if (!err?.message?.includes("not found")) {
-        console.error("Error checking contact:", err);
+    } catch (error) {
+      if (!isContactNotFoundError(error)) {
+        console.error("Error checking contact:", error);
         return NextResponse.json(
           { success: false, message: "Failed to check contact" },
           { status: 500 }

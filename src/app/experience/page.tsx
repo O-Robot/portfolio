@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import experience from "@/data/experience.json";
+import type { ExperienceItem } from "@/types/portfolio";
 
 const WORK_EXPERIENCE_TYPES = [
   "work",
@@ -18,6 +19,7 @@ const WORK_EXPERIENCE_TYPES = [
 
 export default function ExperiencePage() {
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const experienceItems = experience as ExperienceItem[];
 
   const filterOptions: FilterOption[] = [
     { id: "all", label: "All", icon: "✦" },
@@ -32,14 +34,14 @@ export default function ExperiencePage() {
 
   const filteredExperience =
     selectedFilter === "all"
-      ? experience
+      ? experienceItems
       : selectedFilter === "work"
-        ? experience.filter((item) =>
+        ? experienceItems.filter((item) =>
             WORK_EXPERIENCE_TYPES.includes(
               item.type as (typeof WORK_EXPERIENCE_TYPES)[number],
             ),
           )
-        : experience.filter((item) => item.type === selectedFilter);
+        : experienceItems.filter((item) => item.type === selectedFilter);
 
   return (
     <section className="bg-background">
@@ -68,7 +70,7 @@ export default function ExperiencePage() {
               filters={filterOptions}
               selectedFilter={selectedFilter}
               onFilterChange={(f) => {
-                setSelectedFilter(f);
+                setSelectedFilter(f as typeof selectedFilter);
               }}
             />
           </motion.div>
