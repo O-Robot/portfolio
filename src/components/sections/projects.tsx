@@ -1,23 +1,21 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link2, X } from "lucide-react";
+import { Link2 } from "lucide-react";
 import Image from "next/image";
 import Tilt from "react-parallax-tilt";
 
-import { useEffect, useState } from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { event } from "@/utils/gtag";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { useEffect, useState } from "react";
 import Filter, { FilterOption } from "../filter";
 
-import MobilePreview from "./mobile-projects";
-import { TruncateText } from "@/utils/constants";
-import AccessibleDialog from "../ui/accessible-dialog";
+import ProjectDetailModal from "@/components/projects/project-detail-modal";
 import type {
   ProjectCategory,
   ProjectItem,
   ProjectLanguage,
-  MobileProjectItem,
 } from "@/types/portfolio";
+import { TruncateText } from "@/utils/constants";
 
 function EmptyState({ filter }: { filter: string }) {
   return (
@@ -44,22 +42,25 @@ function EmptyState({ filter }: { filter: string }) {
 }
 
 function getProjectTypeLabel(category: ProjectCategory) {
-  return category === "mobile" ? "Mobile Project" : "Web Project";
+  return category === "mobile" ? "Mobile" : "Web";
 }
 
 function getProjectSortValue(project: ProjectItem) {
   return Number.parseInt(project.createdAt ?? "0", 10);
 }
 
-function isMobileProject(project: ProjectItem): project is MobileProjectItem {
-  return project.category === "mobile";
-}
+export default function Projects({
+  projectsData,
+}: {
+  projectsData: ProjectItem[];
+}) {
+  const [selectedItem, setSelectedItem] = useState<ProjectItem["id"] | null>(
+    null,
+  );
 
-export default function Projects({ projectsData }: { projectsData: ProjectItem[] }) {
-  const [selectedItem, setSelectedItem] = useState<ProjectItem["id"] | null>(null);
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [activeFilter, setActiveFilter] = useState<"all" | ProjectCategory>("all");
+  const [activeFilter, setActiveFilter] = useState<"all" | ProjectCategory>(
+    "all",
+  );
 
   const PROJECT_FILTERS: FilterOption[] = [
     { id: "all", label: "All", icon: "✦" },
@@ -73,7 +74,9 @@ export default function Projects({ projectsData }: { projectsData: ProjectItem[]
       : projectsData.filter((project) => project.category === activeFilter)),
   ].sort((a, b) => getProjectSortValue(b) - getProjectSortValue(a));
 
-  const selectedProject = projectsData.find((project) => project.id === selectedItem);
+  const selectedProject = projectsData.find(
+    (project) => project.id === selectedItem,
+  );
 
   useEffect(() => {
     document.body.style.overflow = selectedItem ? "hidden" : "";
@@ -127,7 +130,6 @@ export default function Projects({ projectsData }: { projectsData: ProjectItem[]
                         setSelectedItem(
                           selectedItem === project.id ? null : project.id,
                         );
-                        setIsLoading(true);
                         event({
                           action: "click",
                           category: "Project Frame Clicked",
@@ -191,15 +193,17 @@ export default function Projects({ projectsData }: { projectsData: ProjectItem[]
 
                   {/* Languages */}
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {project.languages.map((lang: ProjectLanguage, i: number) => (
-                      <span
-                        key={i}
-                        className="flex items-center gap-1 px-2 py-1 rounded-md bg-white text-xs text-[#231942]"
-                      >
-                        <Icon icon={lang.iconifyClass} className="w-4 h-4" />
-                        {lang.name}
-                      </span>
-                    ))}
+                    {project.languages.map(
+                      (lang: ProjectLanguage, i: number) => (
+                        <span
+                          key={i}
+                          className="flex items-center gap-1 px-2 py-1 rounded-md bg-white text-xs text-[#231942]"
+                        >
+                          <Icon icon={lang.iconifyClass} className="w-4 h-4" />
+                          {lang.name}
+                        </span>
+                      ),
+                    )}
                   </div>
                 </Tilt>
               </motion.div>
@@ -211,108 +215,10 @@ export default function Projects({ projectsData }: { projectsData: ProjectItem[]
       {/* Expanded Details Modal */}
       <AnimatePresence>
         {selectedItem && selectedProject && (
-          <AccessibleDialog
-            labelledBy={`project-dialog-title-${selectedProject.id}`}
-            describedBy={`project-dialog-description-${selectedProject.id}`}
+          <ProjectDetailModal
+            project={selectedProject}
             onClose={() => setSelectedItem(null)}
-            panelClassName="w-full max-h-[95vh] pb-30 overflow-y-auto"
-          >
-            {/* Modal header */}
-            <div className="flex justify-between items-center p-4 border-b border-white/10 sticky top-0 bg-background/60 backdrop-blur-sm z-10">
-              <div>
-                <h2
-                  id={`project-dialog-title-${selectedProject.id}`}
-                  className="text-lg font-semibold text-primary-text"
-                >
-                  {selectedProject.name} Preview
-                </h2>
-                <p
-                  id={`project-dialog-description-${selectedProject.id}`}
-                  className="sr-only"
-                >
-                  Preview and links for {selectedProject.name}.
-                </p>
-              </div>
-              <button
-                onClick={() => setSelectedItem(null)}
-                aria-label={`Close ${selectedProject.name} preview`}
-                className="p-2 rounded-full hover:bg-link-active hover:text-white text-primary-text cursor-pointer transition"
-              >
-                <X className="w-5 h-5" aria-hidden="true" />
-              </button>
-            </div>
-
-            {/* Modal body */}
-            <div className="p-4 min-h-125 flex items-center justify-center  bg-background/80 backdrop-blur-sm">
-              {isMobileProject(selectedProject) &&
-              !(selectedProject.previewUrl ?? "").trim() ? (
-                <MobilePreview project={selectedProject} />
-              ) : !selectedProject.isFork ? (
-                <div className="w-full space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-primary-text border border-white/20">
-                      {getProjectTypeLabel(selectedProject.category)}
-                    </span>
-                    {selectedProject.languages.map((language: ProjectLanguage) => (
-                      <span
-                        key={language.name}
-                        className="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-[#231942]"
-                      >
-                        {language.name}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="relative w-full h-[70vh]">
-                    {isLoading && (
-                      <div className="absolute inset-0 flex justify-center items-center bg-background rounded-xl">
-                        <p className="text-primary-text/60">
-                          Loading {selectedProject.name}...
-                        </p>
-                      </div>
-                    )}
-                    <iframe
-                      src={selectedProject?.previewUrl || selectedProject.url}
-                      className="w-full h-full border-0 rounded-xl"
-                      onLoad={() => setIsLoading(false)}
-                      title={selectedProject.name}
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              ) : (
-                <div className="flex flex-col justify-center items-center h-full text-center p-4 gap-6">
-                  <div className="flex flex-wrap justify-center gap-2">
-                    <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-primary-text border border-white/20">
-                      {getProjectTypeLabel(selectedProject.category)}
-                    </span>
-                    {selectedProject.languages.map((language: ProjectLanguage) => (
-                      <span
-                        key={language.name}
-                        className="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-[#231942]"
-                      >
-                        {language.name}
-                      </span>
-                    ))}
-                  </div>
-                  <Image
-                    src={selectedProject.image}
-                    alt={selectedProject.name}
-                    width={900}
-                    height={500}
-                    className="rounded-xl"
-                  />
-                  <a
-                    href={selectedProject.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 glass-morphism text-primary rounded transition"
-                  >
-                    View Live Site
-                  </a>
-                </div>
-              )}
-            </div>
-          </AccessibleDialog>
+          />
         )}
       </AnimatePresence>
     </div>

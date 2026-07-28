@@ -20,6 +20,11 @@ export interface ProjectItem {
   category: ProjectCategory;
   image: string;
   description: string;
+  summary?: string;
+  role?: string;
+  context?: string;
+  features?: string[];
+  status?: string;
   createdAt?: string;
   url?: string;
   repoUrl?: string;
