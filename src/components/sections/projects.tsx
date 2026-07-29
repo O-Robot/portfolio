@@ -85,6 +85,15 @@ export default function Projects({
     };
   }, [selectedItem]);
 
+  const openProject = (project: ProjectItem) => {
+    setSelectedItem(selectedItem === project.id ? null : project.id);
+    event({
+      action: "click",
+      category: "Project Frame Clicked",
+      label: project.name,
+    });
+  };
+
   return (
     <div className="relative space-y-8">
       {/* Filter Bar */}
@@ -115,30 +124,28 @@ export default function Projects({
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="h-full"
               >
-                <Tilt
-                  tiltMaxAngleX={5}
-                  tiltMaxAngleY={5}
-                  scale={1}
-                  transitionSpeed={450}
-                  className="bg-background/30 shadow shadow-skill-text/40 p-5 rounded-xl h-full flex flex-col overflow-hidden"
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open ${project.name} project details`}
+                  onClick={() => openProject(project)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      openProject(project);
+                    }
+                  }}
+                  className="group bg-background/30 shadow shadow-skill-text/40 p-5 rounded-xl h-full flex flex-col overflow-hidden cursor-pointer border border-white/10 transition-[border-color,box-shadow,transform] duration-300 hover:border-white/20 hover:shadow-lg hover:shadow-skill-text/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-text"
                 >
-                  {/* Image */}
-                  <div className="relative w-full h-57.5">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedItem(
-                          selectedItem === project.id ? null : project.id,
-                        );
-                        event({
-                          action: "click",
-                          category: "Project Frame Clicked",
-                          label: project.name,
-                        });
-                      }}
-                      className="block w-full h-full rounded-xl cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-text"
-                      aria-label={`Preview ${project.name}`}
-                    >
+                  <Tilt
+                    tiltMaxAngleX={5}
+                    tiltMaxAngleY={5}
+                    scale={1}
+                    transitionSpeed={450}
+                    className="h-full flex flex-col"
+                  >
+                    {/* Image */}
+                    <div className="relative w-full h-57.5">
                       <Image
                         src={project?.image || "/images/logo.png"}
                         alt={`${project.name} preview`}
@@ -146,66 +153,66 @@ export default function Projects({
                         width={1300}
                         height={50}
                       />
-                    </button>
-                    {(project.url || project.repoUrl) && (
-                      <div className="absolute inset-0 flex justify-end m-3 pointer-events-none">
-                        <a
-                          href={project.url || project.repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            event({
-                              action: "click",
-                              category: "Project Link Clicked",
-                              label: project.name,
-                            });
-                          }}
-                          aria-label={`Open ${project.name} in a new tab`}
-                          className="bg-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer pointer-events-auto rotate-125"
-                        >
-                          <Link2 aria-hidden="true" />
-                        </a>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Info */}
-                  <div className="mt-5 flex flex-col flex-1">
-                    <div className="mb-2">
-                      <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-[11px] font-medium text-primary-text border border-white/20">
-                        {getProjectTypeLabel(project.category)}
-                      </span>
+                      {(project.url || project.repoUrl) && (
+                        <div className="absolute inset-0 flex justify-end m-3 pointer-events-none">
+                          <a
+                            href={project.url || project.repoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              event({
+                                action: "click",
+                                category: "Project Link Clicked",
+                                label: project.name,
+                              });
+                            }}
+                            aria-label={`Open ${project.name} in a new tab`}
+                            className="bg-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer pointer-events-auto rotate-125 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"
+                          >
+                            <Link2 aria-hidden="true" />
+                          </a>
+                        </div>
+                      )}
                     </div>
-                    <h3 className="text-primary-text font-bold text-[20px]">
-                      {project.name}
-                    </h3>
-                    <p className="mt-2 text-primary-text/70 text-[14px]">
-                      {TruncateText(project.description, 200) ||
-                        "No description available."}
-                    </p>
-                    {project.createdAt && (
-                      <p className="mt-1 text-xs text-primary/80">
-                        {project.createdAt}
-                      </p>
-                    )}
-                  </div>
 
-                  {/* Languages */}
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.languages.map(
-                      (lang: ProjectLanguage, i: number) => (
-                        <span
-                          key={i}
-                          className="flex items-center gap-1 px-2 py-1 rounded-md bg-white text-xs text-[#231942]"
-                        >
-                          <Icon icon={lang.iconifyClass} className="w-4 h-4" />
-                          {lang.name}
+                    {/* Info */}
+                    <div className="mt-5 flex flex-col flex-1">
+                      <div className="mb-2">
+                        <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-[11px] font-medium text-primary-text border border-white/20">
+                          {getProjectTypeLabel(project.category)}
                         </span>
-                      ),
-                    )}
-                  </div>
-                </Tilt>
+                      </div>
+                      <h3 className="text-primary-text font-bold text-[20px]">
+                        {project.name}
+                      </h3>
+                      <p className="mt-2 text-primary-text/70 text-[14px]">
+                        {TruncateText(project.description, 200) ||
+                          "No description available."}
+                      </p>
+                      {project.createdAt && (
+                        <p className="mt-1 text-xs text-primary/80">
+                          {project.createdAt}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Languages */}
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.languages.map(
+                        (lang: ProjectLanguage, i: number) => (
+                          <span
+                            key={i}
+                            className="flex items-center gap-1 px-2 py-1 rounded-md bg-white text-xs text-[#231942]"
+                          >
+                            <Icon icon={lang.iconifyClass} className="w-4 h-4" />
+                            {lang.name}
+                          </span>
+                        ),
+                      )}
+                    </div>
+                  </Tilt>
+                </div>
               </motion.div>
             ))
           )}

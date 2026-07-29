@@ -17,12 +17,12 @@ function DetailGroup({
   title: string;
 }) {
   return (
-    <div className="space-y-2">
-      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary-text/60">
+    <section className="space-y-3">
+      <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-text/50">
         {title}
-      </h4>
+      </h3>
       {children}
-    </div>
+    </section>
   );
 }
 
@@ -32,66 +32,62 @@ export default function ProjectInfoPanel({
   project: ProjectItem;
 }) {
   return (
-    <div className="flex flex-col gap-5 w-full max-w-xl">
-      <div className="space-y-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center rounded-md bg-white/10 px-2.5 py-1 text-xs font-medium text-primary-text border border-white/20">
-            {getProjectTypeLabel(project.category)}
-          </span>
-          {project.createdAt && (
-            <span className="inline-flex items-center rounded-md bg-white/5 px-2.5 py-1 text-xs font-medium text-primary/80 border border-white/10">
-              {project.createdAt}
-            </span>
-          )}
-          {project.status && (
-            <span className="inline-flex items-center rounded-md bg-white/5 px-2.5 py-1 text-xs font-medium text-primary-text/70 border border-white/10">
-              {project.status}
-            </span>
-          )}
-        </div>
-        <div className="space-y-2">
-          <h3 className="text-primary-text font-bold text-2xl md:text-3xl">
+    <div className="flex flex-col gap-7 w-full max-w-xl">
+      <div className="space-y-5">
+        <div className="space-y-3">
+          <h3 className="text-primary-text font-semibold text-3xl md:text-4xl leading-tight tracking-tight">
             {project.name}
           </h3>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-primary-text/55">
+            {project.createdAt && <span>{project.createdAt}</span>}
+            {project.createdAt && (
+              <span aria-hidden="true" className="text-primary-text/30">
+                •
+              </span>
+            )}
+            <span>{getProjectTypeLabel(project.category)}</span>
+            {project.status && (
+              <>
+                <span aria-hidden="true" className="text-primary-text/30">
+                  •
+                </span>
+                <span>{project.status}</span>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-4 max-w-2xl">
           {project.summary && (
-            <p className="text-primary-text/85 text-base leading-relaxed">
+            <p className="text-primary-text/88 text-lg md:text-xl leading-relaxed tracking-tight">
               {project.summary}
             </p>
           )}
-          <p className="text-primary-text/70 text-sm md:text-base leading-relaxed whitespace-pre-line">
-            {project.description || "No description available."}
-          </p>
+          <DetailGroup title="Overview">
+            <p className="text-primary-text/72 text-sm md:text-[15px] leading-7 whitespace-pre-line max-w-prose">
+              {project.description || "No description available."}
+            </p>
+          </DetailGroup>
         </div>
       </div>
 
-      {(project.role || project.context || project.status) && (
-        <DetailGroup title="Project Details">
-          <div className="space-y-2 text-sm text-primary-text/75">
-            {project.role && (
-              <p>
-                <span className="font-medium text-primary-text">Role:</span>{" "}
-                {project.role}
-              </p>
-            )}
-            {project.context && (
-              <p>
-                <span className="font-medium text-primary-text">Context:</span>{" "}
-                {project.context}
-              </p>
-            )}
-          </div>
+      {project.context && (
+        <DetailGroup title="Context">
+          <p className="text-primary-text/72 text-sm md:text-[15px] leading-7 max-w-prose">
+            {project.context}
+          </p>
         </DetailGroup>
       )}
 
       {project.features && project.features.length > 0 && (
-        <DetailGroup title="Highlights">
+        <DetailGroup title="Features">
           <ul className="space-y-2">
             {project.features.map((feature) => (
               <li
                 key={feature}
-                className="text-primary-text/70 flex text-sm md:text-base"
+                className="text-primary-text/72 flex text-sm md:text-[15px] leading-6"
               >
-                <span className="shrink-0 w-2 h-2 bg-accent rounded-full mt-2 mr-3" />
+                <span className="shrink-0 w-1.5 h-1.5 bg-primary-text/55 rounded-full mt-2.5 mr-3" />
                 <span className="flex-1 leading-relaxed">{feature}</span>
               </li>
             ))}
@@ -99,12 +95,20 @@ export default function ProjectInfoPanel({
         </DetailGroup>
       )}
 
+      {project.role && (
+        <DetailGroup title="Role">
+          <p className="text-primary-text/72 text-sm md:text-[15px] leading-7">
+            {project.role}
+          </p>
+        </DetailGroup>
+      )}
+
       <DetailGroup title="Technologies">
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2.5">
           {project.languages.map((lang: ProjectLanguage) => (
             <span
               key={lang.name}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white text-xs font-medium text-[#231942]"
+              className="inline-flex items-center gap-1.5 min-h-9 px-3 py-2 rounded-lg bg-white/95 text-xs font-medium text-[#231942] shadow-sm"
             >
               <Icon icon={lang.iconifyClass} className="w-4 h-4" />
               {lang.name}

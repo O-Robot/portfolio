@@ -21,7 +21,17 @@
       { "name": "Flutter", "iconifyClass": "logos:flutter" },
       { "name": "Dart", "iconifyClass": "logos:dart" }
     ],
-    "description": "Zayrova is a Flutter e-commerce application with onboarding, authentication, catalog browsing, search and filtering, cart and checkout flows, order tracking, notifications, messaging, wishlist, and profile management. The project uses a layered architecture with Riverpod for state management.",
+    "description": "Zayrova is a mobile e-commerce app built for browsing products, managing orders, and handling day-to-day shopping flows in one place. It stands out for its broad product coverage, from onboarding and authentication to search, checkout, messaging, and wishlist management.",
+    "summary": "A Flutter e-commerce app that brings product discovery, checkout, and account management into one mobile experience.",
+    "context": "Personal mobile commerce project exploring a full shopping flow from sign-in to order tracking.",
+    "features": [
+      "Onboarding and authentication flow",
+      "Product search and filtering",
+      "Cart and checkout journey",
+      "Order tracking and notifications",
+      "Wishlist and profile management"
+    ],
+    "status": "Completed",
     "createdAt": "2025"
   },
   {
@@ -44,7 +54,18 @@
       { "name": "Appwrite", "iconifyClass": "skill-icons:appwrite" },
       { "name": "Sentry", "iconifyClass": "logos:sentry" }
     ],
-    "description": "ChopNow (ChowNow) is a food ordering mobile app built with Expo, React Native, TypeScript, Appwrite, NativeWind, and Zustand. \n\n It presents a polished restaurant ordering experience with authentication, menu browsing, product customization, cart management, and profile editing",
+    "description": "ChopNow is a food ordering app built for people who want to browse menus, customise meals, and place orders from their phone. It is notable for its polished ordering flow, clean mobile UI, and supporting product touches such as authentication, profile editing, and cart management.",
+    "summary": "A React Native food ordering app centred on menu browsing, meal customisation, and a polished checkout flow.",
+    "context": "Personal mobile product focused on the core experience of discovering food and placing an order.",
+    "features": [
+      "Authentication and account access",
+      "Menu browsing and product discovery",
+      "Meal customisation flow",
+      "Cart management",
+      "Profile editing",
+      "Expo build and mobile prototype links"
+    ],
+    "status": "Completed",
     "createdAt": "2026"
   },
   {
@@ -94,7 +115,19 @@
       { "name": "NativeWind", "iconifyClass": "logos:tailwindcss-icon" },
       { "name": "Appwrite", "iconifyClass": "skill-icons:appwrite" }
     ],
-    "description": "Olyvax is a React Native property discovery project built with Expo. It is not a real estate product or a production marketplace. It is a portfolio/practice project that explores how a modern property browsing mobile app could work: authentication, listings, search, filters, pagination, property details, galleries, and a profile area. \n\n The app uses Appwrite as its backend for authentication and property data. Users can sign in, browse featured and recommended properties, search listings, apply filters, view property details, and inspect gallery images.",
+    "description": "Olyvax explores what a property discovery experience can feel like on mobile, from sign-in to browsing, filtering, and viewing listings in detail. It is a practice project rather than a production marketplace, with the focus placed on flow, presentation, and mobile usability. The app also covers profile access, gallery viewing, and property search through a clean app structure.",
+    "summary": "A property discovery app exploring how browsing, filtering, and listing detail views can work on mobile.",
+    "role": "Mobile Developer",
+    "context": "Practice mobile product centred on the experience of discovering and reviewing property listings.",
+    "features": [
+      "Authentication flow",
+      "Featured and recommended listings",
+      "Search and filters",
+      "Property detail screens",
+      "Image galleries",
+      "Profile area"
+    ],
+    "status": "Practice Project",
     "createdAt": "2026"
   },
   {
@@ -115,7 +148,18 @@
       { "name": "NativeWind", "iconifyClass": "logos:tailwindcss-icon" },
       { "name": "Appwrite", "iconifyClass": "skill-icons:appwrite" }
     ],
-    "description": "A cross-platform mobile movie discovery app built with React Native and Expo, featuring real-time trending tracking, genre filtering, search, and a personal saved movies list.",
+    "description": "MovieFlix is a mobile app for exploring films through trending lists, search, and genre-based discovery. It gives users a quick way to browse titles, inspect movie details, and keep track of favourites in one place. The app is a focused exercise in content browsing and mobile UI flow.",
+    "summary": "A movie discovery app focused on search, trending titles, and a personal saved list.",
+    "role": "Mobile Developer",
+    "context": "Practice mobile app for browsing and saving film content in a simple, content-led interface.",
+    "features": [
+      "Trending movie discovery",
+      "Genre filtering",
+      "Search flow",
+      "Saved movie list",
+      "Mobile-first browsing interface"
+    ],
+    "status": "Practice Project",
     "createdAt": "2026"
   },
   {
@@ -137,7 +181,18 @@
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
       { "name": "JavaScript", "iconifyClass": "logos:javascript" }
     ],
-    "image": "/images/projects/portfolio-chat.png"
+    "image": "/images/projects/portfolio-chat.png",
+    "summary": "A portfolio chat companion that helps visitors explore projects, experience, and contact options through conversation.",
+    "role": "Full-stack Developer",
+    "context": "Personal portfolio feature built to make the site more interactive and easier to navigate.",
+    "features": [
+      "Conversational project discovery",
+      "Real-time portfolio guidance",
+      "Integrated contact support",
+      "Custom chat interface",
+      "Portfolio-specific knowledge layer"
+    ],
+    "status": "Live"
   },
   {
     "id": "proj001",
@@ -155,7 +210,18 @@
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
       { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
     ],
-    "image": "/images/projects/portfolio-v2.png"
+    "image": "/images/projects/portfolio-v2.png",
+    "summary": "My current portfolio site, built to present selected work, experience, and contact pathways in a more thoughtful way.",
+    "role": "Designer and Developer",
+    "context": "Personal portfolio built to showcase web and mobile work, strengthen storytelling, and support hiring and client outreach.",
+    "features": [
+      "Project showcase with modal details",
+      "Interactive homepage experience",
+      "Structured experience and skills sections",
+      "Integrated contact pathways",
+      "Built-in portfolio chat companion"
+    ],
+    "status": "Live"
   },
   {
     "id": "proj002",
@@ -172,7 +238,16 @@
       { "name": "HTML", "iconifyClass": "logos-html-5" },
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
-    "image": "/images/projects/mydeals.png"
+    "image": "/images/projects/mydeals.png",
+    "summary": "An affiliate deals website for UK shoppers looking for offers, savings, and product-led content.",
+    "context": "Content and commerce site built to publish deals and help visitors discover offers through a WordPress workflow.",
+    "features": [
+      "Deal-focused content publishing",
+      "Affiliate marketing pages",
+      "WordPress content management",
+      "Offer discovery experience"
+    ],
+    "status": "Live"
   },
   {
     "id": "proj003",
@@ -189,7 +264,16 @@
       { "name": "HTML", "iconifyClass": "logos-html-5" },
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
-    "image": "/images/projects/cordea.png"
+    "image": "/images/projects/cordea.png",
+    "summary": "A real estate website designed to present listings, projects, and brand credibility to prospective clients and investors.",
+    "context": "Property-focused marketing site built to support a real estate brand’s online presence.",
+    "features": [
+      "Property listing presentation",
+      "Project showcase sections",
+      "Brand-led landing experience",
+      "Marketing-focused page structure"
+    ],
+    "status": "Live"
   },
   {
     "id": "proj004",
@@ -200,7 +284,16 @@
     "description": "Landing page for Goldfish (a 54Collective startup), crafted in Framer with clean animations and a bold brand story.",
     "isFork": false,
     "languages": [{ "name": "Framer", "iconifyClass": "simple-icons:framer" }],
-    "image": "/images/projects/goldfish.png"
+    "image": "/images/projects/goldfish.png",
+    "summary": "A brand-led landing page built to introduce Goldfish with clarity, motion, and a strong first impression.",
+    "context": "Startup landing page for a 54Collective portfolio company.",
+    "features": [
+      "Framer-based landing page build",
+      "Brand-first visual storytelling",
+      "Clean motion and transitions",
+      "Focused single-page presentation"
+    ],
+    "status": "Live"
   },
   {
     "id": "proj005",
@@ -214,7 +307,17 @@
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
       { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
     ],
-    "image": "/images/projects/clinigo.png"
+    "image": "/images/projects/clinigo.png",
+    "summary": "A bilingual landing page for a digital health startup, built to explain the product clearly and capture early interest.",
+    "context": "Startup marketing site for Clinigo, aimed at people managing chronic conditions.",
+    "features": [
+      "Arabic and English support",
+      "Health product landing page structure",
+      "Waitlist capture flow",
+      "Clear product messaging",
+      "Responsive React interface"
+    ],
+    "status": "Live"
   },
   {
     "id": "proj006",
@@ -230,6 +333,16 @@
       { "name": "CSS", "iconifyClass": "logos-css-3" },
       { "name": "PHP", "iconifyClass": "logos-php" }
     ],
+    "description": "Donikristen Shoes gives a footwear brand an online storefront where customers can browse products and engage with the business through a more polished shopping experience. The site pairs catalogue-style presentation with a branded front end that feels closer to a retail product than a static brochure site. Its strength is in turning a small business offering into a clearer online shopping destination.",
+    "summary": "An online shoe storefront that helps shoppers browse products through a cleaner retail experience.",
+    "context": "Brand and commerce website for a shoe retailer looking for a stronger online storefront.",
+    "features": [
+      "Product browsing",
+      "Retail-focused storefront",
+      "Brand-led presentation",
+      "WordPress-powered management"
+    ],
+    "status": "Live",
     "image": "/images/projects/donikristen.png"
   },
   {
@@ -245,6 +358,16 @@
       { "name": "JavaScript", "iconifyClass": "logos-javascript" },
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
+    "description": "iLearn Africa Edu is a learning platform built to organise educational content and make it easier for users to engage with resources online. It supports a more structured digital learning experience while giving the brand a clearer platform for content and community access. The project is notable for translating an education-focused offering into an accessible web presence.",
+    "summary": "A learning platform that organises educational resources and supports an online learning community.",
+    "context": "Education-focused website created to give learners easier access to content, modules, and platform information.",
+    "features": [
+      "Educational resource presentation",
+      "Structured learning pages",
+      "Community-focused platform presence",
+      "WordPress content management"
+    ],
+    "status": "Live",
     "image": "/images/projects/ilearn.png"
   },
   {
@@ -262,6 +385,16 @@
       { "name": "HTML", "iconifyClass": "logos-html-5" },
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
+    "description": "John Water Tech gives an industrial technology business a professional web presence where visitors can understand its services, positioning, and contact pathways. The site focuses on clarity and credibility, helping the company present technical offerings in a way that is easier for prospective clients to navigate. It works as both an information hub and a brand touchpoint.",
+    "summary": "A company website that presents industrial technology services with clarity and credibility.",
+    "context": "Corporate website for a technology solutions provider serving businesses that need clear service information online.",
+    "features": [
+      "Service presentation pages",
+      "Company credibility and positioning",
+      "Business contact pathways",
+      "Professional corporate layout"
+    ],
+    "status": "Live",
     "image": "/images/projects/johnwater.png"
   },
   {
@@ -276,6 +409,17 @@
       { "name": "Angular", "iconifyClass": "logos:angular-icon" },
       { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
     ],
+    "description": "Ecommerce Storefront explores the front-end experience of an online retail product, with attention on browsing, layout, and the flow between product discovery and purchase intent. It serves as a practical UI exercise around storefront structure rather than a full commerce platform. The project stands out for its clean presentation and responsive retail-focused design.",
+    "summary": "A storefront concept focused on product browsing and responsive retail presentation.",
+    "role": "Frontend Developer",
+    "context": "Practice front-end commerce project exploring how an online store can feel clear and easy to browse.",
+    "features": [
+      "Responsive storefront layout",
+      "Retail-style product presentation",
+      "Angular front-end structure",
+      "Shopping flow interface"
+    ],
+    "status": "Practice Project",
     "image": "/images/projects/ecommerce-ang.png"
   },
   {
@@ -290,7 +434,16 @@
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
       { "name": "Bootstrap", "iconifyClass": "logos:bootstrap" }
     ],
-    "image": "/images/projects/dataprosdgs.png"
+    "image": "/images/projects/dataprosdgs.png",
+    "summary": "A web platform designed to support SDG-focused collaboration, data sharing, and campaign awareness.",
+    "context": "Collaborative web platform centred on Sustainable Development Goals data and stakeholder engagement.",
+    "features": [
+      "Data sharing and processing workflows",
+      "Stakeholder collaboration support",
+      "Interactive awareness-focused presentation",
+      "SDG-oriented platform structure"
+    ],
+    "status": "Completed"
   },
   {
     "id": "proj011",
@@ -306,6 +459,16 @@
       { "name": "PHP", "iconifyClass": "logos-php" },
       { "name": "JavaScript", "iconifyClass": "logos-javascript" }
     ],
+    "description": "OGAMB Website serves as the public-facing platform for the Ogun State Alternate Medicine Board, giving visitors access to information, announcements, and official resources. The site supports public communication and helps the organisation present its work in a clearer digital format. It is notable for translating an institutional brief into a more usable web presence.",
+    "summary": "A public information website for the Ogun State Alternate Medicine Board.",
+    "context": "Institutional website created to share official resources, announcements, and public-facing information.",
+    "features": [
+      "Public resource pages",
+      "Announcements and updates",
+      "Institutional web presence",
+      "Accessible information structure"
+    ],
+    "status": "Live",
     "image": "/images/projects/ogamb.png"
   },
   {
@@ -322,6 +485,16 @@
       { "name": "CSS", "iconifyClass": "logos-css-3" },
       { "name": "HTML", "iconifyClass": "logos-html-5" }
     ],
+    "description": "IT Solutions Audit Website gives a compliance and audit business a clearer online presence for presenting its services and regulatory positioning. It helps prospective clients understand the company’s focus while providing a more professional front door for enquiries. The site works primarily as a trust-building business platform.",
+    "summary": "A business website for presenting compliance and audit services with a more credible online presence.",
+    "context": "Professional services website for Audit and Systems Solution, a licensed Data Protection Compliance Organisation.",
+    "features": [
+      "Service-focused business pages",
+      "Professional company presentation",
+      "Trust-building web presence",
+      "React-based front end"
+    ],
+    "status": "Live",
     "image": "/images/projects/itaudit.png"
   },
 
@@ -338,6 +511,16 @@
 
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
+    "description": "PlugIt Dashboard is an operations-focused interface for viewing activity, tracking workflow progress, and giving teams a clearer picture of automated processes. It turns business data into a more usable admin experience rather than leaving it buried behind manual checks. The value of the project lies in visibility, structure, and control.",
+    "summary": "An internal-style dashboard for tracking automated workflows and business activity.",
+    "context": "Operational dashboard concept for PlugIt Automation, focused on monitoring and managing workflow activity.",
+    "features": [
+      "Dashboard-style interface",
+      "Workflow visibility",
+      "Operational activity tracking",
+      "React admin front end"
+    ],
+    "status": "Live",
     "image": "/images/projects/plugit-dashboard.png"
   },
   {
@@ -353,6 +536,16 @@
 
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
+    "description": "PlugIt Website gives the company a cleaner way to present its services, positioning, and brand online. It works as a focused landing experience that introduces the business quickly and guides visitors towards understanding what it offers. The project is strongest as a straightforward corporate entry point.",
+    "summary": "A company landing site that introduces PlugIt Automation and presents its services clearly.",
+    "context": "Corporate marketing website for PlugIt Automation.",
+    "features": [
+      "Service-led landing page",
+      "Company introduction",
+      "Clean brand presentation",
+      "React front-end build"
+    ],
+    "status": "Live",
     "image": "/images/projects/plugit-site.png"
   },
 
@@ -365,6 +558,16 @@
     "description": "An online magazine where users can explore news and premium magazine content with subscription options. Designed for engaging reading experiences.",
     "isFork": false,
     "languages": [{ "name": "WordPress", "iconifyClass": "fa-wordpress" }],
+    "description": "AA Magazine is a digital publishing platform where readers can browse news and premium magazine content through a more focused reading experience. It supports both editorial presentation and subscription-based access, giving the publication a clearer structure online. The project centres on content delivery rather than complex application logic.",
+    "summary": "An online magazine platform for publishing news and premium editorial content.",
+    "context": "Digital publishing website for readers accessing magazine content and subscription-based articles.",
+    "features": [
+      "Editorial content publishing",
+      "Premium content access",
+      "Magazine-style reading experience",
+      "WordPress-backed publishing workflow"
+    ],
+    "status": "Live",
     "image": "/images/projects/aamagazine.png"
   },
   {
@@ -380,6 +583,17 @@
       { "name": "HTML", "iconifyClass": "logos-html-5" },
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
+    "description": "Interactive Dashboard is a front-end dashboard project focused on organising users, data views, and admin-style interactions in a responsive interface. It was created to show practical UI structure, navigation, and screen composition for internal tools. The project is most useful as a demonstration of dashboard thinking and frontend execution.",
+    "summary": "An admin dashboard concept for handling users, data views, and responsive internal tooling.",
+    "role": "Frontend Developer",
+    "context": "Practice dashboard project exploring how a business-facing admin interface can be structured on the web.",
+    "features": [
+      "Responsive dashboard layout",
+      "User management views",
+      "Data presentation panels",
+      "Admin interface structure"
+    ],
+    "status": "Practice Project",
     "image": "/images/projects/dashboard.png"
   },
 
@@ -396,6 +610,17 @@
       { "name": "CSS", "iconifyClass": "logos-css-3" },
       { "name": "HTML", "iconifyClass": "logos-html-5" }
     ],
+    "description": "Portfolio V1 captures an earlier stage of my work and how I first chose to present my skills and projects online. It served as a starting point for shaping my personal web presence before the current portfolio took its place. The project is useful as an archive of my earlier design and front-end direction.",
+    "summary": "My first portfolio website, created to present early work and technical skills.",
+    "role": "Designer and Developer",
+    "context": "Archived personal portfolio representing an earlier version of my online presence.",
+    "features": [
+      "Early project showcase",
+      "Personal branding site",
+      "Front-end portfolio structure",
+      "Archived version of my portfolio"
+    ],
+    "status": "Archived",
     "image": "/images/projects/portfolio-v1.png"
   },
 
@@ -412,6 +637,16 @@
       { "name": "CSS", "iconifyClass": "logos-css-3" },
       { "name": "JavaScript", "iconifyClass": "logos-javascript" }
     ],
+    "description": "Boxin Logistics gives a logistics business a simple web presence for presenting its services and making the brand easier to find online. The site focuses on clear communication and a straightforward browsing experience rather than heavy interaction. It works as a practical business website with a clean service-led structure.",
+    "summary": "A service website for a logistics company that presents its offering in a clear, accessible format.",
+    "context": "Corporate website for Boxin Logistics, built to support service visibility and brand presence online.",
+    "features": [
+      "Service presentation pages",
+      "Straightforward business layout",
+      "Brand visibility online",
+      "Lightweight front-end build"
+    ],
+    "status": "Live",
     "image": "/images/projects/boxin.png"
   }
 ]

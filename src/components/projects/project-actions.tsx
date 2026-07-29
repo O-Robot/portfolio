@@ -17,8 +17,9 @@ function ActionButton({
   href,
   icon,
   label,
+  priority,
   projectName,
-}: ActionConfig & { projectName: string }) {
+}: ActionConfig & { priority: "primary" | "secondary"; projectName: string }) {
   if (!href) {
     return null;
   }
@@ -31,7 +32,11 @@ function ActionButton({
       onClick={() =>
         event({ action: "click", category: analyticsLabel, label: projectName })
       }
-      className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg glass-morphism text-primary-text text-xs hover:opacity-80 transition border border-white/10"
+      className={`inline-flex items-center justify-center gap-1.5 min-h-10 px-4 py-2 rounded-lg text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text ${
+        priority === "primary"
+          ? "bg-primary-text text-background hover:opacity-90 shadow-sm"
+          : "glass-morphism text-primary-text/80 hover:text-primary-text border border-white/10"
+      }`}
     >
       <Icon icon={icon} className="w-4 h-4" />
       {label}
@@ -105,11 +110,16 @@ export default function ProjectActions({
   }
 
   return (
-    <div className="flex flex-wrap gap-2 pt-2">
+    <div className="flex flex-wrap gap-2.5 pt-1">
       {visibleActions.map((action) => (
         <ActionButton
           key={`${project.id}-${action.label}`}
           {...action}
+          priority={
+            action.label === "View Live Site" || action.label === "View Repo"
+              ? "primary"
+              : "secondary"
+          }
           projectName={project.name}
         />
       ))}

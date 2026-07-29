@@ -45,9 +45,9 @@ function ScreenshotControls({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2">
+    <div className="flex flex-col items-center justify-center gap-2.5">
       {screenshots[currentIndex].label && (
-        <span className="text-sm font-medium text-primary-text/75 text-center">
+        <span className="text-sm font-medium text-primary-text/70 text-center">
           {screenshots[currentIndex].label}
         </span>
       )}
@@ -56,7 +56,7 @@ function ScreenshotControls({
           onClick={() => onSelect(Math.max(0, currentIndex - 1))}
           disabled={currentIndex === 0}
           aria-label="Show previous screenshot"
-          className="p-1.5 rounded-full glass-morphism disabled:opacity-30 cursor-pointer hover:opacity-80 transition"
+          className="p-1.5 rounded-full glass-morphism disabled:opacity-30 cursor-pointer hover:opacity-80 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"
         >
           <ChevronLeft className="w-4 h-4 text-primary-text" />
         </button>
@@ -68,6 +68,7 @@ function ScreenshotControls({
               onClick={() => onSelect(index)}
               aria-label={`Show screenshot ${index + 1}`}
               aria-current={index === currentIndex}
+              type="button"
               className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
                 index === currentIndex
                   ? "bg-primary-text scale-125"
@@ -81,7 +82,7 @@ function ScreenshotControls({
           onClick={() => onSelect(Math.min(screenshots.length - 1, currentIndex + 1))}
           disabled={currentIndex === screenshots.length - 1}
           aria-label="Show next screenshot"
-          className="p-1.5 rounded-full glass-morphism disabled:opacity-30 cursor-pointer hover:opacity-80 transition"
+          className="p-1.5 rounded-full glass-morphism disabled:opacity-30 cursor-pointer hover:opacity-80 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"
         >
           <ChevronRight className="w-4 h-4 text-primary-text" />
         </button>
@@ -113,7 +114,7 @@ function VideoPreview({
 
 function EmptyMediaState({ message }: { message: string }) {
   return (
-    <div className="w-full min-h-72 rounded-2xl border border-white/10 glass-morphism flex items-center justify-center text-center p-6 text-primary-text/60">
+    <div className="w-full min-h-72 rounded-2xl border border-white/10 glass-morphism flex items-center justify-center text-center p-8 text-primary-text/60">
       <p>{message}</p>
     </div>
   );
@@ -132,7 +133,7 @@ export default function ProjectMediaPanel({
 
   if (isMobileProject(project)) {
     return (
-      <div className="flex flex-col items-center gap-4 w-full md:w-auto">
+      <div className="flex flex-col items-center gap-5 w-full md:w-auto lg:pt-1">
         <PhoneFrame>
           {project.videoUrl ? (
             <VideoPreview src={project.videoUrl} className="w-full h-full object-cover" />
@@ -144,8 +145,8 @@ export default function ProjectMediaPanel({
               className="object-cover object-top"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-primary-text/60 text-sm text-center p-4">
-              No mobile preview available.
+            <div className="w-full h-full flex items-center justify-center text-primary-text/60 text-sm text-center p-5 leading-relaxed">
+              No mobile preview available yet.
             </div>
           )}
         </PhoneFrame>
@@ -162,8 +163,8 @@ export default function ProjectMediaPanel({
   }
 
   return (
-    <div className="w-full flex flex-col gap-4">
-      <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 glass-morphism min-h-72 md:min-h-[26rem]">
+    <div className="w-full flex flex-col gap-5">
+      <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 glass-morphism min-h-72 md:min-h-[26rem] bg-white/5">
         {project.videoUrl ? (
           <VideoPreview src={project.videoUrl} className="w-full h-full object-cover" />
         ) : screenshot ? (
@@ -181,7 +182,7 @@ export default function ProjectMediaPanel({
             className="object-cover object-top"
           />
         ) : (
-          <EmptyMediaState message="No project media available." />
+          <EmptyMediaState message="No additional screenshots are available for this project yet." />
         )}
       </div>
 
@@ -195,7 +196,12 @@ export default function ProjectMediaPanel({
 
       {livePreviewHref && (
         <div className="flex justify-start">
-          <Button variant="outline" size="sm" className="glass-morphism bg-transparent" asChild>
+          <Button
+            variant="outline"
+            size="sm"
+            className="glass-morphism bg-transparent text-primary-text/75 hover:text-primary-text"
+            asChild
+          >
             <a href={livePreviewHref} target="_blank" rel="noopener noreferrer">
               Open Live Preview
             </a>
