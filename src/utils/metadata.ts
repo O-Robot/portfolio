@@ -27,7 +27,8 @@ const twitterHandle = twitterUrl
   ? `@${twitterUrl.replace(/\/$/, "").split("/").pop()}`
   : undefined;
 
-const homepageDescription = getProfessionalSummary();
+const homepageDescription =
+  "Software developer building fast, reliable web and mobile products with React, Next.js, and React Native.";
 const homepagePositioning = getHomepageValueProposition();
 
 function cleanText(value: string) {
@@ -61,7 +62,7 @@ export const metadataSiteConfig = {
   personName: about.name,
   location,
   socialImage,
-  socialImageUrl: absoluteUrl(socialImage),
+  socialImageUrl: absoluteUrl("/opengraph-image"),
   twitterHandle,
   homepageDescription,
   homepagePositioning,
@@ -123,6 +124,8 @@ export function buildPageMetadata({
         {
           url: imageUrl,
           alt: pageTitle,
+          width: 1200,
+          height: 630,
         },
       ],
       locale: "en_US",
@@ -140,8 +143,9 @@ export function buildPageMetadata({
 export function getHomeMetadata(): Metadata {
   const baseMetadata = buildPageMetadata({
     path: "/",
-    title: "Software Developer for Frontend, Web, and Mobile Products",
-    description: `${homepagePositioning} ${getHomepageProofLine()}`,
+    title: "Frontend, Web, and Mobile Developer",
+    description:
+      "Software developer building fast, reliable web and mobile products with React, Next.js, and React Native.",
     keywords: [
       "Frontend Engineer",
       "Web Developer",
@@ -156,7 +160,7 @@ export function getHomeMetadata(): Metadata {
   return {
     ...baseMetadata,
     title: {
-      absolute: `${about.name} | Software Developer for Web and Mobile Products`,
+      absolute: `${about.name} | Software Developer`,
     },
   };
 }
