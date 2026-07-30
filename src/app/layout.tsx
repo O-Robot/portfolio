@@ -108,6 +108,9 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico"],
   },
 };
+// Do not set document.documentElement.style.colorScheme here.
+// The chat widget iframe owns its own theme state through postMessage.
+// Forcing browser color-scheme can create conflicting theme signals.
 
 export default function RootLayout({
   children,
@@ -133,7 +136,6 @@ export default function RootLayout({
                   var root = document.documentElement;
                   root.classList.remove("light", "dark");
                   root.classList.add(theme);
-                  root.style.colorScheme = theme;
                 } catch (error) {}
               })();
             `,

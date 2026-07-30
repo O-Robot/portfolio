@@ -1,12 +1,12 @@
 "use client";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Button } from "../ui/button";
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { usePathname } from "next/navigation";
 import navItems from "@/data/nav.json";
 import { getNavHref, isNavItemActive } from "@/utils/routes";
+import { motion } from "framer-motion";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
 
 export default function Header() {
   const pathname = usePathname();
@@ -19,11 +19,13 @@ export default function Header() {
     setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
+  // Do not set document.documentElement.style.colorScheme here.
+  // The chat widget iframe owns its own theme state through postMessage.
+  // Forcing browser color-scheme can create conflicting theme signals.
   const updateTheme = (dark: boolean) => {
     const html = document.documentElement;
     html.classList.remove("light", "dark");
     html.classList.add(dark ? "dark" : "light");
-    html.style.colorScheme = dark ? "dark" : "light";
     localStorage.setItem("theme", dark ? "dark" : "light");
   };
 
@@ -72,10 +74,7 @@ export default function Header() {
                 const href = getNavHref(item.href);
                 const isActive = isNavItemActive(item.href, pathname);
                 return (
-                  <motion.div
-                    key={item.name}
-                    whileHover={{ scale: 1.09 }}
-                  >
+                  <motion.div key={item.name} whileHover={{ scale: 1.09 }}>
                     <Link
                       href={href}
                       className={`hover:text-link-active hover:font-medium transition-colors ${
@@ -94,7 +93,9 @@ export default function Header() {
                 size="icon"
                 onClick={toggleTheme}
                 className="text-link-inactive hover:text-link-active"
-                aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+                aria-label={
+                  isDark ? "Switch to light theme" : "Switch to dark theme"
+                }
               >
                 {isDark ? (
                   <Sun className="h-5 w-5" />
@@ -111,7 +112,9 @@ export default function Header() {
                 size="icon"
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-skill-text"
-                aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-label={
+                  isOpen ? "Close navigation menu" : "Open navigation menu"
+                }
                 aria-expanded={isOpen}
                 aria-controls="mobile-navigation"
               >
