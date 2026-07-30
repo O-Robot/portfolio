@@ -182,6 +182,12 @@
       { "name": "JavaScript", "iconifyClass": "logos:javascript" }
     ],
     "image": "/images/projects/portfolio-chat.png",
+    "screenshots": [
+      {
+        "src": "/images/projects/portfolio-chat.png",
+        "label": "Project Preview"
+      }
+    ],
     "summary": "A portfolio chat companion that helps visitors explore projects, experience, and contact options through conversation.",
     "role": "Full-stack Developer",
     "context": "Personal portfolio feature built to make the site more interactive and easier to navigate.",
@@ -211,6 +217,9 @@
       { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
     ],
     "image": "/images/projects/portfolio-v2.png",
+    "screenshots": [
+      { "src": "/images/projects/portfolio-v2.png", "label": "Project Preview" }
+    ],
     "summary": "My current portfolio site, built to present selected work, experience, and contact pathways in a more thoughtful way.",
     "role": "Designer and Developer",
     "context": "Personal portfolio built to showcase web and mobile work, strengthen storytelling, and support hiring and client outreach.",
@@ -239,6 +248,9 @@
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
     "image": "/images/projects/mydeals.png",
+    "screenshots": [
+      { "src": "/images/projects/mydeals.png", "label": "Project Preview" }
+    ],
     "summary": "An affiliate deals website for UK shoppers looking for offers, savings, and product-led content.",
     "context": "Content and commerce site built to publish deals and help visitors discover offers through a WordPress workflow.",
     "features": [
@@ -247,6 +259,7 @@
       "WordPress content management",
       "Offer discovery experience"
     ],
+    "role": "Developer",
     "status": "Live"
   },
   {
@@ -265,6 +278,9 @@
       { "name": "CSS", "iconifyClass": "logos-css-3" }
     ],
     "image": "/images/projects/cordea.png",
+    "screenshots": [
+      { "src": "/images/projects/cordea.png", "label": "Project Preview" }
+    ],
     "summary": "A real estate website designed to present listings, projects, and brand credibility to prospective clients and investors.",
     "context": "Property-focused marketing site built to support a real estate brand’s online presence.",
     "features": [
@@ -285,6 +301,9 @@
     "isFork": false,
     "languages": [{ "name": "Framer", "iconifyClass": "simple-icons:framer" }],
     "image": "/images/projects/goldfish.png",
+    "screenshots": [
+      { "src": "/images/projects/goldfish.png", "label": "Project Preview" }
+    ],
     "summary": "A brand-led landing page built to introduce Goldfish with clarity, motion, and a strong first impression.",
     "context": "Startup landing page for a 54Collective portfolio company.",
     "features": [
@@ -308,6 +327,9 @@
       { "name": "Tailwind", "iconifyClass": "logos:tailwindcss-icon" }
     ],
     "image": "/images/projects/clinigo.png",
+    "screenshots": [
+      { "src": "/images/projects/clinigo.png", "label": "Project Preview" }
+    ],
     "summary": "A bilingual landing page for a digital health startup, built to explain the product clearly and capture early interest.",
     "context": "Startup marketing site for Clinigo, aimed at people managing chronic conditions.",
     "features": [
@@ -325,7 +347,7 @@
     "category": "web",
     "createdAt": "2024",
     "url": "https://donikristenshoes.com/",
-    "description": "An e-commerce platform for a shoe retailer. Customized WordPress setup with integrated shopping features and modern styling.",
+
     "isFork": false,
     "languages": [
       { "name": "WordPress", "iconifyClass": "fa-wordpress" },
@@ -343,7 +365,10 @@
       "WordPress-powered management"
     ],
     "status": "Live",
-    "image": "/images/projects/donikristen.png"
+    "image": "/images/projects/donikristen.png",
+    "screenshots": [
+      { "src": "/images/projects/donikristen.png", "label": "Project Preview" }
+    ]
   },
   {
     "id": "proj007",
@@ -351,7 +376,7 @@
     "category": "web",
     "createdAt": "2024",
     "url": "https://ilearn360africa.com/",
-    "description": "Transformative learning platform with WordPress-based modules, enabling users to engage with educational resources and communities.",
+
     "isFork": false,
     "languages": [
       { "name": "WordPress", "iconifyClass": "fa-wordpress" },
@@ -368,7 +393,10 @@
       "WordPress content management"
     ],
     "status": "Live",
-    "image": "/images/projects/ilearn.png"
+    "image": "/images/projects/ilearn.png",
+    "screenshots": [
+      { "src": "/images/projects/ilearn.png", "label": "Project Preview" }
+    ]
   },
   {
     "id": "proj008",
@@ -376,7 +404,7 @@
     "category": "web",
     "createdAt": "2024",
     "url": "https://johnwatertech.com/",
-    "description": "Technology solutions provider website, offering industrial-grade services with a professional and informative online presence.",
+
     "isFork": false,
     "languages": [
       { "name": "WordPress", "iconifyClass": "fa-wordpress" },
@@ -394,8 +422,11 @@
       "Business contact pathways",
       "Professional corporate layout"
     ],
-    "status": "Live",
-    "image": "/images/projects/johnwater.png"
+    "status": "Archived",
+    "image": "/images/projects/johnwater.png",
+    "screenshots": [
+      { "src": "/images/projects/johnwater.png", "label": "Project Preview" }
+    ]
   },
   {
     "id": "proj009",
@@ -403,7 +434,7 @@
     "category": "web",
     "createdAt": "2024",
     "url": "https://ecommerce-ang.vercel.app/home",
-    "description": "A sleek e-commerce storefront designed with responsive layouts and smooth shopping flows. Showcases modern UI and scalable structure for online retail experiences.",
+
     "isFork": false,
     "languages": [
       { "name": "Angular", "iconifyClass": "logos:angular-icon" },
@@ -412,7 +443,7 @@
     "description": "Ecommerce Storefront explores the front-end experience of an online retail product, with attention on browsing, layout, and the flow between product discovery and purchase intent. It serves as a practical UI exercise around storefront structure rather than a full commerce platform. The project stands out for its clean presentation and responsive retail-focused design.",
     "summary": "A storefront concept focused on product browsing and responsive retail presentation.",
     "role": "Frontend Developer",
-    "context": "Practice front-end commerce project exploring how an online store can feel clear and easy to browse.",
+    "context": "Practice Angular commerce project exploring how an online store can feel clear and easy to browse.",
     "features": [
       "Responsive storefront layout",
       "Retail-style product presentation",
@@ -420,7 +451,13 @@
       "Shopping flow interface"
     ],
     "status": "Practice Project",
-    "image": "/images/projects/ecommerce-ang.png"
+    "image": "/images/projects/ecommerce-ang.png",
+    "screenshots": [
+      {
+        "src": "/images/projects/ecommerce-ang.png",
+        "label": "Project Preview"
+      }
+    ]
   },
   {
     "id": "proj010",
@@ -435,6 +472,9 @@
       { "name": "Bootstrap", "iconifyClass": "logos:bootstrap" }
     ],
     "image": "/images/projects/dataprosdgs.png",
+    "screenshots": [
+      { "src": "/images/projects/dataprosdgs.png", "label": "Project Preview" }
+    ],
     "summary": "A web platform designed to support SDG-focused collaboration, data sharing, and campaign awareness.",
     "context": "Collaborative web platform centred on Sustainable Development Goals data and stakeholder engagement.",
     "features": [
@@ -451,7 +491,7 @@
     "category": "web",
     "createdAt": "2023",
     "url": "https://ogamb.com.ng/",
-    "description": "The official website for Ogun State Alternate Medicine Board. Designed to provide public resources, announcements, and engagement for alternative medicine initiatives.",
+
     "isFork": false,
     "languages": [
       { "name": "WordPress", "iconifyClass": "fa-wordpress" },
@@ -469,7 +509,10 @@
       "Accessible information structure"
     ],
     "status": "Live",
-    "image": "/images/projects/ogamb.png"
+    "image": "/images/projects/ogamb.png",
+    "screenshots": [
+      { "src": "/images/projects/ogamb.png", "label": "Project Preview" }
+    ]
   },
   {
     "id": "proj021",
@@ -477,7 +520,7 @@
     "category": "web",
     "createdAt": "2022",
     "url": "https://itauditsolution.ng",
-    "description": "A professional platform for Audit and Systems Solution, a licensed Data Protection Compliance Organisation (DPCO)",
+
     "isFork": false,
     "languages": [
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
@@ -495,7 +538,10 @@
       "React-based front end"
     ],
     "status": "Live",
-    "image": "/images/projects/itaudit.png"
+    "image": "/images/projects/itaudit.png",
+    "screenshots": [
+      { "src": "/images/projects/itaudit.png", "label": "Project Preview" }
+    ]
   },
 
   {
@@ -504,7 +550,7 @@
     "category": "web",
     "createdAt": "2023",
     "url": "https://plugit-dashboard.vercel.app/",
-    "description": "A web dashboard for PlugIt Automation that simplifies business operations and tracks automated workflows in real time.",
+
     "isFork": false,
     "languages": [
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
@@ -521,7 +567,13 @@
       "React admin front end"
     ],
     "status": "Live",
-    "image": "/images/projects/plugit-dashboard.png"
+    "image": "/images/projects/plugit-dashboard.png",
+    "screenshots": [
+      {
+        "src": "/images/projects/plugit-dashboard.png",
+        "label": "Project Preview"
+      }
+    ]
   },
   {
     "id": "proj013",
@@ -529,7 +581,6 @@
     "category": "web",
     "createdAt": "2023",
     "url": "https://landing-page-rho-sandy.vercel.app/",
-    "description": "Corporate website for PlugIt Automation, presenting its services and brand identity with a clean landing page experience.",
     "isFork": false,
     "languages": [
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
@@ -546,7 +597,10 @@
       "React front-end build"
     ],
     "status": "Live",
-    "image": "/images/projects/plugit-site.png"
+    "image": "/images/projects/plugit-site.png",
+    "screenshots": [
+      { "src": "/images/projects/plugit-site.png", "label": "Project Preview" }
+    ]
   },
 
   {
@@ -555,7 +609,6 @@
     "category": "web",
     "createdAt": "2022",
     "url": "https://aamagazine.net",
-    "description": "An online magazine where users can explore news and premium magazine content with subscription options. Designed for engaging reading experiences.",
     "isFork": false,
     "languages": [{ "name": "WordPress", "iconifyClass": "fa-wordpress" }],
     "description": "AA Magazine is a digital publishing platform where readers can browse news and premium magazine content through a more focused reading experience. It supports both editorial presentation and subscription-based access, giving the publication a clearer structure online. The project centres on content delivery rather than complex application logic.",
@@ -568,7 +621,10 @@
       "WordPress-backed publishing workflow"
     ],
     "status": "Live",
-    "image": "/images/projects/aamagazine.png"
+    "image": "/images/projects/aamagazine.png",
+    "screenshots": [
+      { "src": "/images/projects/aamagazine.png", "label": "Project Preview" }
+    ]
   },
   {
     "id": "proj016",
@@ -576,7 +632,7 @@
     "category": "web",
     "createdAt": "2022",
     "url": "https://ogooluwani-adewale-lendsqr-fe-test.vercel.app/",
-    "description": "An interactive admin dashboard showcasing clean data visualization, user management, and responsive design. Built to demonstrate practical frontend architecture.",
+
     "isFork": false,
     "languages": [
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
@@ -594,7 +650,10 @@
       "Admin interface structure"
     ],
     "status": "Practice Project",
-    "image": "/images/projects/dashboard.png"
+    "image": "/images/projects/dashboard.png",
+    "screenshots": [
+      { "src": "/images/projects/dashboard.png", "label": "Project Preview" }
+    ]
   },
 
   {
@@ -603,7 +662,6 @@
     "category": "web",
     "createdAt": "2021",
     "url": "https://v1.ogooluwaniadewale.com",
-    "description": "My first professional portfolio website, designed to highlight early works and skills in web development and design.",
     "isFork": false,
     "languages": [
       { "name": "React", "iconifyClass": "vscode-icons:file-type-reactjs" },
@@ -620,8 +678,11 @@
       "Front-end portfolio structure",
       "Archived version of my portfolio"
     ],
-    "status": "Archived",
-    "image": "/images/projects/portfolio-v1.png"
+    "status": "Completed",
+    "image": "/images/projects/portfolio-v1.png",
+    "screenshots": [
+      { "src": "/images/projects/portfolio-v1.png", "label": "Project Preview" }
+    ]
   },
 
   {
@@ -630,7 +691,6 @@
     "category": "web",
     "createdAt": "2021",
     "url": "https://boxin-landing.netlify.app/",
-    "description": "Corporate website for Boxin Logistics, offering logistics services with a straightforward design and user-friendly interface.",
     "isFork": false,
     "languages": [
       { "name": "HTML", "iconifyClass": "logos-html-5" },
@@ -647,6 +707,9 @@
       "Lightweight front-end build"
     ],
     "status": "Live",
-    "image": "/images/projects/boxin.png"
+    "image": "/images/projects/boxin.png",
+    "screenshots": [
+      { "src": "/images/projects/boxin.png", "label": "Project Preview" }
+    ]
   }
 ]

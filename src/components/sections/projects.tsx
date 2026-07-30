@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link2 } from "lucide-react";
+import { Circle, Link2 } from "lucide-react";
 import Image from "next/image";
 import Tilt from "react-parallax-tilt";
 
@@ -16,6 +16,7 @@ import type {
   ProjectLanguage,
 } from "@/types/portfolio";
 import { TruncateText } from "@/utils/constants";
+import { getProjectStatusColorClass } from "@/utils/project-status";
 
 function EmptyState({ filter }: { filter: string }) {
   return (
@@ -75,6 +76,9 @@ export default function Projects({
   ].sort((a, b) => getProjectSortValue(b) - getProjectSortValue(a));
 
   const selectedProject = projectsData.find(
+    (project) => project.id === selectedItem,
+  );
+  const selectedProjectIndex = filtered.findIndex(
     (project) => project.id === selectedItem,
   );
 
@@ -178,10 +182,18 @@ export default function Projects({
 
                     {/* Info */}
                     <div className="mt-5 flex flex-col flex-1">
-                      <div className="mb-2">
-                        <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-1 text-[11px] font-medium text-primary-text border border-white/20">
+                      <div className="mb-2 flex flex-wrap items-center gap-2">
+                        <span className="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-[11px] font-medium text-primary-text border border-white/20">
                           {getProjectTypeLabel(project.category)}
                         </span>
+                        {project.status && (
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/6 px-2.5 py-1 text-[11px] font-medium text-primary-text/60">
+                            <Circle
+                              className={`h-2.5 w-2.5 fill-current stroke-none ${getProjectStatusColorClass(project.status)}`}
+                            />
+                            {project.status}
+                          </span>
+                        )}
                       </div>
                       <h3 className="text-primary-text font-bold text-[20px]">
                         {project.name}
@@ -205,7 +217,10 @@ export default function Projects({
                             key={i}
                             className="flex items-center gap-1 px-2 py-1 rounded-md bg-white text-xs text-[#231942]"
                           >
-                            <Icon icon={lang.iconifyClass} className="w-4 h-4" />
+                            <Icon
+                              icon={lang.iconifyClass}
+                              className="w-4 h-4"
+                            />
                             {lang.name}
                           </span>
                         ),
@@ -223,6 +238,24 @@ export default function Projects({
       <AnimatePresence>
         {selectedItem && selectedProject && (
           <ProjectDetailModal
+            canGoNext={
+              selectedProjectIndex > -1 &&
+              selectedProjectIndex < filtered.length - 1
+            }
+            canGoPrevious={selectedProjectIndex > 0}
+            onGoNext={() => {
+              if (
+                selectedProjectIndex > -1 &&
+                selectedProjectIndex < filtered.length - 1
+              ) {
+                setSelectedItem(filtered[selectedProjectIndex + 1].id);
+              }
+            }}
+            onGoPrevious={() => {
+              if (selectedProjectIndex > 0) {
+                setSelectedItem(filtered[selectedProjectIndex - 1].id);
+              }
+            }}
             project={selectedProject}
             onClose={() => setSelectedItem(null)}
           />

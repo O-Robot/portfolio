@@ -1,9 +1,17 @@
 "use client";
 
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { Check, Circle } from "lucide-react";
 
-import ProjectActions from "@/components/projects/project-actions";
-import type { ProjectCategory, ProjectItem, ProjectLanguage } from "@/types/portfolio";
+import ProjectActions, {
+  hasProjectActions,
+} from "@/components/projects/project-actions";
+import type {
+  ProjectCategory,
+  ProjectItem,
+  ProjectLanguage,
+} from "@/types/portfolio";
+import { getProjectStatusColorClass } from "@/utils/project-status";
 
 function getProjectTypeLabel(category: ProjectCategory) {
   return category === "mobile" ? "Mobile Project" : "Web Project";
@@ -23,6 +31,17 @@ function DetailGroup({
       </h3>
       {children}
     </section>
+  );
+}
+
+function StatusBadge({ status }: { status: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/6 px-2.5 py-1 text-[11px] font-medium text-primary-text/65 shadow-sm backdrop-blur-sm">
+      <Circle
+        className={`h-2.5 w-2.5 fill-current stroke-none ${getProjectStatusColorClass(status)}`}
+      />
+      {status}
+    </span>
   );
 }
 
@@ -51,7 +70,7 @@ export default function ProjectInfoPanel({
                 <span aria-hidden="true" className="text-primary-text/30">
                   •
                 </span>
-                <span>{project.status}</span>
+                <StatusBadge status={project.status} />
               </>
             )}
           </div>
@@ -81,13 +100,15 @@ export default function ProjectInfoPanel({
 
       {project.features && project.features.length > 0 && (
         <DetailGroup title="Features">
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {project.features.map((feature) => (
               <li
                 key={feature}
-                className="text-primary-text/72 flex text-sm md:text-[15px] leading-6"
+                className="text-primary-text/72 flex items-start gap-3 text-sm md:text-[15px] leading-6"
               >
-                <span className="shrink-0 w-1.5 h-1.5 bg-primary-text/55 rounded-full mt-2.5 mr-3" />
+                <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/8 text-primary-text/60">
+                  <Check className="h-3 w-3" aria-hidden="true" />
+                </span>
                 <span className="flex-1 leading-relaxed">{feature}</span>
               </li>
             ))}
@@ -117,9 +138,11 @@ export default function ProjectInfoPanel({
         </div>
       </DetailGroup>
 
-      <DetailGroup title="Links">
-        <ProjectActions project={project} />
-      </DetailGroup>
+      {hasProjectActions(project) && (
+        <DetailGroup title="Links">
+          <ProjectActions project={project} />
+        </DetailGroup>
+      )}
     </div>
   );
 }

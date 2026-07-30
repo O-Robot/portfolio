@@ -21,6 +21,7 @@ interface AccessibleDialogProps {
   labelledBy: string;
   onClose: () => void;
   panelClassName?: string;
+  panelRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 export default function AccessibleDialog({
@@ -29,6 +30,7 @@ export default function AccessibleDialog({
   labelledBy,
   onClose,
   panelClassName,
+  panelRef,
 }: AccessibleDialogProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedElement = useRef<HTMLElement | null>(null);
@@ -114,7 +116,12 @@ export default function AccessibleDialog({
       onClick={onClose}
     >
       <motion.div
-        ref={dialogRef}
+        ref={(node) => {
+          dialogRef.current = node;
+          if (panelRef) {
+            panelRef.current = node;
+          }
+        }}
         role="dialog"
         aria-modal="true"
         aria-labelledby={labelledBy}

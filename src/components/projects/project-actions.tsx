@@ -2,8 +2,8 @@
 
 import { Icon } from "@iconify/react";
 
-import { event } from "@/utils/gtag";
 import type { ProjectItem } from "@/types/portfolio";
+import { event } from "@/utils/gtag";
 
 type ActionConfig = {
   analyticsLabel: string;
@@ -12,56 +12,16 @@ type ActionConfig = {
   label: string;
 };
 
-function ActionButton({
-  analyticsLabel,
-  href,
-  icon,
-  label,
-  priority,
-  projectName,
-}: ActionConfig & { priority: "primary" | "secondary"; projectName: string }) {
-  if (!href) {
-    return null;
-  }
+function getVisibleActions(project: ProjectItem): ActionConfig[] {
+  const isArchived = project.status?.trim().toLowerCase() === "archived";
 
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={() =>
-        event({ action: "click", category: analyticsLabel, label: projectName })
-      }
-      className={`inline-flex items-center justify-center gap-1.5 min-h-10 px-4 py-2 rounded-lg text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text ${
-        priority === "primary"
-          ? "bg-primary-text text-background hover:opacity-90 shadow-sm"
-          : "glass-morphism text-primary-text/80 hover:text-primary-text border border-white/10"
-      }`}
-    >
-      <Icon icon={icon} className="w-4 h-4" />
-      {label}
-    </a>
-  );
-}
-
-export default function ProjectActions({
-  project,
-}: {
-  project: ProjectItem;
-}) {
   const actions: ActionConfig[] = [
     {
-      href: project.url,
-      icon:
-        project.category === "mobile" && !project.devicePreview
-          ? "mdi:github"
-          : "mdi:web",
-      label:
-        project.category === "mobile" && !project.devicePreview
-          ? "View Repo"
-          : "View Live Site",
+      href: project.category === "web" && isArchived ? undefined : project.url,
+      icon: project.category === "mobile" ? "mdi:github" : "mdi:web",
+      label: project.category === "mobile" ? "View Repo" : "View Live Site",
       analyticsLabel:
-        project.category === "mobile" && !project.devicePreview
+        project.category === "mobile"
           ? "Repo Link Clicked"
           : "Live Site Clicked",
     },
@@ -96,14 +56,54 @@ export default function ProjectActions({
       analyticsLabel: "Figma Link Clicked",
     },
     {
-      href: project.previewUrl,
+      href: isArchived ? undefined : project.previewUrl,
       icon: "mdi:open-in-new",
       label: "Open Preview",
       analyticsLabel: "Preview Link Clicked",
     },
   ];
 
-  const visibleActions = actions.filter((action) => Boolean(action.href));
+  return actions.filter((action) => Boolean(action.href));
+}
+
+export function hasProjectActions(project: ProjectItem) {
+  return getVisibleActions(project).length > 0;
+}
+
+function ActionButton({
+  analyticsLabel,
+  href,
+  icon,
+  label,
+  priority,
+  projectName,
+}: ActionConfig & { priority: "primary" | "secondary"; projectName: string }) {
+  if (!href) {
+    return null;
+  }
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() =>
+        event({ action: "click", category: analyticsLabel, label: projectName })
+      }
+      className={`inline-flex items-center justify-center gap-1.5 min-h-10 px-4 py-2 rounded-lg text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text ${
+        priority === "primary"
+          ? "bg-primary-text text-background hover:opacity-90 shadow-sm"
+          : "glass-morphism text-primary-text/80 hover:text-primary-text border border-white/10"
+      }`}
+    >
+      <Icon icon={icon} className="w-4 h-4" />
+      {label}
+    </a>
+  );
+}
+
+export default function ProjectActions({ project }: { project: ProjectItem }) {
+  const visibleActions = getVisibleActions(project);
 
   if (visibleActions.length === 0) {
     return null;
