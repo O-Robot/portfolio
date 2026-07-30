@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import robot from "@/data/about.json";
 import contact from "@/data/contact.json";
 import skills from "@/data/skills.json";
+import type { EducationItem } from "@/types/portfolio";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import type { EducationItem } from "@/types/portfolio";
 
 export default function AboutPage() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -143,17 +143,17 @@ export default function AboutPage() {
               </div>
               <div className="rounded-xl flex justify-center flex-col px-4 py-6  bg-[#070d1e]items-center text-center gap-4">
                 <p className="text-primary-text text-lg">
-                  Let’s connect and build something awesome together.
+                  Want a better feel for how I work and what I build?
                 </p>
                 <p className="text-sm text-primary-text/40">
-                  Send me a message!
+                  Explore my experience and selected projects.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   <Button variant="outline" asChild>
                     <Link href="/experience">View Experience</Link>
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href="/contact">Contact Me</Link>
+                    <Link href="/projects">Browse Projects</Link>
                   </Button>
                 </div>
               </div>

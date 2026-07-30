@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import HomePage from "@/app/home/page";
+import HomePage from "@/components/pages/home-page";
 import JsonLd from "@/components/seo/JsonLd";
 import { getHomeMetadata } from "@/utils/metadata";
 import { buildHomeSchema } from "@/utils/schema";

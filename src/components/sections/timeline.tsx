@@ -1,6 +1,7 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import type { ExperienceItem, TimelineItem, WorkMode } from "@/types/portfolio";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   BriefcaseBusiness,
@@ -13,7 +14,6 @@ import {
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import AccessibleDialog from "../ui/accessible-dialog";
-import type { ExperienceItem, TimelineItem, WorkMode } from "@/types/portfolio";
 
 function isExperienceItem(item: TimelineItem): item is ExperienceItem {
   return "type" in item;
@@ -73,9 +73,17 @@ function getModalEmploymentLabel(item: {
   return employmentType ?? workMode ?? null;
 }
 
-export default function Timeline({ timelineData }: { timelineData: TimelineItem[] }) {
-  const [selectedItem, setSelectedItem] = useState<TimelineItem["id"] | null>(null);
-  const selectedIndex = timelineData.findIndex((item) => item.id === selectedItem);
+export default function Timeline({
+  timelineData,
+}: {
+  timelineData: TimelineItem[];
+}) {
+  const [selectedItem, setSelectedItem] = useState<TimelineItem["id"] | null>(
+    null,
+  );
+  const selectedIndex = timelineData.findIndex(
+    (item) => item.id === selectedItem,
+  );
   const selectedTimelineItem =
     selectedIndex > -1 ? timelineData[selectedIndex] : null;
   const scrollAreaRef = useRef<HTMLDivElement | null>(null);
@@ -105,7 +113,10 @@ export default function Timeline({ timelineData }: { timelineData: TimelineItem[
         setSelectedItem(timelineData[selectedIndex - 1].id);
       }
 
-      if (event.key === "ArrowRight" && selectedIndex < timelineData.length - 1) {
+      if (
+        event.key === "ArrowRight" &&
+        selectedIndex < timelineData.length - 1
+      ) {
         event.preventDefault();
         setSelectedItem(timelineData[selectedIndex + 1].id);
       }
@@ -196,10 +207,10 @@ export default function Timeline({ timelineData }: { timelineData: TimelineItem[
                       </span>
                       {isExperienceItem(item) &&
                         getCompactEmploymentLabel(item.type) && (
-                        <Badge className="bg-white/10 text-skill-text border border-white/20 text-[10px] md:text-xs">
-                          {getCompactEmploymentLabel(item.type)}
-                        </Badge>
-                      )}
+                          <Badge className="bg-primary/10 hover:bg-primary/10 text-skill-text border border-white/20 text-[10px] md:text-xs">
+                            {getCompactEmploymentLabel(item.type)}
+                          </Badge>
+                        )}
                     </div>
 
                     <h3 className="text-lg md:text-xl font-bold text-skill-text mb-2 leading-tight">
@@ -224,11 +235,17 @@ export default function Timeline({ timelineData }: { timelineData: TimelineItem[
                       {item.description}
                     </p>
 
+                    {isExperienceItem(item) && item.achievements[0] && (
+                      <p className="mb-4 text-sm md:text-base text-primary-text/55 line-clamp-2">
+                        {item.achievements[0]}
+                      </p>
+                    )}
+
                     <div className="flex flex-wrap gap-1 md:gap-2">
                       {item.technologies.map((tech: string) => (
                         <Badge
                           key={tech}
-                          className="bg-white/10 text-skill-text border border-white/20 hover:bg-white/20 transition-colors text-xs md:text-sm"
+                          className="bg-primary/5  hover:bg-primary/5  text-skill-text border border-white/20 transition-colors text-xs md:text-sm"
                         >
                           {tech}
                         </Badge>
@@ -254,7 +271,10 @@ export default function Timeline({ timelineData }: { timelineData: TimelineItem[
             <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-20 hidden md:block">
               <button
                 type="button"
-                onClick={() => selectedIndex > 0 && setSelectedItem(timelineData[selectedIndex - 1].id)}
+                onClick={() =>
+                  selectedIndex > 0 &&
+                  setSelectedItem(timelineData[selectedIndex - 1].id)
+                }
                 disabled={selectedIndex <= 0}
                 aria-label="Show previous experience"
                 className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-primary-text/80 shadow-lg shadow-black/10 backdrop-blur-md transition duration-200 hover:scale-[1.03] hover:bg-white/14 hover:text-primary-text disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"
@@ -295,7 +315,8 @@ export default function Timeline({ timelineData }: { timelineData: TimelineItem[
                   <div className="flex items-start gap-2">
                     <BriefcaseBusiness className="h-4 w-4 text-skill-text shrink-0 mt-0.5" />
                     <span className="text-skill-text/80 text-sm md:text-base">
-                      {selectedTimelineItem.company}, {selectedTimelineItem.location}
+                      {selectedTimelineItem.company},{" "}
+                      {selectedTimelineItem.location}
                     </span>
                   </div>
                 </div>
@@ -342,15 +363,19 @@ export default function Timeline({ timelineData }: { timelineData: TimelineItem[
                 Key Achievements:
               </h4>
               <ul className="space-y-2 mb-6">
-                {selectedTimelineItem.achievements.map((achievement: string, i: number) => (
-                  <li
-                    key={i}
-                    className="text-skill-text/70 flex text-sm md:text-base"
-                  >
-                    <span className="shrink-0 w-2 h-2 bg-accent rounded-full mt-2 mr-3" />
-                    <span className="flex-1 leading-relaxed">{achievement}</span>
-                  </li>
-                ))}
+                {selectedTimelineItem.achievements.map(
+                  (achievement: string, i: number) => (
+                    <li
+                      key={i}
+                      className="text-skill-text/70 flex text-sm md:text-base"
+                    >
+                      <span className="shrink-0 w-2 h-2 bg-accent rounded-full mt-2 mr-3" />
+                      <span className="flex-1 leading-relaxed">
+                        {achievement}
+                      </span>
+                    </li>
+                  ),
+                )}
               </ul>
 
               <h4 className="text-base md:text-lg font-semibold text-primary mb-3">

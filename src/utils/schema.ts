@@ -130,23 +130,39 @@ function buildOrganizationNodes(): JsonLdNode[] {
   }));
 }
 
-function buildCreativeWorkNode(project: (typeof projects)[number], index: number) {
-  const projectUrl = project.url || project.previewUrl || project.devicePreview || "";
+function buildCreativeWorkNode(
+  project: (typeof projects)[number],
+  index: number,
+) {
+  const projectUrl =
+    project.url || project.previewUrl || project.devicePreview || "";
 
   return {
     "@type": "CreativeWork",
     "@id": `${metadataSiteConfig.siteUrl}#project-${project.id}`,
     position: index + 1,
     name: project.name,
-    description: project.description,
+    description: project.summary || project.description,
+    abstract: project.context || project.description,
     url: projectUrl || undefined,
     image: absoluteUrl(project.image),
     creator: {
       "@id": personId,
     },
+    about: {
+      "@id": personId,
+    },
+    isPartOf: {
+      "@id": `${absoluteUrl("/projects")}#item-list`,
+    },
     keywords: project.languages.map((language) => language.name),
+    mentions: project.languages.map((language) => ({
+      "@type": "Thing",
+      name: language.name,
+    })),
     genre: project.category,
     dateCreated: project.createdAt,
+    inLanguage: "en",
   };
 }
 
@@ -169,6 +185,15 @@ export function buildHomeSchema() {
         knowsAbout: allTechnologies,
         sameAs: publicProfileLinks,
         jobTitle: professionalProfile.primaryRole,
+        hasOccupation: {
+          "@type": "Occupation",
+          name: professionalProfile.primaryRole,
+          occupationLocation: {
+            "@type": "City",
+            name: metadataSiteConfig.location,
+          },
+          skills: primaryTechnologies.join(", "),
+        },
         homeLocation: {
           "@type": "Place",
           name: metadataSiteConfig.location,
@@ -203,7 +228,11 @@ export function buildHomeSchema() {
   };
 }
 
-export function buildWebPageSchema(path: string, name: string, description: string) {
+export function buildWebPageSchema(
+  path: string,
+  name: string,
+  description: string,
+) {
   return {
     "@context": context,
     "@graph": [
@@ -218,6 +247,10 @@ export function buildWebPageSchema(path: string, name: string, description: stri
         },
         about: {
           "@id": personId,
+        },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: metadataSiteConfig.socialImageUrl,
         },
         mentions: expertiseKeywords.map((keyword) => ({
           "@type": "Thing",
@@ -318,7 +351,8 @@ export function buildExperienceSchema() {
           "@type": "ListItem",
           position: index + 1,
           name: `${item.title} at ${item.company}`,
-          description: item.description,
+          description:
+            `${item.description} ${item.achievements[0] ?? ""}`.trim(),
           keywords: item.technologies.join(", "),
         })),
       },

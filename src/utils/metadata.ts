@@ -5,6 +5,8 @@ import contact from "@/data/contact.json";
 import experience from "@/data/experience.json";
 import projects from "@/data/projects.json";
 import {
+  getHomepageProofLine,
+  getHomepageValueProposition,
   getProfessionalSummary,
   getProjectPageLead,
   primaryTechnologies,
@@ -26,6 +28,7 @@ const twitterHandle = twitterUrl
   : undefined;
 
 const homepageDescription = getProfessionalSummary();
+const homepagePositioning = getHomepageValueProposition();
 
 function cleanText(value: string) {
   return value
@@ -61,19 +64,23 @@ export const metadataSiteConfig = {
   socialImageUrl: absoluteUrl(socialImage),
   twitterHandle,
   homepageDescription,
+  homepagePositioning,
   authorEmail: contact.mail,
 };
 
 const defaultKeywords = buildKeywords([
   about.name,
   professionalProfile.primaryRole,
+  "Software Engineer",
   "Frontend Developer",
+  "Frontend Engineer",
   "Frontend Engineer",
   "React Developer",
   "Next.js Developer",
   "Angular Developer",
   "React Native Developer",
   "Flutter Developer",
+  "TypeScript Developer",
   location,
 ]);
 
@@ -133,9 +140,15 @@ export function buildPageMetadata({
 export function getHomeMetadata(): Metadata {
   const baseMetadata = buildPageMetadata({
     path: "/",
-    title: professionalProfile.primaryRole,
-    description: homepageDescription,
-    keywords: ["TypeScript Developer", "Node.js Developer", "Nigeria", "Lagos"],
+    title: "Software Developer for Frontend, Web, and Mobile Products",
+    description: `${homepagePositioning} ${getHomepageProofLine()}`,
+    keywords: [
+      "Frontend Engineer",
+      "Web Developer",
+      "Mobile App Developer",
+      "Nigeria",
+      "Lagos",
+    ],
     image: socialImage,
     category: "portfolio",
   });
@@ -143,7 +156,7 @@ export function getHomeMetadata(): Metadata {
   return {
     ...baseMetadata,
     title: {
-      absolute: `${about.name} | Software Developer`,
+      absolute: `${about.name} | Software Developer for Web and Mobile Products`,
     },
   };
 }
@@ -152,8 +165,15 @@ export function getAboutMetadata(): Metadata {
   return buildPageMetadata({
     path: "/about",
     title: `About ${about.name}`,
-    description: toDescription(about.about),
-    keywords: ["About Ogooluwani Adewale", "Software Developer Bio"],
+    description: toDescription(
+      `${about.about} ${homepagePositioning}`,
+      165,
+    ),
+    keywords: [
+      "About Ogooluwani Adewale",
+      "Software Developer Bio",
+      "Frontend and Mobile Developer",
+    ],
     image: about.image,
     category: "portfolio",
   });
@@ -168,9 +188,13 @@ export function getExperienceMetadata(): Metadata {
 
   return buildPageMetadata({
     path: "/experience",
-    title: "Software Development Experience",
-    description: `${professionalProfile.fullName}'s experience spans ${featuredCompanies}, with ${professionalProfile.yearsOfExperience} across frontend, web, and mobile delivery.`,
-    keywords: ["Frontend Experience", "Software Developer Experience"],
+    title: "Frontend, Web, and Mobile Experience",
+    description: `${professionalProfile.fullName}'s experience spans ${featuredCompanies}, with ${professionalProfile.yearsOfExperience} across frontend engineering, web delivery, and mobile product work.`,
+    keywords: [
+      "Frontend Experience",
+      "Software Developer Experience",
+      "React and Next.js Experience",
+    ],
     category: "portfolio",
   });
 }
@@ -186,9 +210,14 @@ export function getProjectsMetadata(): Metadata {
 
   return buildPageMetadata({
     path: "/projects",
-    title: "Web and Mobile Projects",
+    title: "React, Web, and Mobile Projects",
     description: getProjectPageLead(projectCount, mobileCount, webCount),
-    keywords: ["Portfolio Projects", "Web Projects", "Mobile Projects"],
+    keywords: [
+      "Portfolio Projects",
+      "React Projects",
+      "Web Projects",
+      "Mobile Projects",
+    ],
     image: socialImage,
     category: "portfolio",
   });
@@ -200,8 +229,12 @@ export function getResumeMetadata(): Metadata {
   return buildPageMetadata({
     path: "/resume",
     title: `${about.name} Resume`,
-    description: `View the resume of ${about.name}, ${currentRole?.title?.toLowerCase() || "software developer"} with experience in ${primaryTechnologies.slice(0, 5).join(", ")}.`,
-    keywords: ["Software Developer Resume", "Frontend Resume"],
+    description: `Review the resume of ${about.name}, ${currentRole?.title?.toLowerCase() || "software developer"} with experience in ${primaryTechnologies.slice(0, 5).join(", ")} and recent frontend, web, and mobile delivery.`,
+    keywords: [
+      "Software Developer Resume",
+      "Frontend Resume",
+      "React Developer Resume",
+    ],
     category: "resume",
   });
 }
@@ -210,8 +243,12 @@ export function getContactMetadata(): Metadata {
   return buildPageMetadata({
     path: "/contact",
     title: `Contact ${about.name}`,
-    description: `Contact ${about.name} in ${location} for software development, frontend, web, and mobile opportunities.`,
-    keywords: ["Contact Ogooluwani Adewale", "Hire Software Developer"],
+    description: `Contact ${about.name} in ${location} for frontend, web, and mobile product work, hiring conversations, and project enquiries.`,
+    keywords: [
+      "Contact Ogooluwani Adewale",
+      "Hire Software Developer",
+      "Hire Frontend Developer",
+    ],
     category: "contact",
   });
 }
@@ -220,7 +257,7 @@ export function getThreeMetadata(): Metadata {
   return buildPageMetadata({
     path: "/three",
     title: "Three.js Showcase",
-    description: `Explore ${about.name}'s interactive Three.js showcase demonstrating frontend graphics and immersive web experiences.`,
+    description: `Explore ${about.name}'s interactive Three.js showcase demonstrating frontend graphics, WebGL experimentation, and immersive web experiences.`,
     keywords: ["Three.js Portfolio", "WebGL Showcase", "Frontend Graphics"],
     image: socialImage,
     category: "showcase",

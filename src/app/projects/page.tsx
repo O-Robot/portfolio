@@ -6,9 +6,16 @@ import Link from "next/link";
 import projects from "@/data/projects.json";
 import Projects from "@/components/sections/projects";
 import type { ProjectItem } from "@/types/portfolio";
+import { getProjectPageLead } from "@/utils/profile";
 
 export default function ProjectsPage() {
   const projectItems = projects as ProjectItem[];
+  const mobileCount = projectItems.filter(
+    (project) => project.category === "mobile",
+  ).length;
+  const webCount = projectItems.filter(
+    (project) => project.category === "web",
+  ).length;
 
   return (
     <section className="bg-background">
@@ -32,8 +39,9 @@ export default function ProjectsPage() {
               Projects
             </h1>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto mb-8">
-              A showcase of ideas brought to life. Exploring creativity,
-              problem-solving, and innovation through code
+              {getProjectPageLead(projectItems.length, mobileCount, webCount)}{" "}
+              Each project highlights the product, stack, and delivery details
+              without relying on external demos alone.
             </p>
           </motion.div>
           <div className="w-full">

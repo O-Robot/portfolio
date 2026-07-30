@@ -4,10 +4,13 @@ import { metadataSiteConfig } from "@/utils/metadata";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/home", "/contact-me"],
+      },
+    ],
     sitemap: `${metadataSiteConfig.siteUrl}/sitemap.xml`,
     host: metadataSiteConfig.siteUrl,
   };

@@ -7,6 +7,14 @@ function unique(values: string[]) {
   return [...new Set(values.filter(Boolean))];
 }
 
+function prioritizeValues(values: string[], priority: string[]) {
+  const prioritySet = new Set(priority);
+  const prioritized = priority.filter((value) => values.includes(value));
+  const remainder = values.filter((value) => !prioritySet.has(value));
+
+  return [...prioritized, ...remainder];
+}
+
 function extractYearsOfExperience(text: string) {
   const match = text.match(/over\s+[^.]*?years of experience/i);
   return match?.[0] ?? "experience in software development";
@@ -68,33 +76,89 @@ function collectExpertiseAreas() {
   return areas;
 }
 
-export const primaryTechnologies = unique([
-  ...experience.flatMap((item) => item.technologies),
-  ...projects.flatMap((project) =>
-    project.languages.map((language) => language.name),
+function collectIndustryFocuses() {
+  const sourceText = [
+    about.about,
+    ...experience.map((item) => item.description),
+    ...projects.flatMap((project) => [
+      project.description,
+      project.summary ?? "",
+      project.context ?? "",
+    ]),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  const industryMatchers: Array<[string, RegExp]> = [
+    ["enterprise software", /\benterprise\b/],
+    ["media", /\bmedia\b|\bpodcast\b|\bmagazine\b|\beditorial\b/],
+    ["logistics", /\blogistics\b/],
+    [
+      "business applications",
+      /\bbusiness applications?\b|\bdashboard\b|\badmin\b/,
+    ],
+    [
+      "e-commerce",
+      /\be-commerce\b|\bcommerce\b|\bshopping\b|\bstorefront\b|\bretail\b/,
+    ],
+    ["real estate", /\breal estate\b|\bproperty\b/],
+    ["digital health", /\bhealth\b|\bchronic conditions\b/],
+    ["education", /\beducation\b|\blearning\b|\bedu\b/],
+    ["compliance and audit", /\bcompliance\b|\baudit\b|\bdata protection\b/],
+  ];
+
+  return industryMatchers
+    .filter(([, matcher]) => matcher.test(sourceText))
+    .map(([industry]) => industry);
+}
+
+function collectFrameworkFocus() {
+  return primaryTechnologies.filter((technology) =>
+    [
+      "React",
+      "Next.js",
+      "Angular",
+      "Vue.js",
+      "React Native",
+      "Flutter",
+      "TypeScript",
+    ].includes(technology),
+  );
+}
+
+export const primaryTechnologies = prioritizeValues(
+  unique([
+    ...experience.flatMap((item) => item.technologies),
+    ...projects.flatMap((project) =>
+      project.languages.map((language) => language.name),
+    ),
+  ]).filter((technology) =>
+    [
+      "React",
+      "React.js",
+      "Next.js",
+      "Angular",
+      "React Native",
+      "Vue.js",
+      "Vue",
+      "TypeScript",
+      "Node.js",
+      "Flutter",
+      "Expo",
+      "WordPress",
+      "Shopify",
+    ].includes(technology),
   ),
-]).filter((technology) =>
-  [
-    "React",
-    "React.js",
-    "Next.js",
-    "Angular",
-    "Vue.js",
-    "Vue",
-    "TypeScript",
-    "Node.js",
-    "React Native",
-    "Flutter",
-    "Expo",
-    "WordPress",
-    "Shopify",
-  ].includes(technology),
+  ["React"],
 );
 
 export const professionalProfile = {
+  frameworkFocus: collectFrameworkFocus(),
   expertiseAreas: collectExpertiseAreas(),
   fullName: about.name,
+  industryFocuses: collectIndustryFocuses(),
   location: contact.location,
+  preferredContactPath: "/contact",
   primaryRole: "Software Developer",
   tagline: about.tagline,
   yearsOfExperience: extractYearsOfExperience(about.about),
@@ -107,10 +171,26 @@ export function getProfessionalSummary() {
   return `${professionalProfile.fullName} is a ${professionalProfile.primaryRole.toLowerCase()} in ${professionalProfile.location} with ${professionalProfile.yearsOfExperience}, focused on ${areaSummary} with ${stackSummary}.`;
 }
 
+export function getHomepageValueProposition() {
+  const frameworkSummary = joinList(
+    professionalProfile.frameworkFocus.slice(0, 4),
+  );
+
+  return `Building fast, accessible web and mobile products with ${frameworkSummary}.`;
+}
+
+export function getHomepageProofLine() {
+  const industrySummary = joinList(
+    professionalProfile.industryFocuses.slice(0, 6),
+  );
+
+  return `${professionalProfile.yearsOfExperience} across ${industrySummary}.`;
+}
+
 export function getProjectPageLead(
   projectCount: number,
   mobileCount: number,
   webCount: number,
 ) {
-  return `${projectCount} selected projects spanning ${webCount} web builds and ${mobileCount} mobile builds across ${joinList(primaryTechnologies.slice(0, 5))}.`;
+  return `${projectCount} selected projects spanning ${webCount} web builds and ${mobileCount} mobile builds across ${joinList(primaryTechnologies.slice(0, 6))}.`;
 }

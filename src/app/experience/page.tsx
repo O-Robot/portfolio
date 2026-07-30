@@ -20,6 +20,12 @@ const WORK_EXPERIENCE_TYPES = [
 export default function ExperiencePage() {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const experienceItems = experience as ExperienceItem[];
+  const featuredCompanies = Array.from(
+    new Set(experienceItems.map((item) => item.company)),
+  )
+    .filter(Boolean)
+    .slice(0, 4)
+    .join(", ");
 
   const filterOptions: FilterOption[] = [
     { id: "all", label: "All", icon: "✦" },
@@ -46,7 +52,7 @@ export default function ExperiencePage() {
   return (
     <section className="bg-background">
       <section
-        id="projects"
+        id="experience"
         className="py-32 relative  "
         aria-labelledby="experience-page-title"
       >
@@ -64,7 +70,8 @@ export default function ExperiencePage() {
               Experience
             </h1>
             <p className="text-xl text-primary-text/80 max-w-3xl mx-auto mb-8">
-              A timeline of growth, learning, and achievements
+              Roles across {featuredCompanies}, with hands-on work spanning
+              frontend engineering, web delivery, and mobile product builds.
             </p>
             <Filter
               filters={filterOptions}

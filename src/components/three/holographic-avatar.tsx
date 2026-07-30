@@ -39,7 +39,7 @@ export default function HolographicAvatar({ avatar }: { avatar?: string }) {
         className="absolute inset-4 rounded-full glass-morphism flex items-center justify-center overflow-hidden"
       >
         {/* Placeholder Avatar - Replace with actual image */}
-        <div className="w-full h-full bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-full flex items-center justify-center">
+        <div className="w-full h-full bg-linear-to-br from-cyan-400/20 to-purple-400/20 rounded-full flex items-center justify-center">
           {avatar && avatar.length > 0 ? (
             <Image src={avatar} width={30} height={30} alt="robot" />
           ) : (
