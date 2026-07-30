@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     if (!email || !firstName || !lastName) {
       return NextResponse.json(
         { success: false, message: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
         await resend.emails.send({
           from: "Ogooluwani Adewale <noreply@ogooluwaniadewale.com>",
           to: [email],
-          subject: "Thanks for reaching out 🚀",
+          subject: "Thank you for reaching out 🚀",
           html: `
           <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto; padding:20px; border-radius:12px; background:#f8eff4; text-align:center;">
             <img src="https://ogooluwaniadewale.com/favicon.ico" alt="Ogooluwani Logo" width="80" style="margin-bottom:20px;" />
@@ -67,7 +67,7 @@ export async function POST(req: Request) {
         console.error("Error checking contact:", error);
         return NextResponse.json(
           { success: false, message: "Failed to check contact" },
-          { status: 500 }
+          { status: 500 },
         );
       }
     }
@@ -82,7 +82,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: "Ogooluwani Adewale <noreply@ogooluwaniadewale.com>",
       to: [email],
-      subject: "Thanks for subscribing & reaching out! 🚀",
+      subject: "Thank you for subscribing & reaching out! 🚀",
       html: `
           <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto; padding:20px; border-radius:12px; background:#f8eff4; text-align:center;">
             <img src="https://ogooluwaniadewale.com/icons/favicon.ico" alt="Ogooluwani Logo" width="80" style="margin-bottom:20px;" />
@@ -111,7 +111,7 @@ export async function POST(req: Request) {
     console.error(err);
     return NextResponse.json(
       { success: false, message: "Invalid request" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 }

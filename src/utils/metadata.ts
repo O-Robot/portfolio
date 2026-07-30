@@ -5,9 +5,7 @@ import contact from "@/data/contact.json";
 import experience from "@/data/experience.json";
 import projects from "@/data/projects.json";
 import {
-  getHomepageProofLine,
   getHomepageValueProposition,
-  getProfessionalSummary,
   getProjectPageLead,
   primaryTechnologies,
   professionalProfile,

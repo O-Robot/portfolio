@@ -2,7 +2,6 @@ import { ImageResponse } from "next/og";
 
 import about from "@/data/about.json";
 
-export const runtime = "edge";
 export const alt = `${about.name} portfolio preview`;
 export const size = {
   width: 1200,

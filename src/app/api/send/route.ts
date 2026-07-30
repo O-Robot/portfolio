@@ -82,7 +82,7 @@ export async function POST(req: Request) {
       await resend.emails.send({
         from: "Ogooluwani Adewale <noreply@ogooluwaniadewale.com>",
         to: [email],
-        subject: "Thanks for reaching out 🚀",
+        subject: "Thank you for reaching out 🚀",
         html: `
           <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto; padding:20px; border-radius:12px; background:#f8eff4; text-align:center;">
             <img src="https://ogooluwaniadewale.com/favicon.ico" alt="Ogooluwani Logo" width="80" style="margin-bottom:20px;" />

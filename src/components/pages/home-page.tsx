@@ -1,7 +1,5 @@
 "use client";
 import Timeline from "@/components/sections/timeline";
-import HolographicAvatar from "@/components/three/holographic-avatar";
-import ParticleBackground from "@/components/three/particle-background";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import robot from "@/data/about.json";
@@ -14,8 +12,23 @@ import { primaryTechnologies } from "@/utils/profile";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { motion } from "framer-motion";
 import { Pencil, Send } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRef, useState } from "react";
+
+const ParticleBackground = dynamic(
+  () => import("@/components/three/particle-background"),
+  {
+    ssr: false,
+  },
+);
+
+const HolographicAvatar = dynamic(
+  () => import("@/components/three/holographic-avatar"),
+  {
+    ssr: false,
+  },
+);
 
 export default function HomePage() {
   const connect = ["Github", "LinkedIn"];
@@ -330,16 +343,16 @@ export default function HomePage() {
                 <li className="skill-content" key={i}>
                   <>
                     {/* Icon */}
-                    <span
-                      className="iconify w-14 h-14 z-10"
-                      data-icon={logo.fontAwesomeClassname}
+                    <Icon
+                      icon={logo.fontAwesomeClassname}
+                      aria-hidden="true"
+                      className="w-14 h-14 z-10"
                       style={
                         logo.style.color === "#000000"
                           ? { color: "var(--primary-text)" }
                           : logo.style
                       }
-                      data-inline="false"
-                    ></span>
+                    />
                     <h4 className="z-10 font-medium">{logo.skillName}</h4>
                     {/* Animated rotating border */}
                     <span

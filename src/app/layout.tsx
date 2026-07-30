@@ -29,7 +29,13 @@ const space = Space_Grotesk({
   variable: "--font-space-grotesk",
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(metadataSiteConfig.siteUrl),
@@ -112,6 +118,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <JsonLd id="website-jsonld" data={buildWebsiteSchema()} />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -132,16 +140,12 @@ export default function RootLayout({
           }}
         />
         <Script
-          src="https://code.iconify.design/2/2.2.1/iconify.min.js"
-          defer
-        />
-        <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=G-1JV5XE6QBL`}
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

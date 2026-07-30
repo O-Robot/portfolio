@@ -177,7 +177,7 @@ export default function ContactPage() {
 
       toast({
         title: "Message sent! 🚀",
-        description: "Thanks for reaching out. I'll get back to you soon!",
+        description: "Thank you for reaching out. I'll get back to you soon!",
       });
       setStatusMessage("Your message has been sent successfully.");
       setFormErrors({});
