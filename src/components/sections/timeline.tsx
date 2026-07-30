@@ -2,9 +2,16 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatePresence, motion } from "framer-motion";
-import { BriefcaseBusiness, Calendar, MapPin, X } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  MapPin,
+  X,
+} from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AccessibleDialog from "../ui/accessible-dialog";
 import type { ExperienceItem, TimelineItem, WorkMode } from "@/types/portfolio";
 
@@ -68,6 +75,47 @@ function getModalEmploymentLabel(item: {
 
 export default function Timeline({ timelineData }: { timelineData: TimelineItem[] }) {
   const [selectedItem, setSelectedItem] = useState<TimelineItem["id"] | null>(null);
+  const selectedIndex = timelineData.findIndex((item) => item.id === selectedItem);
+  const selectedTimelineItem =
+    selectedIndex > -1 ? timelineData[selectedIndex] : null;
+  const scrollAreaRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    if (!selectedItem) {
+      return;
+    }
+
+    scrollAreaRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    titleRef.current?.focus({ preventScroll: true });
+  }, [selectedItem]);
+
+  useEffect(() => {
+    if (!selectedItem) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft" && selectedIndex > 0) {
+        event.preventDefault();
+        setSelectedItem(timelineData[selectedIndex - 1].id);
+      }
+
+      if (event.key === "ArrowRight" && selectedIndex < timelineData.length - 1) {
+        event.preventDefault();
+        setSelectedItem(timelineData[selectedIndex + 1].id);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedIndex, selectedItem, timelineData]);
 
   return (
     <div className="relative">
@@ -196,113 +244,137 @@ export default function Timeline({ timelineData }: { timelineData: TimelineItem[
 
       {/* Expanded Details Modal */}
       <AnimatePresence>
-        {selectedItem && (
+        {selectedItem && selectedTimelineItem && (
           <AccessibleDialog
             labelledBy={`timeline-dialog-title-${selectedItem}`}
             describedBy={`timeline-dialog-description-${selectedItem}`}
             onClose={() => setSelectedItem(null)}
-            panelClassName="max-w-2xl w-full max-h-[90vh] md:max-h-[80vh] overflow-y-auto p-4 md:p-6 lg:p-8"
+            panelClassName="relative flex max-w-2xl w-full max-h-[90vh] md:max-h-[80vh] flex-col overflow-hidden"
           >
-            {(() => {
-              const item = timelineData.find((entry) => entry.id === selectedItem);
-              if (!item) return null;
+            <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-20 hidden md:block">
+              <button
+                type="button"
+                onClick={() => selectedIndex > 0 && setSelectedItem(timelineData[selectedIndex - 1].id)}
+                disabled={selectedIndex <= 0}
+                aria-label="Show previous experience"
+                className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-primary-text/80 shadow-lg shadow-black/10 backdrop-blur-md transition duration-200 hover:scale-[1.03] hover:bg-white/14 hover:text-primary-text disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"
+              >
+                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  selectedIndex < timelineData.length - 1 &&
+                  setSelectedItem(timelineData[selectedIndex + 1].id)
+                }
+                disabled={selectedIndex >= timelineData.length - 1}
+                aria-label="Show next experience"
+                className="pointer-events-auto absolute right-3 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-primary-text/80 shadow-lg shadow-black/10 backdrop-blur-md transition duration-200 hover:scale-[1.03] hover:bg-white/14 hover:text-primary-text disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"
+              >
+                <ChevronRight className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
 
-              return (
-                <div id={`timeline-dialog-${item.id}`}>
-                  <div className="mb-4 flex items-start justify-between gap-4">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4 text-link-active shrink-0" />
-                        <span className="text-link-active font-semibold text-sm md:text-base">
-                          {item.year}
-                        </span>
-                      </div>
-                      <h3
-                        id={`timeline-dialog-title-${item.id}`}
-                        className="text-xl md:text-2xl font-bold text-skill-text leading-tight"
-                      >
-                        {item.title}
-                      </h3>
-                      <div className="flex items-start gap-2">
-                        <BriefcaseBusiness className="h-4 w-4 text-skill-text shrink-0 mt-0.5" />
-                        <span className="text-skill-text/80 text-sm md:text-base">
-                          {item.company}, {item.location}
-                        </span>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => setSelectedItem(null)}
-                      aria-label={`Close ${item.title} details`}
-                      className="p-2 rounded-full hover:bg-link-active hover:text-white text-primary-text cursor-pointer transition"
-                    >
-                      <X className="w-5 h-5" aria-hidden="true" />
-                    </button>
+            <div className="p-4 md:px-6 md:py-4 border-b border-white/10 sticky top-0 bg-background/85 backdrop-blur-md z-10">
+              <div className="mb-4 flex items-start justify-between gap-4">
+                <div className="space-y-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 text-link-active shrink-0" />
+                    <span className="text-link-active font-semibold text-sm md:text-base">
+                      {selectedTimelineItem.year}
+                    </span>
                   </div>
-
-                  <p
-                    id={`timeline-dialog-description-${item.id}`}
-                    className="text-skill-text/70 mb-6 text-sm md:text-base leading-relaxed"
+                  <h3
+                    id={`timeline-dialog-title-${selectedTimelineItem.id}`}
+                    ref={titleRef}
+                    tabIndex={-1}
+                    className="text-xl md:text-2xl font-bold text-skill-text leading-tight"
                   >
-                    {item.description}
-                  </p>
+                    {selectedTimelineItem.title}
+                  </h3>
+                  <div className="flex items-start gap-2">
+                    <BriefcaseBusiness className="h-4 w-4 text-skill-text shrink-0 mt-0.5" />
+                    <span className="text-skill-text/80 text-sm md:text-base">
+                      {selectedTimelineItem.company}, {selectedTimelineItem.location}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setSelectedItem(null)}
+                  aria-label={`Close ${selectedTimelineItem.title} details`}
+                  className="p-2 rounded-full hover:bg-white/10 hover:text-primary-text text-primary-text/70 cursor-pointer transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"
+                >
+                  <X className="w-5 h-5" aria-hidden="true" />
+                </button>
+              </div>
+            </div>
 
-                  {isExperienceItem(item) && getModalEmploymentLabel(item) && (
-                    <>
-                      <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
-                        Employment Type:
-                      </h4>
-                      <div className="mb-6">
-                        <Badge
-                          variant="secondary"
-                          className="glass-morphism text-skill-text text-xs md:text-sm"
-                        >
-                          {getModalEmploymentLabel(item)}
-                        </Badge>
-                      </div>
-                    </>
-                  )}
+            <div
+              ref={scrollAreaRef}
+              className="overflow-y-auto p-4 md:p-6 lg:p-8 bg-background/80 backdrop-blur-sm"
+              id={`timeline-dialog-${selectedTimelineItem.id}`}
+            >
+              <p
+                id={`timeline-dialog-description-${selectedTimelineItem.id}`}
+                className="text-skill-text/70 mb-6 text-sm md:text-base leading-relaxed"
+              >
+                {selectedTimelineItem.description}
+              </p>
 
-                  <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
-                    Key Achievements:
-                  </h4>
-                  <ul className="space-y-2 mb-6">
-                    {item.achievements.map((achievement: string, i: number) => (
-                      <li
-                        key={i}
-                        className="text-skill-text/70 flex text-sm md:text-base"
-                      >
-                        <span className="shrink-0 w-2 h-2 bg-accent rounded-full mt-2 mr-3" />
-                        <span className="flex-1 leading-relaxed">
-                          {achievement}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
-                    Technologies Used:
-                  </h4>
-                  <div className="flex flex-wrap gap-1 md:gap-2">
-                    {item.technologies?.map((tech: string) => (
+              {isExperienceItem(selectedTimelineItem) &&
+                getModalEmploymentLabel(selectedTimelineItem) && (
+                  <>
+                    <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
+                      Employment Type:
+                    </h4>
+                    <div className="mb-6">
                       <Badge
-                        key={tech}
                         variant="secondary"
                         className="glass-morphism text-skill-text text-xs md:text-sm"
                       >
-                        {tech}
+                        {getModalEmploymentLabel(selectedTimelineItem)}
                       </Badge>
-                    ))}
-                  </div>
+                    </div>
+                  </>
+                )}
 
-                  <button
-                    onClick={() => setSelectedItem(null)}
-                    className="mt-6 md:hidden w-full py-2 px-4 bg-primary/20 text-primary rounded-lg font-medium"
+              <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
+                Key Achievements:
+              </h4>
+              <ul className="space-y-2 mb-6">
+                {selectedTimelineItem.achievements.map((achievement: string, i: number) => (
+                  <li
+                    key={i}
+                    className="text-skill-text/70 flex text-sm md:text-base"
                   >
-                    Close
-                  </button>
-                </div>
-              );
-            })()}
+                    <span className="shrink-0 w-2 h-2 bg-accent rounded-full mt-2 mr-3" />
+                    <span className="flex-1 leading-relaxed">{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <h4 className="text-base md:text-lg font-semibold text-primary mb-3">
+                Technologies Used:
+              </h4>
+              <div className="flex flex-wrap gap-1 md:gap-2">
+                {selectedTimelineItem.technologies?.map((tech: string) => (
+                  <Badge
+                    key={tech}
+                    variant="secondary"
+                    className="glass-morphism text-skill-text text-xs md:text-sm"
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="mt-6 md:hidden w-full py-2 px-4 bg-primary/20 text-primary rounded-lg font-medium"
+              >
+                Close
+              </button>
+            </div>
           </AccessibleDialog>
         )}
       </AnimatePresence>
