@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 
 export default function Footer() {
+  const date = new Date();
+  const year = date.getFullYear();
   return (
     <motion.div
       className=" bottom-0 w-full bg-background  px-10 py-4 flex justify-center items-center"
@@ -11,7 +13,7 @@ export default function Footer() {
     >
       <div className=" text-center container ">
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <div className="text-primary-text">© 2025 Ogooluwani Adewale.</div>
+          <div className="text-primary-text">© {year} Ogooluwani Adewale.</div>
         </div>
       </div>
     </motion.div>
