@@ -1,5 +1,4 @@
 export function getProjectStatusColorClass(status?: string) {
-  console.log("S", status);
   const normalizedStatus = status?.trim().toLowerCase();
 
   if (normalizedStatus === "live" || normalizedStatus === "completed") {

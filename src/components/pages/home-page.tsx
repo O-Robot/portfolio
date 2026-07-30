@@ -41,7 +41,7 @@ export default function HomePage() {
 
   const parts = robot.about
     .split(/(\[\[NAME\]\]|\[\[SPEAKER\]\])/)
-    .map((part) => TruncateText(part, 565));
+    .map((part) => TruncateText(part, 700));
   const featuredExperience = timelineData.slice(0, 3) as ExperienceItem[];
 
   const stackPreview = primaryTechnologies.slice(0, 6).join(", ");

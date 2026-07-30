@@ -55,6 +55,7 @@ export default function Projects({
 }: {
   projectsData: ProjectItem[];
 }) {
+  const [enableTilt, setEnableTilt] = useState(false);
   const [selectedItem, setSelectedItem] = useState<ProjectItem["id"] | null>(
     null,
   );
@@ -88,6 +89,24 @@ export default function Projects({
       document.body.style.overflow = "";
     };
   }, [selectedItem]);
+
+  useEffect(() => {
+    const updateTiltPreference = () => {
+      const supportsTiltInteraction =
+        window.innerWidth >= 1024 &&
+        window.matchMedia("(pointer: fine)").matches &&
+        window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+
+      setEnableTilt(supportsTiltInteraction);
+    };
+
+    updateTiltPreference();
+    window.addEventListener("resize", updateTiltPreference, {
+      passive: true,
+    });
+
+    return () => window.removeEventListener("resize", updateTiltPreference);
+  }, []);
 
   const openProject = (project: ProjectItem) => {
     setSelectedItem(selectedItem === project.id ? null : project.id);
@@ -142,6 +161,7 @@ export default function Projects({
                   className="group bg-background/30 shadow shadow-skill-text/40 p-5 rounded-xl h-full flex flex-col overflow-hidden cursor-pointer border border-white/10 transition-[border-color,box-shadow,transform] duration-300 hover:border-white/20 hover:shadow-lg hover:shadow-skill-text/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-text"
                 >
                   <Tilt
+                    tiltEnable={enableTilt}
                     tiltMaxAngleX={5}
                     tiltMaxAngleY={5}
                     scale={1}
@@ -156,6 +176,7 @@ export default function Projects({
                         className="w-full h-full object-cover object-left-center rounded-xl z-10"
                         width={1300}
                         height={50}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                       />
                       {(project.url || project.repoUrl) && (
                         <div className="absolute inset-0 flex justify-end m-3 pointer-events-none">

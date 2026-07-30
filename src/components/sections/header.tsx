@@ -72,18 +72,21 @@ export default function Header() {
                 const href = getNavHref(item.href);
                 const isActive = isNavItemActive(item.href, pathname);
                 return (
-                  <motion.a
+                  <motion.div
                     key={item.name}
-                    href={href}
                     whileHover={{ scale: 1.09 }}
-                    className={`hover:text-link-active hover:font-medium transition-colors ${
-                      isActive
-                        ? "text-link-active font-medium"
-                        : "text-link-inactive "
-                    }`}
                   >
-                    {item.name}
-                  </motion.a>
+                    <Link
+                      href={href}
+                      className={`hover:text-link-active hover:font-medium transition-colors ${
+                        isActive
+                          ? "text-link-active font-medium"
+                          : "text-link-inactive "
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
                 );
               })}
               <Button
@@ -133,7 +136,7 @@ export default function Header() {
                 const href = getNavHref(item.href);
                 const isActive = isNavItemActive(item.href, pathname);
                 return (
-                  <a
+                  <Link
                     key={item.name}
                     href={href}
                     className={`block py-2 hover:text-link-active hover:font-medium  transition-colors ${
@@ -144,7 +147,7 @@ export default function Header() {
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 );
               })}
             </motion.div>

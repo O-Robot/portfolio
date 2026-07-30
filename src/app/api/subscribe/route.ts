@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("Missing RESEND_API_KEY");
+  }
+
+  return new Resend(apiKey);
+}
 
 function isContactNotFoundError(error: unknown) {
   return error instanceof Error && error.message.includes("not found");
@@ -9,6 +17,7 @@ function isContactNotFoundError(error: unknown) {
 
 export async function POST(req: Request) {
   try {
+    const resend = getResendClient();
     const { email, firstName, lastName } = await req.json();
     const audienceId = "0eec10c8-8937-481e-92aa-db0c9ff2939d";
     if (!email || !firstName || !lastName) {

@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isValidPhoneNumber } from "react-phone-number-input";
 
 const CalendlyWidget = dynamic(
@@ -49,10 +49,37 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [captchaToken, setCaptchaToken] = useState("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [shouldLoadCalendly, setShouldLoadCalendly] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
+  const scheduleSectionRef = useRef<HTMLDivElement | null>(null);
   const turnstileRef = useRef<TurnstileInstance>(null);
 
   const connect = ["Github", "LinkedIn"];
+
+  useEffect(() => {
+    if (!scheduleSectionRef.current || shouldLoadCalendly) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        setShouldLoadCalendly(true);
+        observer.disconnect();
+      },
+      {
+        rootMargin: "200px 0px",
+        threshold: 0.05,
+      },
+    );
+
+    observer.observe(scheduleSectionRef.current);
+
+    return () => observer.disconnect();
+  }, [shouldLoadCalendly]);
 
   const validateForm = () => {
     const nextErrors: Record<string, string> = {};
@@ -609,8 +636,15 @@ export default function ContactPage() {
               Schedule a Call
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 gap-12 max-w-6xl mx-auto py-10 w-full lg:w-1/2 ">
-            <CalendlyWidget url="https://calendly.com/ogooluwaniadewale/" />
+          <div
+            ref={scheduleSectionRef}
+            className="grid grid-cols-1 gap-12 max-w-6xl mx-auto py-10 w-full lg:w-1/2 "
+          >
+            {shouldLoadCalendly ? (
+              <CalendlyWidget url="https://calendly.com/ogooluwaniadewale/" />
+            ) : (
+              <div className="w-full min-h-175 rounded-2xl glass-morphism border border-white/20" />
+            )}
           </div>
         </div>
       </section>

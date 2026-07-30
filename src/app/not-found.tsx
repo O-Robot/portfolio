@@ -37,6 +37,8 @@ export default function NotFound() {
                   alt="Lost robot"
                   width={300}
                   height={500}
+                  sizes="300px"
+                  priority
                 />
               </motion.div>
               <motion.div

@@ -119,6 +119,8 @@ export default function AboutPage() {
                 alt={`Portrait of ${robot.name}`}
                 height={400}
                 width={600}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
                 className="rounded-2xl object-cover"
               />
 
