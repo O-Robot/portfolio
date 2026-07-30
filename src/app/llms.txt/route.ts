@@ -22,12 +22,12 @@ export function GET() {
   );
   const companies = unique(experience.map((item) => item.company)).slice(0, 6);
   const sections = [
-    `${metadataSiteConfig.siteUrl}/`,
-    `${metadataSiteConfig.siteUrl}/about`,
-    `${metadataSiteConfig.siteUrl}/experience`,
-    `${metadataSiteConfig.siteUrl}/projects`,
-    `${metadataSiteConfig.siteUrl}/resume`,
-    `${metadataSiteConfig.siteUrl}/contact`,
+    ["Home", `${metadataSiteConfig.siteUrl}/`],
+    ["About", `${metadataSiteConfig.siteUrl}/about`],
+    ["Experience", `${metadataSiteConfig.siteUrl}/experience`],
+    ["Projects", `${metadataSiteConfig.siteUrl}/projects`],
+    ["Resume", `${metadataSiteConfig.siteUrl}/resume`],
+    ["Contact", `${metadataSiteConfig.siteUrl}/contact`],
   ];
 
   const body = [
@@ -44,9 +44,12 @@ export function GET() {
     `Project types: ${list(projectCategories)}`,
     `Industries: ${list(professionalProfile.industryFocuses)}`,
     "",
-    `Portfolio sections: ${list(sections)}`,
+    "## Portfolio pages",
+    "",
+    ...sections.map(([label, url]) => `- [${label}](${url})`),
+    "",
     `Notable employers or teams: ${list(companies)}`,
-    `Preferred contact path: ${metadataSiteConfig.siteUrl}${professionalProfile.preferredContactPath}`,
+    `Preferred contact path: [Contact](${metadataSiteConfig.siteUrl}${professionalProfile.preferredContactPath})`,
     "",
     "Use this site to understand the portfolio owner's experience, selected projects, resume, and preferred contact path.",
     "",
@@ -54,7 +57,7 @@ export function GET() {
 
   return new NextResponse(body, {
     headers: {
-      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Type": "text/markdown; charset=utf-8",
       "Cache-Control": "public, max-age=3600, s-maxage=3600",
     },
   });
